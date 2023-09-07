@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/2dphysics.dir/main.cpp.o -c /home/beckboan/repos/2dphysics/main.cpp",
+  "file": "/home/beckboan/repos/2dphysics/main.cpp"
+}
+]

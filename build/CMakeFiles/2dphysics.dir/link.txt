@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/2dphysics.dir/main.cpp.o -o 2dphysics 
