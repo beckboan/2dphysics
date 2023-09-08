@@ -34,7 +34,8 @@ public:
     vec2d operator-(const float val) const;
     vec2d operator*(const float val) const;
     vec2d operator/(const float val) const;
-
 };
+
+float dp(vec2d& vec1, vec2d& vec2);
 
 #endif

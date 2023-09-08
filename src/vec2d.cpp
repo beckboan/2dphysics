@@ -79,3 +79,17 @@ vec2d vec2d::operator/(const float val) const
 {
     return vec2d(x / val, y / val);
 }
+
+//Other Vector Functions
+
+//Dot Product
+
+float dp(vec2d& vec1, vec2d& vec2)
+{
+    return (vec1.x * vec2.x) + (vec1.y * vec2.y);
+}
+
+float cp(vec2d& vec1, vec2d& vec2)
+{
+    return (vec1.x * vec2.y) - (vec1.y * vec2.x);
+}
