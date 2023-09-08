@@ -1,1 +1,1 @@
-/usr/bin/g++ -g -rdynamic CMakeFiles/2dphysics.dir/main.cpp.o -o 2dphysics 
+/usr/bin/g++ -g -rdynamic CMakeFiles/2dphysics.dir/src/vec2d.cpp.o CMakeFiles/2dphysics.dir/src/main.cpp.o -o 2dphysics 

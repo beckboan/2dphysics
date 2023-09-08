@@ -1,7 +1,12 @@
 [
 {
   "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/2dphysics.dir/main.cpp.o -c /home/beckboan/repos/2dphysics/main.cpp",
-  "file": "/home/beckboan/repos/2dphysics/main.cpp"
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/vec2d.cpp.o -c /home/beckboan/repos/2dphysics/src/vec2d.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/vec2d.cpp"
+},
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckboan/repos/2dphysics/src/main.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/main.cpp"
 }
 ]

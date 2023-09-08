@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/beckboan/repos/2dphysics/main.cpp" "CMakeFiles/2dphysics.dir/main.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/main.cpp.o.d"
+  "/home/beckboan/repos/2dphysics/src/main.cpp" "CMakeFiles/2dphysics.dir/src/main.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/main.cpp.o.d"
+  "/home/beckboan/repos/2dphysics/src/vec2d.cpp" "CMakeFiles/2dphysics.dir/src/vec2d.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/vec2d.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -1,14 +1,81 @@
 #include <iostream>
+#include "vec2d.h"
 
-class vec2d {
-public: 
-    float x;
-    float y;
+//Vector Methods//
 
-    vec2d(): x(0), y(0) {}
-    vec2d(float x, float y): x(x), y(y) {}
-    vec2d(const vec2d& vector): x(vector.x), y(vector.y) {}
+//Assignment Operators
+//Vector Input
+vec2d& vec2d::operator=(const vec2d& vec)
+{
+    x = vec.x;
+    y = vec.y;
+    return *this;
+}
 
-    
+vec2d& vec2d::operator+=(const vec2d& vec)
+{
+    x += vec.x;
+    y += vec.y;
+    return *this;
+}
+vec2d& vec2d::operator-=(const vec2d& vec)
+{
+    x -= vec.x;
+    y -= vec.y;
+    return *this;
+}
 
-};
+//Float Input
+vec2d& vec2d::operator+=(const float val)
+{
+    x += val;
+    y += val;
+    return *this;
+}
+vec2d& vec2d::operator-=(const float val)
+{
+    x -= val;
+    y -= val;
+    return *this;
+}
+vec2d& vec2d::operator*=(const float val)
+{
+    x *= val;
+    y *= val;
+    return *this;
+}
+vec2d& vec2d::operator/=(const float val)
+{
+    x /= val;
+    y /= val;
+    return *this;
+}
+
+//Arithmetic Operators
+//Vector Input
+vec2d vec2d::operator+(const vec2d& vec) const
+{
+    return vec2d(x + vec.x, y + vec.y);
+}
+vec2d vec2d::operator-(const vec2d& vec) const
+{
+    return vec2d(x - vec.x, y - vec.y);
+}
+
+//Float Input
+vec2d vec2d::operator+(const float val) const
+{
+    return vec2d(x + val, y + val);
+}
+vec2d vec2d::operator-(const float val) const
+{
+    return vec2d(x - val, y - val);
+}
+vec2d vec2d::operator*(const float val) const
+{
+    return vec2d(x * val, y * val);
+}
+vec2d vec2d::operator/(const float val) const
+{
+    return vec2d(x / val, y / val);
+}

@@ -523,29 +523,53 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/build
 .PHONY : 2dphysics/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/vec2d.o: src/vec2d.cpp.o
+.PHONY : src/vec2d.o
+
+# target to build an object file
+src/vec2d.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.o
+.PHONY : src/vec2d.cpp.o
+
+src/vec2d.i: src/vec2d.cpp.i
+.PHONY : src/vec2d.i
+
+# target to preprocess a source file
+src/vec2d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.i
+.PHONY : src/vec2d.cpp.i
+
+src/vec2d.s: src/vec2d.cpp.s
+.PHONY : src/vec2d.s
+
+# target to generate assembly for a file
+src/vec2d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.s
+.PHONY : src/vec2d.cpp.s
 
 # Help Target
 help:
@@ -587,9 +611,12 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... 2dphysics"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/vec2d.o"
+	@echo "... src/vec2d.i"
+	@echo "... src/vec2d.s"
 .PHONY : help
 
 
