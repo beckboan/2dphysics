@@ -37,5 +37,7 @@ public:
 };
 
 float dp(vec2d& vec1, vec2d& vec2);
+float cp(vec2d& vec1, vec2d& vec2);
+float centerDist( vec2d& vec1, vec2d& vec2)
 
 #endif

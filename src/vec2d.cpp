@@ -1,5 +1,6 @@
 #include <iostream>
 #include "vec2d.h"
+#include <cmath>
 
 //Vector Methods//
 
@@ -92,4 +93,9 @@ float dp(vec2d& vec1, vec2d& vec2)
 float cp(vec2d& vec1, vec2d& vec2)
 {
     return (vec1.x * vec2.y) - (vec1.y * vec2.x);
+}
+
+float centerDist( vec2d& vec1, vec2d& vec2)
+{
+    return std::sqrt((vec1.x - vec2.x)*(vec1.x - vec2.x) + (vec1.y - vec2.y)*(vec1.y - vec2.y));
 }
