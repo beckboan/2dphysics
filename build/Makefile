@@ -547,6 +547,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/mathfuncs.o: src/mathfuncs.cpp.o
+.PHONY : src/mathfuncs.o
+
+# target to build an object file
+src/mathfuncs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o
+.PHONY : src/mathfuncs.cpp.o
+
+src/mathfuncs.i: src/mathfuncs.cpp.i
+.PHONY : src/mathfuncs.i
+
+# target to preprocess a source file
+src/mathfuncs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.i
+.PHONY : src/mathfuncs.cpp.i
+
+src/mathfuncs.s: src/mathfuncs.cpp.s
+.PHONY : src/mathfuncs.s
+
+# target to generate assembly for a file
+src/mathfuncs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s
+.PHONY : src/mathfuncs.cpp.s
+
 src/physicsobject.o: src/physicsobject.cpp.o
 .PHONY : src/physicsobject.o
 
@@ -595,30 +619,6 @@ src/physicsworld.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
 .PHONY : src/physicsworld.cpp.s
 
-src/vec2d.o: src/vec2d.cpp.o
-.PHONY : src/vec2d.o
-
-# target to build an object file
-src/vec2d.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.o
-.PHONY : src/vec2d.cpp.o
-
-src/vec2d.i: src/vec2d.cpp.i
-.PHONY : src/vec2d.i
-
-# target to preprocess a source file
-src/vec2d.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.i
-.PHONY : src/vec2d.cpp.i
-
-src/vec2d.s: src/vec2d.cpp.s
-.PHONY : src/vec2d.s
-
-# target to generate assembly for a file
-src/vec2d.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/vec2d.cpp.s
-.PHONY : src/vec2d.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -662,15 +662,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mathfuncs.o"
+	@echo "... src/mathfuncs.i"
+	@echo "... src/mathfuncs.s"
 	@echo "... src/physicsobject.o"
 	@echo "... src/physicsobject.i"
 	@echo "... src/physicsobject.s"
 	@echo "... src/physicsworld.o"
 	@echo "... src/physicsworld.i"
 	@echo "... src/physicsworld.s"
-	@echo "... src/vec2d.o"
-	@echo "... src/vec2d.i"
-	@echo "... src/vec2d.s"
 .PHONY : help
 
 

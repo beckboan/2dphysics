@@ -4,6 +4,7 @@
         "compare": "cpp",
         "memory_resource": "cpp",
         "type_traits": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "cmath": "cpp"
     }
 }

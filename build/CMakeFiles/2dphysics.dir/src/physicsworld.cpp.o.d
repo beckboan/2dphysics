@@ -1,6 +1,6 @@
-CMakeFiles/2dphysics.dir/src/main.cpp.o: \
- /home/beckboan/repos/2dphysics/src/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/12/iostream \
+CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: \
+ /home/beckboan/repos/2dphysics/src/physicsworld.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/12/iostream \
  /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -148,12 +148,12 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/basic_ios.tcc \
  /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
  /usr/include/c++/12/bits/istream.tcc \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/physicsobject.h \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
  /home/beckboan/repos/2dphysics/include/physicsworld.h \
  /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_uninitialized.h \
  /usr/include/c++/12/bits/stl_vector.h \
  /usr/include/c++/12/bits/stl_bvector.h \
  /usr/include/c++/12/bits/vector.tcc \
- /home/beckboan/repos/2dphysics/include/physicsobject.h
+ /home/beckboan/repos/2dphysics/include/physicsobject.h \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+ /home/beckboan/repos/2dphysics/include/physicsobject.h \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h

@@ -111,7 +111,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/vec2d.cpp",
+			"path" : "src/mathfuncs.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

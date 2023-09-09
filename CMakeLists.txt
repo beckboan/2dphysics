@@ -7,7 +7,7 @@ enable_testing()
 
 
 set(SOURCES
-    src/vec2d.cpp
+    src/mathfuncs.cpp
     src/main.cpp
     src/physicsworld.cpp
     src/physicsobject.cpp
