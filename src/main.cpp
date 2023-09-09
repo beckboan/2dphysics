@@ -1,11 +1,11 @@
 #include <iostream>
-#include "vec2d.h"
+#include "mathfuncs.h"
+#include "physicsobject.h"
+#include "physicsworld.h"
+
 
 int main(int, char**){
-    vec2d vector1(2.00,2.00);
-    vec2d vector2(2.00, 1.00);
-    auto product = dp(vector1, vector2);
-    std::cout << product << std::endl;
-    
+
+    PhysicsObject::CreateCircleBody(10, 10, .1, 0);
     //std::cout << vector1.x << ", " << vector1.y << std::endl;
 }

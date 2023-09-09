@@ -1,9 +1,13 @@
 #include <iostream>
 #include "physicsworld.h"
 #include "physicsobject.h"
-#include "vec2d.h"
+#include "mathfuncs.h"
 
-void addPhysicsObject (physicsObject* object);
-void removePhysicsObject (physicsObject* object);
+void addPhysicsObject (PhysicsObject* object) {
+
+};
+void removePhysicsObject (PhysicsObject* object) {
+
+};
 
 void worldStep();

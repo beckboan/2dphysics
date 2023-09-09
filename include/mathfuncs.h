@@ -1,7 +1,7 @@
 #include <iostream>
 
-#ifndef VEC2D_H
-#define VEC2D_H
+#ifndef mathfuncs_H
+#define mathfuncs_H
 
 class vec2d {
 public: 
@@ -35,5 +35,9 @@ float dp(vec2d& vec1, vec2d& vec2);
 float cp(vec2d& vec1, vec2d& vec2);
 float dist( vec2d& vec1, vec2d& vec2);
 float distSquared(vec2d& vec1, vec2d& vec2);
+float minval(float a, float b);
+float maxval(float a, float b);
+void clamp(float& val, float min, float max);
+
 
 #endif
