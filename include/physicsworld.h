@@ -1,22 +1,20 @@
 #include <vector>
 #include "mathfuncs.h"
+#include "rigidbody.h"
 
 #ifndef PHYSICSWORLD_H
 #define PHYSICSWORLD_H
 
-// class PhysicsWorld {
-//     private:
+struct PhysicsWorld {
     
-//     std::vector<PhysicsObject*> world_objects;
+    std::vector<RigidBody*> world_objects;
 
-//     public:
+    void addPhysicsObject (RigidBody* object);
+    void removePhysicsObject (RigidBody* object);
 
-//     void addPhysicsObject (PhysicsObject* object);
-//     void removePhysicsObject (PhysicsObject* object);
+    void worldStep();
 
-//     void worldStep();
-
-// };
+};
 
 struct WorldParams{
     static constexpr float min_body_area = 0.01; // m^2

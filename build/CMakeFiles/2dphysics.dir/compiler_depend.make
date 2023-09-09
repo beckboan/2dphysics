@@ -236,7 +236,12 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/c++/12/tr1/poly_hermite.tcc \
   /usr/include/c++/12/tr1/poly_laguerre.tcc \
   /usr/include/c++/12/tr1/riemann_zeta.tcc \
-  /home/beckboan/repos/2dphysics/include/rigidbody.h
+  /home/beckboan/repos/2dphysics/include/rigidbody.h \
+  /home/beckboan/repos/2dphysics/include/physicsworld.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/vector.tcc
 
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: /home/beckboan/repos/2dphysics/src/mathfuncs.cpp \
   /usr/include/stdc-predef.h \
@@ -638,7 +643,28 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /home/beckboan/repos/2dphysics/include/mathfuncs.h
+  /home/beckboan/repos/2dphysics/include/rigidbody.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/stl_tempbuf.h \
+  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/12/bits/align.h \
+  /usr/include/c++/12/bit \
+  /usr/include/c++/12/bits/uses_allocator.h \
+  /usr/include/c++/12/bits/unique_ptr.h \
+  /usr/include/c++/12/tuple \
+  /usr/include/c++/12/bits/shared_ptr.h \
+  /usr/include/c++/12/bits/shared_ptr_base.h \
+  /usr/include/c++/12/bits/allocated_ptr.h \
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/ext/concurrence.h \
+  /usr/include/c++/12/bits/shared_ptr_atomic.h \
+  /usr/include/c++/12/bits/atomic_base.h \
+  /usr/include/c++/12/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/12/backward/auto_ptr.h \
+  /usr/include/c++/12/pstl/glue_memory_defs.h \
+  /usr/include/c++/12/pstl/execution_defs.h \
+  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+  /home/beckboan/repos/2dphysics/include/rigidbody.h
 
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: /home/beckboan/repos/2dphysics/src/rigidbody.cpp \
   /usr/include/stdc-predef.h \
@@ -1106,6 +1132,8 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
   /usr/include/c++/12/tr1/riemann_zeta.tcc
 
 
+/home/beckboan/repos/2dphysics/src/physicsworld.cpp:
+
 /usr/include/c++/12/bits/stl_bvector.h:
 
 /usr/include/c++/12/bits/stl_vector.h:
@@ -1113,8 +1141,6 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /home/beckboan/repos/2dphysics/src/rigidbody.cpp:
 
 /home/beckboan/repos/2dphysics/include/physicsworld.h:
-
-/home/beckboan/repos/2dphysics/src/physicsworld.cpp:
 
 /usr/include/c++/12/tr1/riemann_zeta.tcc:
 

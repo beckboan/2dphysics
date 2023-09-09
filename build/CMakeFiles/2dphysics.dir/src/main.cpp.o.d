@@ -191,4 +191,8 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/tr1/poly_hermite.tcc \
  /usr/include/c++/12/tr1/poly_laguerre.tcc \
  /usr/include/c++/12/tr1/riemann_zeta.tcc \
- /home/beckboan/repos/2dphysics/include/rigidbody.h
+ /home/beckboan/repos/2dphysics/include/rigidbody.h \
+ /home/beckboan/repos/2dphysics/include/physicsworld.h \
+ /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_vector.h \
+ /usr/include/c++/12/bits/stl_bvector.h \
+ /usr/include/c++/12/bits/vector.tcc
