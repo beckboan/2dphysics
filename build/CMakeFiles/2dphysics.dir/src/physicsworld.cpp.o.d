@@ -153,7 +153,5 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: \
  /usr/include/c++/12/bits/stl_vector.h \
  /usr/include/c++/12/bits/stl_bvector.h \
  /usr/include/c++/12/bits/vector.tcc \
- /home/beckboan/repos/2dphysics/include/physicsobject.h \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/physicsobject.h \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h

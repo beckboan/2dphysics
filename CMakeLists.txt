@@ -10,7 +10,9 @@ set(SOURCES
     src/mathfuncs.cpp
     src/main.cpp
     src/physicsworld.cpp
-    src/physicsobject.cpp
+    src/shape.cpp
+    src/collisions.cpp
+    src/rigidbody.cpp
 )
 
 add_executable(2dphysics ${SOURCES})

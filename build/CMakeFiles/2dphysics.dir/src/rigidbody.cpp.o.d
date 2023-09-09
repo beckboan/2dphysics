@@ -1,5 +1,8 @@
-CMakeFiles/2dphysics.dir/src/main.cpp.o: \
- /home/beckboan/repos/2dphysics/src/main.cpp /usr/include/stdc-predef.h \
+CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: \
+ /home/beckboan/repos/2dphysics/src/rigidbody.cpp \
+ /usr/include/stdc-predef.h \
+ /home/beckboan/repos/2dphysics/include/rigidbody.h \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h \
  /usr/include/c++/12/iostream \
  /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
@@ -147,12 +150,8 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/locale_facets.tcc \
  /usr/include/c++/12/bits/basic_ios.tcc \
  /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
- /usr/include/c++/12/bits/istream.tcc \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/shape.h \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/rigidbody.h \
- /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_uninitialized.h \
+ /usr/include/c++/12/bits/istream.tcc /usr/include/c++/12/memory \
+ /usr/include/c++/12/bits/stl_uninitialized.h \
  /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
  /usr/include/c++/12/bits/align.h /usr/include/c++/12/bit \
@@ -168,8 +167,11 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/atomic_lockfree_defines.h \
  /usr/include/c++/12/backward/auto_ptr.h \
  /usr/include/c++/12/pstl/glue_memory_defs.h \
- /usr/include/c++/12/pstl/execution_defs.h /usr/include/c++/12/cmath \
- /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/c++/12/pstl/execution_defs.h \
+ /home/beckboan/repos/2dphysics/include/shape.h \
+ /home/beckboan/repos/2dphysics/include/rigidbody.h \
+ /usr/include/c++/12/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
@@ -190,5 +192,4 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/tr1/modified_bessel_func.tcc \
  /usr/include/c++/12/tr1/poly_hermite.tcc \
  /usr/include/c++/12/tr1/poly_laguerre.tcc \
- /usr/include/c++/12/tr1/riemann_zeta.tcc \
- /home/beckboan/repos/2dphysics/include/rigidbody.h
+ /usr/include/c++/12/tr1/riemann_zeta.tcc

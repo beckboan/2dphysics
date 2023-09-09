@@ -16,7 +16,17 @@
 },
 {
   "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o -c /home/beckboan/repos/2dphysics/src/physicsobject.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/physicsobject.cpp"
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/shape.cpp.o -c /home/beckboan/repos/2dphysics/src/shape.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/shape.cpp"
+},
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/collisions.cpp.o -c /home/beckboan/repos/2dphysics/src/collisions.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/collisions.cpp"
+},
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -c /home/beckboan/repos/2dphysics/src/rigidbody.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/rigidbody.cpp"
 }
 ]

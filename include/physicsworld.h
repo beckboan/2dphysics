@@ -1,23 +1,22 @@
 #include <vector>
-#include "physicsobject.h"
 #include "mathfuncs.h"
 
 #ifndef PHYSICSWORLD_H
 #define PHYSICSWORLD_H
 
-class PhysicsWorld {
-    private:
+// class PhysicsWorld {
+//     private:
     
-    std::vector<PhysicsObject*> world_objects;
+//     std::vector<PhysicsObject*> world_objects;
 
-    public:
+//     public:
 
-    void addPhysicsObject (PhysicsObject* object);
-    void removePhysicsObject (PhysicsObject* object);
+//     void addPhysicsObject (PhysicsObject* object);
+//     void removePhysicsObject (PhysicsObject* object);
 
-    void worldStep();
+//     void worldStep();
 
-};
+// };
 
 struct WorldParams{
     static constexpr float min_body_area = 0.01; // m^2

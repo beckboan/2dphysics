@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/beckboan/repos/2dphysics/src/collisions.cpp" "CMakeFiles/2dphysics.dir/src/collisions.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/collisions.cpp.o.d"
   "/home/beckboan/repos/2dphysics/src/main.cpp" "CMakeFiles/2dphysics.dir/src/main.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/main.cpp.o.d"
   "/home/beckboan/repos/2dphysics/src/mathfuncs.cpp" "CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o.d"
-  "/home/beckboan/repos/2dphysics/src/physicsobject.cpp" "CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o.d"
   "/home/beckboan/repos/2dphysics/src/physicsworld.cpp" "CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o.d"
+  "/home/beckboan/repos/2dphysics/src/rigidbody.cpp" "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o.d"
+  "/home/beckboan/repos/2dphysics/src/shape.cpp" "CMakeFiles/2dphysics.dir/src/shape.cpp.o" "gcc" "CMakeFiles/2dphysics.dir/src/shape.cpp.o.d"
   )
 
 # Targets to which this target links.

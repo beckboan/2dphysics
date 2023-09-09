@@ -523,6 +523,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/build
 .PHONY : 2dphysics/fast
 
+src/collisions.o: src/collisions.cpp.o
+.PHONY : src/collisions.o
+
+# target to build an object file
+src/collisions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.o
+.PHONY : src/collisions.cpp.o
+
+src/collisions.i: src/collisions.cpp.i
+.PHONY : src/collisions.i
+
+# target to preprocess a source file
+src/collisions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.i
+.PHONY : src/collisions.cpp.i
+
+src/collisions.s: src/collisions.cpp.s
+.PHONY : src/collisions.s
+
+# target to generate assembly for a file
+src/collisions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.s
+.PHONY : src/collisions.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -571,30 +595,6 @@ src/mathfuncs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s
 .PHONY : src/mathfuncs.cpp.s
 
-src/physicsobject.o: src/physicsobject.cpp.o
-.PHONY : src/physicsobject.o
-
-# target to build an object file
-src/physicsobject.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o
-.PHONY : src/physicsobject.cpp.o
-
-src/physicsobject.i: src/physicsobject.cpp.i
-.PHONY : src/physicsobject.i
-
-# target to preprocess a source file
-src/physicsobject.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.i
-.PHONY : src/physicsobject.cpp.i
-
-src/physicsobject.s: src/physicsobject.cpp.s
-.PHONY : src/physicsobject.s
-
-# target to generate assembly for a file
-src/physicsobject.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.s
-.PHONY : src/physicsobject.cpp.s
-
 src/physicsworld.o: src/physicsworld.cpp.o
 .PHONY : src/physicsworld.o
 
@@ -618,6 +618,54 @@ src/physicsworld.s: src/physicsworld.cpp.s
 src/physicsworld.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
 .PHONY : src/physicsworld.cpp.s
+
+src/rigidbody.o: src/rigidbody.cpp.o
+.PHONY : src/rigidbody.o
+
+# target to build an object file
+src/rigidbody.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o
+.PHONY : src/rigidbody.cpp.o
+
+src/rigidbody.i: src/rigidbody.cpp.i
+.PHONY : src/rigidbody.i
+
+# target to preprocess a source file
+src/rigidbody.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/rigidbody.cpp.i
+.PHONY : src/rigidbody.cpp.i
+
+src/rigidbody.s: src/rigidbody.cpp.s
+.PHONY : src/rigidbody.s
+
+# target to generate assembly for a file
+src/rigidbody.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s
+.PHONY : src/rigidbody.cpp.s
+
+src/shape.o: src/shape.cpp.o
+.PHONY : src/shape.o
+
+# target to build an object file
+src/shape.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/shape.cpp.o
+.PHONY : src/shape.cpp.o
+
+src/shape.i: src/shape.cpp.i
+.PHONY : src/shape.i
+
+# target to preprocess a source file
+src/shape.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/shape.cpp.i
+.PHONY : src/shape.cpp.i
+
+src/shape.s: src/shape.cpp.s
+.PHONY : src/shape.s
+
+# target to generate assembly for a file
+src/shape.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/shape.cpp.s
+.PHONY : src/shape.cpp.s
 
 # Help Target
 help:
@@ -659,18 +707,24 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... 2dphysics"
+	@echo "... src/collisions.o"
+	@echo "... src/collisions.i"
+	@echo "... src/collisions.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/mathfuncs.o"
 	@echo "... src/mathfuncs.i"
 	@echo "... src/mathfuncs.s"
-	@echo "... src/physicsobject.o"
-	@echo "... src/physicsobject.i"
-	@echo "... src/physicsobject.s"
 	@echo "... src/physicsworld.o"
 	@echo "... src/physicsworld.i"
 	@echo "... src/physicsworld.s"
+	@echo "... src/rigidbody.o"
+	@echo "... src/rigidbody.i"
+	@echo "... src/rigidbody.s"
+	@echo "... src/shape.o"
+	@echo "... src/shape.i"
+	@echo "... src/shape.s"
 .PHONY : help
 
 
