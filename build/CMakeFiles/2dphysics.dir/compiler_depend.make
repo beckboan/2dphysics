@@ -621,7 +621,26 @@ CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o: /home/beckboan/repos/2dphysics
   /usr/include/c++/12/tr1/modified_bessel_func.tcc \
   /usr/include/c++/12/tr1/poly_hermite.tcc \
   /usr/include/c++/12/tr1/poly_laguerre.tcc \
-  /usr/include/c++/12/tr1/riemann_zeta.tcc
+  /usr/include/c++/12/tr1/riemann_zeta.tcc \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/stl_tempbuf.h \
+  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/12/bits/align.h \
+  /usr/include/c++/12/bit \
+  /usr/include/c++/12/bits/uses_allocator.h \
+  /usr/include/c++/12/bits/unique_ptr.h \
+  /usr/include/c++/12/tuple \
+  /usr/include/c++/12/bits/shared_ptr.h \
+  /usr/include/c++/12/bits/shared_ptr_base.h \
+  /usr/include/c++/12/bits/allocated_ptr.h \
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/ext/concurrence.h \
+  /usr/include/c++/12/bits/shared_ptr_atomic.h \
+  /usr/include/c++/12/bits/atomic_base.h \
+  /usr/include/c++/12/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/12/backward/auto_ptr.h \
+  /usr/include/c++/12/pstl/glue_memory_defs.h \
+  /usr/include/c++/12/pstl/execution_defs.h
 
 CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/src/physicsworld.cpp \
   /usr/include/stdc-predef.h \
@@ -820,6 +839,24 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /home/beckboan/repos/2dphysics/src/physicsworld.cpp:
 
+/usr/include/c++/12/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/12/ext/aligned_buffer.h:
+
+/usr/include/c++/12/bits/allocated_ptr.h:
+
+/usr/include/c++/12/bits/shared_ptr_base.h:
+
+/usr/include/c++/12/bit:
+
+/usr/include/c++/12/bits/align.h:
+
+/usr/include/c++/12/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/12/bits/stl_tempbuf.h:
+
+/usr/include/c++/12/memory:
+
 /home/beckboan/repos/2dphysics/src/physicsobject.cpp:
 
 /usr/include/c++/12/tr1/riemann_zeta.tcc:
@@ -868,11 +905,17 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /usr/include/c++/12/bits/streambuf_iterator.h:
 
+/usr/include/c++/12/bits/unique_ptr.h:
+
 /usr/include/c++/12/cwctype:
+
+/usr/include/c++/12/tuple:
 
 /usr/include/c++/12/bits/ostream.tcc:
 
 /usr/include/c++/12/bits/locale_facets.h:
+
+/usr/include/c++/12/pstl/execution_defs.h:
 
 /usr/include/c++/12/bits/basic_ios.h:
 
@@ -910,6 +953,8 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
+/usr/include/c++/12/ext/concurrence.h:
+
 /usr/include/endian.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
@@ -932,9 +977,13 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /usr/include/c++/12/bits/functional_hash.h:
 
+/usr/include/c++/12/pstl/glue_memory_defs.h:
+
 /usr/include/c++/12/bits/stl_construct.h:
 
 /usr/include/c++/12/bits/alloc_traits.h:
+
+/usr/include/c++/12/bits/atomic_lockfree_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
@@ -1086,6 +1135,8 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /usr/include/c++/12/ios:
 
+/usr/include/c++/12/bits/atomic_base.h:
+
 /usr/include/c++/12/istream:
 
 /usr/include/c++/12/stdexcept:
@@ -1133,6 +1184,8 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/gthr-default.h:
+
+/usr/include/c++/12/backward/auto_ptr.h:
 
 /usr/include/c++/12/iostream:
 
@@ -1182,6 +1235,8 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
+/usr/include/c++/12/bits/shared_ptr.h:
+
 /usr/include/c++/12/initializer_list:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
@@ -1217,6 +1272,8 @@ CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/
 /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/12/bits/uses_allocator.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_funcs.h:
 
