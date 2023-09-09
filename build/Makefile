@@ -547,6 +547,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/physicsobject.o: src/physicsobject.cpp.o
+.PHONY : src/physicsobject.o
+
+# target to build an object file
+src/physicsobject.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o
+.PHONY : src/physicsobject.cpp.o
+
+src/physicsobject.i: src/physicsobject.cpp.i
+.PHONY : src/physicsobject.i
+
+# target to preprocess a source file
+src/physicsobject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.i
+.PHONY : src/physicsobject.cpp.i
+
+src/physicsobject.s: src/physicsobject.cpp.s
+.PHONY : src/physicsobject.s
+
+# target to generate assembly for a file
+src/physicsobject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsobject.cpp.s
+.PHONY : src/physicsobject.cpp.s
+
+src/physicsworld.o: src/physicsworld.cpp.o
+.PHONY : src/physicsworld.o
+
+# target to build an object file
+src/physicsworld.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o
+.PHONY : src/physicsworld.cpp.o
+
+src/physicsworld.i: src/physicsworld.cpp.i
+.PHONY : src/physicsworld.i
+
+# target to preprocess a source file
+src/physicsworld.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.i
+.PHONY : src/physicsworld.cpp.i
+
+src/physicsworld.s: src/physicsworld.cpp.s
+.PHONY : src/physicsworld.s
+
+# target to generate assembly for a file
+src/physicsworld.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
+.PHONY : src/physicsworld.cpp.s
+
 src/vec2d.o: src/vec2d.cpp.o
 .PHONY : src/vec2d.o
 
@@ -614,6 +662,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/physicsobject.o"
+	@echo "... src/physicsobject.i"
+	@echo "... src/physicsobject.s"
+	@echo "... src/physicsworld.o"
+	@echo "... src/physicsworld.i"
+	@echo "... src/physicsworld.s"
 	@echo "... src/vec2d.o"
 	@echo "... src/vec2d.i"
 	@echo "... src/vec2d.s"

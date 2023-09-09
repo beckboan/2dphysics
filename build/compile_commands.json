@@ -8,5 +8,15 @@
   "directory": "/home/beckboan/repos/2dphysics/build",
   "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckboan/repos/2dphysics/src/main.cpp",
   "file": "/home/beckboan/repos/2dphysics/src/main.cpp"
+},
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o -c /home/beckboan/repos/2dphysics/src/physicsworld.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/physicsworld.cpp"
+},
+{
+  "directory": "/home/beckboan/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -g -o CMakeFiles/2dphysics.dir/src/physicsobject.cpp.o -c /home/beckboan/repos/2dphysics/src/physicsobject.cpp",
+  "file": "/home/beckboan/repos/2dphysics/src/physicsobject.cpp"
 }
 ]

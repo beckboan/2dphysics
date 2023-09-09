@@ -9,6 +9,8 @@ enable_testing()
 set(SOURCES
     src/vec2d.cpp
     src/main.cpp
+    src/physicsworld.cpp
+    src/physicsobject.cpp
 )
 
 add_executable(2dphysics ${SOURCES})
