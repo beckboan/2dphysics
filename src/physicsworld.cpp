@@ -10,4 +10,4 @@ void removePhysicsObject (PhysicsObject* object) {
 
 };
 
-void worldStep();
+//void worldStep();

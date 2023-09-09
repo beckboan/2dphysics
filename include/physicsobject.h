@@ -8,7 +8,7 @@ enum ShapeType {
 };
 
 class PhysicsObject {
-private:
+
     vec2d position;
     vec2d linear_velocity;
     float rotation;
@@ -16,19 +16,23 @@ private:
     
 public:
     const float mass;
+    const float density;
     const float restitution;
     const float area;
     const bool is_static;
 
+    const float radius;
+    const float width;
+    const float height;
+
     const ShapeType shape_type;
 
-private:
-    PhysicsObject(vec2d position, vec2d linear_velocity, float rotation, float rotational_velocity,
-    const float mass, const float restitution, const float area, const bool is_static,
+    PhysicsObject(vec2d& position, float radius, float width, float height, const float density, const float mass, 
+    const float restitution, const float area, const bool is_static,
     ShapeType shape_type);
 
-public: 
-    static bool CreateCircleBody(float radius, float mass, float restitution, bool is_static);
+    static bool CreateCircleBody(float radius, vec2d position, float mass, float restitution, bool is_static);
+    static bool CreateBoxBody(float width, float height, vec2d position, float density, float restitution, bool is_static);
 };
 
 

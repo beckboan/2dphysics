@@ -13,8 +13,6 @@ class PhysicsWorld {
 
     public:
 
-    
-
     void addPhysicsObject (PhysicsObject* object);
     void removePhysicsObject (PhysicsObject* object);
 
@@ -25,8 +23,8 @@ class PhysicsWorld {
 struct WorldParams{
     static constexpr float min_body_area = 0.01; // m^2
     static constexpr float max_body_area = 100*100; // m^2
-    static constexpr float min_body_mass = 0.01; // kg
-    static constexpr float max_body_mass = 1000000; //kg
+    static constexpr float min_body_density = 200; // kg/m^3
+    static constexpr float max_body_density = 25000; // kg/m^3
 };
 
 
