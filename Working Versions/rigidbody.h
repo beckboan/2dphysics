@@ -39,7 +39,7 @@ struct RigidBody {
     void applyForce( const vec2d& force);
     //void applyImpulse( const vec2d& impulse);
     void setBodyStatic();
-    //void rigidIni();
+
 
 
 };

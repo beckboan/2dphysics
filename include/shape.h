@@ -15,30 +15,26 @@ struct Shape {
     };
 
     Shape() {};
-    virtual void calculateMass(float density) = 0;
     virtual ShapeType getType() const = 0;
-    virtual Shape *Clone() const = 0;
-    virtual void iniShape() = 0;
+    virtual float calculateArea() = 0;
+   // virtual void iniShape() = 0;
 
-    RigidBody *body;
 };
 
-struct Circle: Shape {
+struct Circle: public Shape {
     Circle(float radius);
-    Shape *Clone() const;
-    void calculateMass(float density);
+    float calculateArea();
     ShapeType getType() const;
-    void iniShape();
+    //void iniShape();
     float radius;
 
 };
 
-struct Rect: Shape {
+struct Rect: public Shape {
     Rect(float width, float height);
-    Shape *Clone() const;
-    void calculateMass(float density);
+    float calculateArea();
     ShapeType getType() const;
-    void iniShape();
+    //void iniShape();
 
     float width;
     float height;
