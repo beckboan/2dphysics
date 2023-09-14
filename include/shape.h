@@ -23,21 +23,24 @@ struct Shape {
 
 struct Circle: public Shape {
     Circle(float radius);
+
+    const float radius;
+
     float calculateArea();
     ShapeType getType() const;
     //void iniShape();
-    float radius;
-
 };
 
 struct Rect: public Shape {
     Rect(float width, float height);
+
+    const float width;
+    const float height;
+
     float calculateArea();
     ShapeType getType() const;
     //void iniShape();
 
-    float width;
-    float height;
 };
 
 #endif

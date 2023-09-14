@@ -9,8 +9,11 @@ struct PhysicsWorld {
     
     std::vector<RigidBody*> world_objects;
 
-    void addPhysicsObject (RigidBody* object);
+    bool addCircle (float radius, vec2d position, float density);
+    bool addRect(float width, float height, vec2d position, float density);
+    void addObject (RigidBody* object);
     void removePhysicsObject (RigidBody* object);
+    void getPhysicsObjects();
 
     void worldStep();
 

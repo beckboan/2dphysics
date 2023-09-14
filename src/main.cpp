@@ -7,8 +7,7 @@
 
 int main(int, char**){
     PhysicsWorld world;
-    Circle c(5.0f);
-    RigidBody *b = new RigidBody(&c, vec2d(0.0,0.0));
 
-    world.addPhysicsObject(b);
+    world.addCircle(5.0, vec2d(0, 0), 1000);
+    world.addRect(10,30, vec2d(0,0), 2000);
 }

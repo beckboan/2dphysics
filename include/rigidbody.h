@@ -8,7 +8,10 @@
 struct Shape;
 
 struct RigidBody {
-    RigidBody(Shape *shape, vec2d position);
+    RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position);
+    RigidBody(const RigidBody&) = delete;
+    RigidBody& operator=(const RigidBody&) = delete;
+    ~RigidBody() = default;
 
     vec2d position;
     vec2d velocity;
@@ -23,15 +26,15 @@ struct RigidBody {
     float inv_I;
     float m; 
     float inv_M;
-    float area;
 
     //Friction and Rest
     float static_friction;
     float dynamic_friction;
     float restitution;
+    bool hasProperties = 0;
 
     //Shape Reference
-    Shape *shape;
+    std::unique_ptr<Shape> shape;
 
     //Body Color
     int r,g,b;
@@ -40,6 +43,7 @@ struct RigidBody {
     //void applyImpulse( const vec2d& impulse);
     void setBodyStatic();
     //void rigidIni();
+    void rigidIni();
 
 
 };
