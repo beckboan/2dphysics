@@ -4,8 +4,6 @@ project(2dphysics VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 enable_testing()
 
-
-
 set(SOURCES
     src/mathfuncs.cpp
     src/main.cpp
