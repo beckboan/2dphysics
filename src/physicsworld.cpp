@@ -33,13 +33,13 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
     float area =  width * height;
 
     if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
-        std::cout << "Circle radius outside of world parameters" << std::endl;
+        std::cout << "Rectangle radius outside of world parameters" << std::endl;
         return false;
 
     }
 
     if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) { // FIX ISSUE WITH MASS
-        std::cout << "Circle density outside of world parameters" << std::endl;
+        std::cout << "Rectangle density outside of world parameters" << std::endl;
         return false;
     }
 
@@ -47,7 +47,7 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
     RigidBody *b = new RigidBody(c, position);
 
     world_objects.emplace_back(b);
-    std::cout << "Circle Added" << std::endl;
+    std::cout << "Rectangle Added" << std::endl;
     return true;
 
 }
