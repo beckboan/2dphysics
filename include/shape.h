@@ -18,6 +18,7 @@ struct Shape {
     virtual ShapeType getType() const = 0;
     virtual float calculateArea() = 0;
    // virtual void iniShape() = 0;
+    virtual std::string getName() const = 0;
 
 };
 
@@ -28,6 +29,7 @@ struct Circle: public Shape {
 
     float calculateArea();
     ShapeType getType() const;
+    std::string getName() const;
     //void iniShape();
 };
 
@@ -39,6 +41,7 @@ struct Rect: public Shape {
 
     float calculateArea();
     ShapeType getType() const;
+    std::string getName() const;
     //void iniShape();
 
 };

@@ -10,4 +10,8 @@ int main(int, char**){
 
     world.addCircle(5.0, vec2d(0, 0), 1000);
     world.addRect(10,30, vec2d(0,0), 2000);
+    world.addCircle(5.0, vec2d(0, 0), 1000);
+    world.addCircle(5.0, vec2d(0, 0), 1000);
+
+    // world.printPhysicsObjects();
 }

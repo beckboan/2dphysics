@@ -13,7 +13,7 @@ struct PhysicsWorld {
     bool addRect(float width, float height, vec2d position, float density);
     void addObject (RigidBody* object);
     void removePhysicsObject (RigidBody* object);
-    void getPhysicsObjects();
+    void printPhysicsObjects();
 
     void worldStep();
 

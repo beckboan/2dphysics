@@ -21,7 +21,7 @@ bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
     }
 
     std::unique_ptr<Shape> c = std::make_unique<Circle>(radius);
-    RigidBody *b = new RigidBody(c, position);
+    RigidBody *b = new RigidBody(std::move(c), position);
 
     world_objects.emplace_back(b);
     std::cout << "Circle Added" << std::endl;
@@ -44,7 +44,7 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
     }
 
     std::unique_ptr<Shape> c = std::make_unique<Rect>(width, height);
-    RigidBody *b = new RigidBody(c, position);
+    RigidBody *b = new RigidBody(std::move(c), position);
 
     world_objects.emplace_back(b);
     std::cout << "Rectangle Added" << std::endl;
@@ -54,5 +54,10 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
 void PhysicsWorld::removePhysicsObject (RigidBody* object) {
 
 };
+
+void PhysicsWorld::printPhysicsObjects() {
+    for (auto i: world_objects)
+        std::cout<< i->shape->getName() <<std::endl;
+}
 
 // void worldStep();

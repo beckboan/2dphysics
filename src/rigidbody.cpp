@@ -1,7 +1,7 @@
 #include "rigidbody.h"
 #include "shape.h"
 
-RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_) : shape(std::move(shape_)){
+RigidBody::RigidBody(std::unique_ptr<Shape> shape_, vec2d& position_) : shape(std::move(shape_)){
     position = position_;
     velocity.assign(0,0);
     angular_velocity = 0;
