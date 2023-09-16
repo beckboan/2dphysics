@@ -1,7 +1,7 @@
 #include "rigidbody.h"
 #include "shape.h"
 
-RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_) : shape(std::move(shape_)){
+RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_) : shape(std::move(shape_)), density(density_){
     position = position_;
     velocity.assign(0,0);
     angular_velocity = 0;
@@ -20,11 +20,22 @@ void RigidBody::applyForce(const vec2d& other_force) {
 }
 
 void RigidBody::setBodyStatic() {
-    m, I, inv_I, inv_M = 0.0f;
+    m, I, inv_I, inv_m = 0.0f;
 }
 
-void RigidBody::rigidIni() {
-}
+// void RigidBody::rigidIni() {
+//     area = shape->calculateArea();
+//     m = area*density;
+//     inv_m = 1/m;
+//     if (shape->getType() == 0) {
+//         I = area*shape->inertiaCalcValue();
+//         inv_I = 1/I;
+//     }
+//     else if (shape->getType() == 1) {
+        
+//     }
+
+// }
 
 //void RigidBody::applyImpulse(const vec2)
 

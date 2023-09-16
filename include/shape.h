@@ -15,13 +15,13 @@ struct Shape {
     };
 
     Shape() {};
-    ~Shape() {//std::cout << "Shape Destroyed" << std::endl;
-    }
+    ~Shape() {}
     virtual ShapeType getType() const = 0;
-    virtual float calculateArea() = 0;
-   // virtual void iniShape() = 0;
     virtual std::string getName() const = 0;
+    virtual void initializeBody() = 0;
+    void setShapeRef(std::shared_ptr<RigidBody>& body_);
 
+    std::weak_ptr<RigidBody> body;
 };
 
 struct Circle: public Shape {
@@ -32,6 +32,7 @@ struct Circle: public Shape {
     float calculateArea();
     ShapeType getType() const;
     std::string getName() const;
+    void initializeBody();
     //void iniShape();
 };
 
@@ -44,6 +45,7 @@ struct Rect: public Shape {
     float calculateArea();
     ShapeType getType() const;
     std::string getName() const;
+    void initializeBody();
     //void iniShape();
 
 };

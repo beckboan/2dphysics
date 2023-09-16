@@ -8,7 +8,7 @@
 struct Shape;
 
 struct RigidBody {
-    RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_);
+    RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_);
     RigidBody(const RigidBody&) = delete;
     RigidBody& operator=(const RigidBody&) = delete;
     ~RigidBody() = default;
@@ -25,7 +25,9 @@ struct RigidBody {
     float I;
     float inv_I;
     float m; 
-    float inv_M;
+    float inv_m;
+    float area;
+    float density;
 
     //Friction and Rest
     float static_friction;
@@ -42,8 +44,7 @@ struct RigidBody {
     void applyForce( const vec2d& force);
     //void applyImpulse( const vec2d& impulse);
     void setBodyStatic();
-    //void rigidIni();
-    void rigidIni();
+    // void rigidIni();
 
 
 };
