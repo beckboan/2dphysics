@@ -23,19 +23,20 @@ void RigidBody::setBodyStatic() {
     m, I, inv_I, inv_m = 0.0f;
 }
 
-// void RigidBody::rigidIni() {
-//     area = shape->calculateArea();
-//     m = area*density;
-//     inv_m = 1/m;
-//     if (shape->getType() == 0) {
-//         I = area*shape->inertiaCalcValue();
-//         inv_I = 1/I;
-//     }
-//     else if (shape->getType() == 1) {
-        
-//     }
+void RigidBody::rigidIni() {
+    area = shape->calculateArea();
+    m = area*density;
+    inv_m = 1/m;
+    if (shape->getType() == 0) {
+        I = shape->calculateInertia(m);
+        inv_I = 1/I;
+    }
+    else if (shape->getType() == 1) {
+        I = shape->calculateInertia(m);
+        inv_I = 1/I;
+    }
 
-// }
+}
 
 //void RigidBody::applyImpulse(const vec2)
 

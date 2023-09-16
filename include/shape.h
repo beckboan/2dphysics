@@ -18,10 +18,10 @@ struct Shape {
     ~Shape() {}
     virtual ShapeType getType() const = 0;
     virtual std::string getName() const = 0;
-    virtual void initializeBody() = 0;
-    void setShapeRef(std::shared_ptr<RigidBody>& body_);
+    virtual float calculateArea() const = 0;
+    virtual float calculateInertia(float& mass)const = 0;
 
-    std::weak_ptr<RigidBody> body;
+    std::shared_ptr<RigidBody> body;
 };
 
 struct Circle: public Shape {
@@ -29,11 +29,11 @@ struct Circle: public Shape {
 
     const float radius;
 
-    float calculateArea();
+    float calculateInertia(float& mass) const;
+    float calculateArea() const;
     ShapeType getType() const;
     std::string getName() const;
-    void initializeBody();
-    //void iniShape();
+
 };
 
 struct Rect: public Shape {
@@ -42,11 +42,10 @@ struct Rect: public Shape {
     const float width;
     const float height;
 
-    float calculateArea();
+    float calculateInertia(float& mass) const;
+    float calculateArea() const;
     ShapeType getType() const;
     std::string getName() const;
-    void initializeBody();
-    //void iniShape();
 
 };
 

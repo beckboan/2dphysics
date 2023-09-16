@@ -41,10 +41,11 @@ struct RigidBody {
     //Body Color
     int r,g,b;
 
+    //Initialize Properties
+    void rigidIni();
+
     void applyForce( const vec2d& force);
-    //void applyImpulse( const vec2d& impulse);
     void setBodyStatic();
-    // void rigidIni();
 
 
 };

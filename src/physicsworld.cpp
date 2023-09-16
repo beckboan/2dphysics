@@ -23,7 +23,7 @@ bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
 
     std::unique_ptr<Shape> shp = std::make_unique<Circle>(radius);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
-    shp->setShapeRef(bod);
+    bod->rigidIni();
     world_objects.emplace_back(bod);
     std::cout << "Circle Added" << std::endl;
     return true;
@@ -46,6 +46,7 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
 
     std::unique_ptr<Shape> shp = std::make_unique<Rect>(width, height);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
+    bod->rigidIni();
     world_objects.emplace_back(bod);
     std::cout << "Rectangle Added" << std::endl;
     return true;
