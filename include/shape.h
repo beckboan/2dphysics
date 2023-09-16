@@ -15,6 +15,8 @@ struct Shape {
     };
 
     Shape() {};
+    ~Shape() {//std::cout << "Shape Destroyed" << std::endl;
+    }
     virtual ShapeType getType() const = 0;
     virtual float calculateArea() = 0;
    // virtual void iniShape() = 0;

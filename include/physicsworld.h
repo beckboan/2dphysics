@@ -7,12 +7,12 @@
 
 struct PhysicsWorld {
     
-    std::vector<RigidBody*> world_objects;
+    std::vector<std::shared_ptr<RigidBody>> world_objects;
 
     bool addCircle (float radius, vec2d position, float density);
     bool addRect(float width, float height, vec2d position, float density);
     void addObject (RigidBody* object);
-    void removePhysicsObject (RigidBody* object);
+    void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
 
     void worldStep();

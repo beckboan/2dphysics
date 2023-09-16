@@ -8,7 +8,7 @@
 struct Shape;
 
 struct RigidBody {
-    RigidBody(std::unique_ptr<Shape> shape_, vec2d& position_);
+    RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_);
     RigidBody(const RigidBody&) = delete;
     RigidBody& operator=(const RigidBody&) = delete;
     ~RigidBody() = default;

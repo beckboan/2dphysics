@@ -4,6 +4,7 @@
 #include "rigidbody.h"
 #include "shape.h"
 
+#define DBG(msg) std::cout << msg <<std::endl;
 
 bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
 
@@ -20,10 +21,9 @@ bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
         return false;
     }
 
-    std::unique_ptr<Shape> c = std::make_unique<Circle>(radius);
-    RigidBody *b = new RigidBody(std::move(c), position);
-
-    world_objects.emplace_back(b);
+    std::unique_ptr<Shape> shp = std::make_unique<Circle>(radius);
+    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position);
+    world_objects.emplace_back(bod);
     std::cout << "Circle Added" << std::endl;
     return true;
 };
@@ -43,21 +43,22 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
         return false;
     }
 
-    std::unique_ptr<Shape> c = std::make_unique<Rect>(width, height);
-    RigidBody *b = new RigidBody(std::move(c), position);
+    std::unique_ptr<Shape> shp = std::make_unique<Rect>(width, height);
+    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position);
 
-    world_objects.emplace_back(b);
+    world_objects.emplace_back(bod);
     std::cout << "Rectangle Added" << std::endl;
     return true;
 
 }
-void PhysicsWorld::removePhysicsObject (RigidBody* object) {
+void PhysicsWorld::removePhysicsObject (std::shared_ptr<RigidBody>) {
 
 };
 
 void PhysicsWorld::printPhysicsObjects() {
-    for (auto i: world_objects)
-        std::cout<< i->shape->getName() <<std::endl;
+    for (auto i: world_objects) {
+        std::cout << i->shape->getName() << std::endl;
+    }
 }
 
 // void worldStep();
