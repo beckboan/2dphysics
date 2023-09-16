@@ -55,9 +55,37 @@ void PhysicsWorld::removePhysicsObject (std::shared_ptr<RigidBody>) {
 
 };
 
+
+//add step function here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void PhysicsWorld::printPhysicsObjects() {
     for (auto i: world_objects) {
         std::cout << i->shape->getName() << std::endl;
+    }
+}
+
+void PhysicsWorld::printAreas() {
+    for (auto i: world_objects) {
+        std::cout << i->shape->calculateArea() << std::endl;
     }
 }
 

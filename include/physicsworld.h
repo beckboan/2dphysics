@@ -14,6 +14,7 @@ struct PhysicsWorld {
     void addObject (RigidBody* object);
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
+    void printAreas();
 
     void worldStep();
 

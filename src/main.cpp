@@ -15,6 +15,7 @@ int main(int, char**){
     world.addRect(5.0, 5.0, vec2d(0, 0), 1000);
 
     //world.printPhysicsObjects();
+    //world.printAreas();
 
     std::cin.get();
 }
