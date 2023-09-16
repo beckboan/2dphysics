@@ -29,5 +29,5 @@ float Rect::calculateArea() const {return width*height;}
 std::string Rect::getName() const {return "Rectangle";}
 
 float Rect::calculateInertia(float& mass) const {
-    return mass*((height*height)+(width*width)/12);
+    return mass*((height*height)+(width*width))/12;
 }

@@ -36,6 +36,7 @@ void RigidBody::rigidIni() {
         inv_I = 1/I;
     }
 
+    
 }
 
 //void RigidBody::applyImpulse(const vec2)
