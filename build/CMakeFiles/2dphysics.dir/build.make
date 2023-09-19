@@ -172,6 +172,8 @@ CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s: cmake_force
 2dphysics: CMakeFiles/2dphysics.dir/src/collisions.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/build.make
+2dphysics: /usr/lib/x86_64-linux-gnu/libSDL2.so
+2dphysics: /usr/lib/x86_64-linux-gnu/libGL.so
 2dphysics: CMakeFiles/2dphysics.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable 2dphysics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/2dphysics.dir/link.txt --verbose=$(VERBOSE)

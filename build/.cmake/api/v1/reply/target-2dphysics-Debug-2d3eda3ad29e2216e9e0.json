@@ -91,6 +91,11 @@
 				{
 					"backtrace" : 6,
 					"path" : "/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR)"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/SDL2"
 				}
 			],
 			"language" : "CXX",
@@ -120,12 +125,12 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "$(SLD2_LIBRARIES)",
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libSDL2.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "$(OPENGL_LIBRARIES)",
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libGL.so",
 				"role" : "libraries"
 			}
 		],
