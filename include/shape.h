@@ -3,8 +3,8 @@
 #include "rigidbody.h"
 #include <cmath>
 
-#ifndef COLLIDERS_H
-#define COLLIDERS_H
+#ifndef SHAPE_H
+#define SHAPE_H
 
 
 
