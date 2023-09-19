@@ -12,6 +12,10 @@ struct PhysicsWorld {
     bool addCircle (float radius, vec2d position, float density);
     bool addRect(float width, float height, vec2d position, float density);
     void addObject (RigidBody* object);
+
+    bool isValidArea(float& area);
+    bool isValidDensity(float& density);
+
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
 

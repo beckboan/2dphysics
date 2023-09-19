@@ -6,20 +6,13 @@
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
+//Creating and Destroying Rigid Bodies
+
 bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
 
     float area =  radius * radius * M_PI;
-
-    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
-        std::cout << "Circle radius outside of world parameters" << std::endl;
-        return false;
-
-    }
-
-    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) { // FIX ISSUE WITH MASS
-        std::cout << "Circle density outside of world parameters" << std::endl;
-        return false;
-    }
+    if (!isValidArea(area)) return false;
+    if (!isValidDensity(density)) return false;
 
     std::unique_ptr<Shape> shp = std::make_unique<Circle>(radius);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
@@ -34,16 +27,8 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
 
     float area =  width * height;
 
-    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
-        std::cout << "Rectangle radius outside of world parameters" << std::endl;
-        return false;
-
-    }
-
-    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) { // FIX ISSUE WITH MASS
-        std::cout << "Rectangle density outside of world parameters" << std::endl;
-        return false;
-    }
+    if (!isValidArea(area)) return false;
+    if (!isValidDensity(density)) return false;
 
     std::unique_ptr<Shape> shp = std::make_unique<Rect>(width, height);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
@@ -58,13 +43,23 @@ void PhysicsWorld::removePhysicsObject (std::shared_ptr<RigidBody>) {
 
 };
 
-//add step function here
+// Physics Validation
 
-void PhysicsWorld::printPhysicsObjects() {
-    for (auto i: world_objects) {
-        std::cout << i->shape->getName() << std::endl;
+bool PhysicsWorld::isValidArea(float& area) {
+    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
+        std::cout << "Area outside of world parameters" << std::endl;
+        return false;
     }
+    return true;
 }
 
+bool PhysicsWorld::isValidDensity(float& density) {
+    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) {
+        std::cout << "Density outside of world parameters" << std::endl;
+        return false;
+    }
+    return true;
+}
 
-// void worldStep();
+//
+
