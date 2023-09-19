@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
@@ -25,13 +26,37 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 18,
+				"line" : 25,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 22,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 23,
 				"parent" : 0
 			}
 		]
@@ -48,16 +73,24 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"path" : "/home/beckboan/repos/2dphysics/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"path" : "/home/beckboan/repos/2dphysics/("
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"path" : "/home/beckboan/repos/2dphysics/)"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/beckboan/repos/2dphysics/$(SDL2_INCLUDE_DIR)"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR)"
 				}
 			],
 			"language" : "CXX",
@@ -84,6 +117,16 @@
 			{
 				"fragment" : "-rdynamic",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "$(SLD2_LIBRARIES)",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "$(OPENGL_LIBRARIES)",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
