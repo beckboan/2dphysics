@@ -23,13 +23,12 @@ struct Shape {
     virtual float calculateArea() const = 0;
     virtual float calculateInertia(float& mass)const = 0;
 
-    std::shared_ptr<RigidBody> body;
 };
 
 struct Circle: public Shape {
-    Circle(float radius);
+    Circle(int radius);
 
-    const float radius;
+    const int radius;
 
     ShapeType getType() const;
     std::string getName() const;
@@ -40,10 +39,10 @@ struct Circle: public Shape {
 };
 
 struct Rect: public Shape {
-    Rect(float width, float height);
+    Rect(int width, int height);
 
-    const float width;
-    const float height;
+    const int width;
+    const int height;
 
 
     ShapeType getType() const;

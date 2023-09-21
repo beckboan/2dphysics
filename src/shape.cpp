@@ -4,7 +4,7 @@
 //Shape
 
 //Circle
-Circle::Circle(float radius): radius(radius) {
+Circle::Circle(int radius): radius(radius) {
         std::cout << "Circle" << std::endl;
     }
 
@@ -28,7 +28,7 @@ float Circle::calculateInertia(float& mass) const {
 
 
 //Rect
-Rect::Rect(float width, float height) : width(width), height(height){
+Rect::Rect(int width, int height) : width(width), height(height){
         std::cout << "Rectangle" << std::endl;
     }
 
