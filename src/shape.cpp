@@ -4,7 +4,7 @@
 //Shape
 
 //Circle
-Circle::Circle(int radius): radius(radius) {
+Circle::Circle(float radius): radius(radius) {
         std::cout << "Circle" << std::endl;
     }
 
@@ -13,12 +13,15 @@ Shape::ShapeType Circle::getType() const {return ShapeType::Circle;}
 std::string Circle::getName() const {return "Circle";}
 
 void Circle::draw(SDL_Renderer * renderer, vec2d& position) { 
-    float diameter = radius*2;
-    float x = (radius - 1);
-    int y = 0;
-    int dx = 1;
-    int dy = 1;
-    int err = dx - diameter;
+    int32_t radius_int = int(radius);
+    int32_t position_x = int(position.x);
+    int32_t position_y = int(position.y);
+    const int32_t diameter = radius*2;
+    int32_t x = (radius - 1);
+    int32_t y = 0;
+    int32_t dx = 1;
+    int32_t dy = 1;
+    int32_t err = dx - diameter;
 
     while (x >= y) {
         SDL_RenderDrawPoint(renderer, position.x + x, position.y - y);
@@ -32,13 +35,13 @@ void Circle::draw(SDL_Renderer * renderer, vec2d& position) {
 
         if (err <= 0) {
             ++y;
-            err+= dy;
-            dx +=2;
+            err += dy;
+            dy +=2 ;
         }
 
         if (err > 0) {
             --x;
-            dx +=2;
+            dx += 2;
             err += (dx-diameter);
         }
     }
@@ -56,7 +59,7 @@ float Circle::calculateInertia(float& mass) const {
 
 
 //Rect
-Rect::Rect(int width, int height) : width(width), height(height){
+Rect::Rect(float width, float height) : width(width), height(height){
         std::cout << "Rectangle" << std::endl;
     }
 

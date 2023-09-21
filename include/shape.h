@@ -26,9 +26,9 @@ struct Shape {
 };
 
 struct Circle: public Shape {
-    Circle(int radius);
+    Circle(float radius);
 
-    const int radius;
+    const float radius;
 
     ShapeType getType() const;
     std::string getName() const;
@@ -39,9 +39,9 @@ struct Circle: public Shape {
 };
 
 struct Rect: public Shape {
-    Rect(int width, int height);
+    Rect(float width, float height);
 
-    const int width;
+    const float width;
     const float height;
 
 
