@@ -15,7 +15,35 @@ std::string Circle::getName() const {return "Circle";}
 void Circle::draw(SDL_Renderer * renderer, vec2d& position) { 
     float diameter = radius*2;
     float x = (radius - 1);
+    int y = 0;
+    int dx = 1;
+    int dy = 1;
+    int err = dx - diameter;
 
+    while (x >= y) {
+        SDL_RenderDrawPoint(renderer, position.x + x, position.y - y);
+        SDL_RenderDrawPoint(renderer, position.x + x, position.y + y);
+        SDL_RenderDrawPoint(renderer, position.x - x, position.y - y);
+        SDL_RenderDrawPoint(renderer, position.x - x, position.y + y);
+        SDL_RenderDrawPoint(renderer, position.x + y, position.y - x);
+        SDL_RenderDrawPoint(renderer, position.x + y, position.y + x);
+        SDL_RenderDrawPoint(renderer, position.x - y, position.y - x);
+        SDL_RenderDrawPoint(renderer, position.x - y, position.y + x);
+
+        if (err <= 0) {
+            ++y;
+            err+= dy;
+            dx +=2;
+        }
+
+        if (err > 0) {
+            --x;
+            dx +=2;
+            err += (dx-diameter);
+        }
+    }
+
+    
 }
 // Drawing circle with midpoint circle algorithm 
 

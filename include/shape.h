@@ -42,7 +42,7 @@ struct Rect: public Shape {
     Rect(int width, int height);
 
     const int width;
-    const int height;
+    const float height;
 
 
     ShapeType getType() const;
