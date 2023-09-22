@@ -15,6 +15,8 @@ RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float den
 }
 
 
+
+
 //Property Functions
 void RigidBody::rigidIni() {
     area = shape->calculateArea();
