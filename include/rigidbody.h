@@ -47,6 +47,7 @@ struct RigidBody {
 
     //PHysics Functions
     void move(const vec2d& amount);
+    void moveto(const vec2d& position_new);
     void applyForce( const vec2d& force);
 
 

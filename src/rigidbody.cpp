@@ -41,6 +41,10 @@ void RigidBody::move(const vec2d& amount) {
     position+=amount;
 }
 
+void RigidBody::moveto(const vec2d& position_new) {
+    position=position_new;
+}
+
 void RigidBody::applyForce(const vec2d& other_force) {
     force += other_force;
 }

@@ -17,7 +17,7 @@ int main(int, char**){
 
     std::unique_ptr<Shape> shp = std::make_unique<Circle>(250);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,1000);
-    bod->move(vec2d(500,500));
+    bod->moveto(vec2d(500,500));
     SDL_Init(SDL_INIT_EVERYTHING);
 
     SDL_Window *window = SDL_CreateWindow("OpenGL Test",
