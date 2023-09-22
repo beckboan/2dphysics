@@ -22,6 +22,7 @@ struct Shape {
     virtual void draw(SDL_Renderer * renderer, vec2d& position) = 0;
     virtual float calculateArea() const = 0;
     virtual float calculateInertia(float& mass)const = 0;
+    virtual float getVar(char dataname) const = 0;
 
 };
 
@@ -35,6 +36,7 @@ struct Circle: public Shape {
     void draw(SDL_Renderer * renderer, vec2d& position);
     float calculateArea() const;
     float calculateInertia(float& mass) const;
+    float getVar(char dataname) const;
 
 };
 
@@ -50,6 +52,7 @@ struct Rect: public Shape {
     void draw(SDL_Renderer * renderer, vec2d& position);
     float calculateArea() const;
     float calculateInertia(float& mass) const;
+    float getVar(char dataname) const;
 
 
 

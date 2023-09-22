@@ -208,11 +208,6 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/c++/12/backward/auto_ptr.h \
   /usr/include/c++/12/pstl/glue_memory_defs.h \
   /usr/include/c++/12/pstl/execution_defs.h \
-  /home/beckboan/repos/2dphysics/include/physicsworld.h \
-  /usr/include/c++/12/vector \
-  /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /usr/include/c++/12/cmath \
   /usr/include/math.h \
@@ -383,6 +378,11 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
+  /home/beckboan/repos/2dphysics/include/physicsworld.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/vector.tcc \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h
 
@@ -1735,6 +1735,10 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 
 /home/beckboan/repos/2dphysics/src/shape.cpp:
 
+/usr/include/c++/12/bits/stl_bvector.h:
+
+/usr/include/c++/12/bits/stl_vector.h:
+
 /usr/include/SDL2/SDL_system.h:
 
 /usr/include/SDL2/SDL_power.h:
@@ -1865,16 +1869,6 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/x86gprintrin.h:
 
-/usr/include/SDL2/SDL_cpuinfo.h:
-
-/usr/include/SDL2/SDL_clipboard.h:
-
-/usr/include/SDL2/SDL_rwops.h:
-
-/usr/include/SDL2/SDL_thread.h:
-
-/usr/include/SDL2/SDL_mutex.h:
-
 /usr/include/c++/12/bits/basic_string.h:
 
 /usr/include/c++/12/bits/range_access.h:
@@ -1924,6 +1918,10 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /usr/include/c++/12/bits/ostream_insert.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/12/vector:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -2079,6 +2077,8 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
+/usr/include/SDL2/SDL_thread.h:
+
 /usr/include/stdc-predef.h:
 
 /usr/include/c++/12/bits/move.h:
@@ -2106,6 +2106,8 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /usr/include/c++/12/cmath:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/SDL2/SDL_mutex.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -2152,6 +2154,8 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /usr/include/features.h:
 
 /usr/include/c++/12/new:
+
+/usr/include/SDL2/SDL_clipboard.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
@@ -2367,10 +2371,6 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 
 /usr/include/c++/12/bits/streambuf_iterator.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/c++/12/vector:
-
 /usr/include/errno.h:
 
 /home/beckboan/repos/2dphysics/include/simplephysics.h:
@@ -2434,10 +2434,6 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /usr/lib/gcc/x86_64-linux-gnu/12/include/amxint8intrin.h:
 
 /usr/include/c++/12/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/12/bits/stl_vector.h:
-
-/usr/include/c++/12/bits/stl_bvector.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avxintrin.h:
 
@@ -2506,3 +2502,7 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
 /usr/include/SDL2/SDL_atomic.h:
 
 /usr/include/SDL2/SDL_endian.h:
+
+/usr/include/SDL2/SDL_rwops.h:
+
+/usr/include/SDL2/SDL_cpuinfo.h:
