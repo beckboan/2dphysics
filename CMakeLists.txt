@@ -12,7 +12,6 @@ set(SOURCES
     src/main.cpp
     src/physicsworld.cpp
     src/shape.cpp
-    src/collisions.cpp
     src/rigidbody.cpp
 )
 

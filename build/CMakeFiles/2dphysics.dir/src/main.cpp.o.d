@@ -150,14 +150,10 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/istream.tcc \
  /home/beckboan/repos/2dphysics/include/simplephysics.h \
  /home/beckboan/repos/2dphysics/include/collisions.h \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/physicsworld.h \
- /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_uninitialized.h \
- /usr/include/c++/12/bits/stl_vector.h \
- /usr/include/c++/12/bits/stl_bvector.h \
- /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/rigidbody.h \
- /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_tempbuf.h \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+ /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_uninitialized.h \
+ /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
  /usr/include/c++/12/bits/align.h /usr/include/c++/12/bit \
  /usr/include/c++/12/bits/uses_allocator.h \
@@ -173,6 +169,10 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/backward/auto_ptr.h \
  /usr/include/c++/12/pstl/glue_memory_defs.h \
  /usr/include/c++/12/pstl/execution_defs.h \
+ /home/beckboan/repos/2dphysics/include/physicsworld.h \
+ /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_vector.h \
+ /usr/include/c++/12/bits/stl_bvector.h \
+ /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/shape.h /usr/include/c++/12/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

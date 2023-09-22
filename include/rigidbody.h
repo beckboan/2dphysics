@@ -5,6 +5,7 @@
 #ifndef RIGIDBODY_H
 #define RIGIDBODY_H
 
+struct Transform;
 struct Shape;
 
 struct RigidBody {
