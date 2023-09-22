@@ -11,14 +11,13 @@
 int main(int, char**){
     PhysicsWorld world;
 
-    vec2d position = vec2d(500 , 500);
+    vec2d position = vec2d(0 , 0);
     // world.addCircle(1, position, 1000);
     // world.addRect(1, 1, position, 1000);
 
-
     std::unique_ptr<Shape> shp = std::make_unique<Circle>(250);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,1000);
-
+    bod->move(vec2d(500,500));
     SDL_Init(SDL_INIT_EVERYTHING);
 
     SDL_Window *window = SDL_CreateWindow("OpenGL Test",

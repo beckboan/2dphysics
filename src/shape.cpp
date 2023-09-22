@@ -67,7 +67,41 @@ Shape::ShapeType Rect::getType() const {return ShapeType::Rect;}
 
 std::string Rect::getName() const {return "Rectangle";}
 
-void Rect::draw(SDL_Renderer * renderer, vec2d& position) {}
+void Rect::draw(SDL_Renderer * renderer, vec2d& position) {
+    int32_t w_int = int(width);
+    int32_t h_int = int(height);
+    int32_t position_x = int(position.x);
+    int32_t position_y = int(position.y);
+    int32_t x = (0 - 1);
+    int32_t y = 0;
+    int32_t dx = 1;
+    int32_t dy = 1;
+    int32_t err = 0;
+
+    while (x >= y) {
+        SDL_RenderDrawPoint(renderer, position.x + x, position.y - y);
+        SDL_RenderDrawPoint(renderer, position.x + x, position.y + y);
+        SDL_RenderDrawPoint(renderer, position.x - x, position.y - y);
+        SDL_RenderDrawPoint(renderer, position.x - x, position.y + y);
+        SDL_RenderDrawPoint(renderer, position.x + y, position.y - x);
+        SDL_RenderDrawPoint(renderer, position.x + y, position.y + x);
+        SDL_RenderDrawPoint(renderer, position.x - y, position.y - x);
+        SDL_RenderDrawPoint(renderer, position.x - y, position.y + x);
+
+        if (err <= 0) {
+            ++y;
+            err += dy;
+            dy +=2 ;
+        }
+
+        if (err > 0) {
+            --x;
+            dx += 2;
+            err += (dx-0);
+        }
+    }
+// Drawing circle with midpoint circle algorithm 
+}
 
 float Rect::calculateArea() const {return width*height;}
 
