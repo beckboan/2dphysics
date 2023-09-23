@@ -16,7 +16,7 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
     if (dist == 0) {
     }
 
-
+    
     return true;
 }
 

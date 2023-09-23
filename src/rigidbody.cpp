@@ -14,9 +14,6 @@ RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float den
     r,g,b = 120; // TEMP COLORS 
 }
 
-
-
-
 //Property Functions
 void RigidBody::rigidIni() {
     area = shape->calculateArea();
@@ -47,8 +44,20 @@ void RigidBody::moveto(const vec2d& position_new) {
     position=position_new;
 }
 
-void RigidBody::applyForce(const vec2d& other_force) {
+void RigidBody::setRotation(float radians) {
+    rotation = radians;
+}
+
+void RigidBody::applyForce(const vec2d& other_force) {}
+
+void RigidBody::applyCenterForce(const vec2d& other_force) {
     force += other_force;
+}
+
+void RigidBody::applyLinearImpulse(const vec2d& impulse) {}
+
+void RigidBody::applyCenterLinearImpulse(const vec2d& impulse) {
+    velocity += impulse * inv_m;
 }
 
 //void RigidBody::applyImpulse(const vec2)
