@@ -1,6 +1,19 @@
 #include "shape.h"
 #include <cassert>
 
+float CCW(const vec2d& p1, const vec2d& p2 , const vec2d& p3) {
+    return (p2.x - p1.x) * (p3.y-p1.y) - (p2.y - p1.y) * (p3.x- p1.x);
+}
+
+struct CCWSorter {
+    const vec2d& pivot;
+
+    CCWSorter(const vec2d& pivot_): pivot(pivot_) {}
+
+    bool operator()(const vec2d& a, const vec2d& b) {
+        return CCW(pivot, a, b) < 0;
+    }
+};
 
 //Shape
 
@@ -56,21 +69,38 @@ float Circle::calculateInertia(float& mass) const {
 void Circle::createAABB() {}
 
 //Polygon
-Poly::Poly(const std::vector<vec2d>& verticies) {
-    vertex_count = verticies.size();
-    assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
-
+Poly::Poly(std::vector<vec2d>& v) {
+    
     std::vector<vec2d> hull;
 
-    //Establish min x point
-    unsigned int first_point = 0;
-    float minimum_x = FLT_MAX;
-    for (unsigned int i = 0; i < vertex_count; i++) {
-        float x_val = verticies[i].x;
-        if (x_val < minimum_x) {
-            first_point = i;
-            minimum_x = x_val;
+    
+
+    //Establish min_x and move to front of verticies
+    vec2d min_x = *std::min_element(v.begin(), v.end(), [](const vec2d& p1, const vec2d& p2) {return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);});
+    std::swap(v[0], min_x);
+
+    //Sort point ccw around min_x
+    std::sort(v.begin() + 1, v.end(), CCWSorter(min_x));
+
+    auto it = v.begin();
+    hull.push_back(*it++);
+    hull.push_back(*it++);
+    hull.push_back(*it++);
+    vertex_count++;
+    while (it != v.end()) {
+        while (CCW(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
+            hull.pop_back();
         }
+        hull.push_back(*it++);
+        vertex_count ++;
+        
+    }
+
+    assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
+
+    for (auto i: hull)
+    {
+        vertex_list.push_back(i);
     }
 
 }
@@ -97,3 +127,13 @@ float Poly::calculateArea() const {return 0;}
 float Poly::calculateInertia(float& mass) const {return 0;}
 
 void Poly::createAABB() {}
+
+int Poly::findSide(vec2d& p1, vec2d& p2, vec2d& p) {
+    const float val = (p.y - p1.y) * (p2.x - p1.x) - (p2.y - p1.y) * (p.x - p1.x);
+    if (val > 0) {return 1;}
+    else if (val < 0) { return -1;}
+    else return 0;
+}
+
+
+

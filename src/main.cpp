@@ -4,15 +4,18 @@
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
-
 int main(int, char**){
     PhysicsWorld world;
 
-    vec2d position = vec2d(0 , 0);
+    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d()};
 
-    std::unique_ptr<Shape> shp2 = std::make_unique<Poly>(20,20);
-    std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(shp2,position,1000);
-    bod2->moveto(vec2d(400,420));
+    Poly poly = Poly(verticies);
+
+    for (unsigned int i = 0; i <= poly.vertex_count; i++) {
+        std::cout << "X: " << poly.vertex_list[i].x << "Y: " << poly.vertex_list[i].y << std::endl;
+    }
+
+
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -24,5 +27,7 @@ int main(int, char**){
     SDL_RenderClear (renderer);
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderPresent(renderer);
+
+    std::cin.get();
 
 }
