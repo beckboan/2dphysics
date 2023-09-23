@@ -15,9 +15,15 @@ int main(int, char**){
     // world.addCircle(1, position, 1000);
     // world.addRect(1, 1, position, 1000);
 
-    std::unique_ptr<Shape> shp = std::make_unique<Circle>(2);
+    std::unique_ptr<Shape> shp = std::make_unique<Rect>(2,2);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,1000);
     bod->moveto(vec2d(500,500));
+
+    Rect* circle1 = (Rect*)bod->shape.get();
+    std::cout << circle1->width<< std::endl;
+
+    std::cout << bod->shape->getType() << std::endl;
+    std::cout << circle1->getType() << std::endl;
 
     // SDL_Init(SDL_INIT_EVERYTHING);
 

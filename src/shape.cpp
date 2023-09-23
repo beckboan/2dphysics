@@ -56,15 +56,15 @@ float Circle::calculateInertia(float& mass) const {
     return mass * radius * radius /2;
 }
 
-float Circle::getVar(char dataname) const {
-    switch (dataname)
-    {
-    case 'r':
-        return radius;
-        break;   
-    default: break;
-    }
-}
+// float Circle::getVar(char dataname) const {
+//     switch (dataname)
+//     {
+//     case 'r':   
+//         return radius;
+//         break;   
+//     default: break;
+//     }
+// }
 
 
 //Rect
@@ -118,17 +118,17 @@ float Rect::calculateInertia(float& mass) const {
     return mass*((height*height)+(width*width))/12;
 }
 
-float Rect::getVar(char dataname) const {
-    switch (dataname)
-    {
-    case 'h':
-        return height;
-        break;
+// float Rect::getVar(char dataname) const {
+//     switch (dataname)
+//     {
+//     case 'h':
+//         return height;
+//         break;
     
-    case 'w':
-        return width;
-        break;
+//     case 'w':
+//         return width;
+//         break;
 
-    default: break;
-    }
-}
+//     default: break;
+//     }
+// }
