@@ -13,7 +13,7 @@
 struct Shape {
 
     enum ShapeType {
-        Circle, Rect
+        Circle, Poly
     };
 
     Shape() {};
@@ -41,21 +41,21 @@ struct Circle: public Shape {
 
 };
 
-struct Rect: public Shape {
-    Rect(float width, float height);
+struct Poly: public Shape {
+    Poly(const std::vector<vec2d>& vertecies); //Normal Poly
+    Poly(float width, float height); //Rectangle Poly
 
-    const float width;
-    const float height;
-
+    const int vertexCount = 0;
+    std::vector<vec2d> vertex_list;
+    std::vector<vec2d> normals;
 
     ShapeType getType() const;
     std::string getName() const;
     void draw(SDL_Renderer * renderer, vec2d& position);
     float calculateArea() const;
     float calculateInertia(float& mass) const;
-    void createAABB();
-
-
+    void createAABB();   
+    void calculatePolyNormals();
 };
 
 #endif

@@ -10,7 +10,7 @@ int main(int, char**){
 
     vec2d position = vec2d(0 , 0);
 
-    std::unique_ptr<Shape> shp2 = std::make_unique<Circle>(100);
+    std::unique_ptr<Shape> shp2 = std::make_unique<Poly>(20,20);
     std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(shp2,position,1000);
     bod2->moveto(vec2d(400,420));
 

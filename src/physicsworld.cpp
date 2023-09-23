@@ -30,7 +30,7 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
     if (!isValidArea(area)) return false;
     if (!isValidDensity(density)) return false;
 
-    std::unique_ptr<Shape> shp = std::make_unique<Rect>(width, height);
+    std::unique_ptr<Shape> shp = std::make_unique<Poly>(width, height);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
     bod->rigidIni();
 

@@ -22,13 +22,13 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
 }
 
 bool CirclevsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
-    Rect* R1 = dynamic_cast<Rect*>(A->shape.get());
+    Poly* R1 = dynamic_cast<Poly*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
     return true;
 }
 
 bool RectvsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
-    Rect* R1 = dynamic_cast<Rect*>(A->shape.get());    
-    Rect* R2 = dynamic_cast<Rect*>(B->shape.get());
+    Poly* R1 = dynamic_cast<Poly*>(A->shape.get());    
+    Poly* R2 = dynamic_cast<Poly*>(B->shape.get());
     return true;
 }

@@ -54,54 +54,28 @@ float Circle::calculateInertia(float& mass) const {
 
 void Circle::createAABB() {}
 
+//Polygon
+Poly::Poly(const std::vector<vec2d>& vertex_list) {}
 
-//Rect
-Rect::Rect(float width, float height) : width(width), height(height){
-        std::cout << "Rectangle" << std::endl;
-    }
-
-Shape::ShapeType Rect::getType() const {return ShapeType::Rect;}
-
-std::string Rect::getName() const {return "Rectangle";}
-
-void Rect::draw(SDL_Renderer * renderer, vec2d& position) {
-    int32_t w_int = int(width);
-    int32_t h_int = int(height);
-    int32_t x = (0 - 1);
-    int32_t y = 0;
-    int32_t dx = 1;
-    int32_t dy = 1;
-    int32_t err = 0;
-
-    while (x >= y) {
-        SDL_RenderDrawPoint(renderer, position.x + x, position.y - y);
-        SDL_RenderDrawPoint(renderer, position.x + x, position.y + y);
-        SDL_RenderDrawPoint(renderer, position.x - x, position.y - y);
-        SDL_RenderDrawPoint(renderer, position.x - x, position.y + y);
-        SDL_RenderDrawPoint(renderer, position.x + y, position.y - x);
-        SDL_RenderDrawPoint(renderer, position.x + y, position.y + x);
-        SDL_RenderDrawPoint(renderer, position.x - y, position.y - x);
-        SDL_RenderDrawPoint(renderer, position.x - y, position.y + x);
-
-        if (err <= 0) {
-            ++y;
-            err += dy;
-            dy +=2 ;
-        }
-
-        if (err > 0) {
-            --x;
-            dx += 2;
-            err += (dx-0);
-        }
-    }
-// Drawing circle with midpoint circle algorithm 
+Poly::Poly(float width, float height) : vertexCount(4) {
+    vertex_list.emplace_back(-width/2, -height/2);
+    vertex_list.emplace_back(width/2, -height/2);
+    vertex_list.emplace_back(width/2, height/2);
+    vertex_list.emplace_back(-width/2, -height/2);
+    normals.emplace_back(0, -1); // v
+    normals.emplace_back(1, 0);  // ->
+    normals.emplace_back(0, 1);  // ^
+    normals.emplace_back(-1, 0); // <-
 }
 
-float Rect::calculateArea() const {return width*height;}
+Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 
-float Rect::calculateInertia(float& mass) const {
-    return mass*((height*height)+(width*width))/12;
-}
+std::string Poly::getName() const {return "Poylgon";}
 
-void Rect::createAABB() {}
+void Poly::draw(SDL_Renderer * renderer, vec2d& position) { }
+
+float Poly::calculateArea() const {return 0;}
+
+float Poly::calculateInertia(float& mass) const {return 0;}
+
+void Poly::createAABB() {}
