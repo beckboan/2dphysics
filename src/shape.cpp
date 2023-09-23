@@ -14,8 +14,6 @@ std::string Circle::getName() const {return "Circle";}
 
 void Circle::draw(SDL_Renderer * renderer, vec2d& position) { 
     int32_t radius_int = int(radius);
-    int32_t position_x = int(position.x);
-    int32_t position_y = int(position.y);
     const int32_t diameter = radius*2;
     int32_t x = (radius - 1);
     int32_t y = 0;
@@ -69,8 +67,6 @@ std::string Rect::getName() const {return "Rectangle";}
 void Rect::draw(SDL_Renderer * renderer, vec2d& position) {
     int32_t w_int = int(width);
     int32_t h_int = int(height);
-    int32_t position_x = int(position.x);
-    int32_t position_y = int(position.y);
     int32_t x = (0 - 1);
     int32_t y = 0;
     int32_t dx = 1;

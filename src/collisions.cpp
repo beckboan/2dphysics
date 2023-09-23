@@ -6,17 +6,15 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
     Circle* C1 = dynamic_cast<Circle*>(A->shape.get());;
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
 
-    vec2d norm = B->position - A->position;
+    float distance = dist(A->position,B->position);
     
-    float dist = norm.length();
     float radii = C1->radius + C2->radius;
 
-    if (dist > radii) {return false;}
+    if (distance >= radii) {return false;}
 
-    if (dist == 0) {
-    }
+    vec2d normal = (B->position - A->position).normalize();
+    float depth = radii - distance;
 
-    
     return true;
 }
 

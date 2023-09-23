@@ -20,7 +20,6 @@ struct PhysicsWorld {
     void printPhysicsObjects();
 
     void worldStep();
-
 };
 
 struct WorldParams{
@@ -30,6 +29,7 @@ struct WorldParams{
     static constexpr float max_body_density = 25000; // kg/m^3
     const vec2d origin = vec2d(0,0);
     const vec2d world_gravity = vec2d(0,-9.81);
+    const vec2d viewport = vec2d(1200,800);
 };
 
 

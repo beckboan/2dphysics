@@ -3,6 +3,7 @@
 #include "rigidbody.h"
 #include <cmath>
 #include "SDL2/SDL.h"
+#include "physicsworld.h"
 
 #ifndef SHAPE_H
 #define SHAPE_H
