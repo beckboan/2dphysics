@@ -523,6 +523,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/build
 .PHONY : 2dphysics/fast
 
+src/collisions.o: src/collisions.cpp.o
+.PHONY : src/collisions.o
+
+# target to build an object file
+src/collisions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.o
+.PHONY : src/collisions.cpp.o
+
+src/collisions.i: src/collisions.cpp.i
+.PHONY : src/collisions.i
+
+# target to preprocess a source file
+src/collisions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.i
+.PHONY : src/collisions.cpp.i
+
+src/collisions.s: src/collisions.cpp.s
+.PHONY : src/collisions.s
+
+# target to generate assembly for a file
+src/collisions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/collisions.cpp.s
+.PHONY : src/collisions.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -683,6 +707,9 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... 2dphysics"
+	@echo "... src/collisions.o"
+	@echo "... src/collisions.i"
+	@echo "... src/collisions.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -19,12 +19,6 @@ int main(int, char**){
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,1000);
     bod->moveto(vec2d(500,500));
 
-    Rect* circle1 = (Rect*)bod->shape.get();
-    std::cout << circle1->width<< std::endl;
-
-    std::cout << bod->shape->getType() << std::endl;
-    std::cout << circle1->getType() << std::endl;
-
     // SDL_Init(SDL_INIT_EVERYTHING);
 
     // SDL_Window *window = SDL_CreateWindow("OpenGL Test",

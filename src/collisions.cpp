@@ -1,11 +1,4 @@
-#include "rigidbody.h"
-#include "shape.h"
-#include <memory>
-#include <iostream>
-
-#ifndef COLLISIONS_H
-#define COLLISIONS_H
-
+#include "collisions.h"
 
 void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2) {}
 
@@ -38,5 +31,3 @@ bool RectvsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
     Rect* R2 = dynamic_cast<Rect*>(B->shape.get());
     return true;
 }
-
-#endif
