@@ -56,15 +56,7 @@ float Circle::calculateInertia(float& mass) const {
     return mass * radius * radius /2;
 }
 
-// float Circle::getVar(char dataname) const {
-//     switch (dataname)
-//     {
-//     case 'r':   
-//         return radius;
-//         break;   
-//     default: break;
-//     }
-// }
+void Circle::createAABB()
 
 
 //Rect
