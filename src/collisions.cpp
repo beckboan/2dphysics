@@ -15,6 +15,9 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
     vec2d normal = (B->position - A->position).normalize();
     float depth = radii - distance;
 
+    A->move(normal*depth/-2);
+    B->move(normal*depth/2);
+
     return true;
 }
 

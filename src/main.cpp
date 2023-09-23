@@ -1,5 +1,6 @@
 #include <iostream>
 #include "simplephysics.h"
+#include <unistd.h>
 
 #define GL_GLEXT_PROTOTYPES
 #include "SDL2/SDL.h"
@@ -16,11 +17,11 @@ int main(int, char**){
 
     std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(100);
     std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
-    bod1->moveto(vec2d(150,150));
+    bod1->moveto(vec2d(500,500));
 
     std::unique_ptr<Shape> shp2 = std::make_unique<Circle>(100);
     std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(shp2,position,1000);
-    bod2->moveto(vec2d(250,420));
+    bod2->moveto(vec2d(400,420));
 
 
 
@@ -33,11 +34,25 @@ int main(int, char**){
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear (renderer);
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+    std::cout << "X: " << bod1->position.x << "Y: " << bod1->position.y << std::endl;
+    std::cout << "X: " << bod2->position.x << "Y: " << bod2->position.y << std::endl;
     bod1->shape->draw(renderer,bod1->position);
     bod1->shape->draw(renderer,bod2->position);
     SDL_RenderPresent(renderer);
 
-    std::cout << CirclevsCircle(bod1,bod2) <<std::endl;
+    sleep(2);
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear (renderer);
+    CirclevsCircle(bod1,bod2);
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    bod1->shape->draw(renderer,bod1->position);
+    bod1->shape->draw(renderer,bod2->position);
+    SDL_RenderPresent(renderer);
+
+    std::cout << "X: " << bod1->position.x << "Y: " << bod1->position.y << std::endl;
+    std::cout << "X: " << bod2->position.x << "Y: " << bod2->position.y << std::endl;
 
     std::cin.get();
 }
