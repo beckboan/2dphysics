@@ -8,7 +8,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-
+#define max_poly_count 32
 
 struct Shape {
 
@@ -45,9 +45,10 @@ struct Poly: public Shape {
     Poly(const std::vector<vec2d>& vertecies); //Normal Poly
     Poly(float width, float height); //Rectangle Poly
 
-    const int vertexCount = 0;
+    unsigned int vertex_count = 0;
     std::vector<vec2d> vertex_list;
     std::vector<vec2d> normals;
+    vec2d centroid;
 
     ShapeType getType() const;
     std::string getName() const;

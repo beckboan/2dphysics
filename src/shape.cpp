@@ -1,4 +1,5 @@
 #include "shape.h"
+#include <cassert>
 
 
 //Shape
@@ -55,9 +56,26 @@ float Circle::calculateInertia(float& mass) const {
 void Circle::createAABB() {}
 
 //Polygon
-Poly::Poly(const std::vector<vec2d>& vertex_list) {}
+Poly::Poly(const std::vector<vec2d>& verticies) {
+    vertex_count = verticies.size();
+    assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
-Poly::Poly(float width, float height) : vertexCount(4) {
+    std::vector<vec2d> hull;
+
+    //Establish min x point
+    unsigned int first_point = 0;
+    float minimum_x = FLT_MAX;
+    for (unsigned int i = 0; i < vertex_count; i++) {
+        float x_val = verticies[i].x;
+        if (x_val < minimum_x) {
+            first_point = i;
+            minimum_x = x_val;
+        }
+    }
+
+}
+
+Poly::Poly(float width, float height) : vertex_count(4) {
     vertex_list.emplace_back(-width/2, -height/2);
     vertex_list.emplace_back(width/2, -height/2);
     vertex_list.emplace_back(width/2, height/2);

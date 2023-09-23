@@ -6,7 +6,7 @@
 
 vec2d::vec2d(): x(0), y(0) {}
 vec2d::vec2d(float x, float y): x(x), y(y) {}
-vec2d::vec2d(const vec2d& vector): x(vector.x), y(vector.y) {std::cout << "Copy Created" <<std::endl;}
+vec2d::vec2d(const vec2d& vector): x(vector.x), y(vector.y) {}
 
 //Assignment Operators
 //Vector Input
