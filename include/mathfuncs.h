@@ -27,8 +27,8 @@ public:
     vec2d operator/(const float val) const;
 
     void assign(float x, float y);
-
     float length () const;
+    vec2d normalize();
 };
 
 float dp(vec2d& vec1, vec2d& vec2);
@@ -38,6 +38,7 @@ float distSquared(vec2d& vec1, vec2d& vec2);
 float minval(float a, float b);
 float maxval(float a, float b);
 void clamp(float& val, float min, float max);
+
 
 
 #endif

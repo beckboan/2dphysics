@@ -76,6 +76,11 @@ float vec2d::length() const  {
     return std::sqrt((x*x)+(y*y));
 }
 
+vec2d vec2d::normalize() {
+    float len = length();
+    return vec2d(x/len,y/len);
+}
+
 void vec2d::assign(float x, float y) {
     this->x;
     this->y;
