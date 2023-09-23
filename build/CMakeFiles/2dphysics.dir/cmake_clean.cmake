@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/shape.cpp.o"
   "CMakeFiles/2dphysics.dir/src/shape.cpp.o.d"
+  "CMakeFiles/2dphysics.dir/src/transform.cpp.o"
+  "CMakeFiles/2dphysics.dir/src/transform.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "simplephysics.h"
-#include <unistd.h>
 #include "tests.h"
 
 #define DBG(msg) std::cout << msg <<std::endl;

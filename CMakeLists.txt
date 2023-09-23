@@ -14,6 +14,7 @@ set(SOURCES
     src/shape.cpp
     src/rigidbody.cpp
     src/collisions.cpp
+    src/transform.cpp
 )
 
 add_executable(2dphysics ${SOURCES})
