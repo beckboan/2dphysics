@@ -19,6 +19,7 @@ set(SOURCES
 add_executable(2dphysics ${SOURCES})
 
 target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/include())
+target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/tests())
 target_include_directories(2dphysics PUBLIC $(SDL2_INCLUDE_DIR))
 target_include_directories(2dphysics PUBLIC $(OPENGL_INCLUDE_DIR))
 

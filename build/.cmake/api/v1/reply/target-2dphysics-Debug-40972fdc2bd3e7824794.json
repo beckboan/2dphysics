@@ -32,13 +32,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 25,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 27,
 				"parent" : 0
 			},
 			{
@@ -57,6 +57,12 @@
 				"command" : 2,
 				"file" : 0,
 				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 24,
 				"parent" : 0
 			}
 		]
@@ -86,10 +92,14 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/beckboan/repos/2dphysics/$(SDL2_INCLUDE_DIR)"
+					"path" : "/home/beckboan/repos/2dphysics/tests"
 				},
 				{
 					"backtrace" : 6,
+					"path" : "/home/beckboan/repos/2dphysics/$(SDL2_INCLUDE_DIR)"
+				},
+				{
+					"backtrace" : 7,
 					"path" : "/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR)"
 				},
 				{
