@@ -4,5 +4,5 @@ Attempt at writing simple 2D physics engine.
 
 Current To-Do:
 
-Implement draw functions for shapes.
-Begin working on collision detection for shapes.
+Implement draw function for rectangles
+Implement transforms
