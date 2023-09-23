@@ -19,14 +19,8 @@ void RigidBody::rigidIni() {
     area = shape->calculateArea();
     m = area*density;
     inv_m = 1/m;
-    if (shape->getType() == 0) {
-        I = shape->calculateInertia(m);
-        inv_I = 1/I;
-    }
-    else if (shape->getType() == 1) {
-        I = shape->calculateInertia(m);
-        inv_I = 1/I;
-    }
+    I = shape->calculateInertia(m);
+    inv_I = 1/I;
 }
 
 
@@ -60,4 +54,3 @@ void RigidBody::applyCenterLinearImpulse(const vec2d& impulse) {
     velocity += impulse * inv_m;
 }
 
-//void RigidBody::applyImpulse(const vec2)

@@ -12,10 +12,9 @@ int main(int, char**){
     PhysicsWorld world;
 
     vec2d position = vec2d(0 , 0);
-    // world.addCircle(1, position, 1000);
-    // world.addRect(1, 1, position, 1000);
+    // world.addCircle(1, position, 1000);;
 
-    std::unique_ptr<Shape> shp = std::make_unique<Rect>(2,2);
+    std::unique_ptr<Shape> shp = std::make_unique<Circle>(2);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,1000);
     bod->moveto(vec2d(500,500));
 

@@ -45,10 +45,8 @@ void Circle::draw(SDL_Renderer * renderer, vec2d& position) {
             err += (dx-diameter);
         }
     }
-
-    
 }
-// Drawing circle with midpoint circle algorithm 
+
 
 float Circle::calculateArea() const {return radius * radius * M_PI;}
 
@@ -56,7 +54,7 @@ float Circle::calculateInertia(float& mass) const {
     return mass * radius * radius /2;
 }
 
-void Circle::createAABB()
+void Circle::createAABB() {}
 
 
 //Rect
@@ -110,17 +108,4 @@ float Rect::calculateInertia(float& mass) const {
     return mass*((height*height)+(width*width))/12;
 }
 
-// float Rect::getVar(char dataname) const {
-//     switch (dataname)
-//     {
-//     case 'h':
-//         return height;
-//         break;
-    
-//     case 'w':
-//         return width;
-//         break;
-
-//     default: break;
-//     }
-// }
+void Rect::createAABB() {}
