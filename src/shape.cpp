@@ -1,16 +1,6 @@
 #include "shape.h"
 #include <cassert>
 
-struct GrahamCCWSorter {
-    const vec2d& pivot;
-
-    GrahamCCWSorter(const vec2d& pivot_): pivot(pivot_) {}
-
-    bool operator()(const vec2d& a, const vec2d& b) {
-        return findOrientation(a, b, pivot) < 0;
-    }
-};
-
 //Shape
 
 //Circle
@@ -65,8 +55,21 @@ float Circle::calculateInertia(float& mass) const {
 void Circle::createAABB() {}
 
 //Polygon
+
+//Polygon Sorter
+struct GrahamCCWSorter {
+    const vec2d& pivot;
+
+    GrahamCCWSorter(const vec2d& pivot_): pivot(pivot_) {}
+
+    bool operator()(const vec2d& a, const vec2d& b) {
+        return findOrientation(a, b, pivot) < 0;
+    }
+};
+
+
 Poly::Poly(std::vector<vec2d>& v) {
-    
+    //Hull Creation
     std::vector<vec2d> hull;
 
     //Establish min_x and move to front of verticies
@@ -123,6 +126,16 @@ float Poly::calculateArea() const {return 0;}
 float Poly::calculateInertia(float& mass) const {return 0;}
 
 void Poly::createAABB() {}
+
+void Poly::calculatePolyNormals() {
+    normals.clear();
+    assert (vertex_count > 2 && vertex_count < max_poly_count && "Vertex count out of bounds");
+    for (unsigned int i =0; i < vertex_count; i ++) {
+        
+    }
+
+
+}
 
 
 
