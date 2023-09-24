@@ -85,22 +85,23 @@ Poly::Poly(std::vector<vec2d>& v) {
     hull.push_back(*it++);
     hull.push_back(*it++);
     hull.push_back(*it++);
-
+    vertex_count++;
     while (it != v.end()) {
         while (findOrientation(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
             hull.pop_back();
         }
         hull.push_back(*it++);
-        vertex_count ++;
-        
+        vertex_count++;
     }
 
     assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
-    for (auto i: hull)
+    for (unsigned int i = 0; i < vertex_count; i++)
     {
-        vertex_list.push_back(i);
+        vertex_list.push_back(hull[i]);
     }
+
+    calculatePolyNormals();
 
 }
 
@@ -131,10 +132,9 @@ void Poly::calculatePolyNormals() {
     normals.clear();
     assert (vertex_count > 2 && vertex_count < max_poly_count && "Vertex count out of bounds");
     for (unsigned int i =0; i < vertex_count; i ++) {
-        
+        vec2d face = vertex_list[(i+1) % vertex_count] - vertex_list[i];
+        normals.push_back(vec2d(face.y, -face.x).normalize());
     }
-
-
 }
 
 

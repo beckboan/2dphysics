@@ -11,8 +11,13 @@ int main(int, char**){
 
     Poly poly = Poly(verticies);
 
-    for (unsigned int i = 0; i <= poly.vertex_count; i++) {
+    for (unsigned int i = 0; i < poly.vertex_count; i++) {
         std::cout << "X: " << poly.vertex_list[i].x << "Y: " << poly.vertex_list[i].y << std::endl;
+    }
+
+
+    for (unsigned int i = 0; i < poly.vertex_count; i++) {
+        std::cout << "X: " << poly.normals[i].x << "Y: " << poly.normals[i].y << std::endl;
     }
 
 
