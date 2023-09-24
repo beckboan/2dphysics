@@ -1,21 +1,6 @@
 #include "shape.h"
 #include <cassert>
 
-// float CCW(const vec2d& p1, const vec2d& p2 , const vec2d& p3) {
-//     return (p2.x - p1.x) * (p3.y-p1.y) - (p2.y - p1.y) * (p3.x- p1.x);
-// }
-
-float findOrientation(const vec2d& p1, const vec2d& p2, const vec2d& p) {
-    const float val = (p2.y- p1.y) * (p.x - p2.x) - (p2.x - p1.x) * (p.y - p2.y);
-    if (val > 0) {return 1;} //CW
-    else if (val < 0) { return -1;} //CCW
-    else return 0; // Collinear
-}
-
-bool isLeftOf( const vec2d& p1, const vec2d& p2) {
-    return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
-}
-
 struct GrahamCCWSorter {
     const vec2d& pivot;
 
@@ -93,7 +78,7 @@ Poly::Poly(std::vector<vec2d>& v) {
     std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
     auto it = v.begin();
-    
+
     hull.push_back(*it++);
     hull.push_back(*it++);
     hull.push_back(*it++);

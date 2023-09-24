@@ -38,7 +38,8 @@ float distSquared(vec2d& vec1, vec2d& vec2);
 float minval(float a, float b);
 float maxval(float a, float b);
 void clamp(float& val, float min, float max);
-
+float findOrientation(const vec2d& p1, const vec2d& p2, const vec2d& p);
+bool isLeftOf( const vec2d& p1, const vec2d& p2);
 
 
 #endif
