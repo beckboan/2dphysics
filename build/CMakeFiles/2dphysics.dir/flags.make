@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/beckboan/repos/2dphysics/include -I"/home/beckboan/repos/2dphysics/(" -I"/home/beckboan/repos/2dphysics/)" -I/home/beckboan/repos/2dphysics/tests -I"/home/beckboan/repos/2dphysics/\$$(SDL2_INCLUDE_DIR)" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/home/beckboan/repos/2dphysics/include -I"/home/beckboan/repos/2dphysics/(" -I"/home/beckboan/repos/2dphysics/)" -I"/home/beckboan/repos/2dphysics/\$$(SDL2_INCLUDE_DIR)" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2
 
 CXX_FLAGS = -g
 

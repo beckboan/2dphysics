@@ -10,11 +10,11 @@ public:
         vec2d position = vec2d(0 , 0);
         // world.addCircle(1, position, 1000);;
 
-        std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(100);
+        std::unique_ptr<Shape> shp1 = std::make_shared<Circle>(100);
         std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
         bod1->moveto(vec2d(500,500));
 
-        std::unique_ptr<Shape> shp2 = std::make_unique<Circle>(100);
+        std::unique_ptr<Shape> shp2 = std::make_shared<Circle>(100);
         std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(shp2,position,1000);
         bod2->moveto(vec2d(400,420));
 

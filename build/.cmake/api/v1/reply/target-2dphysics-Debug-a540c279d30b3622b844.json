@@ -50,12 +50,6 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 23,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
 				"line" : 24,
 				"parent" : 0
 			},
@@ -92,14 +86,10 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/beckboan/repos/2dphysics/tests"
-				},
-				{
-					"backtrace" : 6,
 					"path" : "/home/beckboan/repos/2dphysics/$(SDL2_INCLUDE_DIR)"
 				},
 				{
-					"backtrace" : 7,
+					"backtrace" : 6,
 					"path" : "/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR)"
 				},
 				{

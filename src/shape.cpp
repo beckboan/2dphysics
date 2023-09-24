@@ -120,7 +120,9 @@ Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 
 std::string Poly::getName() const {return "Poylgon";}
 
-void Poly::draw(SDL_Renderer * renderer, vec2d& position) { }
+void Poly::draw(SDL_Renderer * renderer, vec2d& position) {
+
+}
 
 float Poly::calculateArea() const {return 0;}
 

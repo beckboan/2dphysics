@@ -778,19 +778,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/c++/12/bits/uniform_int_dist.h \
   /usr/include/c++/12/pstl/glue_algorithm_defs.h \
   /usr/include/SDL2/SDL_opengl.h \
-  /usr/include/SDL2/SDL_opengl_glext.h \
-  /home/beckboan/repos/2dphysics/tests/tests.h \
-  /home/beckboan/repos/2dphysics/include/simplephysics.h \
-  /home/beckboan/repos/2dphysics/tests/simplecirclecollision.h \
-  /home/beckboan/repos/2dphysics/tests/tests.h \
-  /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h
+  /usr/include/SDL2/SDL_opengl_glext.h
 
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: /home/beckboan/repos/2dphysics/src/mathfuncs.cpp \
   /usr/include/stdc-predef.h \
@@ -2385,18 +2373,6 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /home/beckboan/repos/2dphysics/src/shape.cpp:
 
-/usr/include/linux/close_range.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-/usr/include/unistd.h:
-
-/home/beckboan/repos/2dphysics/tests/simplecirclecollision.h:
-
-/home/beckboan/repos/2dphysics/tests/tests.h:
-
 /home/beckboan/repos/2dphysics/src/main.cpp:
 
 /usr/include/c++/12/bits/stl_heap.h:
@@ -2507,11 +2483,7 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/xsavecintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/tsxldtrkintrin.h:
 
@@ -2581,8 +2553,6 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/cxxabi_forced.h:
 
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
 /usr/include/c++/12/bits/new_allocator.h:
 
 /usr/include/c++/12/bits/cpp_type_traits.h:
@@ -2602,8 +2572,6 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/time.h:
 

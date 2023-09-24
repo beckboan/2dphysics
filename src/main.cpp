@@ -1,11 +1,17 @@
 #include <iostream>
 #include "simplephysics.h"
-#include "tests.h"
+//#include "tests.h"
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
 int main(int, char**){
     PhysicsWorld world;
+
+    vec2d origin = vec2d(0, 0);
+
+    std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(100);
+    std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,origin,1000);
+    bod1->moveto(vec2d(500,500));
 
     std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d()};
 

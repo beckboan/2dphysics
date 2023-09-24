@@ -318,15 +318,4 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/stl_heap.h \
  /usr/include/c++/12/bits/uniform_int_dist.h \
  /usr/include/c++/12/pstl/glue_algorithm_defs.h \
- /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h \
- /home/beckboan/repos/2dphysics/tests/tests.h \
- /home/beckboan/repos/2dphysics/tests/../include/simplephysics.h \
- /home/beckboan/repos/2dphysics/tests/simplecirclecollision.h \
- /home/beckboan/repos/2dphysics/tests/tests.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h
+ /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h
