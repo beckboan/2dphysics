@@ -1,17 +1,28 @@
 #include "shape.h"
 #include <cassert>
 
-float CCW(const vec2d& p1, const vec2d& p2 , const vec2d& p3) {
-    return (p2.x - p1.x) * (p3.y-p1.y) - (p2.y - p1.y) * (p3.x- p1.x);
+// float CCW(const vec2d& p1, const vec2d& p2 , const vec2d& p3) {
+//     return (p2.x - p1.x) * (p3.y-p1.y) - (p2.y - p1.y) * (p3.x- p1.x);
+// }
+
+float findOrientation(const vec2d& p1, const vec2d& p2, const vec2d& p) {
+    const float val = (p2.y- p1.y) * (p.x - p2.x) - (p2.x - p1.x) * (p.y - p2.y);
+    if (val > 0) {return 1;} //CW
+    else if (val < 0) { return -1;} //CCW
+    else return 0; // Collinear
 }
 
-struct CCWSorter {
+bool isLeftOf( const vec2d& p1, const vec2d& p2) {
+    return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
+}
+
+struct GrahamCCWSorter {
     const vec2d& pivot;
 
-    CCWSorter(const vec2d& pivot_): pivot(pivot_) {}
+    GrahamCCWSorter(const vec2d& pivot_): pivot(pivot_) {}
 
     bool operator()(const vec2d& a, const vec2d& b) {
-        return CCW(pivot, a, b) < 0;
+        return findOrientation(a, b, pivot) < 0;
     }
 };
 
@@ -73,22 +84,22 @@ Poly::Poly(std::vector<vec2d>& v) {
     
     std::vector<vec2d> hull;
 
-    
-
     //Establish min_x and move to front of verticies
-    vec2d min_x = *std::min_element(v.begin(), v.end(), [](const vec2d& p1, const vec2d& p2) {return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);});
+    vec2d min_x = *std::min_element(v.begin(), v.end(), isLeftOf);
+
     std::swap(v[0], min_x);
 
     //Sort point ccw around min_x
-    std::sort(v.begin() + 1, v.end(), CCWSorter(min_x));
+    std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
     auto it = v.begin();
+    
     hull.push_back(*it++);
     hull.push_back(*it++);
     hull.push_back(*it++);
-    vertex_count++;
+
     while (it != v.end()) {
-        while (CCW(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
+        while (findOrientation(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
             hull.pop_back();
         }
         hull.push_back(*it++);
@@ -127,13 +138,6 @@ float Poly::calculateArea() const {return 0;}
 float Poly::calculateInertia(float& mass) const {return 0;}
 
 void Poly::createAABB() {}
-
-int Poly::findSide(vec2d& p1, vec2d& p2, vec2d& p) {
-    const float val = (p.y - p1.y) * (p2.x - p1.x) - (p2.y - p1.y) * (p.x - p1.x);
-    if (val > 0) {return 1;}
-    else if (val < 0) { return -1;}
-    else return 0;
-}
 
 
 

@@ -58,7 +58,6 @@ struct Poly: public Shape {
     float calculateInertia(float& mass) const;
     void createAABB();   
     void calculatePolyNormals();
-    int findSide(vec2d& p1, vec2d& p2, vec2d& p);
 };
 
 
