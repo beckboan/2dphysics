@@ -64,6 +64,11 @@ Poly::Poly(std::vector<vec2d>& v) {
 
 }
 
+Poly::Poly(float radius, int side_number) {
+    assert(side_number > 2 && side_number <= max_poly_count && "Vertex list size out of bounds");
+    
+}
+
 Poly::Poly(float width, float height) : vertex_count(4) {
     vertex_list.emplace_back(-width/2, -height/2);
     vertex_list.emplace_back(width/2, -height/2);

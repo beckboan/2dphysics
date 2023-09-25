@@ -10,6 +10,7 @@
 struct Poly: public Shape {
     Poly(std::vector<vec2d>& verticies); //Normal Poly
     Poly(float width, float height); //Rectangle Poly
+    Poly(float radius, int side_number); //Regular Polygon (think stop sign)
 
     unsigned int vertex_count = 0;
     std::vector<vec2d> vertex_list;
