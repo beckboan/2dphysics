@@ -1,4 +1,5 @@
 #include "transform.h"
+#include <cmath>
 
 Transform::Transform(vec2d& position, float angle) {
     transform_position = position;

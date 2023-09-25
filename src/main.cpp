@@ -13,11 +13,6 @@ int main(int, char**){
     std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,origin,1000);
     std::cout << bod1->m << std::endl;
     bod1->shape->setBody(bod1);
-        {
-        std::shared_ptr<RigidBody> temp = bod1->shape->body.lock();
-        temp->m = 10000;
-        }
-
     bod1->moveto(vec2d(500,500));
     std::cout << bod1->m << std::endl;
 

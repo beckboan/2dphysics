@@ -1,13 +1,11 @@
-#include "mathfuncs.h"
-#include <iostream>
-#include "rigidbody.h"
-#include <cmath>
-#include "SDL2/SDL.h"
-#include "physicsworld.h"
-#include "algorithm"
-
 #ifndef SHAPE_H
 #define SHAPE_H
+
+#include "mathfuncs.h"
+#include "rigidbody.h"
+#include "SDL2/SDL.h"
+#include <vector>
+#include <memory>
 
 #define max_poly_count 32
 

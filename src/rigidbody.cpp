@@ -1,5 +1,6 @@
 #include "rigidbody.h"
 #include "shape.h"
+#include <iostream>
 
 RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_) : shape(std::move(shape_)), density(density_){
     position = position_;

@@ -1,10 +1,8 @@
-#include "mathfuncs.h"
-#include <memory>
-#include <iostream>
-
-
 #ifndef RIGIDBODY_H
 #define RIGIDBODY_H
+
+#include "mathfuncs.h"
+#include <memory>
 
 struct Transform;
 struct Shape;

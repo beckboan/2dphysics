@@ -1,5 +1,3 @@
-#include <iostream>
-
 #ifndef mathfuncs_H
 #define mathfuncs_H
 

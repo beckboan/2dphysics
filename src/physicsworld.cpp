@@ -1,7 +1,6 @@
 #include <iostream>
 #include "physicsworld.h"
 #include "mathfuncs.h"
-#include "rigidbody.h"
 #include "shape.h"
 
 #define DBG(msg) std::cout << msg <<std::endl;

@@ -1,5 +1,9 @@
 #include "shape.h"
 #include <cassert>
+#include <cmath>
+#include <algorithm>
+#include "physicsworld.h"
+#include <iostream>
 
 //Shape
 

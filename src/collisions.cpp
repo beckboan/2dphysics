@@ -1,4 +1,5 @@
 #include "collisions.h"
+#include "shape.h"
 
 void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2) {}
 

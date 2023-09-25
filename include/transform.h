@@ -2,7 +2,6 @@
 #define TRANSFORM_H
 
 #include "mathfuncs.h"
-#include <cmath>
 
 struct Transform
 {

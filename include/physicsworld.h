@@ -1,9 +1,9 @@
+#ifndef PHYSICSWORLD_H
+#define PHYSICSWORLD_H
+
 #include <vector>
 #include "mathfuncs.h"
 #include "rigidbody.h"
-
-#ifndef PHYSICSWORLD_H
-#define PHYSICSWORLD_H
 
 struct PhysicsWorld {
     
