@@ -5,8 +5,8 @@
 
 void Shape::setBody(const std::shared_ptr<RigidBody>& body_) {
     body = body_;
-    std::shared_ptr<RigidBody> temp = body.lock();
-    temp->rigidIni();
+    std::shared_ptr<RigidBody> body_ref = body.lock();
+    body_ref->rigidIni();
 }
 
 

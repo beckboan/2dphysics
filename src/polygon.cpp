@@ -28,14 +28,18 @@ Poly::Poly(std::vector<vec2d>& v) {
     //Sort point ccw around min_x
     std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
+    for (const vec2d& i : v) {
+        std::cout << "X: " << i.x << "Y: " << i.y << std::endl;
+    }
+
     auto it = v.begin();
 
     hull.push_back(*it++);
     hull.push_back(*it++);
     hull.push_back(*it++);
     vertex_count++;
-    while (it != v.end()) {
-        while (findOrientation(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
+    while (it <= v.end()) {
+        while (findOrientation(*(hull.rbegin() + 1), *(hull.rbegin()), *it) > 0) {
             hull.pop_back();
         }
         hull.push_back(*it++);
@@ -73,11 +77,12 @@ Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 std::string Poly::getName() const {return "Poylgon";}
 
 void Poly::draw(SDL_Renderer * renderer, vec2d& position) {
+    std::shared_ptr<RigidBody> body_ref = body.lock();
     for (unsigned int i = 0; i < vertex_count; i ++) {
-        int x1 = vertex_list[i].x;
-        int y1 = vertex_list[i].y;
-        int x2= vertex_list[(i+1) % vertex_count].x;
-        int y2 = vertex_list[(i+1) % vertex_count].y;
+        int x1 = body_ref -> position.x + vertex_list[i].x;
+        int y1 = body_ref -> position.y + vertex_list[i].y;
+        int x2= body_ref -> position.x + vertex_list[(i+1) % vertex_count].x;
+        int y2 = body_ref -> position.y + vertex_list[(i+1) % vertex_count].y;
         SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
     }
 }
@@ -94,17 +99,29 @@ void Poly::calculateMassProperties(float& density) {
         vec2d p2 = vertex_list[i2];
 
         //Calculate parallelogram area and divide by two for triangle area
-        float t_area = cp(p1, p2) * 0.5;
+        float p_area = cp(p1, p2);
+        float t_area = 0.5 * p_area;
         area += t_area;
+
+        //Calc Inertia
+        float t_I = t_area * (dp(p1,p1) + dp(p2,p2) + dp(p1,p2)) /6;
 
         //Calculate triangle center and average w/ area
         centroid += (p1+p2) * k_c * t_area;
+
+        I+=t_I;
     }
 
+    I *= density;
     centroid *= 1.0/area;
-    std::cout << centroid.x << " " << centroid.y << std::endl;
-    std::cout << area << std::endl;
-};
+
+    std::shared_ptr<RigidBody> body_ref = body.lock();
+    body_ref->m = area * density;
+    body_ref->inv_m = (body_ref->m>0) ? 1.0/body_ref->m : 0;
+    body_ref->I = I;
+    body_ref->I = (body_ref->I>0) ? 1.0/body_ref->I : 0;
+
+}
 
 void Poly::createAABB() {}
 
