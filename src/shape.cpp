@@ -3,6 +3,12 @@
 
 //Shape
 
+
+
+void Shape::setBody(const std::shared_ptr<RigidBody>& body_) {
+    body = body_;
+}
+
 //Circle
 Circle::Circle(float radius): radius(radius) {
         std::cout << "Circle" << std::endl;
@@ -137,6 +143,7 @@ void Poly::calculatePolyNormals() {
         vec2d face = vertex_list[(i+1) % vertex_count] - vertex_list[i];
         normals.push_back(vec2d(face.y, -face.x).normalize());
     }
+
 }
 
 

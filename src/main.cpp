@@ -11,20 +11,28 @@ int main(int, char**){
 
     std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(100);
     std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,origin,1000);
+    std::cout << bod1->m << std::endl;
+    bod1->shape->setBody(bod1);
+        {
+        std::shared_ptr<RigidBody> temp = bod1->shape->body.lock();
+        temp->m = 10000;
+        }
+
     bod1->moveto(vec2d(500,500));
+    std::cout << bod1->m << std::endl;
 
-    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d()};
+    // std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d()};
 
-    Poly poly = Poly(verticies);
+    // Poly poly = Poly(verticies);
 
-    for (unsigned int i = 0; i < poly.vertex_count; i++) {
-        std::cout << "X: " << poly.vertex_list[i].x << "Y: " << poly.vertex_list[i].y << std::endl;
-    }
+    // for (unsigned int i = 0; i < poly.vertex_count; i++) {
+    //     std::cout << "X: " << poly.vertex_list[i].x << "Y: " << poly.vertex_list[i].y << std::endl;
+    // }
 
 
-    for (unsigned int i = 0; i < poly.vertex_count; i++) {
-        std::cout << "X: " << poly.normals[i].x << "Y: " << poly.normals[i].y << std::endl;
-    }
+    // for (unsigned int i = 0; i < poly.vertex_count; i++) {
+    //     std::cout << "X: " << poly.normals[i].x << "Y: " << poly.normals[i].y << std::endl;
+    // }
 
 
 

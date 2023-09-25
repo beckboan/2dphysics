@@ -26,6 +26,9 @@ struct Shape {
     virtual float calculateInertia(float& mass)const = 0;
     virtual void createAABB() = 0;
 
+    std::weak_ptr<RigidBody> body;
+    void setBody(const std::shared_ptr<RigidBody>& body_);
+
 };
 
 struct Circle: public Shape {

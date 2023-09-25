@@ -21,6 +21,7 @@ void RigidBody::rigidIni() {
     inv_m = 1/m;
     I = shape->calculateInertia(m);
     inv_I = 1/I;
+    hasProperties = true;
 }
 
 
