@@ -4,7 +4,6 @@
 
 RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_) : shape(std::move(shape_)), density(density_){
     position = position_;
-    shape->setBody(shared_from_this());
     velocity.assign(0,0);
     angular_velocity = 0;
     torque = 0;
@@ -14,7 +13,6 @@ RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float den
     dynamic_friction = 0.2f;
     restitution = 0.2f;
     r,g,b = 120; // TEMP COLORS 
-    rigidIni();
 }
 
 //Property Functions

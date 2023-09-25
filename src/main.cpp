@@ -8,17 +8,19 @@ int main(int, char**){
     PhysicsWorld world;
 
     vec2d position = vec2d(0, 0);
+    float density = 1000;
 
     // std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
+    // bod1->shape->setBody(bod1);
 
-    std::vector<vec2d> verticies = {vec2d(0,500), vec2d(200,500), vec2d(200,-0), vec2d(300,600), vec2d(400,500), vec2d(100,650), vec2d(300,500)};
+    // std::vector<vec2d> verticies = {vec2d(0,500), vec2d(200,500), vec2d(200,-0), vec2d(300,600), vec2d(400,500), vec2d(100,530), vec2d(300,500)};
 
-    Poly poly = Poly(verticies);
+    std::unique_ptr<Shape> pol = std::make_unique<Poly>(100,100);
 
-    for (unsigned int i = 0; i < poly.vertex_count; i++) {
-        std::cout << "X: " << poly.vertex_list[i].x << "Y: " << poly.vertex_list[i].y << std::endl;
-    }
+    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(pol, position, density);
+    bod->shape->setBody(bod);
+
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -28,8 +30,8 @@ int main(int, char**){
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear (renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    poly.draw(renderer, position);
+    //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    //poly.draw(renderer, position);
     SDL_RenderPresent(renderer);
 
     std::cin.get();

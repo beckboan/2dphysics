@@ -42,6 +42,7 @@ Poly::Poly(std::vector<vec2d>& v) {
         vertex_count++;
     }
 
+    std::cout <<vertex_count<< std::endl;
     assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
     for (unsigned int i = 0; i < vertex_count; i++)
@@ -57,11 +58,14 @@ Poly::Poly(float width, float height) : vertex_count(4) {
     vertex_list.emplace_back(-width/2, -height/2);
     vertex_list.emplace_back(width/2, -height/2);
     vertex_list.emplace_back(width/2, height/2);
-    vertex_list.emplace_back(-width/2, -height/2);
+    vertex_list.emplace_back(-width/2, height/2);
     normals.emplace_back(0, -1); // v
     normals.emplace_back(1, 0);  // ->
     normals.emplace_back(0, 1);  // ^
     normals.emplace_back(-1, 0); // <-
+    for (unsigned int i; i < vertex_count; i ++) {
+        std::cout << "X: " << vertex_list[i].x << " Y: " << vertex_list[i].y << std::endl;
+    }
 }
 
 Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
@@ -83,20 +87,23 @@ void Poly::calculateMassProperties(float& density) {
     vec2d centroid(0,0);
     float area = 0;
     float I = 0;
+    float k_c = 1.0/3.0;
     for (unsigned int i = 0; i < vertex_count; i++) {
         vec2d p1 = vertex_list[i];
-        vec2d p2 = vertex_list[i+1];
+        unsigned int i2 = i+1 < vertex_count ? i + 1 : 0;
+        vec2d p2 = vertex_list[i2];
 
         //Calculate parallelogram area and divide by two for triangle area
-        float tArea = cp(p1, p2);
-        area += tArea;
+        float t_area = cp(p1, p2) * 0.5;
+        area += t_area;
 
-        
+        //Calculate triangle center and average w/ area
+        centroid += (p1+p2) * k_c * t_area;
     }
 
-
-
-
+    centroid *= 1.0/area;
+    std::cout << centroid.x << " " << centroid.y << std::endl;
+    std::cout << area << std::endl;
 };
 
 void Poly::createAABB() {}
