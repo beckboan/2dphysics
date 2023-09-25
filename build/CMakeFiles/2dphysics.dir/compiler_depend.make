@@ -134,6 +134,79 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /usr/include/c++/12/backward/auto_ptr.h \
   /usr/include/c++/12/pstl/glue_memory_defs.h \
   /usr/include/c++/12/pstl/execution_defs.h \
+  /usr/include/c++/12/iostream \
+  /usr/include/c++/12/ostream \
+  /usr/include/c++/12/ios \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/cstdint \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/cctype \
+  /usr/include/ctype.h \
+  /usr/include/c++/12/bits/ios_base.h \
+  /usr/include/c++/12/bits/locale_classes.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/string_view \
+  /usr/include/c++/12/bits/string_view.tcc \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/c++/12/cerrno \
+  /usr/include/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc \
+  /usr/include/c++/12/bits/locale_classes.tcc \
+  /usr/include/c++/12/system_error \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/error_constants.h \
+  /usr/include/c++/12/stdexcept \
+  /usr/include/c++/12/streambuf \
+  /usr/include/c++/12/bits/streambuf.tcc \
+  /usr/include/c++/12/bits/basic_ios.h \
+  /usr/include/c++/12/bits/locale_facets.h \
+  /usr/include/c++/12/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h \
+  /usr/include/c++/12/bits/streambuf_iterator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h \
+  /usr/include/c++/12/bits/locale_facets.tcc \
+  /usr/include/c++/12/bits/basic_ios.tcc \
+  /usr/include/c++/12/bits/ostream.tcc \
+  /usr/include/c++/12/istream \
+  /usr/include/c++/12/bits/istream.tcc \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_main.h \
@@ -143,31 +216,10 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /usr/include/SDL2/SDL_platform.h \
   /usr/include/SDL2/begin_code.h \
   /usr/include/SDL2/close_code.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/include/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/c++/12/stdlib.h \
-  /usr/include/c++/12/cstdlib \
-  /usr/include/stdlib.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/c++/12/bits/std_abs.h \
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/inttypes.h \
-  /usr/include/ctype.h \
   /usr/include/c++/12/math.h \
   /usr/include/c++/12/cmath \
   /usr/include/math.h \
@@ -327,60 +379,8 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
-  /usr/include/c++/12/bits/vector.tcc \
-  /usr/include/c++/12/iostream \
-  /usr/include/c++/12/ostream \
-  /usr/include/c++/12/ios \
-  /usr/include/c++/12/bits/char_traits.h \
-  /usr/include/c++/12/cstdint \
-  /usr/include/c++/12/bits/localefwd.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++locale.h \
-  /usr/include/c++/12/clocale \
-  /usr/include/locale.h \
-  /usr/include/x86_64-linux-gnu/bits/locale.h \
-  /usr/include/c++/12/cctype \
-  /usr/include/c++/12/bits/ios_base.h \
-  /usr/include/c++/12/bits/locale_classes.h \
-  /usr/include/c++/12/string \
-  /usr/include/c++/12/bits/ostream_insert.h \
-  /usr/include/c++/12/bits/cxxabi_forced.h \
-  /usr/include/c++/12/bits/basic_string.h \
-  /usr/include/c++/12/string_view \
-  /usr/include/c++/12/bits/string_view.tcc \
-  /usr/include/c++/12/ext/string_conversions.h \
-  /usr/include/c++/12/cstdio \
-  /usr/include/c++/12/cerrno \
-  /usr/include/errno.h \
-  /usr/include/x86_64-linux-gnu/bits/errno.h \
-  /usr/include/linux/errno.h \
-  /usr/include/x86_64-linux-gnu/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
-  /usr/include/c++/12/bits/charconv.h \
-  /usr/include/c++/12/bits/basic_string.tcc \
-  /usr/include/c++/12/bits/locale_classes.tcc \
-  /usr/include/c++/12/system_error \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/error_constants.h \
-  /usr/include/c++/12/stdexcept \
-  /usr/include/c++/12/streambuf \
-  /usr/include/c++/12/bits/streambuf.tcc \
-  /usr/include/c++/12/bits/basic_ios.h \
-  /usr/include/c++/12/bits/locale_facets.h \
-  /usr/include/c++/12/cwctype \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h \
-  /usr/include/c++/12/bits/streambuf_iterator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h \
-  /usr/include/c++/12/bits/locale_facets.tcc \
-  /usr/include/c++/12/bits/basic_ios.tcc \
-  /usr/include/c++/12/bits/ostream.tcc \
-  /usr/include/c++/12/istream \
-  /usr/include/c++/12/bits/istream.tcc
+  /usr/include/c++/12/bits/vector.tcc
 
 CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -589,6 +589,11 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/c++/12/backward/auto_ptr.h \
   /usr/include/c++/12/pstl/glue_memory_defs.h \
   /usr/include/c++/12/pstl/execution_defs.h \
+  /home/beckboan/repos/2dphysics/include/physicsworld.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_main.h \
@@ -759,11 +764,6 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
-  /usr/include/c++/12/vector \
-  /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/vector.tcc \
-  /home/beckboan/repos/2dphysics/include/physicsworld.h \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h
 
@@ -2238,97 +2238,17 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /home/beckboan/repos/2dphysics/src/main.cpp:
 
-/usr/include/c++/12/bits/locale_facets.tcc:
-
-/usr/include/c++/12/bits/streambuf_iterator.h:
-
-/usr/include/c++/12/bits/basic_ios.h:
-
-/usr/include/c++/12/bits/streambuf.tcc:
-
-/usr/include/c++/12/stdexcept:
-
-/usr/include/c++/12/bits/locale_classes.tcc:
-
-/usr/include/c++/12/bits/basic_string.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/linux/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/home/beckboan/repos/2dphysics/include/simplephysics.h:
-
-/usr/include/errno.h:
-
-/home/beckboan/repos/2dphysics/src/rigidbody.cpp:
-
-/usr/include/c++/12/cerrno:
-
-/usr/include/c++/12/bits/basic_string.h:
-
-/usr/include/c++/12/bits/ostream_insert.h:
-
-/usr/include/c++/12/bits/locale_classes.h:
-
-/usr/include/c++/12/bits/ios_base.h:
-
-/usr/include/c++/12/cctype:
-
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/12/clocale:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/c++locale.h:
-
-/usr/include/c++/12/pstl/glue_algorithm_defs.h:
-
-/usr/include/c++/12/bits/localefwd.h:
-
-/usr/include/c++/12/cstdint:
-
-/usr/include/c++/12/bits/char_traits.h:
-
-/usr/include/c++/12/ios:
-
-/home/beckboan/repos/2dphysics/src/mathfuncs.cpp:
-
-/usr/include/c++/12/ostream:
-
-/usr/include/SDL2/SDL_opengl_glext.h:
-
-/usr/include/c++/12/ext/string_conversions.h:
-
-/usr/include/c++/12/bits/vector.tcc:
-
-/usr/include/c++/12/bits/range_access.h:
-
 /usr/include/c++/12/bits/stl_bvector.h:
-
-/usr/include/c++/12/initializer_list:
 
 /usr/include/c++/12/bits/stl_vector.h:
 
 /usr/include/SDL2/SDL_system.h:
-
-/usr/include/c++/12/bits/cxxabi_forced.h:
-
-/usr/include/SDL2/SDL_render.h:
 
 /usr/include/SDL2/SDL_power.h:
 
 /usr/include/SDL2/SDL_messagebox.h:
 
 /usr/include/SDL2/SDL_log.h:
-
-/usr/include/c++/12/bits/charconv.h:
-
-/usr/include/SDL2/SDL_loadso.h:
 
 /usr/include/SDL2/SDL_hidapi.h:
 
@@ -2338,33 +2258,17 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/SDL2/SDL_touch.h:
 
-/usr/include/c++/12/bits/locale_facets.h:
-
-/usr/include/c++/12/string_view:
-
-/usr/include/SDL2/SDL_shape.h:
-
-/usr/include/SDL2/SDL_quit.h:
-
 /usr/include/SDL2/SDL_sensor.h:
 
 /usr/include/assert.h:
 
 /usr/include/SDL2/SDL_joystick.h:
 
-/usr/include/c++/12/system_error:
-
-/usr/include/SDL2/SDL_mouse.h:
-
 /usr/include/SDL2/SDL_keycode.h:
 
 /usr/include/SDL2/SDL_keyboard.h:
 
 /usr/include/SDL2/SDL_events.h:
-
-/usr/include/c++/12/bits/ostream.tcc:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/prfchwintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512bf16vlintrin.h:
 
@@ -2396,19 +2300,89 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vpopcntdqintrin.h:
 
-/usr/include/c++/12/string:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vbmiintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512ifmaintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512dqintrin.h:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+/usr/include/c++/12/algorithm:
 
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512pfintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512erintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512fintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx2intrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avxvnniintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/smmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/tmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/shaintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/pmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mm_malloc.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/hresetintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xtestintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xsavesintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/fmaintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveoptintrin.h:
+
+/usr/include/SDL2/SDL_metal.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xsavecintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/tsxldtrkintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/tbmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/sgxintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/rdseedintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/popcntintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/pconfigintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/fxsrintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/clzerointrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/clwbintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/clflushoptintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/cldemoteintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/bmi2intrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/bmiintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/ia32intrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/x86gprintrin.h:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/rtmintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/SDL2/SDL_guid.h:
 
@@ -2432,21 +2406,19 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/time.h:
 
+/usr/include/c++/12/bits/range_access.h:
+
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx5124vnniwintrin.h:
 
 /usr/include/c++/12/bits/postypes.h:
 
-/usr/include/c++/12/bits/istream.tcc:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/amxbf16intrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/c++/12/bits/locale_facets.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
@@ -2466,11 +2438,13 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
+/usr/include/c++/12/clocale:
+
 /usr/include/c++/12/ext/concurrence.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mmintrin.h:
-
 /usr/include/c++/12/bits/shared_ptr.h:
+
+/usr/include/c++/12/initializer_list:
 
 /usr/include/c++/12/bits/cxxabi_init_exception.h:
 
@@ -2480,29 +2454,37 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/stl_function.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/smmintrin.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitxintrin.h:
+
+/usr/include/c++/12/bits/functexcept.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/prfchwintrin.h:
+
+/usr/include/c++/12/bits/ostream.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/uintrintrin.h:
+
+/usr/include/c++/12/bits/unique_ptr.h:
 
 /usr/include/c++/12/bits/uses_allocator.h:
 
 /usr/include/c++/12/bits/refwrap.h:
 
+/home/beckboan/repos/2dphysics/src/rigidbody.cpp:
+
+/usr/include/c++/12/cerrno:
+
 /usr/include/c++/12/stdlib.h:
 
 /usr/include/c++/12/bits/stl_construct.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/tbmintrin.h:
-
 /usr/include/c++/12/ext/atomicity.h:
 
-/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vbmiintrin.h:
 
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
+/usr/include/c++/12/string:
 
 /usr/include/strings.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/hresetintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -2514,17 +2496,15 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/SDL2/SDL_error.h:
 
-/usr/include/c++/12/streambuf:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
 /usr/include/c++/12/exception:
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/clflushoptintrin.h:
-
 /usr/include/c++/12/debug/assertions.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/lzcntintrin.h:
+
+/usr/include/c++/12/bits/std_abs.h:
 
 /usr/include/stdc-predef.h:
 
@@ -2532,11 +2512,21 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/exception.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/12/include/pkuintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/enqcmdintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
+
+/usr/include/c++/12/bits/locale_classes.tcc:
+
 /usr/include/c++/12/vector:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/12/bits/ostream_insert.h:
 
 /usr/include/SDL2/SDL_clipboard.h:
 
@@ -2588,17 +2578,9 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/utility.h:
 
-/usr/include/c++/12/algorithm:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512pfintrin.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
-/usr/include/c++/12/iostream:
-
-/usr/include/x86_64-linux-gnu/bits/timex.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+/usr/include/x86_64-linux-gnu/c++/12/bits/c++locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
@@ -2615,6 +2597,10 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 /usr/include/c++/12/bits/cpp_type_traits.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitintrin.h:
+
+/usr/include/c++/12/bits/concept_check.h:
 
 /usr/include/c++/12/bits/allocated_ptr.h:
 
@@ -2650,29 +2636,21 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avxvnniintrin.h:
-
 /usr/include/c++/12/bits/uniform_int_dist.h:
 
 /usr/include/c++/12/bits/ptr_traits.h:
 
-/usr/include/c++/12/bits/string_view.tcc:
-
-/usr/include/endian.h:
-
-/usr/include/c++/12/bits/predefined_ops.h:
-
-/usr/include/stdint.h:
-
-/usr/include/wctype.h:
-
-/usr/include/sched.h:
-
 /usr/include/c++/12/backward/auto_ptr.h:
 
-/usr/include/c++/12/bits/functexcept.h:
+/usr/include/x86_64-linux-gnu/bits/timex.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitxintrin.h:
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/c++/12/iostream:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/adxintrin.h:
+
+/home/beckboan/repos/2dphysics/include/rigidbody.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h:
 
@@ -2680,31 +2658,45 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/tr1/exp_integral.tcc:
 
-/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
+/usr/include/linux/errno.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx5124fmapsintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512cdintrin.h:
+
+/usr/include/c++/12/ext/aligned_buffer.h:
+
+/usr/include/features-time64.h:
 
 /usr/include/SDL2/SDL_locale.h:
 
+/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
+
 /usr/include/c++/12/bits/atomic_base.h:
 
+/usr/include/c++/12/cctype:
+
+/usr/include/SDL2/SDL_shape.h:
+
+/usr/include/SDL2/SDL_quit.h:
+
+/usr/include/c++/12/bits/locale_facets.h:
+
+/usr/include/c++/12/string_view:
+
+/usr/include/c++/12/stdexcept:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/wbnoinvdintrin.h:
+
+/usr/include/c++/12/istream:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/rtmintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/SDL2/SDL_opengl.h:
 
 /usr/include/c++/12/bits/exception_defines.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx5124fmapsintrin.h:
-
-/usr/include/c++/12/ext/aligned_buffer.h:
-
-/usr/include/features-time64.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512cdintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
@@ -2720,10 +2712,6 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/pthread.h:
 
-/usr/include/c++/12/bits/concept_check.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitintrin.h:
-
 /usr/include/c++/12/pstl/pstl_config.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
@@ -2736,11 +2724,13 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
+/usr/include/SDL2/SDL_rect.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/cetintrin.h:
+
+/usr/include/c++/12/bits/stl_uninitialized.h:
+
 /usr/include/string.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/shaintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/pmmintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -2748,21 +2738,9 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/stl_algobase.h:
 
-/home/beckboan/repos/2dphysics/include/rigidbody.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/adxintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512bf16intrin.h:
 
 /usr/include/c++/12/bits/allocator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/sgxintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/c++/12/bits/align.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512fintrin.h:
 
 /usr/include/c++/12/bits/memoryfwd.h:
 
@@ -2772,7 +2750,13 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/popcntintrin.h:
+/usr/include/locale.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/movdirintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/c++/12/bits/stl_iterator.h:
 
@@ -2784,19 +2768,31 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/stl_raw_storage_iter.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/bmiintrin.h:
-
 /home/beckboan/repos/2dphysics/src/transform.cpp:
 
 /usr/include/c++/12/debug/debug.h:
 
 /usr/include/wchar.h:
 
+/usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h:
+
 /usr/include/c++/12/bits/alloc_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
+/usr/include/c++/12/bits/align.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/12/bits/basic_string.h:
 
 /usr/include/c++/12/ext/alloc_traits.h:
 
@@ -2805,6 +2801,12 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 /usr/lib/gcc/x86_64-linux-gnu/12/include/amxtileintrin.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/keylockerintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vlintrin.h:
+
+/usr/include/c++/12/bits/stl_tempbuf.h:
 
 /usr/include/SDL2/SDL_misc.h:
 
@@ -2818,27 +2820,63 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/bits/shared_ptr_atomic.h:
 
-/usr/include/SDL2/SDL.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/waitpkgintrin.h:
 
-/usr/include/c++/12/pstl/glue_memory_defs.h:
+/usr/include/c++/12/pstl/execution_defs.h:
 
-/usr/include/SDL2/SDL_main.h:
+/usr/include/c++/12/bits/basic_ios.h:
 
-/usr/include/x86_64-linux-gnu/sys/types.h:
+/home/beckboan/repos/2dphysics/src/mathfuncs.cpp:
 
-/usr/include/SDL2/SDL_metal.h:
+/usr/include/c++/12/ostream:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xsavecintrin.h:
+/usr/include/c++/12/tr1/special_function_util.h:
 
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+/usr/include/c++/12/ios:
 
-/usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h:
+/usr/include/c++/12/bits/char_traits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vlbwintrin.h:
+/usr/include/c++/12/cstdint:
 
-/usr/include/SDL2/close_code.h:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+/usr/include/SDL2/SDL_thread.h:
+
+/usr/include/c++/12/pstl/glue_algorithm_defs.h:
+
+/usr/include/c++/12/bits/localefwd.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/SDL2/SDL_gesture.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/float.h:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/12/bits/ios_base.h:
+
+/usr/include/c++/12/bits/locale_classes.h:
+
+/usr/include/SDL2/SDL_render.h:
+
+/usr/include/c++/12/bits/cxxabi_forced.h:
+
+/usr/include/endian.h:
+
+/usr/include/c++/12/bits/predefined_ops.h:
+
+/usr/include/stdint.h:
+
+/usr/include/c++/12/bits/string_view.tcc:
+
+/usr/include/SDL2/SDL_assert.h:
+
+/usr/include/SDL2/SDL_opengl_glext.h:
+
+/usr/include/c++/12/bits/vector.tcc:
+
+/usr/include/c++/12/ext/string_conversions.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/serializeintrin.h:
 
@@ -2846,7 +2884,17 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/c++/12/cstdlib:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xsavesintrin.h:
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/c++/12/pstl/glue_memory_defs.h:
+
+/usr/include/SDL2/SDL_main.h:
 
 /usr/include/SDL2/SDL_timer.h:
 
@@ -2858,61 +2906,91 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
-/usr/include/SDL2/SDL_assert.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
 /usr/include/alloca.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/lwpintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/home/beckboan/repos/2dphysics/include/simplephysics.h:
+
+/usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/sched.h:
+
+/usr/include/wctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/usr/include/c++/12/bits/istream.tcc:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/SDL2/SDL_loadso.h:
+
+/usr/include/c++/12/bits/charconv.h:
+
+/usr/include/c++/12/bits/basic_string.tcc:
+
+/usr/include/SDL2/SDL_mouse.h:
+
+/usr/include/c++/12/system_error:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/c++/12/streambuf:
+
+/usr/include/c++/12/bits/streambuf.tcc:
+
+/usr/include/c++/12/bits/streambuf_iterator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avxintrin.h:
+
+/home/beckboan/repos/2dphysics/include/shape.h:
+
+/usr/include/SDL2/SDL.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vlbwintrin.h:
+
+/usr/include/SDL2/close_code.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512ifmavlintrin.h:
 
 /usr/include/inttypes.h:
 
-/usr/include/SDL2/SDL_gesture.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/float.h:
-
-/usr/include/ctype.h:
+/usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/error_constants.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/include/SDL2/SDL_rect.h:
-
-/usr/include/c++/12/bits/stl_uninitialized.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/cetintrin.h:
-
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/clwbintrin.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/wmmintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/SDL2/SDL_thread.h:
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
 /home/beckboan/repos/2dphysics/include/physicsworld.h:
 
 /usr/include/c++/12/bits/specfun.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/bmi2intrin.h:
-
 /usr/include/c++/12/limits:
 
 /usr/include/c++/12/tr1/gamma.tcc:
-
-/usr/include/c++/12/tr1/special_function_util.h:
 
 /usr/include/c++/12/cwchar:
 
@@ -2938,8 +3016,6 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 
 /usr/include/SDL2/SDL_atomic.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx2intrin.h:
-
 /usr/include/SDL2/SDL_endian.h:
 
 /usr/include/SDL2/SDL_rwops.h:
@@ -2947,79 +3023,3 @@ CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src
 /usr/include/c++/12/cassert:
 
 /usr/include/SDL2/SDL_cpuinfo.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/x86gprintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/cldemoteintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/clzerointrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/pkuintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/enqcmdintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/fxsrintrin.h:
-
-/usr/include/c++/12/bits/std_abs.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/lzcntintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/lwpintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/pconfigintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/rdseedintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/tsxldtrkintrin.h:
-
-/usr/include/c++/12/bits/unique_ptr.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/uintrintrin.h:
-
-/usr/include/c++/12/pstl/execution_defs.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/waitpkgintrin.h:
-
-/usr/include/c++/12/istream:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/wbnoinvdintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/fmaintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveoptintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/tmmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xtestintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/movdirintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xmmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mm_malloc.h:
-
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/wmmintrin.h:
-
-/home/beckboan/repos/2dphysics/include/shape.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avxintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512erintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/keylockerintrin.h:
-
-/usr/include/c++/12/bits/stl_tempbuf.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vlintrin.h:
