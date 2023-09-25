@@ -56,11 +56,17 @@ void Circle::draw(SDL_Renderer * renderer, vec2d& position) {
 }
 
 
-float Circle::calculateArea() const {return radius * radius * M_PI;}
+void Circle::calculateMassProperties(float& density) {
+        std::shared_ptr<RigidBody> body_ref = body.lock();
+        body_ref->area = radius * radius * M_PI;
+        body_ref->m = body_ref->area *density;
+        body_ref->I = body_ref->m * radius * radius /2;
+        body_ref->inv_m = (body_ref->m) ? 1.0f / body_ref -> I : 0;
+        body_ref->inv_I = (body_ref->I) ? 1.0f / body_ref -> I : 0;
 
-float Circle::calculateInertia(float& mass) const {
-    return mass * radius * radius /2;
-}
+    }
+
+//Inertia return mass * radius * radius /2;
 
 void Circle::createAABB() {}
 
@@ -134,9 +140,7 @@ void Poly::draw(SDL_Renderer * renderer, vec2d& position) {
 
 }
 
-float Poly::calculateArea() const {return 0;}
-
-float Poly::calculateInertia(float& mass) const {return 0;}
+void Poly::calculateMassProperties(float& density) {};
 
 void Poly::createAABB() {}
 

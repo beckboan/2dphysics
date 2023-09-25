@@ -9,10 +9,12 @@ int main(int, char**){
 
     vec2d origin = vec2d(0, 0);
 
-    std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(100);
+    std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
     std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,origin,1000);
-    bod1->shape->setBody(bod1);
     bod1->moveto(vec2d(500,500));
+
+    std::cout << bod1->m << std::endl;
+    std::cout << bod1->I << std::endl;
 
 
     std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d(3,0)};

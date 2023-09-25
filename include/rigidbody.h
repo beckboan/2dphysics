@@ -7,7 +7,7 @@
 struct Transform;
 struct Shape;
 
-struct RigidBody {
+struct RigidBody: public std::enable_shared_from_this<RigidBody> {
     RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_);
     RigidBody(const RigidBody&) = delete;
     RigidBody& operator=(const RigidBody&) = delete;

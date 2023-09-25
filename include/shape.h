@@ -20,9 +20,8 @@ struct Shape {
     virtual ShapeType getType() const = 0;
     virtual std::string getName() const = 0;
     virtual void draw(SDL_Renderer * renderer, vec2d& position) = 0;
-    virtual float calculateArea() const = 0;
-    virtual float calculateInertia(float& mass)const = 0;
     virtual void createAABB() = 0;
+    virtual void calculateMassProperties(float& density) = 0;
 
     std::weak_ptr<RigidBody> body;
     void setBody(const std::shared_ptr<RigidBody>& body_);
@@ -37,8 +36,7 @@ struct Circle: public Shape {
     ShapeType getType() const;
     std::string getName() const;
     void draw(SDL_Renderer * renderer, vec2d& position);
-    float calculateArea() const;
-    float calculateInertia(float& mass) const;
+    void calculateMassProperties(float& density);
     void createAABB();
 
 };
@@ -55,8 +53,7 @@ struct Poly: public Shape {
     ShapeType getType() const;
     std::string getName() const;
     void draw(SDL_Renderer * renderer, vec2d& position);
-    float calculateArea() const;
-    float calculateInertia(float& mass) const;
+    void calculateMassProperties(float& density);
     void createAABB();   
     void calculatePolyNormals();
 };
