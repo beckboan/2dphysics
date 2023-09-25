@@ -73,6 +73,13 @@ inline float findOrientation(const vec2d& p1, const vec2d& p2, const vec2d& p) {
     else return 0; // Collinear
 }
 
+inline float findOrientation(vec2d& p1, vec2d& p2, vec2d& p) {
+    const float val = (p2.y- p1.y) * (p.x - p2.x) - (p2.x - p1.x) * (p.y - p2.y);
+    if (val > 0) {return 1;} //CW
+    else if (val < 0) { return -1;} //CCW
+    else return 0; // Collinear
+}
+
 inline bool isLeftOf( const vec2d& p1, const vec2d& p2) {
     return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
 }

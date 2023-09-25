@@ -46,12 +46,18 @@ Poly::Poly(std::vector<vec2d>& v) {
         vertex_count++;
     }
 
+    if(findOrientation(v.front(),v.back(),v.back()) <= 0) {
+        hull.push_back(v.back());
+        vertex_count++;
+    }
+
     std::cout <<vertex_count<< std::endl;
     assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
     for (unsigned int i = 0; i < vertex_count; i++)
     {
         vertex_list.push_back(hull[i]);
+        std::cout << "X: " << hull[i].x << "Y: " << hull[i].y << std::endl;
     }
 
     calculatePolyNormals();
