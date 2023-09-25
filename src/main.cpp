@@ -7,12 +7,12 @@
 int main(int, char**){
     PhysicsWorld world;
 
-    vec2d position = vec2d(500, 500);
+    vec2d position = vec2d(0, 0);
 
     // std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
 
-    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(2,0), vec2d(2,-5), vec2d(3,1), vec2d(4,0), vec2d(1,1), vec2d(3,0)};
+    std::vector<vec2d> verticies = {vec2d(0,500), vec2d(200,500), vec2d(200,-0), vec2d(300,600), vec2d(400,500), vec2d(100,650), vec2d(300,500)};
 
     Poly poly = Poly(verticies);
 
