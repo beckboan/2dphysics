@@ -3,6 +3,8 @@
 
 #include "shape.h"
 #include <iostream>
+#include <vector>
+#include "mathfuncs.h"
 
 struct Circle: public Shape {
     Circle(float radius);

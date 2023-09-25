@@ -78,8 +78,24 @@ void Poly::draw(SDL_Renderer * renderer, vec2d& position) {
     }
 }
 
+    //Using triangulation of the polygon to get its area/centroid/inertia
 void Poly::calculateMassProperties(float& density) {
-    
+    vec2d centroid(0,0);
+    float area = 0;
+    float I = 0;
+    for (unsigned int i = 0; i < vertex_count; i++) {
+        vec2d p1 = vertex_list[i];
+        vec2d p2 = vertex_list[i+1];
+
+        //Calculate parallelogram area and divide by two for triangle area
+        float tArea = cp(p1, p2);
+        area += tArea;
+
+        
+    }
+
+
+
 
 };
 
