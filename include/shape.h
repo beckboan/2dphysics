@@ -55,6 +55,7 @@ struct Poly: public Shape {
     void draw(SDL_Renderer * renderer, vec2d& position);
     void calculateMassProperties(float& density);
     void createAABB();   
+    void setSpaceOrientation(float radians);
     void calculatePolyNormals();
 };
 

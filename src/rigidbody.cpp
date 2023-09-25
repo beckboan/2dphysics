@@ -23,11 +23,9 @@ void RigidBody::rigidIni() {
     hasProperties = true;
 }
 
-
 void RigidBody::setBodyStatic() {
     m, I, inv_I, inv_m = 0.0f;
 }
-
 
 //Physics Functions
 void RigidBody::move(const vec2d& amount) {
