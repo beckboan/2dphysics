@@ -310,4 +310,7 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: \
  /usr/include/SDL2/SDL_misc.h /usr/include/c++/12/vector \
  /usr/include/c++/12/bits/stl_vector.h \
  /usr/include/c++/12/bits/stl_bvector.h \
- /usr/include/c++/12/bits/vector.tcc
+ /usr/include/c++/12/bits/vector.tcc \
+ /home/beckboan/repos/2dphysics/include/polygon.h \
+ /home/beckboan/repos/2dphysics/include/shape.h \
+ /home/beckboan/repos/2dphysics/include/circle.h

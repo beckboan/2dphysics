@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "2dphysics"
   "2dphysics.pdb"
+  "CMakeFiles/2dphysics.dir/src/circle.cpp.o"
+  "CMakeFiles/2dphysics.dir/src/circle.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/collisions.cpp.o"
   "CMakeFiles/2dphysics.dir/src/collisions.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/main.cpp.o"
@@ -9,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o"
   "CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o.d"
+  "CMakeFiles/2dphysics.dir/src/polygon.cpp.o"
+  "CMakeFiles/2dphysics.dir/src/polygon.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o"
   "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/shape.cpp.o"

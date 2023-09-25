@@ -2,6 +2,8 @@
 #include "physicsworld.h"
 #include "mathfuncs.h"
 #include "shape.h"
+#include "circle.h"
+#include "polygon.h"
 
 #define DBG(msg) std::cout << msg <<std::endl;
 

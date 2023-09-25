@@ -523,6 +523,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/build
 .PHONY : 2dphysics/fast
 
+src/circle.o: src/circle.cpp.o
+.PHONY : src/circle.o
+
+# target to build an object file
+src/circle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/circle.cpp.o
+.PHONY : src/circle.cpp.o
+
+src/circle.i: src/circle.cpp.i
+.PHONY : src/circle.i
+
+# target to preprocess a source file
+src/circle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/circle.cpp.i
+.PHONY : src/circle.cpp.i
+
+src/circle.s: src/circle.cpp.s
+.PHONY : src/circle.s
+
+# target to generate assembly for a file
+src/circle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/circle.cpp.s
+.PHONY : src/circle.cpp.s
+
 src/collisions.o: src/collisions.cpp.o
 .PHONY : src/collisions.o
 
@@ -618,6 +642,30 @@ src/physicsworld.s: src/physicsworld.cpp.s
 src/physicsworld.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
 .PHONY : src/physicsworld.cpp.s
+
+src/polygon.o: src/polygon.cpp.o
+.PHONY : src/polygon.o
+
+# target to build an object file
+src/polygon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/polygon.cpp.o
+.PHONY : src/polygon.cpp.o
+
+src/polygon.i: src/polygon.cpp.i
+.PHONY : src/polygon.i
+
+# target to preprocess a source file
+src/polygon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/polygon.cpp.i
+.PHONY : src/polygon.cpp.i
+
+src/polygon.s: src/polygon.cpp.s
+.PHONY : src/polygon.s
+
+# target to generate assembly for a file
+src/polygon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/polygon.cpp.s
+.PHONY : src/polygon.cpp.s
 
 src/rigidbody.o: src/rigidbody.cpp.o
 .PHONY : src/rigidbody.o
@@ -731,6 +779,9 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... 2dphysics"
+	@echo "... src/circle.o"
+	@echo "... src/circle.i"
+	@echo "... src/circle.s"
 	@echo "... src/collisions.o"
 	@echo "... src/collisions.i"
 	@echo "... src/collisions.s"
@@ -743,6 +794,9 @@ help:
 	@echo "... src/physicsworld.o"
 	@echo "... src/physicsworld.i"
 	@echo "... src/physicsworld.s"
+	@echo "... src/polygon.o"
+	@echo "... src/polygon.i"
+	@echo "... src/polygon.s"
 	@echo "... src/rigidbody.o"
 	@echo "... src/rigidbody.i"
 	@echo "... src/rigidbody.s"

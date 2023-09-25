@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-g++"
+	BuildStamp="20230925-1832-Experimental"
+	Name="Xubuntu"
+	Generator="ctest-3.25.1"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="12.3.0"
+	OSName="Linux"
+	Hostname="Xubuntu"
+	OSRelease="6.2.0-33-generic"
+	OSVersion="#33-Ubuntu SMP PREEMPT_DYNAMIC Tue Sep  5 14:49:19 UTC 2023"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="25"
+	ModelID="80"
+	ProcessorCacheSize="512"
+	NumberOfLogicalCPU="2"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="3219"
+	TotalPhysicalMemory="3907"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="3193.89"
+	>
+	<Testing>
+		<StartDateTime>Sep 25 14:32 EDT</StartDateTime>
+		<StartTestTime>1695666738</StartTestTime>
+		<TestList/>
+		<EndDateTime>Sep 25 14:32 EDT</EndDateTime>
+		<EndTestTime>1695666738</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
