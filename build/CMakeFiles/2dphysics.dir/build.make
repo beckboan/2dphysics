@@ -153,24 +153,10 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/collisions.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckboan/repos/2dphysics/src/collisions.cpp -o CMakeFiles/2dphysics.dir/src/collisions.cpp.s
 
-CMakeFiles/2dphysics.dir/src/transform.cpp.o: CMakeFiles/2dphysics.dir/flags.make
-CMakeFiles/2dphysics.dir/src/transform.cpp.o: /home/beckboan/repos/2dphysics/src/transform.cpp
-CMakeFiles/2dphysics.dir/src/transform.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/2dphysics.dir/src/transform.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/transform.cpp.o -MF CMakeFiles/2dphysics.dir/src/transform.cpp.o.d -o CMakeFiles/2dphysics.dir/src/transform.cpp.o -c /home/beckboan/repos/2dphysics/src/transform.cpp
-
-CMakeFiles/2dphysics.dir/src/transform.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/transform.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckboan/repos/2dphysics/src/transform.cpp > CMakeFiles/2dphysics.dir/src/transform.cpp.i
-
-CMakeFiles/2dphysics.dir/src/transform.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/transform.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckboan/repos/2dphysics/src/transform.cpp -o CMakeFiles/2dphysics.dir/src/transform.cpp.s
-
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: /home/beckboan/repos/2dphysics/src/circle.cpp
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/2dphysics.dir/src/circle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/2dphysics.dir/src/circle.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/circle.cpp.o -MF CMakeFiles/2dphysics.dir/src/circle.cpp.o.d -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckboan/repos/2dphysics/src/circle.cpp
 
 CMakeFiles/2dphysics.dir/src/circle.cpp.i: cmake_force
@@ -184,7 +170,7 @@ CMakeFiles/2dphysics.dir/src/circle.cpp.s: cmake_force
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: /home/beckboan/repos/2dphysics/src/polygon.cpp
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/2dphysics.dir/src/polygon.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/2dphysics.dir/src/polygon.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/polygon.cpp.o -MF CMakeFiles/2dphysics.dir/src/polygon.cpp.o.d -o CMakeFiles/2dphysics.dir/src/polygon.cpp.o -c /home/beckboan/repos/2dphysics/src/polygon.cpp
 
 CMakeFiles/2dphysics.dir/src/polygon.cpp.i: cmake_force
@@ -198,7 +184,7 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.s: cmake_force
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: /home/beckboan/repos/2dphysics/src/scene.cpp
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/2dphysics.dir/src/scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/2dphysics.dir/src/scene.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/scene.cpp.o -MF CMakeFiles/2dphysics.dir/src/scene.cpp.o.d -o CMakeFiles/2dphysics.dir/src/scene.cpp.o -c /home/beckboan/repos/2dphysics/src/scene.cpp
 
 CMakeFiles/2dphysics.dir/src/scene.cpp.i: cmake_force
@@ -217,7 +203,6 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.s: cmake_force
 "CMakeFiles/2dphysics.dir/src/shape.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/collisions.cpp.o" \
-"CMakeFiles/2dphysics.dir/src/transform.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/circle.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/polygon.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/scene.cpp.o"
@@ -231,7 +216,6 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.s: cmake_force
 2dphysics: CMakeFiles/2dphysics.dir/src/shape.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/collisions.cpp.o
-2dphysics: CMakeFiles/2dphysics.dir/src/transform.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/circle.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/polygon.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/scene.cpp.o
@@ -239,7 +223,7 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.s: cmake_force
 2dphysics: /usr/lib/x86_64-linux-gnu/libSDL2.so
 2dphysics: /usr/lib/x86_64-linux-gnu/libGL.so
 2dphysics: CMakeFiles/2dphysics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable 2dphysics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable 2dphysics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/2dphysics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

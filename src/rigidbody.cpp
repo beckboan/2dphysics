@@ -44,14 +44,20 @@ void RigidBody::setRotation(float radians)
     rotation = radians;
 }
 
-void RigidBody::applyForce(const vec2d& other_force) {}
+void RigidBody::applyForce(const vec2d& other_force) 
+{
+
+}
 
 void RigidBody::applyCenterForce(const vec2d& other_force) 
 {
     force += other_force;
 }
 
-void RigidBody::applyLinearImpulse(const vec2d& impulse) {}
+void RigidBody::applyLinearImpulse(const vec2d& impulse) 
+{
+
+}
 
 void RigidBody::applyCenterLinearImpulse(const vec2d& impulse) 
 {

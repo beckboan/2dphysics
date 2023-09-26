@@ -31,11 +31,6 @@
 },
 {
   "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/transform.cpp.o -c /home/beckboan/repos/2dphysics/src/transform.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/transform.cpp"
-},
-{
-  "directory": "/home/beckboan/repos/2dphysics/build",
   "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckboan/repos/2dphysics/src/circle.cpp",
   "file": "/home/beckboan/repos/2dphysics/src/circle.cpp"
 },

@@ -14,7 +14,6 @@ set(SOURCES
     src/shape.cpp
     src/rigidbody.cpp
     src/collisions.cpp
-    src/transform.cpp
     src/circle.cpp
     src/polygon.cpp 
     src/scene.cpp

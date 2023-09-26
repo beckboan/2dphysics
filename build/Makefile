@@ -715,30 +715,6 @@ src/shape.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/shape.cpp.s
 .PHONY : src/shape.cpp.s
 
-src/transform.o: src/transform.cpp.o
-.PHONY : src/transform.o
-
-# target to build an object file
-src/transform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/transform.cpp.o
-.PHONY : src/transform.cpp.o
-
-src/transform.i: src/transform.cpp.i
-.PHONY : src/transform.i
-
-# target to preprocess a source file
-src/transform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/transform.cpp.i
-.PHONY : src/transform.cpp.i
-
-src/transform.s: src/transform.cpp.s
-.PHONY : src/transform.s
-
-# target to generate assembly for a file
-src/transform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/transform.cpp.s
-.PHONY : src/transform.cpp.s
-
 src/world.o: src/world.cpp.o
 .PHONY : src/world.o
 
@@ -827,9 +803,6 @@ help:
 	@echo "... src/shape.o"
 	@echo "... src/shape.i"
 	@echo "... src/shape.s"
-	@echo "... src/transform.o"
-	@echo "... src/transform.i"
-	@echo "... src/transform.s"
 	@echo "... src/world.o"
 	@echo "... src/world.i"
 	@echo "... src/world.s"
