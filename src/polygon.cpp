@@ -31,10 +31,10 @@ Poly::Poly(std::vector<vec2d>& v)
     //Sort point ccw around min_x
     std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
-    for (const vec2d& i : v) 
-    {
-        std::cout << "X: " << i.x << "Y: " << i.y << std::endl;
-    }
+    // for (const vec2d& i : v) 
+    // {
+    //     std::cout << "X: " << i.x << "Y: " << i.y << std::endl;
+    // }
 
     hull.push_back(v[0]);
     hull.push_back(v[1]);
@@ -72,24 +72,25 @@ Poly::Poly(std::vector<vec2d>& v)
     //     vertex_count++;
     // }
 
-    std::cout <<vertex_count<< std::endl;
+    // std::cout <<vertex_count<< std::endl;
+
     assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
     for (unsigned int i = 0; i < vertex_count; i++)
     {
         vertex_list.push_back(hull[i]);
-        std::cout << "X: " << hull[i].x << "Y: " << hull[i].y << std::endl;
+        // std::cout << "X: " << hull[i].x << "Y: " << hull[i].y << std::endl;
     }
 
     calculatePolyNormals();
 
 }
 
-Poly::Poly(float radius, int side_number) 
-{
-    assert(side_number > 2 && side_number <= max_poly_count && "Vertex list size out of bounds");
+// Poly::Poly(float radius, int side_number) 
+// {
+//     assert(side_number > 2 && side_number <= max_poly_count && "Vertex list size out of bounds");
 
-}
+// }
 
 Poly::Poly(float width, float height) : vertex_count(4) 
 {
@@ -101,10 +102,10 @@ Poly::Poly(float width, float height) : vertex_count(4)
     normals.emplace_back(1, 0);  // ->
     normals.emplace_back(0, 1);  // ^
     normals.emplace_back(-1, 0); // <-
-    for (unsigned int i; i < vertex_count; i ++) 
-    {
-        std::cout << "X: " << vertex_list[i].x << " Y: " << vertex_list[i].y << std::endl;
-    }
+    // for (unsigned int i; i < vertex_count; i ++) 
+    // {
+    //     std::cout << "X: " << vertex_list[i].x << " Y: " << vertex_list[i].y << std::endl;
+    // }
 }
 
 Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
@@ -140,13 +141,17 @@ void Poly::calculateMassProperties(float& density)
 
     I *= density;
     centroid *= 1.0/area;
-
+    // std::cout << "X: " << centroid.x << "Y: " << centroid.y << std::endl;
+    for (unsigned int i = 0; i < vertex_count; i++)
+    {
+        vertex_list[i] -= centroid;
+        // std::cout << "X: " << vertex_list[i].x << "Y: " << vertex_list[i].y << std::endl;
+    }
     std::shared_ptr<RigidBody> body_ref = body.lock();
     body_ref->m = area * density;
     body_ref->inv_m = (body_ref->m>0) ? 1.0/body_ref->m : 0;
     body_ref->I = I;
     body_ref->I = (body_ref->I>0) ? 1.0/body_ref->I : 0;
-
 }
 
 void Poly::createAABB() 
