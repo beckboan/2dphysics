@@ -181,7 +181,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/physicsworld.cpp",
+			"path" : "src/world.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

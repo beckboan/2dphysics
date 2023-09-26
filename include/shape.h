@@ -28,9 +28,9 @@ struct Shape {
 
 };
 
-inline void windowTranslate(SDL_Renderer * renderer) {
-    vec2d winSize;
-    SDL_GetRendererOutputSize(renderer, &int(winSize.x), &int(winSize.y));
-};
+// inline void windowTranslate(SDL_Renderer * renderer) {
+//     vec2d winSize;
+//     SDL_GetRendererOutputSize(renderer, &int(winSize.x), &int(winSize.y));
+// };
 
 #endif

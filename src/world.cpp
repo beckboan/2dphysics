@@ -1,5 +1,5 @@
 #include <iostream>
-#include "physicsworld.h"
+#include "world.h"
 #include "mathfuncs.h"
 #include "shape.h"
 #include "circle.h"
@@ -9,7 +9,7 @@
 
 //Creating and Destroying Rigid Bodies
 
-bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
+bool World::addCircle (float radius, vec2d position, float density) {
 
     float area =  radius * radius * M_PI;
     if (!isValidArea(area)) return false;
@@ -24,7 +24,7 @@ bool PhysicsWorld::addCircle (float radius, vec2d position, float density) {
     return true;
 };
 
-bool PhysicsWorld::addRect(float width, float height, vec2d position, float density) {
+bool World::addRect(float width, float height, vec2d position, float density) {
 
     float area =  width * height;
 
@@ -40,13 +40,13 @@ bool PhysicsWorld::addRect(float width, float height, vec2d position, float dens
     return true;
 
 }
-void PhysicsWorld::removePhysicsObject (std::shared_ptr<RigidBody>) {
+void World::removePhysicsObject (std::shared_ptr<RigidBody>) {
 
 };
 
 // Physics Validation
 
-bool PhysicsWorld::isValidArea(float& area) {
+bool World::isValidArea(float& area) {
     if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
         std::cout << "Area outside of world parameters" << std::endl;
         return false;
@@ -54,7 +54,7 @@ bool PhysicsWorld::isValidArea(float& area) {
     return true;
 }
 
-bool PhysicsWorld::isValidDensity(float& density) {
+bool World::isValidDensity(float& density) {
     if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) {
         std::cout << "Density outside of world parameters" << std::endl;
         return false;

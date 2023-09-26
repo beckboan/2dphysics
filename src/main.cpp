@@ -5,7 +5,7 @@
 #define DBG(msg) std::cout << msg <<std::endl;
 
 int main(int, char**){
-    PhysicsWorld world;
+    World world;
 
     vec2d position = vec2d(400, 400);
     float density = 1000;

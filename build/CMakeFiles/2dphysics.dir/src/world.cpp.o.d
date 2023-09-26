@@ -1,5 +1,5 @@
-CMakeFiles/2dphysics.dir/src/main.cpp.o: \
- /home/beckboan/repos/2dphysics/src/main.cpp /usr/include/stdc-predef.h \
+CMakeFiles/2dphysics.dir/src/world.cpp.o: \
+ /home/beckboan/repos/2dphysics/src/world.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/12/iostream \
  /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
@@ -148,12 +148,14 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/basic_ios.tcc \
  /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
  /usr/include/c++/12/bits/istream.tcc \
- /home/beckboan/repos/2dphysics/include/simplephysics.h \
- /home/beckboan/repos/2dphysics/include/collisions.h \
- /home/beckboan/repos/2dphysics/include/rigidbody.h \
+ /home/beckboan/repos/2dphysics/include/world.h \
+ /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_uninitialized.h \
+ /usr/include/c++/12/bits/stl_vector.h \
+ /usr/include/c++/12/bits/stl_bvector.h \
+ /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_uninitialized.h \
- /usr/include/c++/12/bits/stl_tempbuf.h \
+ /home/beckboan/repos/2dphysics/include/rigidbody.h \
+ /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
  /usr/include/c++/12/bits/align.h /usr/include/c++/12/bit \
  /usr/include/c++/12/bits/uses_allocator.h \
@@ -169,10 +171,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/c++/12/backward/auto_ptr.h \
  /usr/include/c++/12/pstl/glue_memory_defs.h \
  /usr/include/c++/12/pstl/execution_defs.h \
- /home/beckboan/repos/2dphysics/include/world.h \
- /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_vector.h \
- /usr/include/c++/12/bits/stl_bvector.h \
- /usr/include/c++/12/bits/vector.tcc \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h \
  /home/beckboan/repos/2dphysics/include/shape.h /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h \
@@ -312,7 +311,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_opengl.h \
- /usr/include/SDL2/SDL_opengl_glext.h \
+ /usr/include/SDL2/SDL_misc.h \
  /home/beckboan/repos/2dphysics/include/circle.h \
+ /home/beckboan/repos/2dphysics/include/shape.h \
  /home/beckboan/repos/2dphysics/include/polygon.h

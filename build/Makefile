@@ -619,30 +619,6 @@ src/mathfuncs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s
 .PHONY : src/mathfuncs.cpp.s
 
-src/physicsworld.o: src/physicsworld.cpp.o
-.PHONY : src/physicsworld.o
-
-# target to build an object file
-src/physicsworld.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o
-.PHONY : src/physicsworld.cpp.o
-
-src/physicsworld.i: src/physicsworld.cpp.i
-.PHONY : src/physicsworld.i
-
-# target to preprocess a source file
-src/physicsworld.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.i
-.PHONY : src/physicsworld.cpp.i
-
-src/physicsworld.s: src/physicsworld.cpp.s
-.PHONY : src/physicsworld.s
-
-# target to generate assembly for a file
-src/physicsworld.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
-.PHONY : src/physicsworld.cpp.s
-
 src/polygon.o: src/polygon.cpp.o
 .PHONY : src/polygon.o
 
@@ -739,6 +715,30 @@ src/transform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/transform.cpp.s
 .PHONY : src/transform.cpp.s
 
+src/world.o: src/world.cpp.o
+.PHONY : src/world.o
+
+# target to build an object file
+src/world.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/world.cpp.o
+.PHONY : src/world.cpp.o
+
+src/world.i: src/world.cpp.i
+.PHONY : src/world.i
+
+# target to preprocess a source file
+src/world.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/world.cpp.i
+.PHONY : src/world.cpp.i
+
+src/world.s: src/world.cpp.s
+.PHONY : src/world.s
+
+# target to generate assembly for a file
+src/world.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/world.cpp.s
+.PHONY : src/world.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -791,9 +791,6 @@ help:
 	@echo "... src/mathfuncs.o"
 	@echo "... src/mathfuncs.i"
 	@echo "... src/mathfuncs.s"
-	@echo "... src/physicsworld.o"
-	@echo "... src/physicsworld.i"
-	@echo "... src/physicsworld.s"
 	@echo "... src/polygon.o"
 	@echo "... src/polygon.i"
 	@echo "... src/polygon.s"
@@ -806,6 +803,9 @@ help:
 	@echo "... src/transform.o"
 	@echo "... src/transform.i"
 	@echo "... src/transform.s"
+	@echo "... src/world.o"
+	@echo "... src/world.i"
+	@echo "... src/world.s"
 .PHONY : help
 
 

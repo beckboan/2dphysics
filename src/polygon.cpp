@@ -150,7 +150,9 @@ void Poly::calculateMassProperties(float& density) {
 
 }
 
-void Poly::createAABB() {}
+void Poly::createAABB() {
+    
+}
 
 void Poly::calculatePolyNormals() {
     normals.clear();

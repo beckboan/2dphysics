@@ -1,11 +1,11 @@
-#ifndef PHYSICSWORLD_H
-#define PHYSICSWORLD_H
+#ifndef WORLD
+#define WORLD
 
 #include <vector>
 #include "mathfuncs.h"
 #include "rigidbody.h"
 
-struct PhysicsWorld {
+struct World {
     
     std::vector<std::shared_ptr<RigidBody>> world_objects;
 

@@ -97,19 +97,19 @@ CMakeFiles/2dphysics.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/main.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckboan/repos/2dphysics/src/main.cpp -o CMakeFiles/2dphysics.dir/src/main.cpp.s
 
-CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: CMakeFiles/2dphysics.dir/flags.make
-CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: /home/beckboan/repos/2dphysics/src/physicsworld.cpp
-CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o -MF CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o.d -o CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o -c /home/beckboan/repos/2dphysics/src/physicsworld.cpp
+CMakeFiles/2dphysics.dir/src/world.cpp.o: CMakeFiles/2dphysics.dir/flags.make
+CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/world.cpp
+CMakeFiles/2dphysics.dir/src/world.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckboan/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2dphysics.dir/src/world.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/world.cpp.o -MF CMakeFiles/2dphysics.dir/src/world.cpp.o.d -o CMakeFiles/2dphysics.dir/src/world.cpp.o -c /home/beckboan/repos/2dphysics/src/world.cpp
 
-CMakeFiles/2dphysics.dir/src/physicsworld.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/physicsworld.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckboan/repos/2dphysics/src/physicsworld.cpp > CMakeFiles/2dphysics.dir/src/physicsworld.cpp.i
+CMakeFiles/2dphysics.dir/src/world.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/world.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckboan/repos/2dphysics/src/world.cpp > CMakeFiles/2dphysics.dir/src/world.cpp.i
 
-CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckboan/repos/2dphysics/src/physicsworld.cpp -o CMakeFiles/2dphysics.dir/src/physicsworld.cpp.s
+CMakeFiles/2dphysics.dir/src/world.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/world.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckboan/repos/2dphysics/src/world.cpp -o CMakeFiles/2dphysics.dir/src/world.cpp.s
 
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/shape.cpp
@@ -199,7 +199,7 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.s: cmake_force
 2dphysics_OBJECTS = \
 "CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/main.cpp.o" \
-"CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o" \
+"CMakeFiles/2dphysics.dir/src/world.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/shape.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o" \
 "CMakeFiles/2dphysics.dir/src/collisions.cpp.o" \
@@ -212,7 +212,7 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.s: cmake_force
 
 2dphysics: CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/main.cpp.o
-2dphysics: CMakeFiles/2dphysics.dir/src/physicsworld.cpp.o
+2dphysics: CMakeFiles/2dphysics.dir/src/world.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/shape.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o
 2dphysics: CMakeFiles/2dphysics.dir/src/collisions.cpp.o

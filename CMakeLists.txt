@@ -10,7 +10,7 @@ find_package(OpenGL REQUIRED)
 set(SOURCES
     src/mathfuncs.cpp
     src/main.cpp
-    src/physicsworld.cpp
+    src/world.cpp
     src/shape.cpp
     src/rigidbody.cpp
     src/collisions.cpp

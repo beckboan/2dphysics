@@ -3,7 +3,7 @@
 
 #include "collisions.h"
 #include "mathfuncs.h"
-#include "physicsworld.h"
+#include "world.h"
 #include "rigidbody.h"
 #include "shape.h"
 #define GL_GLEXT_PROTOTYPES
