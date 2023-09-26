@@ -4,7 +4,8 @@
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
-int main(int, char**){
+int main(int, char**)
+{
     World world;
     Scene scene;
 

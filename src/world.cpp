@@ -9,7 +9,8 @@
 
 //Creating and Destroying Rigid Bodies
 
-bool World::addCircle (float radius, vec2d position, float density) {
+bool World::addCircle (float radius, vec2d position, float density)
+{
 
     float area =  radius * radius * M_PI;
     if (!isValidArea(area)) return false;
@@ -24,7 +25,8 @@ bool World::addCircle (float radius, vec2d position, float density) {
     return true;
 };
 
-bool World::addRect(float width, float height, vec2d position, float density) {
+bool World::addRect(float width, float height, vec2d position, float density) 
+{
 
     float area =  width * height;
 
@@ -40,14 +42,16 @@ bool World::addRect(float width, float height, vec2d position, float density) {
     return true;
 
 }
-void World::removePhysicsObject (std::shared_ptr<RigidBody>) {
+void World::removePhysicsObject (std::shared_ptr<RigidBody>) 
+{
 
 };
 
 // Physics Validation
 
 bool World::isValidArea(float& area) {
-    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) {
+    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) 
+    {
         std::cout << "Area outside of world parameters" << std::endl;
         return false;
     }
@@ -55,7 +59,8 @@ bool World::isValidArea(float& area) {
 }
 
 bool World::isValidDensity(float& density) {
-    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) {
+    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) 
+    {
         std::cout << "Density outside of world parameters" << std::endl;
         return false;
     }

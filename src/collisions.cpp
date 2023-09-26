@@ -5,7 +5,8 @@
 
 void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2) {}
 
-bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
+bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+{
     Circle* C1 = dynamic_cast<Circle*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
 
@@ -24,13 +25,15 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
     return true;
 }
 
-bool CirclevsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
+bool CirclevsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+{
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
     return true;
 }
 
-bool RectvsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
+bool RectvsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+{
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());    
     Poly* R2 = dynamic_cast<Poly*>(B->shape.get());
     return true;

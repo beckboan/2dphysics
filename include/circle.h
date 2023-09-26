@@ -6,7 +6,8 @@
 #include <vector>
 #include "mathfuncs.h"
 
-struct Circle: public Shape {
+struct Circle: public Shape 
+{
     Circle(float radius);
 
     const float radius;

@@ -5,7 +5,8 @@
 #include "circle.h"
 #include "polygon.h"
 
-Scene::Scene() {
+Scene::Scene() 
+{
     SDL_Init(SDL_INIT_EVERYTHING);
 
     window = SDL_CreateWindow("OpenGL Test",
@@ -17,7 +18,8 @@ Scene::Scene() {
     SDL_RenderPresent(renderer);
 }
 
-void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
+void Scene::drawBody(const std::shared_ptr<RigidBody> body) 
+{
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     switch (body->shape->getType())
     {
@@ -32,7 +34,8 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
         int32_t dy = 1;
         int32_t err = dx - diameter;
 
-        while (x >= y) {
+        while (x >= y) 
+        {
             SDL_RenderDrawPoint(renderer, body->position.x + x, body->position.y - y);
             SDL_RenderDrawPoint(renderer, body->position.x + x, body->position.y + y);
             SDL_RenderDrawPoint(renderer, body->position.x - x, body->position.y - y);
@@ -60,7 +63,8 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
     case Shape::ShapeType::Poly:
     {
         Poly* p = dynamic_cast<Poly*>(body->shape.get());
-        for (unsigned int i = 0; i < p->vertex_count; i ++) {
+        for (unsigned int i = 0; i < p->vertex_count; i ++) 
+        {
             int x1 = body->position.x + p->vertex_list[i].x;
             int y1 = body->position.y + p->vertex_list[i].y;
             int x2= body->position.x + p->vertex_list[(i+1) % p->vertex_count].x;

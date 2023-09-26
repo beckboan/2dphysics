@@ -7,7 +7,8 @@
 struct Transform;
 struct Shape;
 
-struct RigidBody {
+struct RigidBody 
+{
     RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_);
     RigidBody(const RigidBody&) = delete;
     RigidBody& operator=(const RigidBody&) = delete;
@@ -53,8 +54,6 @@ struct RigidBody {
     void applyCenterForce( const vec2d& force);
     void applyLinearImpulse(const vec2d& impulse);
     void applyCenterLinearImpulse(const vec2d& impulse);
-
-
 
 };
 #endif

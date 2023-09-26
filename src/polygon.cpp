@@ -5,18 +5,21 @@
 //Polygon
 
 //Polygon Sorter
-struct GrahamCCWSorter {
+struct GrahamCCWSorter 
+{
     const vec2d& pivot;
 
     GrahamCCWSorter(const vec2d& pivot_): pivot(pivot_) {}
 
-    bool operator()(const vec2d& a, const vec2d& b) {
+    bool operator()(const vec2d& a, const vec2d& b) 
+    {
         return findOrientation(a, b, pivot) < 0;
     }
 };
 
 
-Poly::Poly(std::vector<vec2d>& v) {
+Poly::Poly(std::vector<vec2d>& v) 
+{
     //Hull Creation
     std::vector<vec2d> hull;
 
@@ -28,7 +31,8 @@ Poly::Poly(std::vector<vec2d>& v) {
     //Sort point ccw around min_x
     std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
-    for (const vec2d& i : v) {
+    for (const vec2d& i : v) 
+    {
         std::cout << "X: " << i.x << "Y: " << i.y << std::endl;
     }
 
@@ -36,7 +40,8 @@ Poly::Poly(std::vector<vec2d>& v) {
     hull.push_back(v[1]);
     hull.push_back(v[2]);
 
-    for (unsigned int i  = 3; i < v.size(); i++) {
+    for (unsigned int i  = 3; i < v.size(); i++) 
+    {
         vec2d top = hull.back();
         hull.pop_back();
         while(findOrientation(hull.back(), top, v[i]) >=0) {
@@ -80,12 +85,14 @@ Poly::Poly(std::vector<vec2d>& v) {
 
 }
 
-Poly::Poly(float radius, int side_number) {
+Poly::Poly(float radius, int side_number) 
+{
     assert(side_number > 2 && side_number <= max_poly_count && "Vertex list size out of bounds");
 
 }
 
-Poly::Poly(float width, float height) : vertex_count(4) {
+Poly::Poly(float width, float height) : vertex_count(4) 
+{
     vertex_list.emplace_back(-width/2, -height/2);
     vertex_list.emplace_back(width/2, -height/2);
     vertex_list.emplace_back(width/2, height/2);
@@ -94,7 +101,8 @@ Poly::Poly(float width, float height) : vertex_count(4) {
     normals.emplace_back(1, 0);  // ->
     normals.emplace_back(0, 1);  // ^
     normals.emplace_back(-1, 0); // <-
-    for (unsigned int i; i < vertex_count; i ++) {
+    for (unsigned int i; i < vertex_count; i ++) 
+    {
         std::cout << "X: " << vertex_list[i].x << " Y: " << vertex_list[i].y << std::endl;
     }
 }
@@ -104,12 +112,14 @@ Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 std::string Poly::getName() const {return "Poylgon";}
 
     //Using triangulation of the polygon to get its area/centroid/inertia
-void Poly::calculateMassProperties(float& density) {
+void Poly::calculateMassProperties(float& density) 
+{
     vec2d centroid(0,0);
     float area = 0;
     float I = 0;
     float k_c = 1.0/3.0;
-    for (unsigned int i = 0; i < vertex_count; i++) {
+    for (unsigned int i = 0; i < vertex_count; i++) 
+    {
         vec2d p1 = vertex_list[i];
         unsigned int i2 = i+1 < vertex_count ? i + 1 : 0;
         vec2d p2 = vertex_list[i2];
@@ -139,11 +149,13 @@ void Poly::calculateMassProperties(float& density) {
 
 }
 
-void Poly::createAABB() {
+void Poly::createAABB() 
+{
     
 }
 
-void Poly::calculatePolyNormals() {
+void Poly::calculatePolyNormals() 
+{
     normals.clear();
     assert (vertex_count > 2 && vertex_count < max_poly_count && "Vertex count out of bounds");
     for (unsigned int i =0; i < vertex_count; i ++) {

@@ -7,7 +7,8 @@
 #include "mathfuncs.h"
 
 
-struct Poly: public Shape {
+struct Poly: public Shape 
+{
     Poly(std::vector<vec2d>& verticies); //Normal Poly
     Poly(float width, float height); //Rectangle Poly
     Poly(float radius, int side_number); //Regular Polygon (think stop sign)

@@ -5,7 +5,8 @@
 #include "mathfuncs.h"
 #include "rigidbody.h"
 
-struct World {
+struct World 
+{
     
     std::vector<std::shared_ptr<RigidBody>> world_objects;
 
@@ -22,7 +23,8 @@ struct World {
     void worldStep();
 };
 
-struct WorldParams{
+struct WorldParams
+{
     static constexpr float min_body_area = 0.01; // m^2
     static constexpr float max_body_area = 100*100; // m^2
     static constexpr float min_body_density = 200; // kg/m^3

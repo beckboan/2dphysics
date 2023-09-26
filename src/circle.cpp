@@ -2,7 +2,8 @@
 #include "iostream"
 
 //Circle
-Circle::Circle(float radius): radius(radius) {
+Circle::Circle(float radius): radius(radius) 
+{
         std::cout << "Circle" << std::endl;
     }
 
@@ -10,7 +11,8 @@ Shape::ShapeType Circle::getType() const {return ShapeType::Circle;}
 
 std::string Circle::getName() const {return "Circle";}
 
-void Circle::calculateMassProperties(float& density) {
+void Circle::calculateMassProperties(float& density) 
+{
         std::shared_ptr<RigidBody> body_ref = body.lock();
         body_ref->area = radius * radius * M_PI;
         body_ref->m = body_ref->area *density;

@@ -9,7 +9,8 @@
 
 #define max_poly_count 32
 
-struct Shape {
+struct Shape 
+{
 
     enum ShapeType {
         Circle, Poly

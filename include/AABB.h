@@ -12,7 +12,8 @@ private:
 public: 
 };
 
-inline bool checkAABBOverlap(const AABB& box1, const AABB& box2) {
+inline bool checkAABBOverlap(const AABB& box1, const AABB& box2) 
+{
 }
 
 #endif
