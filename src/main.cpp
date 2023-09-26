@@ -15,7 +15,7 @@ int main(int, char**){
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
     // bod1->shape->setBody(bod1);
 
-    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(100,100), vec2d(300,150), vec2d(200,-200), vec2d(800,-0)};
+    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(100,100), vec2d(200,100), vec2d(200,110), vec2d(300,100), vec2d(200,-200), vec2d(800,-0)};
 
     std::unique_ptr<Shape> pol = std::make_unique<Poly>(verticies);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(pol, position, density);
