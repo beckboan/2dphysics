@@ -89,4 +89,12 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
 }
 
 
-void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {}
+void Scene::drawAABB(const std::shared_ptr<RigidBody> body) 
+{
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    int min_x = body->shape->aabb->min.x;
+    int min_y = body->shape->aabb->min.y;
+    int max_x = body->shape->aabb->max.x;
+    int max_y = body->shape->aabb->max.y;
+    
+}

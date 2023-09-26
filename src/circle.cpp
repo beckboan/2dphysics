@@ -30,6 +30,6 @@ void Circle::createAABB()
     float position_x = body_temp->position.x;
     float position_y = body_temp->position.y;
     aabb = std::make_unique<AABB>();
-    aabb->max.assign(radius,radius);
-    aabb->min.assign(-radius,-radius);
+    aabb->max.assign(position_x+radius,position_y+radius);
+    aabb->min.assign(position_x-radius,position_y-radius);
 }
