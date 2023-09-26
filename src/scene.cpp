@@ -38,14 +38,14 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
 
         while (x >= y) 
         {
-            SDL_RenderDrawPoint(renderer, body->position.x + x, body->position.y - y);
-            SDL_RenderDrawPoint(renderer, body->position.x + x, body->position.y + y);
-            SDL_RenderDrawPoint(renderer, body->position.x - x, body->position.y - y);
-            SDL_RenderDrawPoint(renderer, body->position.x - x, body->position.y + y);
-            SDL_RenderDrawPoint(renderer, body->position.x + y, body->position.y - x);
-            SDL_RenderDrawPoint(renderer, body->position.x + y, body->position.y + x);
-            SDL_RenderDrawPoint(renderer, body->position.x - y, body->position.y - x);
-            SDL_RenderDrawPoint(renderer, body->position.x - y, body->position.y + x);
+            SDL_RenderDrawPoint(renderer, body->position.x + x, screen_y + -1*(body->position.y) - y);
+            SDL_RenderDrawPoint(renderer, body->position.x + x, screen_y + -1*(body->position.y) + y);
+            SDL_RenderDrawPoint(renderer, body->position.x - x, screen_y + -1*(body->position.y) - y);
+            SDL_RenderDrawPoint(renderer, body->position.x - x, screen_y + -1*(body->position.y) + y);
+            SDL_RenderDrawPoint(renderer, body->position.x + y, screen_y + -1*(body->position.y) - x);
+            SDL_RenderDrawPoint(renderer, body->position.x + y, screen_y + -1*(body->position.y) + x);
+            SDL_RenderDrawPoint(renderer, body->position.x - y, screen_y + -1*(body->position.y) - x);
+            SDL_RenderDrawPoint(renderer, body->position.x - y, screen_y + -1*(body->position.y) + x);
 
             if (err <= 0) {
                 ++y;
