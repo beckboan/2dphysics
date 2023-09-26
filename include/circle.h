@@ -14,7 +14,6 @@ struct Circle: public Shape
 
     ShapeType getType() const;
     std::string getName() const;
-    void draw(SDL_Renderer * renderer, vec2d& position);
     void calculateMassProperties(float& density);
     void createAABB();
 

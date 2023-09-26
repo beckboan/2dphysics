@@ -24,12 +24,10 @@ struct Shape
     virtual void createAABB() = 0;
     virtual void calculateMassProperties(float& density) = 0;  
 
-
     std::weak_ptr<RigidBody> body;
     void setBody(const std::shared_ptr<RigidBody>& body_);
-
     std::unique_ptr<AABB> aabb;
-    
+
 };
 
 

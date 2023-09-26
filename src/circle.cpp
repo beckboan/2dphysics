@@ -14,14 +14,13 @@ std::string Circle::getName() const {return "Circle";}
 
 void Circle::calculateMassProperties(float& density) 
 {
-        std::shared_ptr<RigidBody> body_ref = body.lock();
-        body_ref->area = radius * radius * M_PI;
-        body_ref->m = body_ref->area *density;
-        body_ref->I = body_ref->m * radius * radius /2;
-        body_ref->inv_m = (body_ref->m) ? 1.0f / body_ref -> I : 0;
-        body_ref->inv_I = (body_ref->I) ? 1.0f / body_ref -> I : 0;
-
-    }
+    std::shared_ptr<RigidBody> body_ref = body.lock();
+    body_ref->area = radius * radius * M_PI;
+    body_ref->m = body_ref->area *density;
+    body_ref->I = body_ref->m * radius * radius /2;
+    body_ref->inv_m = (body_ref->m) ? 1.0f / body_ref -> I : 0;
+    body_ref->inv_I = (body_ref->I) ? 1.0f / body_ref -> I : 0;
+}
 
 //Inertia return mass * radius * radius /2;
 
