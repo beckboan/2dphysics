@@ -28,6 +28,7 @@ public:
     void assign(float x, float y);
     float length () const;
     vec2d normalize();
+    vec2d negY(); 
 };
 
 //Dot Product

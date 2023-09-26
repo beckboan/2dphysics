@@ -4,13 +4,15 @@
 #include "shape.h"
 #include "circle.h"
 #include "polygon.h"
+#include "mathfuncs.h"
+#include <vector>
 
-Scene::Scene() 
+Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
 
     window = SDL_CreateWindow("OpenGL Test",
-    SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 800, SDL_WINDOW_OPENGL);
+    SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_x, screen_y, SDL_WINDOW_OPENGL);
     
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -63,12 +65,19 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
     case Shape::ShapeType::Poly:
     {
         Poly* p = dynamic_cast<Poly*>(body->shape.get());
-        for (unsigned int i = 0; i < p->vertex_count; i ++) 
+        std::vector<vec2d> inverted_points;
+        unsigned int v_c = p->vertex_count;
+        for (unsigned int i =0; i < v_c; i++)
         {
-            int x1 = body->position.x + p->vertex_list[i].x;
-            int y1 = body->position.y + p->vertex_list[i].y;
-            int x2= body->position.x + p->vertex_list[(i+1) % p->vertex_count].x;
-            int y2 = body->position.y + p->vertex_list[(i+1) % p->vertex_count].y;
+            inverted_points.push_back((p->vertex_list[i] += body->position).negY());
+
+        }
+        for (unsigned int i = 0; i < v_c; i ++) 
+        {
+            int x1 = inverted_points[i].x;
+            int y1 = screen_y + inverted_points[i].y;
+            int x2= inverted_points[(i+1) % v_c].x;
+            int y2 = screen_y + inverted_points[(i+1) % v_c].y;
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
         }
         SDL_RenderPresent(renderer);
@@ -78,10 +87,3 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
         break;
     }
 }
-
-
-
-// inline void windowTranslate(SDL_Renderer * renderer) {
-//     vec2d winSize;
-//     SDL_GetRendererOutputSize(renderer, &int(winSize.x), &int(winSize.y));
-// };

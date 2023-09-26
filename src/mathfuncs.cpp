@@ -101,3 +101,8 @@ void vec2d::assign(float x, float y)
     this->x;
     this->y;
 }
+
+vec2d vec2d::negY()
+{
+    return vec2d(x, -y);
+}

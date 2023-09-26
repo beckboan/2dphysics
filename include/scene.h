@@ -8,8 +8,10 @@
 
 struct Scene
 {
-    Scene();
+    Scene(int screen_x_, int screen_y_);
 
+    const int32_t screen_x;
+    const int32_t screen_y;
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
 

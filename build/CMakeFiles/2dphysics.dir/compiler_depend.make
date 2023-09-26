@@ -2519,7 +2519,8 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: /home/beckboan/repos/2dphysics/src/sce
   /usr/include/c++/12/bits/ostream.tcc \
   /usr/include/c++/12/istream \
   /usr/include/c++/12/bits/istream.tcc \
-  /home/beckboan/repos/2dphysics/include/polygon.h
+  /home/beckboan/repos/2dphysics/include/polygon.h \
+  /home/beckboan/repos/2dphysics/include/mathfuncs.h
 
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/shape.cpp \
   /usr/include/stdc-predef.h \
