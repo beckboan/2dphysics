@@ -32,5 +32,4 @@ struct WorldParams{
     const vec2d viewport = vec2d(1200,800);
 };
 
-
 #endif

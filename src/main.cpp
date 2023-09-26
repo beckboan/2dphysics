@@ -6,6 +6,7 @@
 
 int main(int, char**){
     World world;
+    Scene scene;
 
     vec2d position = vec2d(400, 400);
     float density = 1000;
@@ -22,18 +23,7 @@ int main(int, char**){
     bod->shape->setBody(bod);
     //bod->moveto(movetopos);
 
-
-    SDL_Init(SDL_INIT_EVERYTHING);
-
-    SDL_Window *window = SDL_CreateWindow("OpenGL Test",
-    SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 800, SDL_WINDOW_OPENGL);
-    
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear (renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    bod->shape->draw(renderer, position);
-    SDL_RenderPresent(renderer);
+    scene.drawBody(bod);
 
     std::cin.get();
 

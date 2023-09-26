@@ -19,7 +19,6 @@ struct Shape {
     ~Shape() {}
     virtual ShapeType getType() const = 0;
     virtual std::string getName() const = 0;
-    virtual void draw(SDL_Renderer * renderer, vec2d& position) = 0;
     virtual void createAABB() = 0;
     virtual void calculateMassProperties(float& density) = 0;
 
@@ -28,9 +27,6 @@ struct Shape {
 
 };
 
-// inline void windowTranslate(SDL_Renderer * renderer) {
-//     vec2d winSize;
-//     SDL_GetRendererOutputSize(renderer, &int(winSize.x), &int(winSize.y));
-// };
+
 
 #endif

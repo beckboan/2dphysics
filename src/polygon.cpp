@@ -103,17 +103,6 @@ Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 
 std::string Poly::getName() const {return "Poylgon";}
 
-void Poly::draw(SDL_Renderer * renderer, vec2d& position) {
-    std::shared_ptr<RigidBody> body_ref = body.lock();
-    for (unsigned int i = 0; i < vertex_count; i ++) {
-        int x1 = body_ref -> position.x + vertex_list[i].x;
-        int y1 = body_ref -> position.y + vertex_list[i].y;
-        int x2= body_ref -> position.x + vertex_list[(i+1) % vertex_count].x;
-        int y2 = body_ref -> position.y + vertex_list[(i+1) % vertex_count].y;
-        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-    }
-}
-
     //Using triangulation of the polygon to get its area/centroid/inertia
 void Poly::calculateMassProperties(float& density) {
     vec2d centroid(0,0);

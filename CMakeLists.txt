@@ -17,6 +17,7 @@ set(SOURCES
     src/transform.cpp
     src/circle.cpp
     src/polygon.cpp 
+    src/scene.cpp
 )
 
 add_executable(2dphysics ${SOURCES})

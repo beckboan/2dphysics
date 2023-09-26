@@ -6,7 +6,7 @@
 void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2) {}
 
 bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) {
-    Circle* C1 = dynamic_cast<Circle*>(A->shape.get());;
+    Circle* C1 = dynamic_cast<Circle*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
 
     float distance = dist(A->position,B->position);
