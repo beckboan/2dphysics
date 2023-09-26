@@ -11,7 +11,7 @@ struct AABB
 
 inline bool checkAABBOverlap(const AABB& box1, const AABB& box2) 
 {
-    
+    return true;
 }
 
 #endif

@@ -16,6 +16,7 @@ struct Scene
     SDL_Renderer *renderer = nullptr;
 
     void drawBody(const std::shared_ptr<RigidBody> body);
+    void drawAABB(const std::shared_ptr<RigidBody> body);
 };
 
 

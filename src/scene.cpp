@@ -87,3 +87,6 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
         break;
     }
 }
+
+
+void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {}
