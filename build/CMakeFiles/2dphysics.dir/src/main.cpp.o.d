@@ -152,6 +152,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: \
  /home/beckboan/repos/2dphysics/include/collisions.h \
  /home/beckboan/repos/2dphysics/include/rigidbody.h \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+ /usr/include/c++/12/array /usr/include/c++/12/compare \
  /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_uninitialized.h \
  /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/stl_raw_storage_iter.h \

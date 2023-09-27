@@ -5,7 +5,9 @@ CMakeFiles/2dphysics.dir/src/AABB.cpp.o: /home/beckboan/repos/2dphysics/src/AABB
   /usr/include/stdc-predef.h \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /usr/include/c++/12/iostream \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -18,6 +20,26 @@ CMakeFiles/2dphysics.dir/src/AABB.cpp.o: /home/beckboan/repos/2dphysics/src/AABB
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
+  /usr/include/c++/12/type_traits \
+  /usr/include/c++/12/bits/functexcept.h \
+  /usr/include/c++/12/bits/exception_defines.h \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/c++/12/bits/cpp_type_traits.h \
+  /usr/include/c++/12/ext/type_traits.h \
+  /usr/include/c++/12/ext/numeric_traits.h \
+  /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
+  /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
+  /usr/include/c++/12/bits/stl_iterator.h \
+  /usr/include/c++/12/bits/ptr_traits.h \
+  /usr/include/c++/12/debug/debug.h \
+  /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/iostream \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/ios \
   /usr/include/c++/12/iosfwd \
@@ -42,13 +64,10 @@ CMakeFiles/2dphysics.dir/src/AABB.cpp.o: /home/beckboan/repos/2dphysics/src/AABB
   /usr/include/c++/12/exception \
   /usr/include/c++/12/bits/exception.h \
   /usr/include/c++/12/bits/exception_ptr.h \
-  /usr/include/c++/12/bits/exception_defines.h \
   /usr/include/c++/12/bits/cxxabi_init_exception.h \
   /usr/include/c++/12/typeinfo \
   /usr/include/c++/12/bits/hash_bytes.h \
   /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/nested_exception.h \
   /usr/include/c++/12/bits/char_traits.h \
   /usr/include/c++/12/cstdint \
@@ -105,29 +124,12 @@ CMakeFiles/2dphysics.dir/src/AABB.cpp.o: /home/beckboan/repos/2dphysics/src/AABB
   /usr/include/c++/12/bits/allocator.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
   /usr/include/c++/12/bits/new_allocator.h \
-  /usr/include/c++/12/bits/functexcept.h \
-  /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/bits/ostream_insert.h \
   /usr/include/c++/12/bits/cxxabi_forced.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_iterator.h \
-  /usr/include/c++/12/ext/type_traits.h \
-  /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/stl_function.h \
   /usr/include/c++/12/backward/binders.h \
-  /usr/include/c++/12/ext/numeric_traits.h \
-  /usr/include/c++/12/bits/stl_algobase.h \
-  /usr/include/c++/12/bits/stl_pair.h \
-  /usr/include/c++/12/bits/utility.h \
-  /usr/include/c++/12/debug/debug.h \
-  /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/invoke.h \
-  /usr/include/c++/12/bits/range_access.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/basic_string.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
@@ -192,11 +194,9 @@ CMakeFiles/2dphysics.dir/src/circle.cpp.o: /home/beckboan/repos/2dphysics/src/ci
   /home/beckboan/repos/2dphysics/include/circle.h \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /home/beckboan/repos/2dphysics/include/rigidbody.h \
-  /usr/include/c++/12/memory \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -209,29 +209,35 @@ CMakeFiles/2dphysics.dir/src/circle.cpp.o: /home/beckboan/repos/2dphysics/src/ci
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
-  /usr/include/c++/12/bits/memoryfwd.h \
-  /usr/include/c++/12/bits/stl_construct.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_algobase.h \
   /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/ext/type_traits.h \
   /usr/include/c++/12/ext/numeric_traits.h \
   /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/bits/stl_iterator.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/debug/debug.h \
   /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /home/beckboan/repos/2dphysics/include/rigidbody.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -513,9 +519,7 @@ CMakeFiles/2dphysics.dir/src/circle.cpp.o: /home/beckboan/repos/2dphysics/src/ci
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /usr/include/c++/12/iostream \
@@ -574,10 +578,9 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /home/beckboan/repos/2dphysics/include/collisions.h \
   /home/beckboan/repos/2dphysics/include/rigidbody.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /usr/include/c++/12/memory \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -590,29 +593,34 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
-  /usr/include/c++/12/bits/memoryfwd.h \
-  /usr/include/c++/12/bits/stl_construct.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_algobase.h \
   /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/ext/type_traits.h \
   /usr/include/c++/12/ext/numeric_traits.h \
   /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/bits/stl_iterator.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/debug/debug.h \
   /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -719,8 +727,6 @@ CMakeFiles/2dphysics.dir/src/collisions.cpp.o: /home/beckboan/repos/2dphysics/sr
   /usr/include/c++/12/string \
   /usr/include/c++/12/bits/ostream_insert.h \
   /usr/include/c++/12/bits/cxxabi_forced.h \
-  /usr/include/c++/12/bits/range_access.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/basic_string.h \
   /usr/include/c++/12/string_view \
   /usr/include/c++/12/bits/string_view.tcc \
@@ -1141,6 +1147,8 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /home/beckboan/repos/2dphysics/include/collisions.h \
   /home/beckboan/repos/2dphysics/include/rigidbody.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
   /usr/include/c++/12/memory \
   /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -1527,6 +1535,8 @@ CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: /home/beckboan/repos/2dphysics/src
   /usr/include/c++/12/istream \
   /usr/include/c++/12/bits/istream.tcc \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
   /usr/include/c++/12/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -1558,11 +1568,9 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.o: /home/beckboan/repos/2dphysics/src/p
   /home/beckboan/repos/2dphysics/include/polygon.h \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /home/beckboan/repos/2dphysics/include/rigidbody.h \
-  /usr/include/c++/12/memory \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -1575,29 +1583,35 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.o: /home/beckboan/repos/2dphysics/src/p
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
-  /usr/include/c++/12/bits/memoryfwd.h \
-  /usr/include/c++/12/bits/stl_construct.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_algobase.h \
   /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/ext/type_traits.h \
   /usr/include/c++/12/ext/numeric_traits.h \
   /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/bits/stl_iterator.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/debug/debug.h \
   /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /home/beckboan/repos/2dphysics/include/rigidbody.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -1879,9 +1893,7 @@ CMakeFiles/2dphysics.dir/src/polygon.cpp.o: /home/beckboan/repos/2dphysics/src/p
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /usr/include/c++/12/iostream \
@@ -1947,10 +1959,9 @@ CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: /home/beckboan/repos/2dphysics/src
   /usr/include/stdc-predef.h \
   /home/beckboan/repos/2dphysics/include/rigidbody.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /usr/include/c++/12/memory \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -1963,29 +1974,34 @@ CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: /home/beckboan/repos/2dphysics/src
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
-  /usr/include/c++/12/bits/memoryfwd.h \
-  /usr/include/c++/12/bits/stl_construct.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_algobase.h \
   /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/ext/type_traits.h \
   /usr/include/c++/12/ext/numeric_traits.h \
   /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/bits/stl_iterator.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/debug/debug.h \
   /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -2269,9 +2285,7 @@ CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: /home/beckboan/repos/2dphysics/src
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /usr/include/c++/12/iostream \
@@ -2588,6 +2602,10 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: /home/beckboan/repos/2dphysics/src/sce
   /usr/include/SDL2/SDL_opengl_glext.h \
   /home/beckboan/repos/2dphysics/include/rigidbody.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/memory \
   /usr/include/c++/12/bits/allocator.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
@@ -2654,9 +2672,7 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: /home/beckboan/repos/2dphysics/src/sce
   /home/beckboan/repos/2dphysics/include/shape.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /usr/include/c++/12/iostream \
@@ -2718,11 +2734,9 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
   /usr/include/stdc-predef.h \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
-  /home/beckboan/repos/2dphysics/include/rigidbody.h \
-  /usr/include/c++/12/memory \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/initializer_list \
   /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/features.h \
@@ -2735,29 +2749,35 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/c++/12/new \
-  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/type_traits \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
-  /usr/include/c++/12/bits/move.h \
-  /usr/include/c++/12/type_traits \
-  /usr/include/c++/12/bits/memoryfwd.h \
-  /usr/include/c++/12/bits/stl_construct.h \
-  /usr/include/c++/12/bits/stl_iterator_base_types.h \
-  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/12/bits/concept_check.h \
-  /usr/include/c++/12/debug/assertions.h \
-  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_algobase.h \
   /usr/include/c++/12/bits/cpp_type_traits.h \
   /usr/include/c++/12/ext/type_traits.h \
   /usr/include/c++/12/ext/numeric_traits.h \
   /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/bits/stl_iterator.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/debug/debug.h \
   /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /home/beckboan/repos/2dphysics/include/rigidbody.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/ext/alloc_traits.h \
   /usr/include/c++/12/bits/alloc_traits.h \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -3039,9 +3059,7 @@ CMakeFiles/2dphysics.dir/src/shape.cpp.o: /home/beckboan/repos/2dphysics/src/sha
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/c++/12/vector \
   /usr/include/c++/12/bits/stl_vector.h \
-  /usr/include/c++/12/initializer_list \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/range_access.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /usr/include/c++/12/iostream \
@@ -3285,6 +3303,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+  /usr/include/c++/12/array \
+  /usr/include/c++/12/compare \
   /home/beckboan/repos/2dphysics/include/rigidbody.h \
   /usr/include/c++/12/memory \
   /usr/include/c++/12/bits/stl_tempbuf.h \
@@ -3640,49 +3660,13 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/SDL2/SDL_cpuinfo.h:
 
-/usr/include/c++/12/bits/range_access.h:
+/usr/include/SDL2/SDL_clipboard.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitxintrin.h:
-
-/usr/include/c++/12/bits/functexcept.h:
-
-/usr/include/c++/12/bits/refwrap.h:
-
-/home/beckboan/repos/2dphysics/src/rigidbody.cpp:
-
-/usr/include/c++/12/cerrno:
-
-/usr/include/c++/12/stdlib.h:
-
-/usr/include/c++/12/pstl/pstl_config.h:
+/usr/include/SDL2/SDL_rwops.h:
 
 /usr/include/c++/12/bits/stl_function.h:
 
-/usr/include/c++/12/debug/debug.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitintrin.h:
-
-/usr/include/c++/12/bits/concept_check.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h:
-
-/usr/include/c++/12/bits/uses_allocator.h:
-
-/usr/include/c++/12/bits/stl_iterator_base_types.h:
-
-/usr/include/SDL2/SDL_render.h:
-
-/usr/include/c++/12/bits/cxxabi_forced.h:
-
 /usr/include/c++/12/bits/new_allocator.h:
-
-/usr/include/c++/12/bits/cpp_type_traits.h:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512bf16intrin.h:
-
-/usr/include/c++/12/bits/allocator.h:
 
 /usr/include/c++/12/bits/ostream_insert.h:
 
@@ -3694,23 +3678,13 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
-/usr/include/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+/usr/include/c++/12/ext/atomicity.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vbmiintrin.h:
 
 /usr/include/c++/12/string:
 
-/usr/include/c++/12/ext/atomicity.h:
-
 /usr/include/strings.h:
-
-/usr/include/c++/12/initializer_list:
-
-/usr/include/c++/12/bits/shared_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/SDL2/SDL_guid.h:
 
@@ -3730,11 +3704,11 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/SDL2/SDL_config.h:
 
-/home/beckboan/repos/2dphysics/src/collisions.cpp:
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/include/x86_64-linux-gnu/bits/select.h:
+/usr/include/time.h:
 
-/usr/include/x86_64-linux-gnu/bits/time.h:
+/usr/include/c++/12/bits/range_access.h:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
@@ -3747,28 +3721,6 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/12/bits/locale_facets.tcc:
-
-/usr/include/c++/12/bits/invoke.h:
-
-/usr/include/c++/12/bits/utility.h:
-
-/usr/include/c++/12/bits/stl_iterator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vbmivlintrin.h:
-
-/usr/include/SDL2/SDL_audio.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/locale.h:
-
-/home/beckboan/repos/2dphysics/include/polygon.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/xmmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/movdirintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /home/beckboan/repos/2dphysics/include/world.h:
 
@@ -3786,13 +3738,15 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h:
 
-/usr/include/c++/12/bits/stl_algobase.h:
-
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/c++/12/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/12/bits/localefwd.h:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/c++/12/cctype:
 
@@ -3801,12 +3755,6 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 /usr/lib/gcc/x86_64-linux-gnu/12/include/wbnoinvdintrin.h:
 
 /usr/include/c++/12/istream:
-
-/usr/include/SDL2/SDL_locale.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
-
-/usr/include/c++/12/bits/atomic_base.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++locale.h:
 
@@ -3818,39 +3766,41 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
-/usr/include/c++/12/bits/algorithmfwd.h:
+/usr/include/x86_64-linux-gnu/sys/select.h:
 
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+/usr/include/x86_64-linux-gnu/bits/types.h:
 
-/usr/include/c++/12/bits/ios_base.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/vpclmulqdqintrin.h:
 
-/usr/include/c++/12/iosfwd:
+/usr/include/c++/12/tr1/exp_integral.tcc:
 
-/usr/include/linux/errno.h:
+/usr/include/c++/12/bits/char_traits.h:
 
-/usr/include/c++/12/ios:
+/usr/include/x86_64-linux-gnu/bits/time64.h:
 
-/home/beckboan/repos/2dphysics/src/mathfuncs.cpp:
+/usr/include/c++/12/bits/atomic_lockfree_defines.h:
 
-/usr/include/c++/12/ostream:
+/usr/include/SDL2/SDL_misc.h:
 
-/usr/include/c++/12/tr1/special_function_util.h:
+/usr/include/c++/12/bits/hash_bytes.h:
 
-/home/beckboan/repos/2dphysics/include/mathfuncs.h:
+/usr/include/SDL2/SDL_surface.h:
 
-/usr/include/SDL2/SDL_hints.h:
+/usr/include/c++/12/backward/binders.h:
 
-/usr/include/c++/12/bits/stl_iterator_base_funcs.h:
+/usr/include/c++/12/clocale:
 
-/usr/include/pthread.h:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/stdarg.h:
 
-/usr/include/c++/12/bits/uniform_int_dist.h:
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
-/usr/include/c++/12/bits/ptr_traits.h:
+/usr/include/c++/12/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/12/bits/exception.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/pkuintrin.h:
 
@@ -3858,45 +3808,35 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/include/c++/12/bits/exception.h:
-
 /usr/include/c++/12/bits/locale_classes.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/types.h:
+/usr/include/c++/12/tr1/poly_hermite.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+/usr/include/linux/errno.h:
 
-/usr/include/wchar.h:
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
-/usr/include/c++/12/cstdint:
+/usr/include/c++/12/ext/numeric_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+/usr/include/c++/12/pstl/pstl_config.h:
 
-/usr/include/SDL2/SDL_thread.h:
+/usr/include/c++/12/bits/stl_algobase.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/stdarg.h:
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+/usr/include/c++/12/bits/algorithmfwd.h:
 
-/usr/include/c++/12/clocale:
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/rtmintrin.h:
+/usr/include/c++/12/bits/locale_classes.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+/usr/include/SDL2/SDL_opengl.h:
 
-/home/beckboan/repos/2dphysics/src/AABB.cpp:
+/usr/include/c++/12/bits/exception_defines.h:
 
-/home/beckboan/repos/2dphysics/src/scene.cpp:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitxintrin.h:
 
-/usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h:
-
-/usr/include/c++/12/bits/basic_string.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+/usr/include/c++/12/bits/functexcept.h:
 
 /usr/include/stdc-predef.h:
 
@@ -3908,7 +3848,83 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/float.h:
 
+/usr/include/c++/12/bits/uses_allocator.h:
+
+/usr/include/SDL2/SDL_hints.h:
+
+/usr/include/c++/12/bits/stl_iterator_base_funcs.h:
+
+/usr/include/pthread.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/c++/12/math.h:
+
+/usr/include/c++/12/typeinfo:
+
+/usr/include/SDL2/SDL_error.h:
+
+/usr/include/c++/12/exception:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/c++/12/debug/assertions.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/lzcntintrin.h:
+
+/usr/include/c++/12/bits/std_abs.h:
+
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/12/bits/exception_ptr.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/rtmintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/home/beckboan/repos/2dphysics/src/AABB.cpp:
+
+/home/beckboan/repos/2dphysics/src/scene.cpp:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512bf16intrin.h:
+
+/usr/include/c++/12/bits/allocator.h:
+
+/usr/include/c++/12/bits/cpp_type_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/home/beckboan/repos/2dphysics/include/polygon.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/xmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/movdirintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/c++/12/bits/invoke.h:
+
+/usr/include/c++/12/bits/utility.h:
+
+/usr/include/c++/12/iosfwd:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/12/bits/stl_iterator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/avx512vbmivlintrin.h:
+
+/usr/include/SDL2/SDL_audio.h:
+
+/usr/include/c++/12/bits/basic_string.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h:
+
+/usr/include/asm-generic/errno-base.h:
 
 /usr/include/SDL2/SDL_version.h:
 
@@ -3918,19 +3934,59 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
+/home/beckboan/repos/2dphysics/include/mathfuncs.h:
+
+/usr/include/SDL2/SDL_render.h:
+
+/usr/include/c++/12/bits/cxxabi_forced.h:
+
+/usr/include/c++/12/bits/stl_iterator_base_types.h:
+
+/usr/include/SDL2/SDL_locale.h:
+
+/usr/include/c++/12/bits/atomic_base.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
+
+/home/beckboan/repos/2dphysics/src/mathfuncs.cpp:
+
+/usr/include/c++/12/ostream:
+
+/usr/include/c++/12/tr1/special_function_util.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/c++/12/initializer_list:
+
+/usr/include/c++/12/bits/shared_ptr.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/mwaitintrin.h:
+
+/usr/include/c++/12/bits/concept_check.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/12/include/immintrin.h:
+
+/usr/include/c++/12/new:
+
+/usr/include/features.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/12/include/avx512fp16vlintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
 /usr/include/c++/12/cmath:
 
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/c++/12/bits/memoryfwd.h:
+
+/usr/include/c++/12/bits/stl_pair.h:
+
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/SDL2/SDL_mutex.h:
-
-/usr/include/c++/12/bits/stringfwd.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/gthr.h:
 
@@ -3946,31 +4002,43 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-/usr/include/c++/12/debug/assertions.h:
+/usr/include/c++/12/compare:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/lzcntintrin.h:
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
 
-/usr/include/c++/12/bits/std_abs.h:
+/usr/include/c++/12/bits/uniform_int_dist.h:
 
-/usr/include/c++/12/exception:
+/usr/include/c++/12/bits/ptr_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+/usr/include/c++/12/debug/debug.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/12/include/immintrin.h:
+/usr/include/c++/12/ios:
 
-/usr/include/features.h:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/usr/include/c++/12/new:
-
-/usr/include/SDL2/SDL_clipboard.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+/usr/include/c++/12/bits/stringfwd.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
-/usr/include/x86_64-linux-gnu/sys/select.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
+/usr/include/c++/12/bits/ios_base.h:
+
+/usr/include/wchar.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h:
+
+/usr/include/c++/12/cstdint:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/SDL2/SDL_thread.h:
+
+/usr/include/c++/12/array:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -3980,61 +4048,19 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
-/usr/include/c++/12/bits/exception_ptr.h:
+/usr/include/c++/12/bits/refwrap.h:
 
-/usr/include/c++/12/ext/numeric_traits.h:
+/home/beckboan/repos/2dphysics/src/collisions.cpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+/usr/include/x86_64-linux-gnu/bits/time.h:
 
-/usr/include/c++/12/tr1/poly_hermite.tcc:
+/usr/include/x86_64-linux-gnu/bits/select.h:
 
-/usr/include/c++/12/bits/locale_classes.h:
+/home/beckboan/repos/2dphysics/src/rigidbody.cpp:
 
-/usr/include/SDL2/SDL_opengl.h:
+/usr/include/c++/12/cerrno:
 
-/usr/include/c++/12/bits/exception_defines.h:
-
-/usr/include/SDL2/SDL_surface.h:
-
-/usr/include/c++/12/backward/binders.h:
-
-/usr/include/c++/12/bits/cxxabi_init_exception.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/c++/12/math.h:
-
-/usr/include/c++/12/typeinfo:
-
-/usr/include/SDL2/SDL_error.h:
-
-/usr/include/c++/12/bits/char_traits.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/12/include/vpclmulqdqintrin.h:
-
-/usr/include/c++/12/tr1/exp_integral.tcc:
-
-/usr/include/c++/12/bits/memoryfwd.h:
-
-/usr/include/c++/12/bits/stl_pair.h:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/SDL2/SDL_misc.h:
-
-/usr/include/c++/12/bits/hash_bytes.h:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
-
-/usr/include/c++/12/bits/atomic_lockfree_defines.h:
+/usr/include/c++/12/stdlib.h:
 
 /usr/include/c++/12/ext/alloc_traits.h:
 
@@ -4070,9 +4096,9 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/SDL2/SDL_main.h:
 
-/usr/include/c++/12/bits/predefined_ops.h:
-
 /usr/include/stdint.h:
+
+/usr/include/c++/12/bits/predefined_ops.h:
 
 /usr/include/c++/12/bits/string_view.tcc:
 
@@ -4287,5 +4313,3 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 /usr/include/SDL2/SDL_atomic.h:
 
 /usr/include/SDL2/SDL_endian.h:
-
-/usr/include/SDL2/SDL_rwops.h:

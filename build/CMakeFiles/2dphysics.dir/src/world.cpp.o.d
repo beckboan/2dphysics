@@ -154,6 +154,7 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: \
  /usr/include/c++/12/bits/stl_bvector.h \
  /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+ /usr/include/c++/12/array /usr/include/c++/12/compare \
  /home/beckboan/repos/2dphysics/include/rigidbody.h \
  /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/stl_raw_storage_iter.h \

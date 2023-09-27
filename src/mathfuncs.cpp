@@ -106,3 +106,21 @@ vec2d vec2d::negY()
 {
     return vec2d(x, -y);
 }
+
+//Rotation Matrix
+
+mat2d::mat2d() {}
+mat2d::mat2d(float radians) 
+{
+    this->setMatrixRotation(radians);
+}
+void mat2d::setMatrixRotation(float radians)
+{
+    float c_val = std::cos(radians);
+    float s_val = std::sin(radians);
+
+    row_1[0] = c_val;
+    row_1[1] = -1*s_val;
+    row_2[0] = s_val;
+    row_2[1] = c_val;
+}

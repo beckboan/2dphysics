@@ -219,7 +219,10 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: \
  /usr/include/SDL2/SDL_opengl_glext.h \
  /home/beckboan/repos/2dphysics/include/rigidbody.h \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /usr/include/c++/12/memory /usr/include/c++/12/bits/allocator.h \
+ /usr/include/c++/12/array /usr/include/c++/12/compare \
+ /usr/include/c++/12/initializer_list \
+ /usr/include/c++/12/bits/range_access.h /usr/include/c++/12/memory \
+ /usr/include/c++/12/bits/allocator.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h \
  /usr/include/c++/12/bits/new_allocator.h /usr/include/c++/12/new \
  /usr/include/c++/12/bits/exception.h \
@@ -273,9 +276,7 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: \
  /home/beckboan/repos/2dphysics/include/rigidbody.h \
  /home/beckboan/repos/2dphysics/include/shape.h \
  /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_vector.h \
- /usr/include/c++/12/initializer_list \
  /usr/include/c++/12/bits/stl_bvector.h \
- /usr/include/c++/12/bits/range_access.h \
  /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/AABB.h \
  /usr/include/c++/12/iostream /usr/include/c++/12/ostream \

@@ -15,6 +15,11 @@ std::tuple<int,int,int,int> Shape::getAABB()
     return std::tuple(aabb->getMin().x,aabb->getMin().y,aabb->getMax().x,aabb->getMax().y);
 }
 
+void Shape::setSpaceOrientation(float radians)
+{
+    rotation->setMatrixRotation(radians);
+}
+
 
 
 

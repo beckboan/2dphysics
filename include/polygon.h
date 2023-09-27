@@ -17,7 +17,6 @@ struct Poly: public Shape
     std::string getName() const;
     void calculateMassProperties(float density);
     void createAABB();   
-    void setSpaceOrientation(float radians);
 
     //Getters/Setters
     const unsigned int& getVertexCount() const {return vertex_count;}

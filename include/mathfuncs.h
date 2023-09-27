@@ -1,6 +1,8 @@
 #ifndef mathfuncs_H
 #define mathfuncs_H
 
+#include <array>
+
 class vec2d 
 {
 public: 
@@ -94,9 +96,17 @@ inline bool isLeftOf( const vec2d& p1, const vec2d& p2)
     return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
 }
 
+
+//Rotation matrix for 2D Vectors [2x2]
 struct mat2d
 {
-    
+    mat2d();
+    mat2d(float radians);
+
+    void setMatrixRotation(float radians);
+
+    std::array<float, 2> row_1 {0};
+    std::array<float, 2> row_2 {0};
 };
 
 
