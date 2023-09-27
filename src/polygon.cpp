@@ -191,7 +191,7 @@ void Poly::createAABB()
     std::shared_ptr<RigidBody> body_temp = body.lock();
     float position_x = body_temp->position.x;
     float position_y = body_temp->position.y;
-    std::cout << centroid.x << centroid.y << std::endl;
+    // std::cout << centroid.x << centroid.y << std::endl;
     aabb->max.assign(position_x+max_x,position_y+max_y);
     aabb->min.assign(position_x+min_x,position_y+min_y);
     // aabb->max.assign(centroid.x+max_x,centroid.y+max_y);

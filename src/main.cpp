@@ -22,12 +22,17 @@ int main(int, char**)
     std::unique_ptr<Shape> pol = std::make_unique<Poly>(verticies);
     std::unique_ptr<Shape> cir = std::make_unique<Circle>(100.0);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(pol, position, density);
+    std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(cir,position,density);
     // std::cout << bod->position.x << "  " << bod->position.y << std::endl;
     bod->shape->setBody(bod);
+    bod2->shape->setBody(bod2);
     //bod->moveto(movetopos);
+
 
     scene.drawBody(bod);
     scene.drawAABB(bod);
+    scene.drawBody(bod2);
+    scene.drawAABB(bod2);
 
     std::cin.get();
 
