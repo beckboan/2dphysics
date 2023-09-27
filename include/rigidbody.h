@@ -48,7 +48,7 @@ struct RigidBody
 
     //Getters
 
-    //PHysics Functions
+    //Physics Functions
     void move(const vec2d& amount);
     void moveto(const vec2d& position_new);
     void setRotation(float radians);
