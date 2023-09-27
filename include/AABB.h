@@ -7,6 +7,11 @@
 struct AABB
 {
     AABB() {}
+
+
+    vec2d getMin() const {return min;}
+    vec2d getMax() const {return max;}
+
     vec2d min; //Bottom Left
     vec2d max; //Top Right
 };
