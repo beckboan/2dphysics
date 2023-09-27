@@ -70,15 +70,15 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
         unsigned int v_c = p->getVertexCount();
         for (unsigned int i =0; i < v_c; i++)
         {
-            inverted_points.push_back(((v_list_temp[i] += body->position).negY()));
+            inverted_points.push_back((v_list_temp[i] += body->position));
 
         }
         for (unsigned int i = 0; i < v_c; i ++) 
         {
             int x1 = inverted_points[i].x;
-            int y1 = screen_y + inverted_points[i].y;
+            int y1 = renderYTransfer(inverted_points[i].y);
             int x2= inverted_points[(i+1) % v_c].x;
-            int y2 = screen_y + inverted_points[(i+1) % v_c].y;
+            int y2 = renderYTransfer(inverted_points[(i+1) % v_c].y);
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
         }
         SDL_RenderPresent(renderer);

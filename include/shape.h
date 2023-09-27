@@ -32,6 +32,7 @@ struct Shape
 
     std::unique_ptr<mat2d> rotation = std::make_unique<mat2d>();
     void setSpaceOrientation(float radians);
+    
 };
 
 
