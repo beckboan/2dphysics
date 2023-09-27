@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "2dphysics"
   "2dphysics.pdb"
+  "CMakeFiles/2dphysics.dir/src/AABB.cpp.o"
+  "CMakeFiles/2dphysics.dir/src/AABB.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/circle.cpp.o"
   "CMakeFiles/2dphysics.dir/src/circle.cpp.o.d"
   "CMakeFiles/2dphysics.dir/src/collisions.cpp.o"

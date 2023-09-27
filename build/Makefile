@@ -523,6 +523,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/build
 .PHONY : 2dphysics/fast
 
+src/AABB.o: src/AABB.cpp.o
+.PHONY : src/AABB.o
+
+# target to build an object file
+src/AABB.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/AABB.cpp.o
+.PHONY : src/AABB.cpp.o
+
+src/AABB.i: src/AABB.cpp.i
+.PHONY : src/AABB.i
+
+# target to preprocess a source file
+src/AABB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/AABB.cpp.i
+.PHONY : src/AABB.cpp.i
+
+src/AABB.s: src/AABB.cpp.s
+.PHONY : src/AABB.s
+
+# target to generate assembly for a file
+src/AABB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2dphysics.dir/build.make CMakeFiles/2dphysics.dir/src/AABB.cpp.s
+.PHONY : src/AABB.cpp.s
+
 src/circle.o: src/circle.cpp.o
 .PHONY : src/circle.o
 
@@ -779,6 +803,9 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... 2dphysics"
+	@echo "... src/AABB.o"
+	@echo "... src/AABB.i"
+	@echo "... src/AABB.s"
 	@echo "... src/circle.o"
 	@echo "... src/circle.i"
 	@echo "... src/circle.s"

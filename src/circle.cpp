@@ -29,7 +29,7 @@ void Circle::createAABB()
     std::shared_ptr<RigidBody> body_temp = body.lock();
     float position_x = body_temp->position.x;
     float position_y = body_temp->position.y;
-    aabb->max.assign(position_x+radius,position_y+radius);
-    aabb->min.assign(position_x-radius,position_y-radius);
+    aabb->setMax(position_x+radius,position_y+radius);
+    aabb->setMin(position_x-radius,position_y-radius);
     // std::cout << aabb->max.x << aabb->max.y << std::endl;
 }
