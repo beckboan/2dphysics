@@ -46,6 +46,8 @@ struct RigidBody
     void rigidIni();
     void setBodyStatic();
 
+    //Getters
+
     //PHysics Functions
     void move(const vec2d& amount);
     void moveto(const vec2d& position_new);

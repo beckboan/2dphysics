@@ -278,8 +278,6 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: \
  /usr/include/c++/12/bits/range_access.h \
  /usr/include/c++/12/bits/vector.tcc \
  /home/beckboan/repos/2dphysics/include/AABB.h \
- /home/beckboan/repos/2dphysics/include/circle.h \
- /home/beckboan/repos/2dphysics/include/shape.h \
  /usr/include/c++/12/iostream /usr/include/c++/12/ostream \
  /usr/include/c++/12/ios /usr/include/c++/12/bits/char_traits.h \
  /usr/include/c++/12/cstdint /usr/include/c++/12/bits/localefwd.h \
@@ -315,5 +313,7 @@ CMakeFiles/2dphysics.dir/src/scene.cpp.o: \
  /usr/include/c++/12/bits/basic_ios.tcc \
  /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
  /usr/include/c++/12/bits/istream.tcc \
+ /home/beckboan/repos/2dphysics/include/circle.h \
+ /home/beckboan/repos/2dphysics/include/shape.h \
  /home/beckboan/repos/2dphysics/include/polygon.h \
  /home/beckboan/repos/2dphysics/include/mathfuncs.h

@@ -10,6 +10,10 @@ void Shape::setBody(const std::shared_ptr<RigidBody>& body_)
     body_ref->rigidIni();
 }
 
+std::tuple<int,int,int,int> Shape::getAABB()
+{
+    return std::tuple(aabb->min.x,aabb->min.y,aabb->max.x,aabb->max.y);
+}
 
 
 

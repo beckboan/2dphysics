@@ -2,9 +2,11 @@
 #define AABB_H
 
 #include "mathfuncs.h"
+#include <iostream>
 
 struct AABB
 {
+    AABB() {}
     vec2d min; //Bottom Left
     vec2d max; //Top Right
 };

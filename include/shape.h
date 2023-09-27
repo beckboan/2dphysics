@@ -26,9 +26,11 @@ struct Shape
 
     std::weak_ptr<RigidBody> body;
     void setBody(const std::shared_ptr<RigidBody>& body_);
-    std::unique_ptr<AABB> aabb;
+    std::unique_ptr<AABB> aabb = std::make_unique<AABB>();
+    std::tuple<int, int, int, int> getAABB();
 
 };
+
 
 
 

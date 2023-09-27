@@ -14,10 +14,11 @@ struct Scene
     const int32_t screen_y;
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
+    const int scale {20};
 
     void drawBody(const std::shared_ptr<RigidBody> body);
     void drawAABB(const std::shared_ptr<RigidBody> body);
+    int renderYTransfer(int y);
 };
-
 
 #endif

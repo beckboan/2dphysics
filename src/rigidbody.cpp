@@ -20,6 +20,7 @@ RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float den
 void RigidBody::rigidIni() 
 {
     shape->calculateMassProperties(density);
+    shape->createAABB();
     hasProperties = true;
 }
 
@@ -27,6 +28,9 @@ void RigidBody::setBodyStatic()
 {
     m, I, inv_I, inv_m = 0.0f;
 }
+
+//Getters
+
 
 //Physics Functions
 void RigidBody::move(const vec2d& amount) 
@@ -63,4 +67,6 @@ void RigidBody::applyCenterLinearImpulse(const vec2d& impulse)
 {
     velocity += impulse * inv_m;
 }
+
+
 

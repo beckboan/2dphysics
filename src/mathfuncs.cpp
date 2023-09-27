@@ -98,8 +98,8 @@ vec2d vec2d::normalize()
 
 void vec2d::assign(float x, float y) 
 {
-    this->x;
-    this->y;
+    this->x = x;
+    this->y = y;
 }
 
 vec2d vec2d::negY()

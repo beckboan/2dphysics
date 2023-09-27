@@ -69,7 +69,7 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
         unsigned int v_c = p->vertex_count;
         for (unsigned int i =0; i < v_c; i++)
         {
-            inverted_points.push_back((p->vertex_list[i] += body->position).negY());
+            inverted_points.push_back(((p->vertex_list[i] += body->position).negY()));
 
         }
         for (unsigned int i = 0; i < v_c; i ++) 
@@ -92,9 +92,16 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
 void Scene::drawAABB(const std::shared_ptr<RigidBody> body) 
 {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    int min_x = body->shape->aabb->min.x;
-    int min_y = body->shape->aabb->min.y;
-    int max_x = body->shape->aabb->max.x;
-    int max_y = body->shape->aabb->max.y;
-    
+    auto [min_x, min_y, max_x, max_y] = body->shape->getAABB();
+    // std::cout << min_x << min_y << max_x << max_y <<std::endl;
+    float adjust_min_y = renderYTransfer(min_y);
+    float adjust_max_y = renderYTransfer(max_y);
+    SDL_RenderDrawLine(renderer, min_x, adjust_min_y, max_x, adjust_min_y);
+    SDL_RenderDrawLine(renderer, max_x, adjust_min_y, max_x, adjust_max_y);
+    SDL_RenderDrawLine(renderer, max_x, adjust_max_y, min_x, adjust_max_y);
+    SDL_RenderDrawLine(renderer, min_x, adjust_max_y, min_x, adjust_min_y);
+    SDL_RenderPresent(renderer);
 }
+
+
+int Scene::renderYTransfer(int y) {return screen_y + -1*y;}
