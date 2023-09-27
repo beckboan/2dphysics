@@ -53,26 +53,6 @@ Poly::Poly(std::vector<vec2d>& v)
     }
 
     vertex_count = hull.size();
-    // auto it = v.begin();
-
-    // hull.push_back(*it++);
-    // hull.push_back(*it++);
-    // hull.push_back(*it++);
-    // vertex_count++;
-    // while (it <= v.end()) {
-    //     while (findOrientation(*(hull.rbegin() + 1), *(hull.rbegin()), *it) >= 0) {
-    //         hull.pop_back();
-    //     }
-    //     hull.push_back(*it++);
-    //     vertex_count++;
-    // }
-
-    // if(findOrientation(v.front(),v.back(),v.back()) <= 0) {
-    //     hull.push_back(v.back());
-    //     vertex_count++;
-    // }
-
-    // std::cout <<vertex_count<< std::endl;
 
     assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
 
@@ -102,10 +82,6 @@ Poly::Poly(float width, float height) : vertex_count(4)
     normals.emplace_back(1, 0);  // ->
     normals.emplace_back(0, 1);  // ^
     normals.emplace_back(-1, 0); // <-
-    // for (unsigned int i; i < vertex_count; i ++) 
-    // {
-    //     std::cout << "X: " << vertex_list[i].x << " Y: " << vertex_list[i].y << std::endl;
-    // }
 }
 
 Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
@@ -159,10 +135,6 @@ void Poly::calculateMassProperties(float& density)
 
 void Poly::createAABB() 
 {
-    // std::shared_ptr<RigidBody> body_temp = body.lock();
-    // float position_x = body_temp->position.x;
-    // float position_y = body_temp->position.y;
-
     int16_t max_x = vertex_list[0].x;
     int16_t max_y = vertex_list[0].y;
     int16_t min_x = vertex_list[0].x;

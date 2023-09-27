@@ -13,16 +13,22 @@ struct Poly: public Shape
     Poly(float width, float height); //Rectangle Poly
     // Poly(float radius, int side_number); //Regular Polygon (think stop sign)
 
-    unsigned int vertex_count = 0;
-    std::vector<vec2d> vertex_list;
-    std::vector<vec2d> normals;
-    vec2d centroid;
-
     ShapeType getType() const;
     std::string getName() const;
     void calculateMassProperties(float& density);
     void createAABB();   
     void setSpaceOrientation(float radians);
+
+    //Getters/Setters
+    const unsigned int& getVertexCount() const {return vertex_count;}
+    const std::vector<vec2d>& getVertexList() const {return vertex_list;}
+    const std::vector<vec2d>& getNormals() const {return normals;}
+     
+    private:
+    unsigned int vertex_count = 0;
+    std::vector<vec2d> vertex_list;
+    std::vector<vec2d> normals;
+    vec2d centroid;
     void calculatePolyNormals();
 };
 

@@ -65,11 +65,12 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
     case Shape::ShapeType::Poly:
     {
         Poly* p = dynamic_cast<Poly*>(body->shape.get());
+        std::vector<vec2d> v_list_temp = p->getVertexList();
         std::vector<vec2d> inverted_points;
-        unsigned int v_c = p->vertex_count;
+        unsigned int v_c = p->getVertexCount();
         for (unsigned int i =0; i < v_c; i++)
         {
-            inverted_points.push_back(((p->vertex_list[i] += body->position).negY()));
+            inverted_points.push_back(((v_list_temp[i] += body->position).negY()));
 
         }
         for (unsigned int i = 0; i < v_c; i ++) 
