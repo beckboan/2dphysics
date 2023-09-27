@@ -17,11 +17,11 @@ int main(int, char**)
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
     // bod1->shape->setBody(bod1);
 
-    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(5,0), vec2d(5,5), vec2d(0,5), vec2d(7.5,10)};
+    std::vector<vec2d> verticies = {vec2d(0,0), vec2d(250,0), vec2d(250,250), vec2d(0,250), vec2d(375,500)};
 
     std::unique_ptr<Shape> pol = std::make_unique<Poly>(verticies);
     std::unique_ptr<Shape> cir = std::make_unique<Circle>(100.0);
-    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(cir, position, density);
+    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(pol, position, density);
     // std::cout << bod->position.x << "  " << bod->position.y << std::endl;
     bod->shape->setBody(bod);
     //bod->moveto(movetopos);

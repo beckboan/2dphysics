@@ -141,13 +141,16 @@ void Poly::calculateMassProperties(float& density)
 
     I *= density;
     centroid *= 1.0/area;
+    std::shared_ptr<RigidBody> body_ref = body.lock();
+    vec2d position = body_ref->position;
+
     // std::cout << "X: " << centroid.x << "Y: " << centroid.y << std::endl;
     for (unsigned int i = 0; i < vertex_count; i++)
     {
         vertex_list[i] -= centroid;
         // std::cout << "X: " << vertex_list[i].x << "Y: " << vertex_list[i].y << std::endl;
     }
-    std::shared_ptr<RigidBody> body_ref = body.lock();
+
     body_ref->m = area * density;
     body_ref->inv_m = (body_ref->m>0) ? 1.0/body_ref->m : 0;
     body_ref->I = I;
@@ -156,9 +159,45 @@ void Poly::calculateMassProperties(float& density)
 
 void Poly::createAABB() 
 {
-    
-}
+    // std::shared_ptr<RigidBody> body_temp = body.lock();
+    // float position_x = body_temp->position.x;
+    // float position_y = body_temp->position.y;
 
+    int16_t max_x = vertex_list[0].x;
+    int16_t max_y = vertex_list[0].y;
+    int16_t min_x = vertex_list[0].x;
+    int16_t min_y = vertex_list[0].y;
+
+    for (unsigned int i = 0; i < vertex_count; i++)
+    {
+        if (vertex_list[i].x > max_x)
+        {
+            max_x = vertex_list[i].x;
+        }
+        if (vertex_list[i].y > max_y)
+        {
+            max_y = vertex_list[i].y;
+        }
+        if (vertex_list[i].x < min_x)
+        {
+            min_x = vertex_list[i].x;
+        }
+        if (vertex_list[i].y < min_y)
+        {
+            min_y = vertex_list[i].y;
+        }
+    }
+
+    std::shared_ptr<RigidBody> body_temp = body.lock();
+    float position_x = body_temp->position.x;
+    float position_y = body_temp->position.y;
+    std::cout << centroid.x << centroid.y << std::endl;
+    aabb->max.assign(position_x+max_x,position_y+max_y);
+    aabb->min.assign(position_x+min_x,position_y+min_y);
+    // aabb->max.assign(centroid.x+max_x,centroid.y+max_y);
+    // aabb->min.assign(centroid.x-min_x,centroid.y-min_y);
+    // std::cout << aabb->max.x << aabb->max.y << std::endl;
+}
 void Poly::calculatePolyNormals() 
 {
     normals.clear();
