@@ -14,7 +14,7 @@ struct Circle: public Shape
 
     ShapeType getType() const;
     std::string getName() const;
-    void calculateMassProperties(float& density);
+    void calculateMassProperties(float density);
     void createAABB();
 
 };

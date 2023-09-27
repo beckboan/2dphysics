@@ -89,7 +89,7 @@ Shape::ShapeType Poly::getType() const {return ShapeType::Poly;}
 std::string Poly::getName() const {return "Poylgon";}
 
     //Using triangulation of the polygon to get its area/centroid/inertia
-void Poly::calculateMassProperties(float& density) 
+void Poly::calculateMassProperties(float density) 
 {
     vec2d centroid(0,0);
     float area = 0;

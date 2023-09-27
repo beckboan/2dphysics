@@ -12,7 +12,7 @@ Shape::ShapeType Circle::getType() const {return ShapeType::Circle;}
 
 std::string Circle::getName() const {return "Circle";}
 
-void Circle::calculateMassProperties(float& density) 
+void Circle::calculateMassProperties(float density) 
 {
     std::shared_ptr<RigidBody> body_ref = body.lock();
     body_ref->area = radius * radius * M_PI;
