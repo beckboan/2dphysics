@@ -8,8 +8,9 @@ int main(int, char**)
 {
     World world;
     Scene scene(1200,800);
+    scene.init();
 
-    vec2d position = vec2d(500, 500);
+    vec2d position = vec2d(0, 0);
     float density = 1000;
     vec2d movetopos = vec2d(500,500);
 

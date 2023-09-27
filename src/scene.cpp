@@ -7,7 +7,9 @@
 #include "mathfuncs.h"
 #include <vector>
 
-Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_)
+Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_), hw_x(screen_x_/2), hw_y(screen_y_/2) {}
+
+void Scene::init()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -35,17 +37,19 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
         int32_t dx = 1;
         int32_t dy = 1;
         int32_t err = dx - diameter;
+        int32_t bod_x_hw = renderXTransfer(body->position.x);
+        int32_t bod_y_hw = renderYTransfer(body->position.y);
 
         while (x >= y) 
         {
-            SDL_RenderDrawPoint(renderer, body->position.x + x, screen_y + -1*(body->position.y) - y);
-            SDL_RenderDrawPoint(renderer, body->position.x + x, screen_y + -1*(body->position.y) + y);
-            SDL_RenderDrawPoint(renderer, body->position.x - x, screen_y + -1*(body->position.y) - y);
-            SDL_RenderDrawPoint(renderer, body->position.x - x, screen_y + -1*(body->position.y) + y);
-            SDL_RenderDrawPoint(renderer, body->position.x + y, screen_y + -1*(body->position.y) - x);
-            SDL_RenderDrawPoint(renderer, body->position.x + y, screen_y + -1*(body->position.y) + x);
-            SDL_RenderDrawPoint(renderer, body->position.x - y, screen_y + -1*(body->position.y) - x);
-            SDL_RenderDrawPoint(renderer, body->position.x - y, screen_y + -1*(body->position.y) + x);
+            SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw - y);
+            SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw + y);
+            SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw - y);
+            SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw + y);
+            SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw - x);
+            SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw + x);
+            SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw - x);
+            SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw + x);
 
             if (err <= 0) {
                 ++y;
@@ -66,18 +70,19 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
     {
         Poly* p = dynamic_cast<Poly*>(body->shape.get());
         std::vector<vec2d> v_list_temp = p->getVertexList();
+        vec2d body_pos = body->position;
         std::vector<vec2d> inverted_points;
         unsigned int v_c = p->getVertexCount();
         for (unsigned int i =0; i < v_c; i++)
         {
-            inverted_points.push_back((v_list_temp[i] += body->position));
+            inverted_points.push_back((v_list_temp[i] += body_pos));
 
         }
         for (unsigned int i = 0; i < v_c; i ++) 
         {
-            int x1 = inverted_points[i].x;
+            int x1 = renderXTransfer(inverted_points[i].x);
             int y1 = renderYTransfer(inverted_points[i].y);
-            int x2= inverted_points[(i+1) % v_c].x;
+            int x2= renderXTransfer(inverted_points[(i+1) % v_c].x);
             int y2 = renderYTransfer(inverted_points[(i+1) % v_c].y);
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
         }
@@ -97,12 +102,15 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> body)
     // std::cout << min_x << min_y << max_x << max_y <<std::endl;
     float adjust_min_y = renderYTransfer(min_y);
     float adjust_max_y = renderYTransfer(max_y);
-    SDL_RenderDrawLine(renderer, min_x, adjust_min_y, max_x, adjust_min_y);
-    SDL_RenderDrawLine(renderer, max_x, adjust_min_y, max_x, adjust_max_y);
-    SDL_RenderDrawLine(renderer, max_x, adjust_max_y, min_x, adjust_max_y);
-    SDL_RenderDrawLine(renderer, min_x, adjust_max_y, min_x, adjust_min_y);
+    float adjust_max_x = renderXTransfer(max_x);
+    float adjust_min_x = renderXTransfer(min_x);
+    SDL_RenderDrawLine(renderer, adjust_min_x, adjust_min_y, adjust_max_x, adjust_min_y);
+    SDL_RenderDrawLine(renderer, adjust_max_x, adjust_min_y, adjust_max_x, adjust_max_y);
+    SDL_RenderDrawLine(renderer, adjust_max_x, adjust_max_y, adjust_min_x, adjust_max_y);
+    SDL_RenderDrawLine(renderer, adjust_min_x, adjust_max_y, adjust_min_x, adjust_min_y);
     SDL_RenderPresent(renderer);
 }
 
 
-int Scene::renderYTransfer(int y) {return screen_y + -1*y;}
+int Scene::renderYTransfer(int y) {return hw_y + -1*y;}
+int Scene::renderXTransfer(int x) {return hw_x + x;}
