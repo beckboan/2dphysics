@@ -15,7 +15,7 @@ struct Poly: public Shape
 
     ShapeType getType() const;
     std::string getName() const;
-    void calculateMassProperties(float& density);
+    void calculateMassProperties(float density);
     void createAABB();   
     void setSpaceOrientation(float radians);
 
