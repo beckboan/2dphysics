@@ -12,7 +12,7 @@ int main(int, char**)
 
     vec2d position = vec2d(0, 0);
     float density = 1000;
-    vec2d movetopos = vec2d(600,300);
+    vec2d movetopos = vec2d(500,100);
 
     // std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
@@ -21,14 +21,17 @@ int main(int, char**)
     std::vector<vec2d> verticies = {vec2d(0,0), vec2d(50,0), vec2d(50,50), vec2d(0,50), vec2d(75,100)};
 
     std::unique_ptr<Shape> pol = std::make_unique<Poly>(verticies);
-    std::unique_ptr<Shape> cir = std::make_unique<Circle>(40.0);
+    std::unique_ptr<Shape> cir = std::make_unique<Poly>(verticies);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(pol, position, density);
     std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(cir,position,density);
     // std::cout << bod->position.x << "  " << bod->position.y << std::endl;
     bod->shape->setBody(bod);
-    bod2->shape->setBody(bod2);
     bod->moveto(movetopos);
-    bod->shape->updateAABB();
+    bod2->shape->setBody(bod2);
+    bod->setRotation(M_PI_4);
+    bod->shape->createAABB();
+
+
 
 
     scene.drawBody(bod);

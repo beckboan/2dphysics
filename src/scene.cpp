@@ -70,20 +70,23 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body)
     {
         Poly* p = dynamic_cast<Poly*>(body->shape.get());
         std::vector<vec2d> v_list_temp = p->getVertexList();
-        vec2d body_pos = body->position;
-        std::vector<vec2d> inverted_points;
-        unsigned int v_c = p->getVertexCount();
-        for (unsigned int i =0; i < v_c; i++)
-        {
-            inverted_points.push_back((v_list_temp[i] += body_pos));
+        int32_t body_pos_x = body->position.x;
+        int32_t body_pos_y = body->position.y;
+        vec2d position = body->position;
 
+        unsigned int v_c = p->getVertexCount();
+
+        for (unsigned int i = 0; i < v_c; i ++)
+        {
+            v_list_temp[i] = p->rotation->mul(v_list_temp[i]) + position;
         }
+
         for (unsigned int i = 0; i < v_c; i ++) 
         {
-            int x1 = renderXTransfer(inverted_points[i].x);
-            int y1 = renderYTransfer(inverted_points[i].y);
-            int x2= renderXTransfer(inverted_points[(i+1) % v_c].x);
-            int y2 = renderYTransfer(inverted_points[(i+1) % v_c].y);
+            int x1 = renderXTransfer(v_list_temp[i].x);
+            int y1 = renderYTransfer(v_list_temp[i].y);
+            int x2= renderXTransfer(v_list_temp[(i+1) % v_c].x);
+            int y2 = renderYTransfer(v_list_temp[(i+1) % v_c].y);
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
         }
         SDL_RenderPresent(renderer);

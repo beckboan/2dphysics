@@ -135,28 +135,35 @@ void Poly::calculateMassProperties(float density)
 
 void Poly::createAABB() 
 {
-    int16_t max_x = vertex_list[0].x;
-    int16_t max_y = vertex_list[0].y;
-    int16_t min_x = vertex_list[0].x;
-    int16_t min_y = vertex_list[0].y;
+    //Multiple by rotation vector for new points.
+    vec2d start = rotation->mul(vertex_list[0]);
+    float max_x = start.x;
+    float max_y = start.y;
+    float min_x = start.x;
+    float min_y = start.y;
 
+    //Find bounds of AABB
     for (unsigned int i = 0; i < vertex_count; i++)
     {
-        if (vertex_list[i].x > max_x)
+        vec2d point = rotation->mul(vertex_list[i]);
+        float x = point.x;
+        float y = point.y; 
+
+        if (x > max_x)
         {
-            max_x = vertex_list[i].x;
+            max_x = x;
         }
-        if (vertex_list[i].y > max_y)
+        if (y > max_y)
         {
-            max_y = vertex_list[i].y;
+            max_y = y;
         }
-        if (vertex_list[i].x < min_x)
+        if (x < min_x)
         {
-            min_x = vertex_list[i].x;
+            min_x = x;
         }
-        if (vertex_list[i].y < min_y)
+        if (y < min_y)
         {
-            min_y = vertex_list[i].y;
+            min_y = y;
         }
     }
 

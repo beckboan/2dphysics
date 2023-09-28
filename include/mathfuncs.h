@@ -102,12 +102,18 @@ struct mat2d
 {
     mat2d();
     mat2d(float radians);
+    mat2d(float v_00, float v_01, float v_10, float v_11);
 
     void setMatrixRotation(float radians);
 
     std::array<float, 2> row_1 {0};
     std::array<float, 2> row_2 {0};
+
+    const vec2d mul(vec2d& vec) const;
+    mat2d transpose();
 };
+
+
 
 
 #endif
