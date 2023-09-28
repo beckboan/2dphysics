@@ -46,6 +46,7 @@ void RigidBody::moveto(const vec2d& position_new)
 void RigidBody::setRotation(float radians) 
 {
     rotation = radians;
+    shape->setSpaceOrientation(radians);
 }
 
 void RigidBody::applyForce(const vec2d& other_force) 
