@@ -47,6 +47,7 @@ struct RigidBody
     void setBodyStatic();
 
     //Getters
+    const vec2d& getPosition() const {return position;};
 
     //Physics Functions
     void move(const vec2d& amount);

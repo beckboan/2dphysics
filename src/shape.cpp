@@ -20,6 +20,11 @@ void Shape::setSpaceOrientation(float radians)
     rotation->setMatrixRotation(radians);
 }
 
+void Shape::updateAABB()
+{
+    std::shared_ptr<RigidBody> body_ref = body.lock();
+    aabb->move(body_ref->position);
+}
 
 
 

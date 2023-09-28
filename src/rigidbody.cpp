@@ -69,4 +69,3 @@ void RigidBody::applyCenterLinearImpulse(const vec2d& impulse)
 }
 
 
-

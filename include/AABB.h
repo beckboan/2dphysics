@@ -16,6 +16,8 @@ struct AABB
     void setMin(float min_x, float min_y);
     void setMax(float max_x, float max_y);
 
+    void move(const vec2d vec);
+
     private:
     vec2d min; //Bottom Left
     vec2d max; //Top Right
