@@ -66,18 +66,19 @@ void World::removePhysicsObject (std::shared_ptr<RigidBody>)
 };
 
 void World::checkCollisions() {
+    //Brute Force for now, want to optimize in future
     unsigned int size = world_objects.size();
     for (unsigned int i = 0; i < size; i ++) 
     {
         std::shared_ptr<RigidBody> A = world_objects[i];
 
-        for (unsigned int j = i + 1; i < size; i ++)
+        for (unsigned int j = i + 1; j < size; j ++)
         {
             std::shared_ptr<RigidBody> B = world_objects[j];
 
             if (checkAABBOverlap(A->shape->aabb, B->shape->aabb)) {
-                Manifold collision(A, B);
-                collision.collisionCaller();
+                std::shared_ptr<Manifold> collision = std::make_shared<Manifold>(A, B);
+                collision->collisionCaller();
             }
         }
     }

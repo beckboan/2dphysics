@@ -22,6 +22,7 @@ int main(int, char**)
 
     world.addCircle(10, position, 1000);
     world.addPoly(verticies, position, 1000);
+    world.addCircle(8, position, 1200);
 
     // scene.drawBody(bod);
     // scene.drawAABB(bod);
