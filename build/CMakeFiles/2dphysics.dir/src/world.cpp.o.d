@@ -316,4 +316,5 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: \
  /home/beckboan/repos/2dphysics/include/AABB.h \
  /home/beckboan/repos/2dphysics/include/circle.h \
  /home/beckboan/repos/2dphysics/include/shape.h \
- /home/beckboan/repos/2dphysics/include/polygon.h
+ /home/beckboan/repos/2dphysics/include/polygon.h \
+ /home/beckboan/repos/2dphysics/include/collisions.h

@@ -38,7 +38,7 @@ int main(int, char**)
 
     std::cout << checkAABBOverlap(bod->shape->aabb, bod2->shape->aabb) << std::endl;
 
-    std::shared_ptr<Manifold> manifold = std::make_shared<Manifold>(bod, bod2);
+    world.checkCollisions();
 
     std::cin.get();
 

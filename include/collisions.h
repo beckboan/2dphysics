@@ -12,12 +12,12 @@ struct Manifold
     std::shared_ptr<RigidBody> A;
     std::shared_ptr<RigidBody> B;
 
-    void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2);
+    void collisionCaller();
 };
 
 
 bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
-bool CirclevsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
-bool RectvsRect(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
+bool CirclevsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
+bool PolyvsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
 
 #endif
