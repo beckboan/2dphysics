@@ -8,15 +8,11 @@
 struct World 
 {
     
-
-
     bool addCircle (float radius, vec2d position, float density);
     bool addRect(float width, float height, vec2d position, float density);
-    void addObject (RigidBody* object);
-    const std::vector<std::shared_ptr<RigidBody>>& getBodies() const {return world_objects;}
+    bool addPoly(std::vector<vec2d> verticies, vec2d position, float density);
 
-    bool isValidArea(float& area);
-    bool isValidDensity(float& density);
+    const std::vector<std::shared_ptr<RigidBody>>& getBodies() const {return world_objects;}
 
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
@@ -36,7 +32,26 @@ struct WorldParams
     static constexpr float max_body_density = 25000; // kg/m^3
     const vec2d origin = vec2d(0,0);
     const vec2d world_gravity = vec2d(0,-9.81);
-    const vec2d viewport = vec2d(1200,800);
 };
+
+// Physics Validation
+
+inline bool isValidArea(float area) {
+    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) 
+    {
+        std::cout << "Area outside of world parameters" << std::endl;
+        return false;
+    }
+    return true;
+}
+
+inline bool isValidDensity(float density) {
+    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) 
+    {
+        std::cout << "Density outside of world parameters" << std::endl;
+        return false;
+    }
+    return true;
+}
 
 #endif

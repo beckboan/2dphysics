@@ -127,6 +127,7 @@ void Poly::calculateMassProperties(float density)
         // std::cout << "X: " << vertex_list[i].x << "Y: " << vertex_list[i].y << std::endl;
     }
 
+    body_ref->area = area;
     body_ref->m = area * density;
     body_ref->inv_m = (body_ref->m>0) ? 1.0/body_ref->m : 0;
     body_ref->I = I;

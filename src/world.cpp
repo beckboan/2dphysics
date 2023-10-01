@@ -43,6 +43,23 @@ bool World::addRect(float width, float height, vec2d position, float density)
     return true;
 
 }
+
+bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density)
+{
+    if (!isValidDensity(density)) return false;
+
+    std::unique_ptr<Shape> shp = std::make_unique<Poly>(verticies);
+    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
+    bod->shape->setBody(bod);
+
+    std::cout << bod->area << std::endl;
+    if (!isValidArea(bod->area)) return false;
+
+    world_objects.emplace_back(bod);
+    std::cout << "Poly Added" << std::endl;
+    return true;
+}
+
 void World::removePhysicsObject (std::shared_ptr<RigidBody>) 
 {
 
@@ -66,25 +83,4 @@ void World::checkCollisions() {
     }
 }
 
-// Physics Validation
-
-bool World::isValidArea(float& area) {
-    if(area < WorldParams::min_body_area || area > WorldParams::max_body_area) 
-    {
-        std::cout << "Area outside of world parameters" << std::endl;
-        return false;
-    }
-    return true;
-}
-
-bool World::isValidDensity(float& density) {
-    if(density < WorldParams::min_body_density || density > WorldParams::max_body_density) 
-    {
-        std::cout << "Density outside of world parameters" << std::endl;
-        return false;
-    }
-    return true;
-}
-
-//
 
