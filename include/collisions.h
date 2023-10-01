@@ -14,10 +14,10 @@ struct Manifold
 
     void collisionCaller();
 
-    bool CirclevsCircle();
-    bool CirclevsPoly();
-    bool PolyvsCircle();
-    bool PolyvsPoly();
+    void CirclevsCircle();
+    void CirclevsPoly();
+    void PolyvsCircle();
+    void PolyvsPoly();
 
     private:
     float penetration;

@@ -7,7 +7,9 @@
 
 struct World 
 {
-    
+    World();
+    World(const float g);
+
     bool addCircle (float radius, vec2d position, float density);
     bool addRect(float width, float height, vec2d position, float density);
     bool addPoly(std::vector<vec2d> verticies, vec2d position, float density);
@@ -22,7 +24,7 @@ struct World
 
     private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;
-    float gravity;
+    vec2d gravity;
     const vec2d origin = vec2d(0,0);
 
     public:

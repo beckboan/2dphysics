@@ -28,7 +28,7 @@ void Manifold::collisionCaller() {
     }
 }
 
-bool Manifold::CirclevsCircle() 
+void Manifold::CirclevsCircle() 
 {
     std:: cout << "Circle Collision" << std::endl;
     Circle* C1 = dynamic_cast<Circle*>(A->shape.get());
@@ -38,37 +38,50 @@ bool Manifold::CirclevsCircle()
     
     float radii = C1->radius + C2->radius;
 
-    if (distance >= radii) {return false;}
+    if (distance >= radii) 
+    {
+        contact_count = 0;
+        return;
+    }
 
-    vec2d normal = (B->position - A->position).normalize();
+    contact_count = 1;
+
+    vec2d norm = (B->position - A->position).normalize();
     float depth = radii - distance;
 
-    A->move(normal*depth/-2);
-    B->move(normal*depth/2);
+    // if (distance == 0.0f) 
+    // {
+    //     penetration = C1->radius;
+    //     contacts[0] = A->position;
+    //     normal = vec2d(1, 0);
+    // }
+    // else
+    // {
+    //     penetration = radii-distance;
+    //     normal = norm;
+    //     contacts[0] = normal * C1->radius + A->position;
+    // }
 
-    return true;
+    contacts[0] = normal * C1->radius + A->position;
 }
 
-bool Manifold::CirclevsPoly() 
+void Manifold::CirclevsPoly() 
 {
     std:: cout << "Circle/Polygon Collision" << std::endl;
     Poly* R2 = dynamic_cast<Poly*>(A->shape.get());
     Circle* C1 = dynamic_cast<Circle*>(B->shape.get());
-    return true;
 }
 
-bool Manifold::PolyvsCircle() 
+void Manifold::PolyvsCircle() 
 {
     std:: cout << "Circle/Polygon Collision" << std::endl;
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
-    return true;
 }
 
-bool Manifold::PolyvsPoly() 
+void Manifold::PolyvsPoly() 
 {
     std:: cout << "Polygon Collision" << std::endl;
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());    
     Poly* R2 = dynamic_cast<Poly*>(B->shape.get());
-    return true;
 }
