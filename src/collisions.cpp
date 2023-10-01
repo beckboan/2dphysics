@@ -3,7 +3,13 @@
 #include "polygon.h"
 #include "circle.h"
 
-void collisionCaller(std::shared_ptr<RigidBody> body1, std::shared_ptr<RigidBody> body2) {}
+
+Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_): A(A_), B(B_) 
+{
+    std::cout << "Manifold Created" << std::endl;
+}
+
+void Manifold::collisionCaller() {}
 
 bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
 {

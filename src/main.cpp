@@ -31,17 +31,14 @@ int main(int, char**)
     bod->setRotation(M_PI);
     bod->shape->createAABB();
 
-    scene.drawBody(bod);
-    scene.drawAABB(bod);
-    scene.drawBody(bod2);
-    scene.drawAABB(bod2);
-
-    std::cout << bod->shape->aabb.getMin().x << std::endl;
-    std::cout << bod->shape->aabb.getMax().x << std::endl;
-    std::cout << bod->shape->aabb.getMin().y << std::endl;
-    std::cout << bod->shape->aabb.getMax().y << std::endl;
+    // scene.drawBody(bod);
+    // scene.drawAABB(bod);
+    // scene.drawBody(bod2);
+    // scene.drawAABB(bod2);
 
     std::cout << checkAABBOverlap(bod->shape->aabb, bod2->shape->aabb) << std::endl;
+
+    std::shared_ptr<Manifold> manifold = std::make_shared<Manifold>(bod, bod2);
 
     std::cin.get();
 

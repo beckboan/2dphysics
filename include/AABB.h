@@ -27,7 +27,6 @@ struct AABB
 
 inline bool checkAABBOverlap(const AABB& box1, const AABB& box2) 
 {
-
     return {box1.getMin().x <= box2.getMax().x &&
             box1.getMax().x >= box2.getMin().x &&
             box1.getMin().y <= box2.getMax().y &&

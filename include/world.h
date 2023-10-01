@@ -8,11 +8,12 @@
 struct World 
 {
     
-    std::vector<std::shared_ptr<RigidBody>> world_objects;
+
 
     bool addCircle (float radius, vec2d position, float density);
     bool addRect(float width, float height, vec2d position, float density);
     void addObject (RigidBody* object);
+    const std::vector<std::shared_ptr<RigidBody>>& getBodies() const {return world_objects;}
 
     bool isValidArea(float& area);
     bool isValidDensity(float& density);
@@ -21,6 +22,10 @@ struct World
     void printPhysicsObjects();
 
     void worldStep();
+    void checkCollisions();
+
+    private:
+    std::vector<std::shared_ptr<RigidBody>> world_objects;
 };
 
 struct WorldParams

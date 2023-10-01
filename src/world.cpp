@@ -4,6 +4,7 @@
 #include "shape.h"
 #include "circle.h"
 #include "polygon.h"
+#include "collisions.h"
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
@@ -46,6 +47,24 @@ void World::removePhysicsObject (std::shared_ptr<RigidBody>)
 {
 
 };
+
+void World::checkCollisions() {
+    unsigned int size = world_objects.size();
+    for (unsigned int i = 0; i < size; i ++) 
+    {
+        std::shared_ptr<RigidBody> A = world_objects[i];
+
+        for (unsigned int j = i + 1; i < size; i ++)
+        {
+            std::shared_ptr<RigidBody> B = world_objects[j];
+
+            if (checkAABBOverlap(A->shape->aabb, B->shape->aabb)) {
+                Manifold collision(A, B);
+                collision.collisionCaller();
+            }
+        }
+    }
+}
 
 // Physics Validation
 
