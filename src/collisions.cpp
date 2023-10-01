@@ -15,20 +15,20 @@ void Manifold::collisionCaller() {
 
     if (A_type == Shape::ShapeType::Poly && B_type == Shape::ShapeType::Poly) 
     {
-        PolyvsPoly(A, B);
+        PolyvsPoly();
     }
     else if (A_type == Shape::ShapeType::Poly && B_type == Shape::ShapeType::Circle) {
-        CirclevsPoly(B, A);
+        PolyvsCircle();
     }
     else if (A_type == Shape::ShapeType::Circle && B_type == Shape::ShapeType::Poly) {
-        CirclevsPoly(A, B);
+        CirclevsPoly();
     }
     else if (A_type == Shape::ShapeType::Circle && B_type == Shape::ShapeType::Circle) {
-        CirclevsCircle(B, A);
+        CirclevsCircle();
     }
 }
 
-bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+bool Manifold::CirclevsCircle() 
 {
     std:: cout << "Circle Collision" << std::endl;
     Circle* C1 = dynamic_cast<Circle*>(A->shape.get());
@@ -49,7 +49,15 @@ bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B)
     return true;
 }
 
-bool CirclevsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+bool Manifold::CirclevsPoly() 
+{
+    std:: cout << "Circle/Polygon Collision" << std::endl;
+    Poly* R2 = dynamic_cast<Poly*>(A->shape.get());
+    Circle* C1 = dynamic_cast<Circle*>(B->shape.get());
+    return true;
+}
+
+bool Manifold::PolyvsCircle() 
 {
     std:: cout << "Circle/Polygon Collision" << std::endl;
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());
@@ -57,7 +65,7 @@ bool CirclevsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B)
     return true;
 }
 
-bool PolyvsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B) 
+bool Manifold::PolyvsPoly() 
 {
     std:: cout << "Polygon Collision" << std::endl;
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());    

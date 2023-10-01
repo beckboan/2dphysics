@@ -13,11 +13,23 @@ struct Manifold
     std::shared_ptr<RigidBody> B;
 
     void collisionCaller();
+
+    bool CirclevsCircle();
+    bool CirclevsPoly();
+    bool PolyvsCircle();
+    bool PolyvsPoly();
+
+    private:
+    float penetration;
+    uint32_t contact_count = 0;
+    vec2d normal = vec2d(0,0);
+    vec2d contacts[2] = {vec2d(0,0), vec2d(0,0)};
+    float e;
+    float df;
+    float sf;
 };
 
 
-bool CirclevsCircle(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
-bool CirclevsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
-bool PolyvsPoly(std::shared_ptr<RigidBody> A, std::shared_ptr<RigidBody> B);
+
 
 #endif
