@@ -24,11 +24,6 @@ int main(int, char**)
     world.addPoly(verticies, position, 1000);
     world.addCircle(8, position, 1200);
 
-    // scene.drawBody(bod);
-    // scene.drawAABB(bod);
-    // scene.drawBody(bod2);
-    // scene.drawAABB(bod2);
-
     world.checkCollisions();
 
     std::cin.get();

@@ -8,6 +8,12 @@
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
+//Creating World
+
+World::World() {gravity.assign(0,0);}
+
+World::World(float g) {gravity.assign(0, -g);}
+
 //Creating and Destroying Rigid Bodies
 
 bool World::addCircle (float radius, vec2d position, float density)
@@ -71,7 +77,6 @@ void World::checkCollisions() {
     for (unsigned int i = 0; i < size; i ++) 
     {
         std::shared_ptr<RigidBody> A = world_objects[i];
-
         for (unsigned int j = i + 1; j < size; j ++)
         {
             std::shared_ptr<RigidBody> B = world_objects[j];
@@ -82,6 +87,11 @@ void World::checkCollisions() {
             }
         }
     }
+}
+
+void World::worldStep() {
+    checkCollisions();
+
 }
 
 
