@@ -12,7 +12,7 @@ int main(int, char**)
 
     vec2d position = vec2d(0, 0);
     float density = 1000;
-    vec2d movetopos = vec2d(500,100);
+    vec2d movetopos = vec2d(-70,100);
 
     // std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
     // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
@@ -26,18 +26,22 @@ int main(int, char**)
     std::shared_ptr<RigidBody> bod2 = std::make_shared<RigidBody>(cir,position,density);
     // std::cout << bod->position.x << "  " << bod->position.y << std::endl;
     bod->shape->setBody(bod);
-    bod->moveto(movetopos);
+    // bod->moveto(movetopos);
     bod2->shape->setBody(bod2);
-    bod->setRotation(M_PI_4);
+    bod->setRotation(M_PI);
     bod->shape->createAABB();
-
-
-
 
     scene.drawBody(bod);
     scene.drawAABB(bod);
     scene.drawBody(bod2);
     scene.drawAABB(bod2);
+
+    std::cout << bod->shape->aabb.getMin().x << std::endl;
+    std::cout << bod->shape->aabb.getMax().x << std::endl;
+    std::cout << bod->shape->aabb.getMin().y << std::endl;
+    std::cout << bod->shape->aabb.getMax().y << std::endl;
+
+    std::cout << checkAABBOverlap(bod->shape->aabb, bod2->shape->aabb) << std::endl;
 
     std::cin.get();
 

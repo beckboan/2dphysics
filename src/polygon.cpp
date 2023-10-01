@@ -171,8 +171,8 @@ void Poly::createAABB()
     float position_x = body_temp->position.x;
     float position_y = body_temp->position.y;
     // std::cout << centroid.x << centroid.y << std::endl;
-    aabb->setMax(position_x+max_x,position_y+max_y);
-    aabb->setMin(position_x+min_x,position_y+min_y);
+    aabb.setMax(position_x+max_x,position_y+max_y);
+    aabb.setMin(position_x+min_x,position_y+min_y);
 }
 void Poly::calculatePolyNormals() 
 {

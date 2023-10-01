@@ -12,7 +12,7 @@ void Shape::setBody(const std::shared_ptr<RigidBody>& body_)
 
 std::tuple<int,int,int,int> Shape::getAABB()
 {
-    return std::tuple(aabb->getMin().x,aabb->getMin().y,aabb->getMax().x,aabb->getMax().y);
+    return std::tuple(aabb.getMin().x,aabb.getMin().y,aabb.getMax().x,aabb.getMax().y);
 }
 
 void Shape::setSpaceOrientation(float radians)
