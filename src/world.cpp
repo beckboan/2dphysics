@@ -72,7 +72,7 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density)
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp,position,density);
     bod->shape->setBody(bod);
 
-    std::cout << bod->area << std::endl;
+    // std::cout << bod->area << std::endl;
     if (!isValidArea(bod->area)) return false;
 
     world_objects.emplace_back(bod);
@@ -110,33 +110,44 @@ void World::checkCollisions()
     }
 }
 
-// void World::worldStep(float dt) {
+void World::worldStep(float dt) {
 
 
-//     contact_list.clear();
-//     checkCollisions();
+    contact_list.clear();
+    checkCollisions();
 
-//     for (auto bod : world_objects)
-//     {
+    integrateForces(dt);
+    integrateVelocities(dt);
 
-//         bod->velocity += gravity * dt ;
+}
+
+void World::renderObjects()
+{
+    scene->clear();
+    for (auto bod : world_objects)
+    {
+        scene->drawBody(bod);
+    }
+}
 
 
-//         bod->angular_velocity += bod->invI 
-//     }
+void World::integrateForces(float dt) 
+{
+    for (auto bod : world_objects)
+    {
+        if (bod->inv_m == 0.0f) continue;
+        bod->velocity += (bod->force * bod->inv_m + gravity) * dt ;
+        bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
+    }
+}
 
-    
-
-
-
-// }
-
-// void World::renderObjects()
-// {
-//     for (auto bod : world_objects)
-//     {
-//         draw
-//     }
-// }
-
+void World::integrateVelocities(float dt)
+{
+    for (auto bod: world_objects)
+    {
+        if (bod->inv_m = 0.0f) continue;
+        bod->position += bod->velocity * dt;
+        bod->setRotation(bod->rotation += bod->angular_velocity * dt);
+    }
+}
 

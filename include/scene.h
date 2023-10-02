@@ -14,6 +14,7 @@ struct Scene
     void drawBody(const std::shared_ptr<RigidBody> body);
     void drawAABB(const std::shared_ptr<RigidBody> body);
     void init();
+    void clear();
 
     private:    
     const int32_t screen_x;

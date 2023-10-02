@@ -22,6 +22,12 @@ void Scene::init()
     SDL_RenderPresent(renderer);
 }
 
+void Scene::clear()
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);  
+}
+
 void Scene::drawBody(const std::shared_ptr<RigidBody> body) 
 {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);

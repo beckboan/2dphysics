@@ -32,6 +32,8 @@ struct World
     vec2d gravity;
     const vec2d origin = vec2d(0,0);
     std::unique_ptr<Scene> scene;
+    void integrateForces(float dt);
+    void integrateVelocities(float dt);
 
     public:
     static constexpr float min_body_area = 0.01; // m^2

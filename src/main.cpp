@@ -6,7 +6,7 @@
 
 int main(int, char**)
 {
-    World world;
+    World world (9.81f);
 
     vec2d position = vec2d(0, 0);
     float density = 1000;
@@ -21,8 +21,6 @@ int main(int, char**)
     world.addCircle(10, position, 1000);
     world.addPoly(verticies, position, 1000);
     world.addCircle(8, position, 1200);
-
-    world.checkCollisions();
 
     std::cin.get();
 
