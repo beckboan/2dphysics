@@ -6,6 +6,5 @@ Current To-Do:
 
 Write contact generation for different shapes
 Write contact resolution (applying impulse to bodies)
-Write render function to automatically replace what was on the screen
 Write code for lower-frame physics with high fps rendering
 
