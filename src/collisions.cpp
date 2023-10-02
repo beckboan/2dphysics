@@ -38,7 +38,7 @@ void Manifold::CirclevsCircle()
     
     float radii = C1->radius + C2->radius;
 
-    if (distSq >= (radii*radii)) 
+    if (distSq > (radii*radii)) 
     {
         contact_count = 0;
         return;
@@ -48,10 +48,22 @@ void Manifold::CirclevsCircle()
 
     contact_count = 1;
 
-    vec2d normal = (B->position - A->position).normalize();
-    float depth = radii - distance;
-    contacts[0] = normal * C1->radius + A->position;
+    // If distance is 0, the circles are directly overlapping and their
+    // contact is at the center of A or B (same thing)
 
+    if (distance == 0.0f) 
+    {
+        penetration = C1->radius;
+        contacts[0] = A->position;
+        normal.assign(1, 0);
+    }
+
+    else 
+    {
+        normal = (B->position - A->position).normalize();
+        penetration = radii - distance;
+        contacts[0] = normal * C1->radius + A->position;
+    }
 }
 
 void Manifold::CirclevsPoly() 
@@ -73,3 +85,5 @@ void Manifold::PolyvsPoly()
     Poly* R1 = dynamic_cast<Poly*>(A->shape.get());    
     Poly* R2 = dynamic_cast<Poly*>(B->shape.get());
 }
+
+void Manifold::solve() {}
