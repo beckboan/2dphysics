@@ -120,6 +120,12 @@ void World::worldStep(float dt) {
     checkCollisions();
 
     integrateForces(dt);
+
+    for (auto c : contact_list)
+    {
+        c->solve();
+    }
+
     integrateVelocities(dt);
 
 }
@@ -139,7 +145,6 @@ void World::integrateForces(float dt)
     for (auto bod : world_objects)
     {
         if (bod->inv_m == 0.0f) return;
-
         bod->velocity += (bod->force * bod->inv_m + gravity)  * dt ;
         bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
     }
@@ -154,4 +159,5 @@ void World::integrateVelocities(float dt)
         bod->setRotation(bod->rotation += bod->angular_velocity * dt);
     }
 }
+
 
