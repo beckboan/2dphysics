@@ -63,9 +63,8 @@ void Manifold::CirclevsPoly()
 
 void Manifold::PolyvsCircle() 
 {
-    std:: cout << "Circle/Polygon Collision" << std::endl;
-    Poly* R1 = dynamic_cast<Poly*>(A->shape.get());
-    Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
+    CirclevsPoly();
+    //rememebr to reverse the normal
 }
 
 void Manifold::PolyvsPoly() 

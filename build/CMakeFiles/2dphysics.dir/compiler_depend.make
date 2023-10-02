@@ -1349,7 +1349,15 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /home/beckboan/repos/2dphysics/include/circle.h \
-  /home/beckboan/repos/2dphysics/include/polygon.h
+  /home/beckboan/repos/2dphysics/include/polygon.h \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h
 
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: /home/beckboan/repos/2dphysics/src/mathfuncs.cpp \
   /usr/include/stdc-predef.h \
@@ -3515,6 +3523,14 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/c++/12/bits/stl_algo.h:
 
+/usr/include/linux/close_range.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/unistd.h:
+
 /home/beckboan/repos/2dphysics/include/scene.h:
 
 /home/beckboan/repos/2dphysics/src/main.cpp:
@@ -3627,7 +3643,11 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/xsavecintrin.h:
 
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/12/include/xsaveintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/tsxldtrkintrin.h:
 
@@ -3671,6 +3691,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 
 /usr/include/c++/12/bits/stl_function.h:
 
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
 /usr/include/c++/12/bits/new_allocator.h:
 
 /usr/include/c++/12/bits/ostream_insert.h:
@@ -3708,6 +3730,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 /usr/include/SDL2/SDL_platform.h:
 
 /usr/include/SDL2/SDL_config.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 

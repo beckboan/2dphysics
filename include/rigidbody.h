@@ -35,6 +35,7 @@ struct RigidBody
     float dynamic_friction;
     float restitution;
     bool hasProperties = 0;
+    bool isStatic = 0;
 
     //Shape Reference
     std::unique_ptr<Shape> shape;

@@ -12,9 +12,9 @@ struct World
     World();
     World(const float g);
 
-    bool addCircle (float radius, vec2d position, float density);
-    bool addRect(float width, float height, vec2d position, float density);
-    bool addPoly(std::vector<vec2d> verticies, vec2d position, float density);
+    bool addCircle (float radius, vec2d position, float density, bool is_static);
+    bool addRect(float width, float height, vec2d position, float density, bool is_static);
+    bool addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
 
     const std::vector<std::shared_ptr<RigidBody>>& getBodies() const {return world_objects;}
 

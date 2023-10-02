@@ -30,7 +30,7 @@ World::World(float g)
 
 //Creating and Destroying Rigid Bodies
 
-bool World::addCircle (float radius, vec2d position, float density)
+bool World::addCircle (float radius, vec2d position, float density, bool is_static)
 {
 
     float area =  radius * radius * M_PI;
@@ -43,10 +43,11 @@ bool World::addCircle (float radius, vec2d position, float density)
 
     world_objects.emplace_back(bod);
     std::cout << "Circle Added" << std::endl;
+    if (is_static) {bod->setBodyStatic();}
     return true;
 };
 
-bool World::addRect(float width, float height, vec2d position, float density) 
+bool World::addRect(float width, float height, vec2d position, float density, bool is_static) 
 {
 
     float area =  width * height;
@@ -60,11 +61,12 @@ bool World::addRect(float width, float height, vec2d position, float density)
     
     world_objects.emplace_back(bod);
     std::cout << "Rectangle Added" << std::endl;
+    if (is_static) {bod->setBodyStatic();}
     return true;
 
 }
 
-bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density)
+bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static)
 {
     if (!isValidDensity(density)) return false;
 
@@ -77,6 +79,7 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density)
 
     world_objects.emplace_back(bod);
     std::cout << "Poly Added" << std::endl;
+    if (is_static) {bod->setBodyStatic();}
     return true;
 }
 
@@ -136,7 +139,8 @@ void World::integrateForces(float dt)
     for (auto bod : world_objects)
     {
         if (bod->inv_m == 0.0f) return;
-        bod->velocity += (bod->force * bod->inv_m + gravity) * dt ;
+
+        bod->velocity += (bod->force * bod->inv_m + gravity)  * dt ;
         bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
     }
 }
