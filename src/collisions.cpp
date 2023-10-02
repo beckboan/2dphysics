@@ -34,35 +34,24 @@ void Manifold::CirclevsCircle()
     Circle* C1 = dynamic_cast<Circle*>(A->shape.get());
     Circle* C2 = dynamic_cast<Circle*>(B->shape.get());
 
-    float distance = dist(A->position,B->position);
+    float distSq = distSquared(A->position, B->position);
     
     float radii = C1->radius + C2->radius;
 
-    if (distance >= radii) 
+    if (distSq >= (radii*radii)) 
     {
         contact_count = 0;
         return;
     }
 
+    float distance = dist(A->position,B->position);
+
     contact_count = 1;
 
-    vec2d norm = (B->position - A->position).normalize();
+    vec2d normal = (B->position - A->position).normalize();
     float depth = radii - distance;
-
-    // if (distance == 0.0f) 
-    // {
-    //     penetration = C1->radius;
-    //     contacts[0] = A->position;
-    //     normal = vec2d(1, 0);
-    // }
-    // else
-    // {
-    //     penetration = radii-distance;
-    //     normal = norm;
-    //     contacts[0] = normal * C1->radius + A->position;
-    // }
-
     contacts[0] = normal * C1->radius + A->position;
+
 }
 
 void Manifold::CirclevsPoly() 

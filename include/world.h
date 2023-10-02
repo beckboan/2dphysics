@@ -4,6 +4,8 @@
 #include <vector>
 #include "mathfuncs.h"
 #include "rigidbody.h"
+#include "collisions.h"
+#include "scene.h"
 
 struct World 
 {
@@ -19,19 +21,24 @@ struct World
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
 
-    void worldStep();
+    void worldStep(float dt);
     void checkCollisions();
+
+    void renderObjects();
 
     private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;
+    std::vector<std::shared_ptr<Manifold>> contact_list;
     vec2d gravity;
     const vec2d origin = vec2d(0,0);
+    std::unique_ptr<Scene> scene;
 
     public:
     static constexpr float min_body_area = 0.01; // m^2
     static constexpr float max_body_area = 100*100; // m^2
     static constexpr float min_body_density = 200; // kg/m^3
     static constexpr float max_body_density = 25000; // kg/m^3
+    
 };
 
 

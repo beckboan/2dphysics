@@ -172,8 +172,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: \
  /usr/include/c++/12/backward/auto_ptr.h \
  /usr/include/c++/12/pstl/glue_memory_defs.h \
  /usr/include/c++/12/pstl/execution_defs.h \
- /home/beckboan/repos/2dphysics/include/mathfuncs.h \
- /home/beckboan/repos/2dphysics/include/shape.h /usr/include/SDL2/SDL.h \
+ /home/beckboan/repos/2dphysics/include/collisions.h \
+ /home/beckboan/repos/2dphysics/include/scene.h /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -312,7 +312,10 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h \
+ /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_opengl.h \
+ /usr/include/SDL2/SDL_opengl_glext.h \
+ /home/beckboan/repos/2dphysics/include/mathfuncs.h \
+ /home/beckboan/repos/2dphysics/include/shape.h \
  /home/beckboan/repos/2dphysics/include/AABB.h \
  /home/beckboan/repos/2dphysics/include/circle.h \
  /home/beckboan/repos/2dphysics/include/shape.h \

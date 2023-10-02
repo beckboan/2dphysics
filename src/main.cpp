@@ -7,8 +7,6 @@
 int main(int, char**)
 {
     World world;
-    Scene scene(1800,1000);
-    scene.init();
 
     vec2d position = vec2d(0, 0);
     float density = 1000;

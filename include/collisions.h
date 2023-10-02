@@ -13,6 +13,9 @@ struct Manifold
     std::shared_ptr<RigidBody> B;
 
     void collisionCaller();
+    void solve();
+
+    const uint32_t& getContactCount() const {return contact_count;}
 
     void CirclevsCircle();
     void CirclevsPoly();
