@@ -53,9 +53,9 @@ struct RigidBody
     void move(const vec2d& amount);
     void moveto(const vec2d& position_new);
     void setRotation(float radians);
-    void applyForce( const vec2d& force);
+    void applyForce( const vec2d& force, const vec2d& point);
     void applyCenterForce( const vec2d& force);
-    void applyLinearImpulse(const vec2d& impulse);
+    void applyLinearImpulse(const vec2d& impulse, const vec2d& point);
     void applyCenterLinearImpulse(const vec2d& impulse);
 
 };
