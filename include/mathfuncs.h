@@ -45,6 +45,16 @@ inline float cp(vec2d& vec1, vec2d& vec2)
     return (vec1.x * vec2.y) - (vec1.y * vec2.x);
 }
 
+inline vec2d cp(vec2d& vec, float n)
+{
+    return {n * vec.y, -n * vec.x};
+}
+
+inline vec2d cp(float n, vec2d& vec)
+{
+    return {-n * vec.y, n * vec.x};
+}
+
 //Distance between
 inline float dist( vec2d& vec1, vec2d& vec2) 
 {

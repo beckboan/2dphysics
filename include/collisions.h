@@ -14,6 +14,7 @@ struct Manifold
 
     void collisionCaller();
     void solve();
+    void applyCollisionImpulse();
 
     const uint32_t& getContactCount() const {return contact_count;}
 
