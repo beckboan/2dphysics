@@ -1346,6 +1346,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: /home/beckboan/repos/2dphysics/src/main
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h \
+  /usr/include/c++/12/ctime \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/AABB.h \
   /home/beckboan/repos/2dphysics/include/circle.h \
@@ -3506,6 +3507,7 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h \
+  /usr/include/c++/12/ctime \
   /home/beckboan/repos/2dphysics/include/mathfuncs.h \
   /home/beckboan/repos/2dphysics/include/shape.h \
   /home/beckboan/repos/2dphysics/include/AABB.h \
@@ -3530,6 +3532,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: /home/beckboan/repos/2dphysics/src/wor
 /usr/include/x86_64-linux-gnu/bits/environments.h:
 
 /usr/include/unistd.h:
+
+/usr/include/c++/12/ctime:
 
 /home/beckboan/repos/2dphysics/include/scene.h:
 

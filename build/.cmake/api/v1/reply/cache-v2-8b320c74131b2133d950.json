@@ -223,10 +223,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/g++"
 		},
 		{
@@ -351,10 +351,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/gcc"
 		},
 		{
@@ -660,18 +660,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : ""
-		},
-		{
-			"name" : "CMAKE_HAVE_LIBC_PTHREAD",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Test CMAKE_HAVE_LIBC_PTHREAD"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_HOME_DIRECTORY",
@@ -1650,18 +1638,6 @@
 			"value" : "[/usr/lib/x86_64-linux-gnu/libGL.so][/usr/include][c ][v()]"
 		},
 		{
-			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Threads",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Details about finding Threads"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "[TRUE][v()]"
-		},
-		{
 			"name" : "GITCOMMAND",
 			"properties" : 
 			[
@@ -1912,42 +1888,6 @@
 			],
 			"type" : "PATH",
 			"value" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2"
-		},
-		{
-			"name" : "SDLMAIN_LIBRARY",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a library."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "SDLMAIN_LIBRARY-NOTFOUND"
-		},
-		{
-			"name" : "SDL_INCLUDE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a file."
-				}
-			],
-			"type" : "PATH",
-			"value" : "SDL_INCLUDE_DIR-NOTFOUND"
-		},
-		{
-			"name" : "SDL_LIBRARY_TEMP",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a library."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "SDL_LIBRARY_TEMP-NOTFOUND"
 		},
 		{
 			"name" : "SITE",
