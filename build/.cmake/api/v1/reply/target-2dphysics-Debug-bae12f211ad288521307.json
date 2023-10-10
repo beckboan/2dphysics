@@ -12,7 +12,8 @@
 		[
 			"add_executable",
 			"target_link_libraries",
-			"target_include_directories"
+			"target_include_directories",
+			"target_compile_features"
 		],
 		"files" : 
 		[
@@ -58,6 +59,12 @@
 				"file" : 0,
 				"line" : 28,
 				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 0
 			}
 		]
 	},
@@ -68,6 +75,9 @@
 			[
 				{
 					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++17"
 				}
 			],
 			"includes" : 
@@ -99,6 +109,14 @@
 				}
 			],
 			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					7
+				],
+				"standard" : "17"
+			},
 			"sourceIndexes" : 
 			[
 				0,

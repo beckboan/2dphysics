@@ -18,7 +18,7 @@ struct Shape
     };
 
     Shape() {};
-    ~Shape() {}
+    virtual ~Shape() = 0;
     virtual ShapeType getType() const = 0;
     virtual std::string getName() const = 0;
     virtual void createAABB() = 0;

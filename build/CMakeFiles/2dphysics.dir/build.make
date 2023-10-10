@@ -73,141 +73,141 @@ CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: CMakeFiles/2dphysics.dir/flags.mak
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: ../src/mathfuncs.cpp
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -MF CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o.d -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -MF CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o.d -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp
 
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp > CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp > CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.i
 
 CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.s
 
 CMakeFiles/2dphysics.dir/src/main.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/2dphysics.dir/src/main.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/2dphysics.dir/src/main.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/main.cpp.o -MF CMakeFiles/2dphysics.dir/src/main.cpp.o.d -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/main.cpp.o -MF CMakeFiles/2dphysics.dir/src/main.cpp.o.d -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/main.cpp
 
 CMakeFiles/2dphysics.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/main.cpp > CMakeFiles/2dphysics.dir/src/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/main.cpp > CMakeFiles/2dphysics.dir/src/main.cpp.i
 
 CMakeFiles/2dphysics.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/main.cpp -o CMakeFiles/2dphysics.dir/src/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/main.cpp -o CMakeFiles/2dphysics.dir/src/main.cpp.s
 
 CMakeFiles/2dphysics.dir/src/world.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/world.cpp.o: ../src/world.cpp
 CMakeFiles/2dphysics.dir/src/world.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2dphysics.dir/src/world.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/world.cpp.o -MF CMakeFiles/2dphysics.dir/src/world.cpp.o.d -o CMakeFiles/2dphysics.dir/src/world.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/world.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/world.cpp.o -MF CMakeFiles/2dphysics.dir/src/world.cpp.o.d -o CMakeFiles/2dphysics.dir/src/world.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/world.cpp
 
 CMakeFiles/2dphysics.dir/src/world.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/world.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/world.cpp > CMakeFiles/2dphysics.dir/src/world.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/world.cpp > CMakeFiles/2dphysics.dir/src/world.cpp.i
 
 CMakeFiles/2dphysics.dir/src/world.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/world.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/world.cpp -o CMakeFiles/2dphysics.dir/src/world.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/world.cpp -o CMakeFiles/2dphysics.dir/src/world.cpp.s
 
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: ../src/shape.cpp
 CMakeFiles/2dphysics.dir/src/shape.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/2dphysics.dir/src/shape.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/shape.cpp.o -MF CMakeFiles/2dphysics.dir/src/shape.cpp.o.d -o CMakeFiles/2dphysics.dir/src/shape.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/shape.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/shape.cpp.o -MF CMakeFiles/2dphysics.dir/src/shape.cpp.o.d -o CMakeFiles/2dphysics.dir/src/shape.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/shape.cpp
 
 CMakeFiles/2dphysics.dir/src/shape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/shape.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/shape.cpp > CMakeFiles/2dphysics.dir/src/shape.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/shape.cpp > CMakeFiles/2dphysics.dir/src/shape.cpp.i
 
 CMakeFiles/2dphysics.dir/src/shape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/shape.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/shape.cpp -o CMakeFiles/2dphysics.dir/src/shape.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/shape.cpp -o CMakeFiles/2dphysics.dir/src/shape.cpp.s
 
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: ../src/rigidbody.cpp
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -MF CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o.d -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -MF CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o.d -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp
 
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/rigidbody.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp > CMakeFiles/2dphysics.dir/src/rigidbody.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp > CMakeFiles/2dphysics.dir/src/rigidbody.cpp.i
 
 CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.s
 
 CMakeFiles/2dphysics.dir/src/collisions.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/collisions.cpp.o: ../src/collisions.cpp
 CMakeFiles/2dphysics.dir/src/collisions.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/2dphysics.dir/src/collisions.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/collisions.cpp.o -MF CMakeFiles/2dphysics.dir/src/collisions.cpp.o.d -o CMakeFiles/2dphysics.dir/src/collisions.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/collisions.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/collisions.cpp.o -MF CMakeFiles/2dphysics.dir/src/collisions.cpp.o.d -o CMakeFiles/2dphysics.dir/src/collisions.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/collisions.cpp
 
 CMakeFiles/2dphysics.dir/src/collisions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/collisions.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/collisions.cpp > CMakeFiles/2dphysics.dir/src/collisions.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/collisions.cpp > CMakeFiles/2dphysics.dir/src/collisions.cpp.i
 
 CMakeFiles/2dphysics.dir/src/collisions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/collisions.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/collisions.cpp -o CMakeFiles/2dphysics.dir/src/collisions.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/collisions.cpp -o CMakeFiles/2dphysics.dir/src/collisions.cpp.s
 
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: ../src/circle.cpp
 CMakeFiles/2dphysics.dir/src/circle.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/2dphysics.dir/src/circle.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/circle.cpp.o -MF CMakeFiles/2dphysics.dir/src/circle.cpp.o.d -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/circle.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/circle.cpp.o -MF CMakeFiles/2dphysics.dir/src/circle.cpp.o.d -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/circle.cpp
 
 CMakeFiles/2dphysics.dir/src/circle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/circle.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/circle.cpp > CMakeFiles/2dphysics.dir/src/circle.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/circle.cpp > CMakeFiles/2dphysics.dir/src/circle.cpp.i
 
 CMakeFiles/2dphysics.dir/src/circle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/circle.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/circle.cpp -o CMakeFiles/2dphysics.dir/src/circle.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/circle.cpp -o CMakeFiles/2dphysics.dir/src/circle.cpp.s
 
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: ../src/polygon.cpp
 CMakeFiles/2dphysics.dir/src/polygon.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/2dphysics.dir/src/polygon.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/polygon.cpp.o -MF CMakeFiles/2dphysics.dir/src/polygon.cpp.o.d -o CMakeFiles/2dphysics.dir/src/polygon.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/polygon.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/polygon.cpp.o -MF CMakeFiles/2dphysics.dir/src/polygon.cpp.o.d -o CMakeFiles/2dphysics.dir/src/polygon.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/polygon.cpp
 
 CMakeFiles/2dphysics.dir/src/polygon.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/polygon.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/polygon.cpp > CMakeFiles/2dphysics.dir/src/polygon.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/polygon.cpp > CMakeFiles/2dphysics.dir/src/polygon.cpp.i
 
 CMakeFiles/2dphysics.dir/src/polygon.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/polygon.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/polygon.cpp -o CMakeFiles/2dphysics.dir/src/polygon.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/polygon.cpp -o CMakeFiles/2dphysics.dir/src/polygon.cpp.s
 
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: ../src/scene.cpp
 CMakeFiles/2dphysics.dir/src/scene.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/2dphysics.dir/src/scene.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/scene.cpp.o -MF CMakeFiles/2dphysics.dir/src/scene.cpp.o.d -o CMakeFiles/2dphysics.dir/src/scene.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/scene.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/scene.cpp.o -MF CMakeFiles/2dphysics.dir/src/scene.cpp.o.d -o CMakeFiles/2dphysics.dir/src/scene.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/scene.cpp
 
 CMakeFiles/2dphysics.dir/src/scene.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/scene.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/scene.cpp > CMakeFiles/2dphysics.dir/src/scene.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/scene.cpp > CMakeFiles/2dphysics.dir/src/scene.cpp.i
 
 CMakeFiles/2dphysics.dir/src/scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/scene.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/scene.cpp -o CMakeFiles/2dphysics.dir/src/scene.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/scene.cpp -o CMakeFiles/2dphysics.dir/src/scene.cpp.s
 
 CMakeFiles/2dphysics.dir/src/AABB.cpp.o: CMakeFiles/2dphysics.dir/flags.make
 CMakeFiles/2dphysics.dir/src/AABB.cpp.o: ../src/AABB.cpp
 CMakeFiles/2dphysics.dir/src/AABB.cpp.o: CMakeFiles/2dphysics.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beckb/Dev/repos/2dphysics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/2dphysics.dir/src/AABB.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/AABB.cpp.o -MF CMakeFiles/2dphysics.dir/src/AABB.cpp.o.d -o CMakeFiles/2dphysics.dir/src/AABB.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/AABB.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2dphysics.dir/src/AABB.cpp.o -MF CMakeFiles/2dphysics.dir/src/AABB.cpp.o.d -o CMakeFiles/2dphysics.dir/src/AABB.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/AABB.cpp
 
 CMakeFiles/2dphysics.dir/src/AABB.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2dphysics.dir/src/AABB.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/AABB.cpp > CMakeFiles/2dphysics.dir/src/AABB.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beckb/Dev/repos/2dphysics/src/AABB.cpp > CMakeFiles/2dphysics.dir/src/AABB.cpp.i
 
 CMakeFiles/2dphysics.dir/src/AABB.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2dphysics.dir/src/AABB.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/AABB.cpp -o CMakeFiles/2dphysics.dir/src/AABB.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beckb/Dev/repos/2dphysics/src/AABB.cpp -o CMakeFiles/2dphysics.dir/src/AABB.cpp.s
 
 # Object files for target 2dphysics
 2dphysics_OBJECTS = \

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Site BuildName="Linux-g++"
-	BuildStamp="20231010-0021-Experimental"
+<Site BuildName="Linux-clang++"
+	BuildStamp="20231010-1206-Experimental"
 	Name="LAPTOP-4LTR582P"
 	Generator="ctest-3.22.1"
-	CompilerName="/usr/bin/g++"
-	CompilerVersion="11.4.0"
+	CompilerName="/usr/bin/clang++"
+	CompilerVersion="14.0.0"
 	OSName="Linux"
 	Hostname="LAPTOP-4LTR582P"
 	OSRelease="5.15.90.1-microsoft-standard-WSL2"
@@ -24,11 +24,11 @@
 	ProcessorClockFrequency="3193.9"
 	>
 	<Testing>
-		<StartDateTime>Oct 09 20:21 EDT</StartDateTime>
-		<StartTestTime>1696897270</StartTestTime>
+		<StartDateTime>Oct 10 08:18 EDT</StartDateTime>
+		<StartTestTime>1696940285</StartTestTime>
 		<TestList/>
-		<EndDateTime>Oct 09 20:21 EDT</EndDateTime>
-		<EndTestTime>1696897270</EndTestTime>
+		<EndDateTime>Oct 10 08:18 EDT</EndDateTime>
+		<EndTestTime>1696940285</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

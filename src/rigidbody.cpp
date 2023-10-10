@@ -13,7 +13,9 @@ RigidBody::RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float den
     static_friction = 0.3f;
     dynamic_friction = 0.2f;
     restitution = 0.2f;
-    r,g,b = 120; // TEMP COLORS 
+    r = 120;
+    g = 120;
+    b = 120;
 }
 
 //Property Functions
@@ -27,7 +29,10 @@ void RigidBody::rigidIni()
 void RigidBody::setBodyStatic() 
 {
     isStatic = 1;
-    m, I, inv_I, inv_m = 0.0f;
+    m = 0.0f;
+    I = 0.0f;
+    inv_I = 0.0f;
+    inv_m = 0.0f;
 }
 
 //Getters
