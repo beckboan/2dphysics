@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/beckboan/repos/2dphysics
-BuildDirectory: /home/beckboan/repos/2dphysics/build
+SourceDirectory: /home/beckb/Dev/repos/2dphysics
+BuildDirectory: /home/beckb/Dev/repos/2dphysics/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: Xubuntu
+Site: LAPTOP-4LTR582P
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-g++
@@ -21,13 +21,12 @@ LabelsForSubprojects:
 
 # Submission information
 SubmitURL: http://
-SubmitInactivityTimeout: 
 
 # Dashboard start time
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/beckboan/repos/2dphysics"
+ConfigureCommand: "/usr/bin/cmake" "/home/beckb/Dev/repos/2dphysics"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -64,7 +63,7 @@ UpdateType: git
 
 # Compiler info
 Compiler: /usr/bin/g++
-CompilerVersion: 12.3.0
+CompilerVersion: 11.4.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

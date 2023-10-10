@@ -6,8 +6,8 @@
 #include "rigidbody.h"
 #include "collisions.h"
 #include "scene.h"
-#include "rundata.h"
 #include <ctime>
+#include "runtimedata.h"
 
 struct World 
 {
@@ -30,13 +30,14 @@ struct World
     
     void run();
 
+    RunTimeData runtimedata;
+  
     private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;
     std::vector<std::shared_ptr<Manifold>> contact_list;
     vec2d gravity;
     const vec2d origin = vec2d(0,0);
     std::unique_ptr<Scene> scene;
-    RunTimeData time_data;
     void integrateForces(float dt);
     void integrateVelocities(float dt);
 
@@ -69,14 +70,6 @@ inline bool isValidDensity(float density) {
     return true;
 }
 
-struct RunTimeData
-{
-    const float fps = 30;
-    const float dt = 1/fps;
-    float time_accumulation = 0;
-    float frameStart = 0;
-    float frameEnd = 0;
-};
 
 
 #endif

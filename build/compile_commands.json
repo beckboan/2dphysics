@@ -1,52 +1,52 @@
 [
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -c /home/beckboan/repos/2dphysics/src/mathfuncs.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/mathfuncs.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/mathfuncs.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/mathfuncs.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckboan/repos/2dphysics/src/main.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/main.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/main.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/main.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/main.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/world.cpp.o -c /home/beckboan/repos/2dphysics/src/world.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/world.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/world.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/world.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/world.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/shape.cpp.o -c /home/beckboan/repos/2dphysics/src/shape.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/shape.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/shape.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/shape.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/shape.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -c /home/beckboan/repos/2dphysics/src/rigidbody.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/rigidbody.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/rigidbody.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/rigidbody.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/collisions.cpp.o -c /home/beckboan/repos/2dphysics/src/collisions.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/collisions.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/collisions.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/collisions.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/collisions.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckboan/repos/2dphysics/src/circle.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/circle.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/circle.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/circle.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/circle.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/polygon.cpp.o -c /home/beckboan/repos/2dphysics/src/polygon.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/polygon.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/polygon.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/polygon.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/polygon.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/scene.cpp.o -c /home/beckboan/repos/2dphysics/src/scene.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/scene.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/scene.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/scene.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/scene.cpp"
 },
 {
-  "directory": "/home/beckboan/repos/2dphysics/build",
-  "command": "/usr/bin/g++  -I/home/beckboan/repos/2dphysics/include -I\"/home/beckboan/repos/2dphysics/(\" -I\"/home/beckboan/repos/2dphysics/)\" -I\"/home/beckboan/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckboan/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/AABB.cpp.o -c /home/beckboan/repos/2dphysics/src/AABB.cpp",
-  "file": "/home/beckboan/repos/2dphysics/src/AABB.cpp"
+  "directory": "/home/beckb/Dev/repos/2dphysics/build",
+  "command": "/usr/bin/g++  -I/home/beckb/Dev/repos/2dphysics/include -I\"/home/beckb/Dev/repos/2dphysics/(\" -I\"/home/beckb/Dev/repos/2dphysics/)\" -I\"/home/beckb/Dev/repos/2dphysics/\\$$(SDL2_INCLUDE_DIR)\" -I/home/beckb/Dev/repos/2dphysics/$(OPENGL_INCLUDE_DIR) -isystem /usr/include/SDL2 -g -o CMakeFiles/2dphysics.dir/src/AABB.cpp.o -c /home/beckb/Dev/repos/2dphysics/src/AABB.cpp",
+  "file": "/home/beckb/Dev/repos/2dphysics/src/AABB.cpp"
 }
 ]
