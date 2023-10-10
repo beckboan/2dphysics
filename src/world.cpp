@@ -154,7 +154,7 @@ void World::integrateVelocities(float dt)
 {
     for (auto bod: world_objects)
     {
-        if (bod->inv_m = 0.0f) return;
+        if (bod->inv_m == 0.0f) return;
         bod->position += bod->velocity * dt;
         bod->setRotation(bod->rotation += bod->angular_velocity * dt);
     }

@@ -1336,6 +1336,7 @@ CMakeFiles/2dphysics.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h \
   /usr/include/c++/11/ctime \
+  ../include/runtimedata.h \
   ../include/shape.h \
   ../include/AABB.h \
   ../include/circle.h \
@@ -3489,6 +3490,7 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: ../src/world.cpp \
   /usr/include/SDL2/SDL_opengl.h \
   /usr/include/SDL2/SDL_opengl_glext.h \
   /usr/include/c++/11/ctime \
+  ../include/runtimedata.h \
   ../include/mathfuncs.h \
   ../include/shape.h \
   ../include/AABB.h \
@@ -4169,6 +4171,8 @@ CMakeFiles/2dphysics.dir/src/world.cpp.o: ../src/world.cpp \
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/c++/11/bits/charconv.h:
+
+../include/runtimedata.h:
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
