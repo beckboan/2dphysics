@@ -34,7 +34,4 @@ struct Shape
     void setSpaceOrientation(float radians);
 };
 
-
-
-
 #endif
