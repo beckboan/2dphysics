@@ -32,6 +32,8 @@ target_link_libraries(2dphysics OpenGL::GL)
 
 target_compile_features(2dphysics PRIVATE cxx_std_17)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

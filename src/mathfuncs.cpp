@@ -1,5 +1,6 @@
-#include <iostream>
+
 #include "mathfuncs.h"
+#include <iostream>
 #include <cmath>
 
 //Vector Methods//
