@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(2dphysics VERSION 0.1.0 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 include(CTest)
 enable_testing()
@@ -29,8 +32,6 @@ target_include_directories(2dphysics PUBLIC $(OPENGL_INCLUDE_DIR))
 
 target_link_libraries(2dphysics SDL2::SDL2)
 target_link_libraries(2dphysics OpenGL::GL)
-
-target_compile_features(2dphysics PRIVATE cxx_std_17)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
