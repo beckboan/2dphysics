@@ -22,12 +22,9 @@ struct World
 
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
-
     void worldStep(float dt);
     void checkCollisions();
-
     void renderObjects();
-    
     void run();
 
     RunTimeData runtimedata;
