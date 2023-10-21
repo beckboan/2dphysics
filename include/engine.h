@@ -4,13 +4,14 @@
 #include <iostream>
 #include "world.h"
 #include "runtimedata.h"
+#include <unistd.h>
 
 class Engine {
 public:
     Engine() {};
-    void init();
+    void createWorld();
+    void createWorld(float g);
     void run();
-private:
     RunTimeData m_runtimedata;
     std::unique_ptr<World> m_world;
 
