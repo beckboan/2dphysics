@@ -23,11 +23,16 @@ World::World(float g)
 {
     int x = 1800;
     int y = 1000;
-    gravity.assign(0, -g);
     scene = std::make_unique<Scene>(x, y);
     scene->init();
+    gravity.assign(0, -g);
 }
 
+
+void World::setGravity(float g)
+{
+    gravity.assign(0, -g);
+}
 //Creating and Destroying Rigid Bodies
 
 bool World::addCircle (float radius, vec2d position, float density, bool is_static)
@@ -161,6 +166,3 @@ void World::integrateVelocities(float dt)
 }
 
 
-void World::run()
-{
-}

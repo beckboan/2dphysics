@@ -19,7 +19,8 @@ struct World
     bool addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
 
     const std::vector<std::shared_ptr<RigidBody>>& getBodies() const {return world_objects;}
-
+    
+    void setGravity(float g);
     void removePhysicsObject (std::shared_ptr<RigidBody>);
     void printPhysicsObjects();
     void worldStep(float dt);
@@ -27,8 +28,6 @@ struct World
     void renderObjects();
     void run();
 
-    RunTimeData runtimedata;
-  
     private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;
     std::vector<std::shared_ptr<Manifold>> contact_list;
