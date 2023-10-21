@@ -15,9 +15,11 @@ struct Scene
     void drawBody(const std::shared_ptr<RigidBody> body);
     void drawAABB(const std::shared_ptr<RigidBody> body);
     void drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies);
+    void checkEvent();
     void init();
     void clear();
     bool getActive() {return is_active;}
+    void setActive(bool b) {is_active = b;} 
 
     private:    
     const int32_t screen_x;

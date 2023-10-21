@@ -1,4 +1,5 @@
 #include "scene.h"
+#include <SDL.h>
 #define GL_GLEXT_PROTOTYPES
 #include "rigidbody.h"
 #include "shape.h"
@@ -136,6 +137,16 @@ void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies)
     {
         drawBody(bod);
     }
+}
+
+void Scene::checkEvent()
+{
+    while (SDL_PollEvent(&e))
+        switch (e.type) {
+            case SDL_QUIT:
+                is_active = 0;
+                break;
+        }
 }
 
 int Scene::renderYTransfer(int y) {return hw_y + -1*y;}

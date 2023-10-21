@@ -26,6 +26,7 @@ void Engine::run()
         m_world->worldStep(5);
         usleep(1000000);
         m_scene->drawObjects(m_world->getBodies());
+        m_scene->setActive(0);
     }
     
 }
