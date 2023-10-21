@@ -14,6 +14,7 @@ Scene::~Scene()
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+    is_active = 0;
 }
 
 void Scene::init()
@@ -27,6 +28,7 @@ void Scene::init()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);   
     SDL_RenderPresent(renderer);
+    is_active = 1;
 }
 
 void Scene::clear()
