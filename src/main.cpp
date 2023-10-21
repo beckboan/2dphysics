@@ -8,22 +8,18 @@
 
 int main(int argc, char* args[])
 {
-    Engine test;
-    test.m_world.setGravity(9.8);
-    
+    Engine engine;
+    engine.createWorld(9.8f);
+
     vec2d position = vec2d(0, 0);
     float density = 1000;
     vec2d movetopos = vec2d(-300,0);
 
-    // std::unique_ptr<Shape> shp1 = std::make_unique<Circle>(1);
-    // std::shared_ptr<RigidBody> bod1 = std::make_shared<RigidBody>(shp1,position,1000);
-    // bod1->shape->setBody(bod1);
-
     std::vector<vec2d> verticies = {vec2d(0,0), vec2d(5,0), vec2d(5,5), vec2d(0,5), vec2d(7.5,10)};
 
-    test.m_world.addCircle(10, position, 1000, 0);
-    test.m_world.addPoly(verticies, movetopos, 1000, 1);
-    test.run();
+    engine.m_world->addCircle(10, position, 1000, 0);
+    engine.m_world->addPoly(verticies, movetopos, 1000, 1);
+    engine.run();
     std::cin.get();
 
 }

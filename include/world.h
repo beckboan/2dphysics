@@ -25,7 +25,6 @@ struct World
     void printPhysicsObjects();
     void worldStep(float dt);
     void checkCollisions();
-    void renderObjects();
     void run();
 
     private:
@@ -33,7 +32,6 @@ struct World
     std::vector<std::shared_ptr<Manifold>> contact_list;
     vec2d gravity;
     const vec2d origin = vec2d(0,0);
-    std::unique_ptr<Scene> scene;
     void integrateForces(float dt);
     void integrateVelocities(float dt);
 

@@ -12,19 +12,11 @@
 
 World::World()
 {
-    int x = 1800;
-    int y = 1000;
-    scene = std::make_unique<Scene>(x, y);
-    scene->init();
     gravity.assign(0,0);
 }
 
 World::World(float g) 
 {
-    int x = 1800;
-    int y = 1000;
-    scene = std::make_unique<Scene>(x, y);
-    scene->init();
     gravity.assign(0, -g);
 }
 
@@ -134,16 +126,6 @@ void World::worldStep(float dt) {
     integrateVelocities(dt);
 
 }
-
-void World::renderObjects()
-{
-    scene->clear();
-    for (auto bod : world_objects)
-    {
-        scene->drawBody(bod);
-    }
-}
-
 
 void World::integrateForces(float dt) 
 {

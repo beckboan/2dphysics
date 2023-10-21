@@ -127,6 +127,14 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> body)
     SDL_RenderPresent(renderer);
 }
 
+void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies)
+{
+    clear();
+    for (auto bod : bodies)
+    {
+        drawBody(bod);
+    }
+}
 
 int Scene::renderYTransfer(int y) {return hw_y + -1*y;}
 int Scene::renderXTransfer(int x) {return hw_x + x;}
