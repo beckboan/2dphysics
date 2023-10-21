@@ -13,7 +13,7 @@ public:
     void createWorld(float g);
     void run();
     RunTimeData m_runtimedata;
-    std::unique_ptr<World> m_world;
+    World m_world;
 
 };
 

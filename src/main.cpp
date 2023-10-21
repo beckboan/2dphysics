@@ -9,7 +9,7 @@
 int main(int, char**)
 {
     Engine test;
-    test.createWorld(9.81f);
+    test.m_world.setGravity(9.8);
     
     vec2d position = vec2d(0, 0);
     float density = 1000;
@@ -21,9 +21,9 @@ int main(int, char**)
 
     std::vector<vec2d> verticies = {vec2d(0,0), vec2d(5,0), vec2d(5,5), vec2d(0,5), vec2d(7.5,10)};
 
-    test.m_world->addCircle(10, position, 1000, 0);
+    test.m_world.addCircle(10, position, 1000, 0);
 
-    test.m_world->addPoly(verticies, movetopos, 1000, 1);
+    test.m_world.addPoly(verticies, movetopos, 1000, 1);
 
     test.run();
 
