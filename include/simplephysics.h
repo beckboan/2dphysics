@@ -11,5 +11,6 @@
 #include "circle.h"
 #include "polygon.h"
 #include "scene.h"
+#include "engine.h"
 
 #endif

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "engine.h"
 #include "simplephysics.h"
 #include <unistd.h>
 //#include "tests.h"
@@ -7,8 +8,10 @@
 
 int main(int, char**)
 {
+    Engine test;
     World world (9.81f);
 
+    
     vec2d position = vec2d(0, 0);
     float density = 1000;
     vec2d movetopos = vec2d(-300,0);

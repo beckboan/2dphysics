@@ -21,6 +21,7 @@ set(SOURCES
     src/polygon.cpp 
     src/scene.cpp
     src/AABB.cpp
+    src/engine.cpp
 )
 
 add_executable(2dphysics ${SOURCES})
