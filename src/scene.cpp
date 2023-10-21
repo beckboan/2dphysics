@@ -9,6 +9,13 @@
 
 Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_), hw_x(screen_x_/2), hw_y(screen_y_/2) {}
 
+Scene::~Scene()
+{
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
+}
+
 void Scene::init()
 {
     SDL_Init(SDL_INIT_EVERYTHING);

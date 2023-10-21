@@ -9,6 +9,7 @@
 struct Scene
 {
     Scene(int screen_x_, int screen_y_);
+    ~Scene();
     
 
     void drawBody(const std::shared_ptr<RigidBody> body);
