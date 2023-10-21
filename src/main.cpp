@@ -6,7 +6,7 @@
 
 #define DBG(msg) std::cout << msg <<std::endl;
 
-int main(int, char**)
+int main(int argc, char* args[])
 {
     Engine test;
     test.m_world.setGravity(9.8);
