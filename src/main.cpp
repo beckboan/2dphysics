@@ -20,6 +20,5 @@ int main(int argc, char* args[])
     engine.m_world->addCircle(10, position, 1000, 0);
     engine.m_world->addPoly(verticies, movetopos, 1000, 1);
     engine.run();
-    std::cin.get();
 
 }

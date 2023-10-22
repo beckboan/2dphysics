@@ -142,11 +142,19 @@ void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies)
 void Scene::checkEvent()
 {
     while (SDL_PollEvent(&e))
+    {
         switch (e.type) {
             case SDL_QUIT:
                 is_active = 0;
                 break;
+            case SDL_KEYDOWN:
+                switch(e.key.keysym.scancode) {
+                    case SDL_SCANCODE_ESCAPE:
+                        is_active = 0;
+                        break;
+                }
         }
+    }   
 }
 
 int Scene::renderYTransfer(int y) {return hw_y + -1*y;}

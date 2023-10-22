@@ -25,7 +25,6 @@ struct World
     void printPhysicsObjects();
     void worldStep(float dt);
     void checkCollisions();
-    void run();
 
     private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;

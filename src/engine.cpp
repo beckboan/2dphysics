@@ -22,11 +22,11 @@ void Engine::run()
     std::cout << m_scene->getActive() << std::endl;
     while(m_scene->getActive())
     {
+        m_scene->checkEvent();
         m_scene->drawObjects(m_world->getBodies());
         m_world->worldStep(5);
         usleep(1000000);
         m_scene->drawObjects(m_world->getBodies());
-        m_scene->setActive(0);
     }
     
 }
