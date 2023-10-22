@@ -152,7 +152,11 @@ void Scene::checkEvent()
                     case SDL_SCANCODE_ESCAPE:
                         is_active = 0;
                         break;
+                    default: 
+                        break;
                 }
+            default:
+                break;
         }
     }   
 }
