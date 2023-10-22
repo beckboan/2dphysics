@@ -19,7 +19,6 @@ void Engine::createWorld(float g)
 
 void Engine::run()
 {
-    std::cout << m_scene->getActive() << std::endl;
     while(m_scene->getActive())
     {
         m_runtimedata.updateClock();
