@@ -22,6 +22,7 @@ set(SOURCES
     src/scene.cpp
     src/AABB.cpp
     src/engine.cpp
+    src/runtimedata.cpp
 )
 
 add_executable(2dphysics ${SOURCES})

@@ -22,10 +22,16 @@ void Engine::run()
     std::cout << m_scene->getActive() << std::endl;
     while(m_scene->getActive())
     {
+        m_runtimedata.updateClock();
         m_scene->checkEvent();
-        m_scene->drawObjects(m_world->getBodies());
-        m_world->worldStep(5);
-        usleep(1000000);
+        while (m_runtimedata.goPhysics())
+        {
+            m_world->worldStep(m_runtimedata.getDTFloat());
+            m_runtimedata.updateInternalTimers();
+        }
+        // m_scene->drawObjects(m_world->getBodies());
+        // m_world->worldStep(5);
+        // usleep(1000000);
         m_scene->drawObjects(m_world->getBodies());
     }
     
