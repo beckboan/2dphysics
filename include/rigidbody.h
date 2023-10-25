@@ -7,57 +7,55 @@
 struct Transform;
 struct Shape;
 
-struct RigidBody 
-{
-    RigidBody(std::unique_ptr<Shape>& shape_, vec2d& position_, float density_);
-    RigidBody(const RigidBody&) = delete;
-    RigidBody& operator=(const RigidBody&) = delete;
-    ~RigidBody() = default;
+struct RigidBody {
+  RigidBody(std::unique_ptr<Shape> &shape_, vec2d &position_, float density_);
+  RigidBody(const RigidBody &) = delete;
+  RigidBody &operator=(const RigidBody &) = delete;
+  ~RigidBody() = default;
 
-    vec2d position;
-    vec2d velocity;
-    vec2d force;
-    
-    float rotation;
-    float angular_velocity;
-    float torque;
-    
-    //Shape Features
-    float I;
-    float inv_I;
-    float m; 
-    float inv_m;
-    float area;
-    float density;
+  vec2d position;
+  vec2d velocity;
+  vec2d force;
 
-    //Friction and Rest
-    float static_friction;
-    float dynamic_friction;
-    float restitution;
-    bool hasProperties = 0;
-    bool isStatic = 0;
+  float rotation;
+  float angular_velocity;
+  float torque;
 
-    //Shape Reference
-    std::unique_ptr<Shape> shape;
+  // Shape Features
+  float I;
+  float inv_I;
+  float m;
+  float inv_m;
+  float area;
+  float density;
 
-    //Body Color
-    int r,g,b;
+  // Friction and Rest
+  float static_friction;
+  float dynamic_friction;
+  float restitution;
+  bool hasProperties = 0;
+  bool isStatic = 0;
 
-    //Property Functions
-    void rigidIni();
-    void setBodyStatic();
+  // Shape Reference
+  std::unique_ptr<Shape> shape;
 
-    //Getters
-    const vec2d& getPosition() const {return position;};
+  // Body Color
+  int r, g, b;
 
-    //Physics Functions
-    void move(const vec2d& amount);
-    void moveto(const vec2d& position_new);
-    void setRotation(float radians);
-    void applyForce( const vec2d& force, const vec2d& point);
-    void applyCenterForce( const vec2d& force);
-    void applyLinearImpulse(const vec2d& impulse, const vec2d& point);
-    void applyCenterLinearImpulse(const vec2d& impulse);
+  // Property Functions
+  void rigidIni();
+  void setBodyStatic();
 
+  // Getters
+  const vec2d &getPosition() const { return position; };
+
+  // Physics Functions
+  void move(const vec2d &amount);
+  void moveto(const vec2d &position_new);
+  void setRotation(float radians);
+  void applyForce(const vec2d &force, const vec2d &point);
+  void applyCenterForce(const vec2d &force);
+  void applyLinearImpulse(const vec2d &impulse, const vec2d &point);
+  void applyCenterLinearImpulse(const vec2d &impulse);
 };
 #endif
