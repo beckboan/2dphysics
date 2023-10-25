@@ -10,6 +10,10 @@
 struct Scene
 {
     Scene(int screen_x_, int screen_y_);
+    Scene(const Scene& other) = delete;
+    Scene& operator=(const Scene& other) = delete;
+    Scene(Scene&& other) = delete;
+    Scene& operator=(Scene&& other) = delete;
     ~Scene();
     
     void drawBody(const std::shared_ptr<RigidBody> body);
