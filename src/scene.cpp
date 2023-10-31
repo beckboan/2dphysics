@@ -75,7 +75,6 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
         err += (dx - diameter);
       }
     }
-    SDL_RenderPresent(renderer);
     break;
   }
   case Shape::ShapeType::Poly: {
@@ -98,7 +97,6 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
       int y2 = renderYTransfer(v_list_temp[(i + 1) % v_c].y);
       SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
     }
-    SDL_RenderPresent(renderer);
     break;
   }
   default:
@@ -122,14 +120,15 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {
                      adjust_max_y);
   SDL_RenderDrawLine(renderer, adjust_min_x, adjust_max_y, adjust_min_x,
                      adjust_min_y);
-  SDL_RenderPresent(renderer);
 }
 
 void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
   clear();
   for (auto bod : bodies) {
     drawBody(bod);
+    drawAABB(bod);
   }
+  SDL_RenderPresent(renderer);
 }
 
 void Scene::checkEvent() {

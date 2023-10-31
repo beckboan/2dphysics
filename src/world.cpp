@@ -90,6 +90,7 @@ void World::removePhysicsObject(std::shared_ptr<RigidBody>){
 
 void World::checkCollisions() {
   // Brute Force for now, want to optimize in future
+
   unsigned int size = world_objects.size();
   for (unsigned int i = 0; i < size; i++) {
     std::shared_ptr<RigidBody> A = world_objects[i];
@@ -98,6 +99,7 @@ void World::checkCollisions() {
 
       if (checkAABBOverlap(A->shape->aabb, B->shape->aabb)) {
         std::shared_ptr<Manifold> collision = std::make_shared<Manifold>(A, B);
+        std::cout << "Collision Detected" << std::endl;
         collision->collisionCaller();
         if (collision->getContactCount() > 0) {
           contact_list.push_back(collision);
@@ -119,6 +121,13 @@ void World::worldStep(float dt) {
   }
 
   integrateVelocities(dt);
+  updateAABB();
+}
+
+void World::updateAABB() {
+  for (auto bod : world_objects) {
+    bod->shape->createAABB();
+  }
 }
 
 void World::integrateForces(float dt) {

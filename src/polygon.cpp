@@ -161,6 +161,7 @@ void Poly::createAABB() {
   aabb.setMax(position_x + max_x, position_y + max_y);
   aabb.setMin(position_x + min_x, position_y + min_y);
 }
+
 void Poly::calculatePolyNormals() {
   normals.clear();
   assert(vertex_count > 2 && vertex_count < max_poly_count &&

@@ -36,6 +36,7 @@ private:
   const vec2d origin = vec2d(0, 0);
   void integrateForces(float dt);
   void integrateVelocities(float dt);
+  void updateAABB();
 
 public:
   static constexpr float min_body_area = 0.01;      // m^2
