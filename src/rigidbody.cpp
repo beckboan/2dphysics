@@ -46,14 +46,18 @@ void RigidBody::setRotation(float radians) {
   shape->setSpaceOrientation(radians);
 }
 
-void RigidBody::applyForce(const vec2d &other_force, const vec2d &point) {}
-
-void RigidBody::applyCenterForce(const vec2d &other_force) {
+void RigidBody::applyForce(vec2d &other_force, vec2d &point) {
   force += other_force;
+  torque += cp(point, other_force);
 }
 
-void RigidBody::applyLinearImpulse(const vec2d &impulse, const vec2d &point) {}
+void RigidBody::applyCenterForce(vec2d &other_force) { force += other_force; }
 
-void RigidBody::applyCenterLinearImpulse(const vec2d &impulse) {
+void RigidBody::applyLinearImpulse(vec2d &impulse, vec2d &point) {
+  velocity += impulse * inv_m;
+  angular_velocity += inv_I * cp(point, impulse);
+}
+
+void RigidBody::applyCenterLinearImpulse(vec2d &impulse) {
   velocity += impulse * inv_m;
 }

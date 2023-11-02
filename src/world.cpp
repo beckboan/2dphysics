@@ -124,12 +124,6 @@ void World::worldStep(float dt) {
   updateAABB();
 }
 
-void World::updateAABB() {
-  for (auto bod : world_objects) {
-    bod->shape->createAABB();
-  }
-}
-
 void World::integrateForces(float dt) {
   for (auto bod : world_objects) {
     if (bod->inv_m == 0.0f)
@@ -145,5 +139,11 @@ void World::integrateVelocities(float dt) {
       return;
     bod->position += bod->velocity * dt;
     bod->setRotation(bod->rotation += bod->angular_velocity * dt);
+  }
+}
+
+void World::updateAABB() {
+  for (auto bod : world_objects) {
+    bod->shape->createAABB();
   }
 }

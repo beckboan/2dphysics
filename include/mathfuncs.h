@@ -32,6 +32,7 @@ public:
   float length() const;
   vec2d normalize();
   vec2d negY();
+  vec2d negate();
 };
 
 // Dot Product

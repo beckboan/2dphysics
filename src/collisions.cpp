@@ -1,5 +1,6 @@
 #include "collisions.h"
 #include "circle.h"
+#include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
 
@@ -82,15 +83,28 @@ void Manifold::PolyvsPoly() {
 
 void Manifold::solve() {
   for (auto c : contacts) {
-    vec2d A_c = c - A->position;
-    vec2d B_c = c - B->position;
+    vec2d a_con = c - A->position;
+    vec2d b_con = c - B->position;
 
-    vec2d r_vel = B->velocity + cp(B->angular_velocity, A_c) - A->velocity -
-                  cp(A->angular_velocity, B_c);
+    vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
+                  cp(A->angular_velocity, a_con);
 
     float r_speed = dp(r_vel, normal);
 
     if (r_speed >= 0)
       return;
+
+    float acn = cp(a_con, normal);
+    float bcn = cp(b_con, normal);
+
+    float inv_mass_sum =
+        A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
+
+    float j = (-(e + 1.0f) * r_speed) / inv_mass_sum;
+
+    vec2d imp = normal * j;
+    vec2d imp_neg = imp * -1;
+    B->applyLinearImpulse(imp, b_con);
+    A->applyLinearImpulse(imp_neg, a_con);
   }
 }

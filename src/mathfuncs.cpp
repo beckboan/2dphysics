@@ -87,6 +87,8 @@ void vec2d::assign(float x, float y) {
 
 vec2d vec2d::negY() { return vec2d(x, -y); }
 
+vec2d vec2d::negate() { return vec2d(-x, -y); }
+
 // Rotation Matrix
 
 mat2d::mat2d() { this->setMatrixRotation(0); }
