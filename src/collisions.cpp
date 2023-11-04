@@ -35,11 +35,11 @@ void Manifold::CirclevsCircle() {
   Circle *C1 = dynamic_cast<Circle *>(A->shape.get());
   Circle *C2 = dynamic_cast<Circle *>(B->shape.get());
 
-  float distSq = distSquared(A->position, B->position);
+  float dist_sq = distSquared(A->position, B->position);
 
   float radii = C1->radius + C2->radius;
 
-  if (distSq > (radii * radii)) {
+  if (dist_sq > (radii * radii)) {
     contact_count = 0;
     return;
   }
