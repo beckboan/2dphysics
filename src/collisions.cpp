@@ -6,7 +6,7 @@
 
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
     : A(A_), B(B_) {
-  std::cout << "Manifold Created" << std::endl;
+  // std::cout << "Manifold Created" << std::endl;
   e = std::min(A->restitution, B->restitution);
   df = std::sqrt(A->dynamic_friction * B->dynamic_friction);
   sf = std::sqrt(A->static_friction * B->dynamic_friction);
@@ -31,13 +31,16 @@ void Manifold::collisionCaller() {
 }
 
 void Manifold::CirclevsCircle() {
-  std::cout << "Circle Collision" << std::endl;
+  // std::cout << "Circle Collision" << std::endl;
   Circle *C1 = dynamic_cast<Circle *>(A->shape.get());
   Circle *C2 = dynamic_cast<Circle *>(B->shape.get());
 
   float dist_sq = distSquared(A->position, B->position);
 
   float radii = C1->radius + C2->radius;
+
+  // Return if circles are further than sum of radii - using
+  // dist_sq for faster computation of this case (no sqrt)
 
   if (dist_sq > (radii * radii)) {
     contact_count = 0;

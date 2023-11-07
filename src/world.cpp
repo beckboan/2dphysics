@@ -99,7 +99,7 @@ void World::checkCollisions() {
 
       if (checkAABBOverlap(A->shape->aabb, B->shape->aabb)) {
         std::shared_ptr<Manifold> collision = std::make_shared<Manifold>(A, B);
-        std::cout << "Collision Detected" << std::endl;
+        // std::cout << "Collision Detected" << std::endl;
         collision->collisionCaller();
         if (collision->getContactCount() > 0) {
           contact_list.push_back(collision);
