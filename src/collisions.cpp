@@ -86,24 +86,29 @@ void Manifold::PolyvsPoly() {
 
 void Manifold::solve() {
   for (auto c : contacts) {
+    // Calculate vector from COM to contact
     vec2d a_con = c - A->position;
     vec2d b_con = c - B->position;
 
+    // Compute relative velocity
     vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
                   cp(A->angular_velocity, a_con);
 
-    float r_speed = dp(r_vel, normal);
+    // Computer relative velocity along normal
+    float contact_vel = dp(r_vel, normal);
 
-    if (r_speed >= 0)
+    // Only solve if objects are moving towards each other
+    if (contact_vel > 0)
       return;
 
+    // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
     float acn = cp(a_con, normal);
     float bcn = cp(b_con, normal);
 
     float inv_mass_sum =
         A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
 
-    float j = (-(e + 1.0f) * r_speed) / inv_mass_sum;
+    float j = (-(e + 1.0f) * contact_vel) / inv_mass_sum;
 
     vec2d imp = normal * j;
     vec2d imp_neg = imp * -1;

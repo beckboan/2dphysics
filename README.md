@@ -8,9 +8,9 @@ This Physics Engine is a C++ project designed to simulate physical interactions 
 
 ## Features
 
-- **Rigid Body Dynamics:**
-- **Collision Detection:**
-- **Broad Phase and Narrow Phase:**
+- **Rigid Body Dynamics**
+- **Collision Detection**
+- **Broad Phase and Narrow Phase**
 
 ## Getting Started
 
