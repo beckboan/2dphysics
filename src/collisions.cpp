@@ -3,6 +3,7 @@
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
+#include <cstdint>
 
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
     : A(A_), B(B_) {
@@ -69,19 +70,13 @@ void Manifold::CirclevsCircle() {
 
 void Manifold::CirclevsPoly() {
   std::cout << "Circle/Polygon Collision" << std::endl;
-  Poly *R2 = dynamic_cast<Poly *>(A->shape.get());
+  Poly *P2 = dynamic_cast<Poly *>(A->shape.get());
   Circle *C1 = dynamic_cast<Circle *>(B->shape.get());
 }
 
 void Manifold::PolyvsCircle() {
   CirclevsPoly();
   // rememebr to reverse the normal
-}
-
-void Manifold::PolyvsPoly() {
-  std::cout << "Polygon Collision" << std::endl;
-  Poly *R1 = dynamic_cast<Poly *>(A->shape.get());
-  Poly *R2 = dynamic_cast<Poly *>(B->shape.get());
 }
 
 void Manifold::solve() {
@@ -115,4 +110,21 @@ void Manifold::solve() {
     B->applyLinearImpulse(imp, b_con);
     A->applyLinearImpulse(imp_neg, a_con);
   }
+}
+
+void Manifold::PolyvsPoly() {
+  std::cout << "Polygon Collision" << std::endl;
+  Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
+  Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
+}
+
+float findAOLP(uint16_t &face, Poly *poly1, Poly *poly2) {
+  float max_dist = std::numeric_limits<float>::min();
+  uint16_t max_index;
+
+  std::vector<vec2d> A_normals = poly1->getNormals();
+  std::vector<vec2d> B_normals = poly2->getNormals();
+
+  face = max_index;
+  return max_dist;
 }
