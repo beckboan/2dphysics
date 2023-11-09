@@ -123,7 +123,7 @@ void Poly::calculateMassProperties(float density) {
   body_ref->m = area * density;
   body_ref->inv_m = (body_ref->m > 0) ? 1.0 / body_ref->m : 0;
   body_ref->I = I;
-  body_ref->I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
+  body_ref->inv_I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
 }
 
 void Poly::createAABB() {
