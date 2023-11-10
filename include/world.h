@@ -2,6 +2,7 @@
 #define WORLD
 
 #include "collisions.h"
+#include "edge.h"
 #include "mathfuncs.h"
 #include "rigidbody.h"
 #include "runtimedata.h"
@@ -24,6 +25,9 @@ struct World {
     return world_objects;
   }
 
+  const std::vector<std::shared_ptr<Edge>> &getBoundaries() const {
+    return world_boundaries;
+  }
   void setGravity(float g);
   void removePhysicsObject(std::shared_ptr<RigidBody>);
   void printPhysicsObjects();
@@ -33,6 +37,7 @@ struct World {
 private:
   std::vector<std::shared_ptr<RigidBody>> world_objects;
   std::vector<std::shared_ptr<Manifold>> contact_list;
+  std::vector<std::shared_ptr<Edge>> world_boundaries;
   vec2d gravity;
   const vec2d origin = vec2d(0, 0);
   void integrateForces(float dt);
