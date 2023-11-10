@@ -1,5 +1,6 @@
 #include "scene.h"
 #include <SDL.h>
+#include <SDL_render.h>
 #define GL_GLEXT_PROTOTYPES
 #include "circle.h"
 #include "mathfuncs.h"
@@ -120,6 +121,10 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {
                      adjust_max_y);
   SDL_RenderDrawLine(renderer, adjust_min_x, adjust_max_y, adjust_min_x,
                      adjust_min_y);
+}
+
+void Scene::drawBoundary(const std::shared_ptr<Edge> edge) {
+  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 }
 
 void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {

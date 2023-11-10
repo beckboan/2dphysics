@@ -3,6 +3,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_opengl.h"
+#include "edge.h"
 #include "rigidbody.h"
 #include <memory>
 #include <vector>
@@ -17,6 +18,7 @@ struct Scene {
 
   void drawBody(const std::shared_ptr<RigidBody> body);
   void drawAABB(const std::shared_ptr<RigidBody> body);
+  void drawBoundary(const std::shared_ptr<Edge> edge);
   void drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies);
   void checkEvent();
   void init();
