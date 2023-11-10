@@ -1,6 +1,6 @@
 #include "edge.h"
 
-Edge::Edge(std::vector<vec2d> &verticies) {}
+Edge::Edge(vec2d s, vec2d e) : start(s), end(e) {}
 
 Shape::ShapeType Edge::getType() const { return ShapeType::Poly; }
 

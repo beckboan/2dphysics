@@ -7,7 +7,7 @@
 #include <vector>
 
 struct Edge : public Shape {
-  Edge(std::vector<vec2d> &verticies); // Normal Poly
+  Edge(vec2d s, vec2d e);
 
   ShapeType getType() const;
   std::string getName() const;
@@ -15,14 +15,10 @@ struct Edge : public Shape {
   void createAABB();
 
   // Getters/Setters
-  const unsigned int &getVertexCount() const { return vertex_count; }
-  const std::vector<vec2d> &getVertexList() const { return vertex_list; }
-  const std::vector<vec2d> &getNormals() const { return normals; }
 
 private:
-  unsigned int vertex_count = 0;
-  std::vector<vec2d> vertex_list;
-  std::vector<vec2d> normals;
+  vec2d start;
+  vec2d end;
 };
 
 #endif
