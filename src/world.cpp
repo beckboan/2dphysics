@@ -1,10 +1,12 @@
 #include "world.h"
 #include "circle.h"
 #include "collisions.h"
+#include "edge.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
 #include <iostream>
+#include <memory>
 
 #define DBG(msg) std::cout << msg << std::endl;
 
@@ -81,6 +83,11 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density,
   if (is_static) {
     bod->setBodyStatic();
   }
+  return true;
+}
+
+bool World::addEdge(vec2d s, vec2d e) {
+  std::cout << "Edge Added" << std::endl;
   return true;
 }
 

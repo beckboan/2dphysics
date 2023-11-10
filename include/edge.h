@@ -6,12 +6,9 @@
 #include <iostream>
 #include <vector>
 
-struct Edge : public Shape {
+struct Edge {
   Edge(vec2d s, vec2d e);
 
-  ShapeType getType() const;
-  std::string getName() const;
-  void calculateMassProperties(float density);
   void createAABB();
 
   // Getters/Setters
@@ -19,6 +16,7 @@ struct Edge : public Shape {
 private:
   vec2d start;
   vec2d end;
+  AABB aabb = AABB();
 };
 
 #endif
