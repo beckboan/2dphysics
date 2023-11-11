@@ -12,7 +12,7 @@
 
 struct Shape {
 
-  enum ShapeType { Circle, Poly };
+  enum ShapeType { Circle, Poly, Edge };
 
   Shape(){};
   virtual ~Shape() = 0;

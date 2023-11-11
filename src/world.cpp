@@ -86,12 +86,12 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density,
   return true;
 }
 
-bool World::addEdge(vec2d s, vec2d e) {
-  std::cout << "Edge Added" << std::endl;
-  std::shared_ptr<Edge> new_edge = std::make_shared<Edge>(s, e);
-  world_boundaries.push_back(new_edge);
-  return true;
-}
+// bool World::addEdge(vec2d s, vec2d e) {
+//   std::cout << "Edge Added" << std::endl;
+//   std::shared_ptr<Edge> new_edge = std::make_shared<Edge>(s, e);
+//   world_boundaries.push_back(new_edge);
+//   return true;
+// }
 
 void World::removePhysicsObject(std::shared_ptr<RigidBody>){
 

@@ -19,7 +19,7 @@ struct World {
                bool is_static);
   bool addPoly(std::vector<vec2d> verticies, vec2d position, float density,
                bool is_static);
-  bool addEdge(vec2d s, vec2d e);
+  /* bool addEdge(vec2d s, vec2d e); */
 
   const std::vector<std::shared_ptr<RigidBody>> &getBodies() const {
     return world_objects;
