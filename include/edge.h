@@ -17,8 +17,8 @@ struct Edge : public Shape {
   // Getters/Setters
 
 private:
-  vec2d start;
-  vec2d end;
+  vec2d start_vertex;
+  vec2d end_vertex;
   AABB aabb = AABB();
 };
 

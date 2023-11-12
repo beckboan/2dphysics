@@ -21,7 +21,8 @@ void Manifold::collisionCaller() {
     PolyvsPoly();
   } else if (A_type == Shape::ShapeType::Poly &&
              B_type == Shape::ShapeType::Circle) {
-    PolyvsCircle();
+    reverse = true;
+    CirclevsPoly();
   } else if (A_type == Shape::ShapeType::Circle &&
              B_type == Shape::ShapeType::Poly) {
     CirclevsPoly();
@@ -69,15 +70,18 @@ void Manifold::CirclevsCircle() {
 }
 
 void Manifold::CirclevsPoly() {
-  std::cout << "Circle/Polygon Collision" << std::endl;
-  Poly *P2 = dynamic_cast<Poly *>(A->shape.get());
-  Circle *C1 = dynamic_cast<Circle *>(B->shape.get());
+  std::cout << "Ciercle/Polygon Collision" << std::endl;
+  if (reverse == true) {
+
+  } else {
+    Poly *P = dynamic_cast<Poly *>(A->shape.get());
+    Circle *C = dynamic_cast<Circle *>(B->shape.get());
+  }
 }
 
-void Manifold::PolyvsCircle() {
-  CirclevsPoly();
-  // rememebr to reverse the normal
-}
+void Manifold::PolyvsEdge() {}
+void Manifold::CirclevsEdge() {}
+void Manifold::EdgevsEdge() {}
 
 void Manifold::solve() {
   for (auto c : contacts) {

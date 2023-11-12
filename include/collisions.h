@@ -17,11 +17,6 @@ struct Manifold {
 
   const uint32_t &getContactCount() const { return contact_count; }
 
-  void CirclevsCircle();
-  void CirclevsPoly();
-  void PolyvsCircle();
-  void PolyvsPoly();
-
 private:
   float penetration;
   uint32_t contact_count = 0;
@@ -30,6 +25,14 @@ private:
   float e;
   float df;
   float sf;
+  bool reverse = false;
+
+  void CirclevsCircle();
+  void CirclevsPoly();
+  void PolyvsPoly();
+  void PolyvsEdge();
+  void CirclevsEdge();
+  void EdgevsEdge();
 };
 
 #endif
