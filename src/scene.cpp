@@ -100,6 +100,18 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
     }
     break;
   }
+  case Shape::ShapeType::Edge: {
+    Edge *e = dynamic_cast<Edge *>(body->shape.get());
+    float x1 = renderXTransfer(e->start_vertex.x);
+    float y1 = renderYTransfer(e->start_vertex.y);
+    float x2 = renderXTransfer(e->end_vertex.x);
+    float y2 = renderYTransfer(e->end_vertex.y);
+
+    // std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << std::endl;
+
+    SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+    break;
+  }
   default:
     break;
   }

@@ -12,11 +12,10 @@ struct Edge : public Shape {
   void createAABB();
   ShapeType getType() const;
   std::string getName() const;
-  void calculateMassProperties(float density) = 0;
+  void calculateMassProperties(float density);
 
   // Getters/Setters
 
-private:
   vec2d start_vertex;
   vec2d end_vertex;
   AABB aabb = AABB();

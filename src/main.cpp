@@ -20,7 +20,7 @@ int main(int argc, char *args[]) {
   engine.m_world->addCircle(10, position, 1000, 0);
   engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
   engine.m_world->addPoly(verticies, movetopos, 1000, 1);
-  // engine.m_world->addEdge(vec2d(0, 500), vec2d(500, 500));
+  engine.m_world->addEdge(vec2d(0, 100), vec2d(500, 100), 1);
 
   engine.m_world->addCircle(10, vec2d(1, -100), 1000, 1);
   engine.run();

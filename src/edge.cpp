@@ -8,6 +8,7 @@ void Edge::createAABB() {
   aabb.setMax(std::max(v1.x, v2.x), std::max(v1.y, v2.y));
   aabb.setMin(std::min(v1.x, v2.x), std::min(v1.y, v2.y));
 }
+
 Shape::ShapeType Edge::getType() const { return ShapeType::Edge; }
 
 std::string Edge::getName() const { return "Edge"; }
