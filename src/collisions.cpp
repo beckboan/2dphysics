@@ -1,5 +1,6 @@
 #include "collisions.h"
 #include "circle.h"
+#include "edge.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
@@ -29,6 +30,23 @@ void Manifold::collisionCaller() {
   } else if (A_type == Shape::ShapeType::Circle &&
              B_type == Shape::ShapeType::Circle) {
     CirclevsCircle();
+  } else if (A_type == Shape::ShapeType::Edge &&
+             B_type == Shape::ShapeType::Edge) {
+    EdgevsEdge();
+  } else if (A_type == Shape::ShapeType::Poly &&
+             B_type == Shape::ShapeType::Edge) {
+    PolyvsEdge();
+  } else if (A_type == Shape::ShapeType::Edge &&
+             B_type == Shape::ShapeType::Poly) {
+    reverse = true;
+    PolyvsEdge();
+  } else if (A_type == Shape::ShapeType::Circle &&
+             B_type == Shape::ShapeType::Edge) {
+    CirclevsEdge();
+  } else if (A_type == Shape::ShapeType::Edge &&
+             B_type == Shape::ShapeType::Circle) {
+    reverse = true;
+    CirclevsEdge();
   }
 }
 
@@ -70,18 +88,43 @@ void Manifold::CirclevsCircle() {
 }
 
 void Manifold::CirclevsPoly() {
-  std::cout << "Ciercle/Polygon Collision" << std::endl;
+  std::cout << "Circle/Polygon Collision" << std::endl;
   if (reverse == true) {
-
-  } else {
-    Poly *P = dynamic_cast<Poly *>(A->shape.get());
     Circle *C = dynamic_cast<Circle *>(B->shape.get());
+    Poly *P = dynamic_cast<Poly *>(A->shape.get());
+  } else {
+    Circle *C = dynamic_cast<Circle *>(A->shape.get());
+    Poly *P = dynamic_cast<Poly *>(B->shape.get());
   }
 }
 
-void Manifold::PolyvsEdge() {}
-void Manifold::CirclevsEdge() {}
-void Manifold::EdgevsEdge() {}
+void Manifold::PolyvsEdge() {
+
+  std::cout << "Poly/Edge Collision" << std::endl;
+  if (reverse == true) {
+    Poly *P = dynamic_cast<Poly *>(B->shape.get());
+    Edge *E = dynamic_cast<Edge *>(A->shape.get());
+  } else {
+    Poly *P = dynamic_cast<Poly *>(A->shape.get());
+    Edge *E = dynamic_cast<Edge *>(B->shape.get());
+  }
+}
+void Manifold::CirclevsEdge() {
+
+  std::cout << "Circle/Edge Collision" << std::endl;
+  if (reverse == true) {
+    Circle *C = dynamic_cast<Circle *>(B->shape.get());
+    Edge *E = dynamic_cast<Edge *>(A->shape.get());
+  } else {
+    Circle *C = dynamic_cast<Circle *>(A->shape.get());
+    Edge *E = dynamic_cast<Edge *>(B->shape.get());
+  }
+}
+void Manifold::EdgevsEdge() {
+
+  Edge *E1 = dynamic_cast<Edge *>(A->shape.get());
+  Edge *E2 = dynamic_cast<Edge *>(B->shape.get());
+}
 
 void Manifold::solve() {
   for (auto c : contacts) {
