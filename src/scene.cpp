@@ -143,7 +143,7 @@ void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
   clear();
   for (auto bod : bodies) {
     drawBody(bod);
-    /* drawAABB(bod); */
+    drawAABB(bod);
   }
   SDL_RenderPresent(renderer);
 }

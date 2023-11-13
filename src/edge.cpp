@@ -5,8 +5,12 @@ Edge::Edge(vec2d s, vec2d e) : start_vertex(s), end_vertex(e) {}
 void Edge::createAABB() {
   vec2d v1 = rotation->mul(start_vertex);
   vec2d v2 = rotation->mul(end_vertex);
+  std::shared_ptr<RigidBody> body_temp = body.lock();
+  float position_x = body_temp->position.x;
+  float position_y = body_temp->position.y;
   aabb.setMax(std::max(v1.x, v2.x), std::max(v1.y, v2.y));
   aabb.setMin(std::min(v1.x, v2.x), std::min(v1.y, v2.y));
+  std::cout << std::max(v1.x, v2.x) << std::max(v1.y, v2.y) << std::endl;
 }
 
 Shape::ShapeType Edge::getType() const { return ShapeType::Edge; }
