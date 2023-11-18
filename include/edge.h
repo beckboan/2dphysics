@@ -19,7 +19,6 @@ struct Edge : public Shape {
   vec2d start_vertex;
   vec2d end_vertex;
   vec2d centroid;
-  AABB aabb = AABB();
 };
 
 #endif

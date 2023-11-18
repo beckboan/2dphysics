@@ -17,11 +17,11 @@ int main(int argc, char *args[]) {
   std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(5, 0), vec2d(5, 5),
                                   vec2d(0, 5), vec2d(7.5, 10)};
 
-  // engine.m_world->addCircle(10, position, 1000, 0);
-  // engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
-  // engine.m_world->addPoly(verticies, movetopos, 1000, 1);
+  engine.m_world->addCircle(10, position, 1000, 0);
+  engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
+  engine.m_world->addPoly(verticies, movetopos, 1000, 1);
   engine.m_world->addEdge(vec2d(100, 100), vec2d(400, 100), 1);
+  engine.m_world->addCircle(10, vec2d(1, -100), 1000, 1);
 
-  // engine.m_world->addCircle(10, vec2d(1, -100), 1000, 1);
   engine.run();
 }

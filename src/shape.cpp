@@ -11,8 +11,8 @@ void Shape::setBody(const std::shared_ptr<RigidBody> &body_) {
 }
 
 std::tuple<int, int, int, int> Shape::getAABB() {
-  std::cout << aabb.getMin().x << aabb.getMin().y << aabb.getMax().x
-            << aabb.getMax().y << std::endl;
+  // std::cout << aabb.getMin().x << aabb.getMin().y << aabb.getMax().x
+  //           << aabb.getMax().y << std::endl;
   return std::tuple<int, int, int, int>(aabb.getMin().x, aabb.getMin().y,
                                         aabb.getMax().x, aabb.getMax().y);
 }
