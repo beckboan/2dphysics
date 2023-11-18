@@ -51,7 +51,7 @@ void Manifold::collisionCaller() {
 }
 
 void Manifold::CirclevsCircle() {
-  // std::cout << "Circle Collision" << std::endl;
+  std::cout << "Circle Collision" << std::endl;
   Circle *C1 = dynamic_cast<Circle *>(A->shape.get());
   Circle *C2 = dynamic_cast<Circle *>(B->shape.get());
 
