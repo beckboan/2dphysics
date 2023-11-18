@@ -1,18 +1,38 @@
 #include "edge.h"
 
-Edge::Edge(vec2d s, vec2d e) : start_vertex(s), end_vertex(e) {}
+Edge::Edge(vec2d s, vec2d e) : start_vertex(s), end_vertex(e) {
+  centroid = (start_vertex + end_vertex) / 2;
+}
 
 void Edge::createAABB() {
   vec2d v1 = rotation->mul(start_vertex);
   vec2d v2 = rotation->mul(end_vertex);
+
+  float max_x = std::max(v1.x, v2.x);
+  float max_y = std::max(v1.y, v2.y);
+  float min_x = std::min(v1.x, v2.x);
+  float min_y = std::min(v1.y, v2.y);
+
   std::shared_ptr<RigidBody> body_temp = body.lock();
   float position_x = body_temp->position.x;
   float position_y = body_temp->position.y;
-  aabb.setMax(std::max(v1.x, v2.x), std::max(v1.y, v2.y));
-  aabb.setMin(std::min(v1.x, v2.x), std::min(v1.y, v2.y));
-  std::cout << std::max(v1.x, v2.x) << std::max(v1.y, v2.y) << std::endl;
+
+  aabb.setMax(max_x, max_y);
+  aabb.setMin(min_x, min_y);
+  // std::cout << min_x << min_y << std::endl;
+
+  // std::cout << aabb.getMin().x << aabb.getMin().y << aabb.getMax().x
+  //           << aabb.getMax().y << std::endl;
 }
 
+// void Edge::createAABB() {
+//   std::shared_ptr<RigidBody> body_temp = body.lock();
+//   float position_x = body_temp->position.x;
+//   float position_y = body_temp->position.y;
+//   aabb.setMax(position_x, position_y);
+//   aabb.setMin(position_x, position_y);
+//   // std::cout << aabb->max.x << aabb->max.y << std::endl;
+// }
 Shape::ShapeType Edge::getType() const { return ShapeType::Edge; }
 
 std::string Edge::getName() const { return "Edge"; }

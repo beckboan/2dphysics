@@ -56,7 +56,7 @@ bool World::addRect(float width, float height, vec2d position, float density,
       std::make_shared<RigidBody>(shp, position, density);
   bod->shape->setBody(bod);
 
-  world_objects.emplace_back(bod);
+  world_objects.push_back(bod);
   std::cout << "Rectangle Added" << std::endl;
   if (is_static) {
     bod->setBodyStatic();
@@ -78,7 +78,7 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density,
   if (!isValidArea(bod->area))
     return false;
 
-  world_objects.emplace_back(bod);
+  world_objects.push_back(bod);
   std::cout << "Poly Added" << std::endl;
   if (is_static) {
     bod->setBodyStatic();
@@ -89,10 +89,11 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density,
 bool World::addEdge(vec2d s, vec2d e, bool is_static) {
   vec2d position = (s + e) / 2;
   std::unique_ptr<Shape> shp = std::make_unique<Edge>(s, e);
+  std::cout << position.x << " " << position.y << std::endl;
   std::shared_ptr<RigidBody> bod =
-      std::make_shared<RigidBody>(shp, position, 0);
+      std::make_shared<RigidBody>(shp, position, 1);
   bod->shape->setBody(bod);
-  world_objects.emplace_back(bod);
+  world_objects.push_back(bod);
   std::cout << "Edge Added" << std::endl;
   if (is_static) {
     bod->setBodyStatic();

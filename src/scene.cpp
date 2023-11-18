@@ -119,12 +119,15 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
 
 void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
   auto [min_x, min_y, max_x, max_y] = body->shape->getAABB();
-  // std::cout << min_x << min_y << max_x << max_y <<std::endl;
-  float adjust_min_y = renderYTransfer(min_y);
-  float adjust_max_y = renderYTransfer(max_y);
-  float adjust_max_x = renderXTransfer(max_x);
-  float adjust_min_x = renderXTransfer(min_x);
+  // std::cout << min_x << min_y << max_x << max_y << std::endl;
+  int adjust_min_y = renderYTransfer(min_y);
+  int adjust_max_y = renderYTransfer(max_y);
+  int adjust_max_x = renderXTransfer(max_x);
+  int adjust_min_x = renderXTransfer(min_x);
+  // std::cout << adjust_min_x << adjust_max_y << adjust_max_x << adjust_max_y
+  //           << std::endl;
   SDL_RenderDrawLine(renderer, adjust_min_x, adjust_min_y, adjust_max_x,
                      adjust_min_y);
   SDL_RenderDrawLine(renderer, adjust_max_x, adjust_min_y, adjust_max_x,

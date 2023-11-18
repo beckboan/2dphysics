@@ -1,5 +1,5 @@
-#ifndef EDGE
-#define EDGE
+#ifndef EDGE_H
+#define EDGE_H
 
 #include "mathfuncs.h"
 #include "shape.h"
@@ -18,6 +18,7 @@ struct Edge : public Shape {
 
   vec2d start_vertex;
   vec2d end_vertex;
+  vec2d centroid;
   AABB aabb = AABB();
 };
 
