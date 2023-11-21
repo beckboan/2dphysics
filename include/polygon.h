@@ -20,6 +20,7 @@ struct Poly : public Shape {
   const unsigned int &getVertexCount() const { return vertex_count; }
   const std::vector<vec2d> &getVertexList() const { return vertex_list; }
   const std::vector<vec2d> &getNormals() const { return normals; }
+  const vec2d getSupport(const vec2d &face);
 
 private:
   unsigned int vertex_count = 0;

@@ -1,6 +1,7 @@
 #include "polygon.h"
 #include <algorithm>
 #include <cassert>
+#include <cstdint>
 
 // Polygon
 
@@ -123,7 +124,7 @@ void Poly::calculateMassProperties(float density) {
   body_ref->m = area * density;
   body_ref->inv_m = (body_ref->m > 0) ? 1.0 / body_ref->m : 0;
   body_ref->I = I;
-  body_ref->inv_I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
+  body_ref->I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
 }
 
 void Poly::createAABB() {
@@ -171,3 +172,4 @@ void Poly::calculatePolyNormals() {
     normals.push_back(vec2d(face.y, -face.x).normalize());
   }
 }
+const vec2d Poly::getSupport(const vec2d &face) { return vec2d(0, 0); }
