@@ -40,6 +40,9 @@ inline float dp(vec2d &vec1, vec2d &vec2) {
   return (vec1.x * vec2.x) + (vec1.y * vec2.y);
 }
 
+inline float dp(vec2d vec1, vec2d vec2) {
+  return (vec1.x * vec2.x) + (vec1.y * vec2.y);
+}
 // Cross Product (In 2D Space)
 inline float cp(vec2d &vec1, vec2d &vec2) {
   return (vec1.x * vec2.y) - (vec1.y * vec2.x);

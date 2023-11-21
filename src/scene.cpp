@@ -138,15 +138,11 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {
                      adjust_min_y);
 }
 
-void Scene::drawBoundary(const std::shared_ptr<Edge> edge) {
-  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-}
-
 void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
   clear();
   for (auto bod : bodies) {
     drawBody(bod);
-    drawAABB(bod);
+    // drawAABB(bod);
   }
   SDL_RenderPresent(renderer);
 }
