@@ -167,6 +167,24 @@ float findAOLP(uint16_t &face, Poly *poly1, Poly *poly2) {
   std::vector<vec2d> B_normals = poly2->getNormals();
 
   for (int i = 0; i < poly1->getVertexCount(); i++) {
+    vec2d poly_A_normal = poly1->rotation->mul(A_normals[i]);
+    vec2d local_poly_A_normal = poly2->rotation->mul(poly_A_normal);
+
+    float best_proj = std::numeric_limits<float>::min();
+    vec2d best_vertex;
+
+    for (unsigned int i = 0; poly2->getVertexCount(); i++) {
+      vec2d poly_B_vert = poly2->getVertexList()[i];
+      float projection = dp(poly_B_vert, local_poly_A_normal);
+
+      if (projection < best_proj) {
+        best_vertex = poly_B_vert;
+        best_proj = projection;
+      }
+    }
+
+    std::shared_ptr<RigidBody> A_body = poly1->body.lock();
+    std::shared_ptr<RigidBody> B_body = poly2->body.lock();
   }
 
   face = max_index;
