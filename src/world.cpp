@@ -142,7 +142,7 @@ void World::worldStep(float dt) {
 void World::integrateForces(float dt) {
   for (auto bod : world_objects) {
     if (bod->inv_m == 0.0f)
-      return;
+      continue;
     bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
     bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
   }
@@ -151,7 +151,7 @@ void World::integrateForces(float dt) {
 void World::integrateVelocities(float dt) {
   for (auto bod : world_objects) {
     if (bod->inv_m == 0.0f)
-      return;
+      continue;
     bod->position += bod->velocity * dt;
     bod->setRotation(bod->rotation += bod->angular_velocity * dt);
   }
