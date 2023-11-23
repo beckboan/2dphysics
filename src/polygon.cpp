@@ -172,4 +172,3 @@ void Poly::calculatePolyNormals() {
     normals.push_back(vec2d(face.y, -face.x).normalize());
   }
 }
-const vec2d Poly::getSupport(const vec2d &face) { return vec2d(0, 0); }

@@ -103,6 +103,12 @@ inline bool isLeftOf(const vec2d &p1, const vec2d &p2) {
   return p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
 }
 
+inline bool biasSelect(float x, float y) {
+  const float k_relative = 0.95f;
+  const float k_absolute = 0.01f;
+  return x >= y * k_relative + x * k_absolute;
+}
+
 // Rotation matrix for 2D Vectors [2x2]
 struct mat2d {
   mat2d();

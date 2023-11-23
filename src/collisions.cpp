@@ -5,6 +5,7 @@
 #include "polygon.h"
 #include "shape.h"
 #include <cstdint>
+#include <limits>
 
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
     : A(A_), B(B_) {
@@ -159,25 +160,14 @@ void Manifold::solve() {
   }
 }
 
-float findAOLP(uint16_t &face, Poly *poly1, Poly *poly2) {
-  float best_dist = std::numeric_limits<float>::min();
+float findAOLP(uint16_t &face_index, Poly *poly1, Poly *poly2) {
+  float best_dist = -std::numeric_limits<float>::max();
   uint16_t best_index;
 
   std::vector<vec2d> A_normals = poly1->getNormals();
   std::vector<vec2d> B_normals = poly2->getNormals();
 
-  for (int i = 0; i < poly1->getVertexCount(); i++) {
-    // Poly A Normal
-    vec2d A_norm = poly1->rotation->mul(A_normals[i]);
-
-    // Poly A Normal in B Space
-    A_norm = (poly2->rotation->transpose()).mul(A_norm);
-
-    std::shared_ptr<RigidBody> A_body = poly1->body.lock();
-    std::shared_ptr<RigidBody> B_body = poly2->body.lock();
-  }
-
-  face = best_index;
+  face_index = best_index;
   return best_dist;
 }
 
@@ -186,10 +176,5 @@ void Manifold::PolyvsPoly() {
   Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
   Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
 
-  uint16_t face_A = 0;
-  float pen_A = findAOLP(face_A, P1, P2);
-  if (pen_A >= 0.0f)
-    return;
-  uint16_t face_B = 0;
-  float pen_B = findAOLP(face_B, P1, P2);
+  contact_count = 0;
 }
