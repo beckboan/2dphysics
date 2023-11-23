@@ -121,6 +121,8 @@ struct mat2d {
   std::array<float, 2> row_2{0};
 
   const vec2d mul(vec2d &vec) const;
+  const vec2d operator*(const vec2d &vec) const;
+  // const mat2d operator*(const mat2d &mat) const;
   mat2d transpose();
 };
 

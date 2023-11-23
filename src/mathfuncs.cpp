@@ -121,3 +121,7 @@ const vec2d mat2d::mul(vec2d &vec) const {
   return vec2d(row_1[0] * vec.x + row_1[1] * vec.y,
                row_2[0] * vec.x + row_2[1] * vec.y);
 }
+const vec2d mat2d::operator*(const vec2d &vec) const {
+  return vec2d(row_1[0] * vec.x + row_1[1] * vec.y,
+               row_2[0] * vec.x + row_2[1] * vec.y);
+}
