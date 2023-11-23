@@ -32,7 +32,7 @@ void Manifold::collisionCaller() {
     CirclevsCircle();
   } else if (A_type == Shape::ShapeType::Edge &&
              B_type == Shape::ShapeType::Edge) {
-    EdgevsEdge();
+    return;
   } else if (A_type == Shape::ShapeType::Poly &&
              B_type == Shape::ShapeType::Edge) {
     PolyvsEdge();
@@ -160,35 +160,25 @@ void Manifold::solve() {
 }
 
 float findAOLP(uint16_t &face, Poly *poly1, Poly *poly2) {
-  float max_dist = std::numeric_limits<float>::min();
-  uint16_t max_index;
+  float best_dist = std::numeric_limits<float>::min();
+  uint16_t best_index;
 
   std::vector<vec2d> A_normals = poly1->getNormals();
   std::vector<vec2d> B_normals = poly2->getNormals();
 
   for (int i = 0; i < poly1->getVertexCount(); i++) {
-    vec2d poly_A_normal = poly1->rotation->mul(A_normals[i]);
-    vec2d local_poly_A_normal = poly2->rotation->mul(poly_A_normal);
+    // Poly A Normal
+    vec2d A_norm = poly1->rotation->mul(A_normals[i]);
 
-    float best_proj = std::numeric_limits<float>::min();
-    vec2d best_vertex;
-
-    for (unsigned int i = 0; poly2->getVertexCount(); i++) {
-      vec2d poly_B_vert = poly2->getVertexList()[i];
-      float projection = dp(poly_B_vert, local_poly_A_normal);
-
-      if (projection < best_proj) {
-        best_vertex = poly_B_vert;
-        best_proj = projection;
-      }
-    }
+    // Poly A Normal in B Space
+    A_norm = (poly2->rotation->transpose()).mul(A_norm);
 
     std::shared_ptr<RigidBody> A_body = poly1->body.lock();
     std::shared_ptr<RigidBody> B_body = poly2->body.lock();
   }
 
-  face = max_index;
-  return max_dist;
+  face = best_index;
+  return best_dist;
 }
 
 void Manifold::PolyvsPoly() {

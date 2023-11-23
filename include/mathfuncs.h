@@ -27,6 +27,7 @@ public:
   vec2d operator-(const float val) const;
   vec2d operator*(const float val) const;
   vec2d operator/(const float val) const;
+  vec2d operator-(void) const;
 
   void assign(float x, float y);
   float length() const;

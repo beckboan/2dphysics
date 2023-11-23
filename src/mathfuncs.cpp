@@ -50,6 +50,7 @@ vec2d &vec2d::operator/=(const float val) {
   return *this;
 }
 
+vec2d vec2d::operator-(void) const { return vec2d(-x, -y); }
 // Arithmetic Operators
 // Vector Input
 vec2d vec2d::operator+(const vec2d &vec) const {
