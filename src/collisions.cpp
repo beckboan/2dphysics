@@ -5,7 +5,9 @@
 #include "polygon.h"
 #include "shape.h"
 #include <cstdint>
-#include <limits>
+
+static const float BIAS_RELATIVE = 0.95f;
+static const float BIAS_ABSOLUTE = 0.01f;
 
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
     : A(A_), B(B_) {
@@ -57,7 +59,6 @@ void Manifold::CirclevsCircle() {
   Circle *C2 = dynamic_cast<Circle *>(B->shape.get());
 
   float dist_sq = distSquared(A->position, B->position);
-
   float radii = C1->radius + C2->radius;
 
   // Return if circles are further than sum of radii - using
@@ -69,7 +70,6 @@ void Manifold::CirclevsCircle() {
   }
 
   float distance = dist(A->position, B->position);
-
   contact_count = 1;
 
   // If distance is 0, the circles are directly overlapping and their
@@ -79,9 +79,7 @@ void Manifold::CirclevsCircle() {
     penetration = C1->radius;
     contacts[0] = A->position;
     normal.assign(1, 0);
-  }
-
-  else {
+  } else {
     normal = (B->position - A->position).normalize();
     penetration = radii - distance;
     contacts[0] = normal * C1->radius + A->position;
@@ -160,73 +158,10 @@ void Manifold::solve() {
   }
 }
 
-float findAOLP(uint16_t &face_index, Poly *poly1, Poly *poly2) {
-  float best_dist = -std::numeric_limits<float>::max();
-  uint16_t best_index;
-
-  std::vector<vec2d> A_normals = poly1->getNormals();
-  std::vector<vec2d> B_normals = poly2->getNormals();
-
-  for (unsigned int i = 0; i < poly1->getVertexCount(); i++) {
-    // Apply orientation to poly1 normals
-    vec2d norm = poly1->rotation->mul(A_normals[i]);
-
-    // Change face normal to B space
-    mat2d b_t = poly2->rotation->transpose();
-    norm = b_t * norm;
-
-    float best_proj = -std::numeric_limits<float>::max();
-    vec2d best_vert;
-
-    for (unsigned int k = 0; k < poly2->getVertexCount(); k++) {
-      vec2d vert = poly2->getVertexList()[i];
-      float proj = dp(vert, -norm);
-
-      if (proj > best_proj) {
-        best_vert = vert;
-        best_proj = proj;
-      }
-    }
-
-    std::shared_ptr<RigidBody> A_body = poly1->body.lock();
-    std::shared_ptr<RigidBody> B_body = poly2->body.lock();
-
-    vec2d v = poly1->getVertexList()[i];
-    v = b_t * (poly1->rotation->mul(v) + A_body->position - B_body->position);
-
-    float dist = dp(norm, best_vert - v);
-
-    if (dist > best_dist) {
-      best_dist = dist;
-      best_index = i;
-    }
-  }
-
-  face_index = best_index;
-  return best_dist;
-}
-
 void Manifold::PolyvsPoly() {
   std::cout << "Polygon Collision" << std::endl;
   Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
   Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
 
-  // Using SAT
-
-  // Finding Max Separation
-  uint16_t edge_A = 0;
-  float sep_A = findAOLP(edge_A, P1, P2);
-  if (sep_A >= 0.0f)
-    return;
-
-  uint16_t edge_B = 0;
-  float sep_B = findAOLP(edge_B, P2, P1);
-  if (sep_B >= 0.0f)
-    return;
-
-  uint16_t reference_face;
-  bool flip;
-
-  Poly *ref_poly;
-  Poly *inc_poly;
+  contact_count = 0;
 }

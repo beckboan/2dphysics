@@ -129,14 +129,19 @@ void World::worldStep(float dt) {
   contact_list.clear();
   checkCollisions();
 
-  integrateForces(dt);
-
   for (auto c : contact_list) {
     c->solve();
   }
 
   integrateVelocities(dt);
+
+  integrateForces(dt);
   updateAABB();
+
+  // for (auto c : world_objects) {
+  //   Poly *P = dynamic_cast<Poly *>(c->shape.get());
+  //   std::cout << P->getVertexList()[2].y << std::endl;
+  // }
 }
 
 void World::integrateForces(float dt) {

@@ -28,11 +28,6 @@ Poly::Poly(std::vector<vec2d> &v) {
   // Sort point ccw around min_x
   std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
 
-  // for (const vec2d& i : v)
-  // {
-  //     std::cout << "X: " << i.x << "Y: " << i.y << std::endl;
-  // }
-
   hull.push_back(v[0]);
   hull.push_back(v[1]);
   hull.push_back(v[2]);
@@ -55,18 +50,10 @@ Poly::Poly(std::vector<vec2d> &v) {
 
   for (unsigned int i = 0; i < vertex_count; i++) {
     vertex_list.push_back(hull[i]);
-    // std::cout << "X: " << hull[i].x << "Y: " << hull[i].y << std::endl;
   }
 
   calculatePolyNormals();
 }
-
-// Poly::Poly(float radius, int side_number)
-// {
-//     assert(side_number > 2 && side_number <= max_poly_count && "Vertex list
-//     size out of bounds");
-
-// }
 
 Poly::Poly(float width, float height) : vertex_count(4) {
   vertex_list.emplace_back(-width / 2, -height / 2);
