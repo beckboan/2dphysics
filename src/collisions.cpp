@@ -4,6 +4,7 @@
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
+#include <cfloat>
 #include <cstdint>
 
 static const float BIAS_RELATIVE = 0.95f;
@@ -150,12 +151,77 @@ void Manifold::solve() {
         A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
 
     float j = (-(e + 1.0f) * contact_vel) / inv_mass_sum;
+    j /= (float)contact_count;
 
     vec2d imp = normal * j;
-    vec2d imp_neg = imp * -1;
+    vec2d imp_neg = -imp;
     B->applyLinearImpulse(imp, b_con);
     A->applyLinearImpulse(imp_neg, a_con);
+
+    r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
+            cp(A->angular_velocity, a_con);
+
+    vec2d t = r_vel;
+    t += normal * -dp(r_vel, normal);
+    t.normalize();
+
+    float jt = -dp(r_vel, t);
+    jt /= inv_mass_sum;
+    jt /= (float)contact_count;
+
+    vec2d tan_imp;
+    if (std::abs(jt) < j * sf) {
+      tan_imp = t * jt;
+    } else {
+      tan_imp = t * j * (-df);
+    }
+
+    vec2d tan_imp_neg = -tan_imp;
+    // B->applyLinearImpulse(tan_imp, b_con);
+    // A->applyLinearImpulse(tan_imp_neg, a_con);
   }
+}
+
+// AOLP adapted from Randy Gaul's Impulse Engine and box2d
+float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A,
+               vec2d pos_B) {
+  float best_dist = -FLT_MAX;
+  uint32_t best_index;
+
+  for (uint32_t i = 0; i < A->getVertexCount(); i++) {
+    vec2d a_norm = A->getNormals()[i];
+
+    mat2d b_rotation_T = B->rotation->transpose();
+    a_norm = b_rotation_T * A->rotation->mul(a_norm);
+
+    float best_proj = -FLT_MAX;
+    vec2d best_vert;
+
+    // Find best projection of B verticies onto normal
+    for (uint32_t i = 0; i < B->getVertexCount(); i++) {
+      vec2d b_vert = B->getVertexList()[i];
+      float proj = dp(b_vert, -a_norm);
+
+      if (proj > best_proj) {
+        best_vert = b_vert;
+        best_proj = proj;
+      }
+    }
+
+    vec2d a_vert = A->getVertexList()[i];
+
+    a_vert = b_rotation_T * (A->rotation->mul(a_vert) + pos_A - pos_B);
+
+    float dist = dp(a_norm, best_vert - a_vert);
+
+    if (dist > best_dist) {
+      best_dist = dist;
+      best_index = i;
+    }
+  }
+
+  face_index = best_index;
+  return best_dist;
 }
 
 void Manifold::PolyvsPoly() {
@@ -163,5 +229,18 @@ void Manifold::PolyvsPoly() {
   Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
   Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
 
-  contact_count = 0;
+  uint32_t face_A;
+  float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
+  if (pen_A >= 0.0) {
+    std::cout << "No Collision" << std::endl;
+    return;
+  }
+  uint32_t face_B;
+  float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
+  if (pen_B >= 0.0) {
+    std::cout << "No Collision" << std::endl;
+    return;
+  }
+
+  std::cout << "Collision Detected" << std::endl;
 }

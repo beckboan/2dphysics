@@ -1,6 +1,7 @@
 #include "polygon.h"
 #include <algorithm>
 #include <cassert>
+#include <cfloat>
 #include <cstdint>
 
 // Polygon
@@ -100,7 +101,6 @@ void Poly::calculateMassProperties(float density) {
   std::shared_ptr<RigidBody> body_ref = body.lock();
   vec2d position = body_ref->position;
 
-  // std::cout << "X: " << centroid.x << "Y: " << centroid.y << std::endl;
   for (unsigned int i = 0; i < vertex_count; i++) {
     vertex_list[i] -= centroid;
     // std::cout << "X: " << vertex_list[i].x << "Y: " << vertex_list[i].y <<
@@ -157,5 +157,9 @@ void Poly::calculatePolyNormals() {
   for (unsigned int i = 0; i < vertex_count; i++) {
     vec2d face = vertex_list[(i + 1) % vertex_count] - vertex_list[i];
     normals.push_back(vec2d(face.y, -face.x).normalize());
+  }
+
+  for (auto c : normals) {
+    std::cout << c.x << " " << c.y << std::endl;
   }
 }

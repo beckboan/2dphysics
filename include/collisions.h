@@ -2,7 +2,6 @@
 #define COLLISIONS_H
 
 #include "rigidbody.h"
-#include <iostream>
 #include <memory>
 
 struct Manifold {
@@ -14,7 +13,7 @@ struct Manifold {
   void collisionCaller();
   void solve();
   void applyCollisionImpulse();
-
+  void correctPositions();
   const uint32_t &getContactCount() const { return contact_count; }
 
 private:

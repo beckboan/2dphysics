@@ -3,7 +3,6 @@
 
 #include "mathfuncs.h"
 #include "shape.h"
-#include <iostream>
 #include <vector>
 
 struct Poly : public Shape {
@@ -20,7 +19,6 @@ struct Poly : public Shape {
   const unsigned int &getVertexCount() const { return vertex_count; }
   const std::vector<vec2d> &getVertexList() const { return vertex_list; }
   const std::vector<vec2d> &getNormals() const { return normals; }
-  vec2d getSupport(const vec2d &dir);
 
 private:
   unsigned int vertex_count = 0;
