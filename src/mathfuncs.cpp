@@ -78,6 +78,8 @@ float vec2d::length() const { return std::sqrt((x * x) + (y * y)); }
 
 vec2d vec2d::normalize() {
   float len = length();
+  // std::cout << len << std::endl;
+  // std::cout << x << std::endl;
   return vec2d(x / len, y / len);
 }
 
@@ -117,11 +119,11 @@ mat2d mat2d::transpose() {
   return mat2d(row_1[0], row_2[0], row_1[1], row_2[1]);
 }
 
-const vec2d mat2d::mul(vec2d &vec) const {
+vec2d mat2d::mul(vec2d &vec) {
   return vec2d(row_1[0] * vec.x + row_1[1] * vec.y,
                row_2[0] * vec.x + row_2[1] * vec.y);
 }
-const vec2d mat2d::operator*(const vec2d &vec) const {
+vec2d mat2d::operator*(const vec2d &vec) {
   return vec2d(row_1[0] * vec.x + row_1[1] * vec.y,
                row_2[0] * vec.x + row_2[1] * vec.y);
 }

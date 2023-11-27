@@ -6,6 +6,7 @@
 #include "shape.h"
 #include <cfloat>
 #include <cstdint>
+#include <functional>
 
 static const float BIAS_RELATIVE = 0.95f;
 static const float BIAS_ABSOLUTE = 0.01f;
@@ -163,7 +164,7 @@ void Manifold::solve() {
 
     vec2d t = r_vel;
     t += normal * -dp(r_vel, normal);
-    t.normalize();
+    t = t.normalize();
 
     float jt = -dp(r_vel, t);
     jt /= inv_mass_sum;
@@ -224,6 +225,34 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A,
   return best_dist;
 }
 
+void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc,
+                      vec2d inc_pos, uint32_t ref_face) {
+
+  vec2d ref_norm = ref->getNormals()[ref_face];
+  // Move ref_norm to incident frame of rerence (does not have positions
+  // factored in)
+  ref_norm = ref->rotation->mul(ref_norm);
+  ref_norm = inc->rotation->transpose() * ref_norm;
+
+  // Find least normal (lowest dot product)
+  uint32_t inc_face = 0;
+  float min_dot = FLT_MAX;
+  for (uint32_t i = 0; i < inc->getVertexCount(); i++) {
+    float dot = dp(ref_norm, inc->getNormals()[i]);
+    if (dot < min_dot) {
+      min_dot = dot;
+      inc_face = i;
+    }
+  }
+
+  // Computer incident face in world coordinates
+  vec2d inc_vert = inc->getVertexList()[inc_face];
+  v[0] = inc->rotation->mul(inc_vert) + inc_pos;
+  inc_face = inc_face + 1 >= inc->getVertexCount() ? 0 : inc_face + 1;
+  inc_vert = inc->getVertexList()[inc_face];
+  v[1] = inc->rotation->mul(inc_vert) + inc_pos;
+}
+
 void Manifold::PolyvsPoly() {
   std::cout << "Polygon Collision" << std::endl;
   Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
@@ -243,4 +272,59 @@ void Manifold::PolyvsPoly() {
   }
 
   std::cout << "Collision Detected" << std::endl;
+
+  Poly *ref;
+  Poly *inc;
+
+  uint32_t ref_index;
+  bool flip;
+  vec2d ref_pos;
+  vec2d inc_pos;
+
+  const float k_total = 0.1 * 0.005;
+
+  if (biasSelect(pen_A, pen_B)) {
+    ref = P1;
+    ref_pos = A->position;
+    inc = P2;
+    inc_pos = B->position;
+    ref_index = face_A;
+    flip = false;
+  } else {
+    ref = P2;
+    ref_pos = B->position;
+    inc = P1;
+    inc_pos = A->position;
+    ref_index = face_B;
+    flip = true;
+  }
+
+  std::array<vec2d, 2> incident_edge;
+  findIncidentFace(incident_edge, ref, inc, inc_pos, ref_index);
+
+  vec2d r_v1 = ref->getVertexList()[ref_index];
+  ref_index = ref_index + 1 >= ref->getVertexCount() ? 0 : ref_index + 1;
+  vec2d r_v2 = ref->getVertexList()[ref_index];
+
+  // Transform vectors to world space
+  r_v1 = ref->rotation->mul(r_v1) + ref_pos;
+  r_v2 = ref->rotation->mul(r_v2) + ref_pos;
+
+  // Find side tangent and normalize
+  vec2d side_tangent = (r_v2 - r_v1).normalize();
+  // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+  // Find orthogonal
+  vec2d side_normal = cp(side_tangent, 1.0);
+
+  std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+  float font_offset = dp(side_normal, r_v1);
+  float neg_side = -dp(side_tangent, r_v1);
+  float pos_side = dp(side_tangent, r_v2);
+
+  // std::cout << ref_index << std::endl;
+  // std::cout << ref_pos.x << " " << ref_pos.y << std::endl;
+  // std::cout << incident_edge[0].x << " " << incident_edge[0].y << std::endl;
+  // std::cout << incident_edge[1].x << " " << incident_edge[1].y << std::endl;
 }
