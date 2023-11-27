@@ -110,7 +110,7 @@ void mat2d::setMatrixRotation(float radians) {
   float s_val = std::sin(radians);
 
   row_1[0] = c_val;
-  row_1[1] = -1 * s_val;
+  row_1[1] = -s_val;
   row_2[0] = s_val;
   row_2[1] = c_val;
 }

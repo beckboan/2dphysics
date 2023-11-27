@@ -38,6 +38,7 @@ private:
   void integrateForces(float dt);
   void integrateVelocities(float dt);
   void updateAABB();
+  unsigned int iterations = 3;
 
 public:
   static constexpr float min_body_area = 0.01;      // m^2

@@ -11,6 +11,7 @@ void Engine::createWorld() { m_world = std::make_unique<World>(); }
 void Engine::createWorld(float g) { m_world = std::make_unique<World>(g); }
 
 void Engine::run() {
+  static double accumulator = 0;
   while (m_scene->getActive()) {
     m_runtimedata.updateClock();
     m_scene->checkEvent();

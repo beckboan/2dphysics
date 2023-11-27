@@ -129,36 +129,45 @@ void World::worldStep(float dt) {
   contact_list.clear();
   checkCollisions();
 
-  for (auto c : contact_list) {
-    c->solve();
+  for (unsigned int i = 0; i < iterations; i++) {
+    for (auto c : contact_list) {
+      c->solve();
+    }
   }
 
-  integrateVelocities(dt);
-
+  // std::cout << dt << std::endl;
   integrateForces(dt);
+  integrateVelocities(dt);
   updateAABB();
 
-  // for (auto c : world_objects) {
-  //   Poly *P = dynamic_cast<Poly *>(c->shape.get());
-  //   std::cout << P->getVertexList()[2].y << std::endl;
-  // }
+  for (auto c : contact_list) {
+    c->correctPositions();
+  }
+
+  for (auto b : world_objects) {
+    // std::cout << b->rotation << std::endl;
+  }
 }
 
 void World::integrateForces(float dt) {
   for (auto bod : world_objects) {
-    if (bod->inv_m == 0.0f)
+    if (bod->inv_m == 0.0)
       continue;
     bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
     bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
+    bod->force.assign(0, 0);
+    bod->torque = 0;
   }
 }
 
 void World::integrateVelocities(float dt) {
   for (auto bod : world_objects) {
-    if (bod->inv_m == 0.0f)
+    if (bod->inv_m == 0.0)
       continue;
     bod->position += bod->velocity * dt;
-    bod->setRotation(bod->rotation += bod->angular_velocity * dt);
+    bod->rotation += bod->angular_velocity * dt;
+    bod->setRotation(bod->rotation);
+    // std::cout << bod->rotation << std::endl;
   }
 }
 

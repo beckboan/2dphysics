@@ -4,7 +4,6 @@
 #include "runtimedata.h"
 #include "scene.h"
 #include "world.h"
-#include <iostream>
 #include <unistd.h>
 
 class Engine {

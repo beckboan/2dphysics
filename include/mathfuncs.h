@@ -75,6 +75,14 @@ inline void clamp(float &val, float min, float max) {
   val = maxval(min, minval(val, max));
 }
 
+inline float clamp(double val, float min, float max) {
+  if (val < min)
+    return min;
+  if (val > max)
+    return max;
+  return val;
+}
+
 inline float findOrientation(const vec2d &p1, const vec2d &p2, const vec2d &p) {
   const float val = (p2.y - p1.y) * (p.x - p2.x) - (p2.x - p1.x) * (p.y - p2.y);
   if (val > 0) {
@@ -104,8 +112,8 @@ inline bool isLeftOf(const vec2d &p1, const vec2d &p2) {
 }
 
 inline bool biasSelect(float x, float y) {
-  const float k_relative = 0.95f;
-  const float k_absolute = 0.01f;
+  const float k_relative = 0.95;
+  const float k_absolute = 0.01;
   return x >= y * k_relative + x * k_absolute;
 }
 

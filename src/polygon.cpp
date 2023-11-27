@@ -160,6 +160,6 @@ void Poly::calculatePolyNormals() {
   }
 
   for (auto c : normals) {
-    std::cout << c.x << " " << c.y << std::endl;
+    // std::cout << c.x << " " << c.y << std::endl;
   }
 }

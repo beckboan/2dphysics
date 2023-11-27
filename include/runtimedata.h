@@ -2,11 +2,10 @@
 #define RUNTIMEDATA_H
 
 #include <chrono>
-#include <iostream>
 
 using namespace std::literals;
 
-auto constexpr dt = 1.0s / 60;
+auto constexpr dt = 1.0s / 15;
 
 struct RunTimeData {
 
@@ -15,8 +14,7 @@ struct RunTimeData {
   using time_point = std::chrono::time_point<Clock, duration>;
 
   duration accumulator = 0s;
-  float dt_f = 1.0 / 60;
-  time_point t{};
+  float dt_f = 1.0 / 15;
   time_point curr_time = Clock::now();
   float getDTFloat() { return dt_f; }
   void updateClock();

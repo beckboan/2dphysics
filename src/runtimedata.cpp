@@ -10,7 +10,4 @@ void RunTimeData::updateClock() {
   accumulator += frame_time;
 }
 
-void RunTimeData::updateInternalTimers() {
-  t += dt;
-  accumulator -= dt;
-}
+void RunTimeData::updateInternalTimers() { accumulator -= dt; }

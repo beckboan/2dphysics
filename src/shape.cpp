@@ -19,4 +19,5 @@ std::tuple<int, int, int, int> Shape::getAABB() {
 
 void Shape::setSpaceOrientation(float radians) {
   rotation->setMatrixRotation(radians);
+  // std::cout << radians << std::endl;
 }
