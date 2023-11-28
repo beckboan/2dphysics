@@ -1,6 +1,7 @@
 #ifndef POLYGON
 #define POLYGON
 
+#include "common.h"
 #include "mathfuncs.h"
 #include "shape.h"
 #include <vector>
@@ -19,6 +20,8 @@ struct Poly : public Shape {
   const unsigned int &getVertexCount() const { return vertex_count; }
   const std::vector<vec2d> &getVertexList() const { return vertex_list; }
   const std::vector<vec2d> &getNormals() const { return normals; }
+
+  const float poly_radius = polygonRadius;
 
 private:
   unsigned int vertex_count = 0;
