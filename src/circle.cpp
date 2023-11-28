@@ -1,5 +1,6 @@
 #include "circle.h"
 #include "iostream"
+#include "math.h"
 #include <memory>
 
 // Circle
