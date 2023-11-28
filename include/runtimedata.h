@@ -5,7 +5,7 @@
 
 using namespace std::literals;
 
-auto constexpr dt = 1.0s / 15;
+auto constexpr dt = 1.0s / 120;
 
 struct RunTimeData {
 
@@ -14,7 +14,7 @@ struct RunTimeData {
   using time_point = std::chrono::time_point<Clock, duration>;
 
   duration accumulator = 0s;
-  float dt_f = 1.0 / 15;
+  float dt_f = 1.0 / 120;
   time_point curr_time = Clock::now();
   float getDTFloat() { return dt_f; }
   void updateClock();
