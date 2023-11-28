@@ -4,9 +4,7 @@
 #include "collisions.h"
 #include "mathfuncs.h"
 #include "rigidbody.h"
-#include "runtimedata.h"
-#include "scene.h"
-#include <ctime>
+#include <iostream>
 #include <vector>
 
 struct World {
@@ -30,21 +28,22 @@ struct World {
   void worldStep(float dt);
   void checkCollisions();
 
+  std::vector<std::shared_ptr<Manifold>> contact_list;
+
 private:
   std::vector<std::shared_ptr<RigidBody>> world_objects;
-  std::vector<std::shared_ptr<Manifold>> contact_list;
   vec2d gravity;
   const vec2d origin = vec2d(0, 0);
   void integrateForces(float dt);
   void integrateVelocities(float dt);
   void updateAABB();
-  unsigned int iterations = 3;
+  unsigned int iterations = 1;
 
 public:
   static constexpr float min_body_area = 0.01;      // m^2
   static constexpr float max_body_area = 100 * 100; // m^2
-  static constexpr float min_body_density = 200;    // kg/m^3
-  static constexpr float max_body_density = 25000;  // kg/m^3
+  static constexpr float min_body_density = 1;      // kg/m^3
+  static constexpr float max_body_density = 100;    // kg/m^3
 };
 
 // Physics Validation
