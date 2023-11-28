@@ -1,4 +1,5 @@
 #include "polygon.h"
+#include "common.h"
 #include <algorithm>
 #include <cassert>
 #include <cfloat>
@@ -111,7 +112,7 @@ void Poly::calculateMassProperties(float density) {
   body_ref->m = area * density;
   body_ref->inv_m = (body_ref->m > 0) ? 1.0 / body_ref->m : 0;
   body_ref->I = I;
-  body_ref->I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
+  body_ref->inv_I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
 }
 
 void Poly::createAABB() {
@@ -146,8 +147,10 @@ void Poly::createAABB() {
   float position_x = body_temp->position.x;
   float position_y = body_temp->position.y;
   // std::cout << centroid.x << centroid.y << std::endl;
-  aabb.setMax(position_x + max_x, position_y + max_y);
-  aabb.setMin(position_x + min_x, position_y + min_y);
+  aabb.setMax(position_x + max_x + poly_radius,
+              position_y + max_y + poly_radius);
+  aabb.setMin(position_x + min_x - poly_radius,
+              position_y + min_y + poly_radius);
 }
 
 void Poly::calculatePolyNormals() {
