@@ -11,8 +11,8 @@ RigidBody::RigidBody(std::unique_ptr<Shape> &shape_, vec2d &position_,
   torque = 0;
   rotation = 0;
   force.assign(0, 0);
-  static_friction = 0.3f;
-  dynamic_friction = 0.2f;
+  static_friction = 0.5f;
+  dynamic_friction = 0.3f;
   restitution = 0.2f;
   r = 120;
   g = 120;
@@ -49,12 +49,14 @@ void RigidBody::setRotation(float radians) {
 void RigidBody::applyForce(vec2d &other_force, vec2d &point) {
   force += other_force;
   torque += cp(point, other_force);
+  std::cout << point.x << " " << point.y << std::endl;
 }
 
 void RigidBody::applyCenterForce(vec2d &other_force) { force += other_force; }
 
 void RigidBody::applyLinearImpulse(vec2d &impulse, vec2d &point) {
   velocity += impulse * inv_m;
+  // std::cout << point.x << " " << point.y << std::endl;
   angular_velocity += inv_I * cp(point, impulse);
 }
 
