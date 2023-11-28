@@ -14,17 +14,17 @@ struct RigidBody {
   ~RigidBody() = default;
 
   vec2d position;
-  vec2d velocity;
-  vec2d force;
+  vec2d velocity{0.0, 0.0};
+  vec2d force{0.0, 0.0};
 
-  float rotation;
-  float angular_velocity;
-  float torque;
+  float rotation = 0.0;
+  float angular_velocity = 0.0f;
+  float torque = 0.0;
 
   // Shape Features
   float I;
-  float inv_I;
-  float m;
+  float inv_I = 0.0;
+  float m = 0.0;
   float inv_m;
   float area;
   float density;
