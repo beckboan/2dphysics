@@ -93,7 +93,7 @@ bool World::addEdge(vec2d s, vec2d e, bool is_static) {
       std::make_shared<RigidBody>(shp, position, 1);
   bod->shape->setBody(bod);
   world_objects.push_back(bod);
-  // std::cout << "Edge Added" << std::endl;
+  std::cout << "Edge Added" << std::endl;
   if (is_static) {
     bod->setBodyStatic();
   }
@@ -118,7 +118,6 @@ void World::checkCollisions() {
         // std::cout << "Collision Detected" << std::endl;
         collision->collisionCaller();
         if (collision->getContactCount() > 0) {
-          // std::cout << collision->getContactCount() << std::endl;
           contact_list.push_back(collision);
         }
       }
@@ -137,7 +136,6 @@ void World::worldStep(float dt) {
     c->solve();
   }
 
-  // std::cout << dt << std::endl;
   integrateVelocities(dt);
   updateAABB();
 }
@@ -160,7 +158,6 @@ void World::integrateVelocities(float dt) {
     bod->position += bod->velocity * dt;
     bod->rotation += bod->angular_velocity * dt;
     bod->setRotation(bod->rotation);
-    // std::cout << bod->rotation << std::endl;
   }
 }
 

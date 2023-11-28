@@ -6,6 +6,10 @@ A simple rigid-body physics simulator written in C++.
 
 This Physics Engine is a C++ project designed to simulate physical interactions in a 2D environment. It serves as a simple foundation/blueprint that other developers can use to run simulations or build their own physics engine. This project may serve as a helpful project for someone learning C++, as I used it to learn C++ features such as smart pointers, function overrides, virtual inheritance, and polymorphism.
 
+## Credit
+
+Majority of credit for this project can go to Randy Gaul's Impulse Engine (https://github.com/RandyGaul/ImpulseEngine) and Erin Catto's Box2d (https://github.com/erincatto/box2d)
+
 ## Features
 
 - **Rigid Body Dynamics**
