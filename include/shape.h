@@ -2,11 +2,9 @@
 #define SHAPE_H
 
 #include "AABB.h"
-#include "SDL2/SDL.h"
 #include "mathfuncs.h"
 #include "rigidbody.h"
 #include <memory>
-#include <vector>
 
 #define max_poly_count 32
 
