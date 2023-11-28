@@ -2,6 +2,7 @@
 #include "circle.h"
 #include "collisions.h"
 #include "edge.h"
+#include "math.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
@@ -117,6 +118,7 @@ void World::checkCollisions() {
         // std::cout << "Collision Detected" << std::endl;
         collision->collisionCaller();
         if (collision->getContactCount() > 0) {
+          // std::cout << collision->getContactCount() << std::endl;
           contact_list.push_back(collision);
         }
       }
@@ -129,21 +131,31 @@ void World::worldStep(float dt) {
   contact_list.clear();
   checkCollisions();
 
-  for (unsigned int i = 0; i < iterations; i++) {
-    for (auto c : contact_list) {
-      c->solve();
-    }
+  integrateForces(dt);
+
+  // for (unsigned int i = 0; i < iterations; i++) {
+  //   for (auto c : contact_list) {
+  //     c->solve();
+  //   }
+  // }
+  //
+  for (auto c : contact_list) {
+    c->solve();
   }
 
   // std::cout << dt << std::endl;
-  integrateForces(dt);
   integrateVelocities(dt);
   updateAABB();
 
-  for (auto c : contact_list) {
-    c->correctPositions();
-  }
+  // for (auto c : contact_list) {
+  //   c->correctPositions();
+  // }
 
+  for (unsigned int i = 0; i < iterations; i++) {
+    for (auto c : contact_list) {
+      c->correctPositions();
+    }
+  }
   for (auto b : world_objects) {
     // std::cout << b->rotation << std::endl;
   }
@@ -154,7 +166,7 @@ void World::integrateForces(float dt) {
     if (bod->inv_m == 0.0)
       continue;
     bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
-    bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
+    // bod->angular_velocity -= (bod->torque * bod->inv_I) * dt;
     bod->force.assign(0, 0);
     bod->torque = 0;
   }
