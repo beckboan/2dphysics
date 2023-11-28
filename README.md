@@ -8,7 +8,7 @@ This Physics Engine is a C++ project designed to simulate physical interactions 
 
 ## Credit
 
-Majority of credit for this project can go to Randy Gaul's Impulse Engine (https://github.com/RandyGaul/ImpulseEngine) and Erin Catto's Box2d (https://github.com/erincatto/box2d)
+Majority of credit for this project can go to Randy Gaul's Impulse Engine (https://github.com/RandyGaul/ImpulseEngine) and Erin Catto's Box2d (https://github.com/erincatto/box2d). Many times I found myself using their projects as templates/tutorials on engine setup/ primitive shape creation/ collision detection and resolution.
 
 ## Features
 
