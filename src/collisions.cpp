@@ -1,12 +1,15 @@
 #include "collisions.h"
 #include "circle.h"
+#include "common.h"
 #include "edge.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
 #include <assert.h>
 #include <cfloat>
+#include <cmath>
 #include <cstdint>
+#include <iostream>
 
 static const float BIAS_RELATIVE = 0.95f;
 static const float BIAS_ABSOLUTE = 0.01f;
@@ -133,29 +136,53 @@ void Manifold::solve() {
     vec2d a_con = contacts[i] - A->position;
     vec2d b_con = contacts[i] - B->position;
 
+    // std::cout << "Solving" << std::endl;
+    // std::cout << a_con.x << " " << a_con.y << std::endl;
+    // std::cout << b_con.x << " " << b_con.y << std::endl;
+    // std::cout << contacts[i].x << " " << contacts[i].y << std::endl;
+
     // Compute relative velocity
     vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
                   cp(A->angular_velocity, a_con);
 
+    // std::cout << B->velocity.x << " " << B->velocity.y << std::endl;
+    // std::cout << A->velocity.x << " " << A->velocity.y << std::endl;
+    // std::cout << A->angular_velocity << " " << B->angular_velocity <<
+    // std::endl;
+
     // Compute relative velocity along normal
     float contact_vel = dp(r_vel, normal);
+    // std::cout << contact_vel << std::endl;
 
     // Only solve if objects are moving towards each other
-    if (contact_vel >= 0)
+    if (contact_vel >= 0.0)
       return;
 
     // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
     float acn = cp(a_con, normal);
     float bcn = cp(b_con, normal);
 
+    // std::cout << acn << std::endl;
+    // std::cout << bcn << std::endl;
+
     float inv_mass_sum =
         A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
+    // std::cout << A->inv_I << " " << B->inv_I << std::endl;
+    // std::cout << inv_mass_sum << std::endl;
 
     float j = (-(e + 1.0) * contact_vel) / inv_mass_sum;
     j /= (float)contact_count;
 
+    // std::cout << j << std::endl;
+    // std::cout << normal.x << " " << normal.y << std::endl;
     vec2d imp = normal * j;
+
+    // std::cout << imp.x << " " << imp.y << std::endl;
+
     vec2d imp_neg = -imp;
+
+    // if (std::abs(imp.length() - 0.0) < EPSILON)
+    //   return;
 
     B->applyLinearImpulse(imp, b_con);
     A->applyLinearImpulse(imp_neg, a_con);
@@ -170,6 +197,9 @@ void Manifold::solve() {
     float jt = -dp(r_vel, t);
     jt /= inv_mass_sum;
     jt /= (float)contact_count;
+
+    if (std::abs(jt - 0.0) < EPSILON)
+      return;
 
     vec2d tan_imp;
     if (std::abs(jt) < j * sf) {
@@ -228,8 +258,8 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A,
   return best_dist;
 }
 
-void findIncidentFace(vec2d *v, Poly *ref, Poly *inc, vec2d inc_pos,
-                      uint32_t ref_face) {
+void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc,
+                      vec2d inc_pos, uint32_t ref_face) {
 
   vec2d ref_norm = ref->getNormals()[ref_face];
   // Move ref_norm to incident frame of rerence (does not have positions
@@ -256,10 +286,10 @@ void findIncidentFace(vec2d *v, Poly *ref, Poly *inc, vec2d inc_pos,
   v[1] = inc->rotation->mul(inc_vert) + inc_pos;
 }
 
-uint32_t clipEdges(vec2d norm, float dist, vec2d *v) {
+uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v) {
   uint32_t sp = 0;
 
-  vec2d out[2] = {v[0], v[1]};
+  std::array<vec2d, 2> out = {vec2d(v[0]), vec2d(v[1])};
 
   float d1 = dp(norm, v[0]) - dist;
   float d2 = dp(norm, v[1]) - dist;
@@ -285,19 +315,23 @@ uint32_t clipEdges(vec2d norm, float dist, vec2d *v) {
 }
 
 void Manifold::PolyvsPoly() {
-  // std::cout << "Polygon Collision" << std::endl;
+  std::cout << "Poly Collision" << std::endl;
   Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
   Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
 
+  contact_count = 0;
+  float total_radius = P1->poly_radius + P2->poly_radius;
+  // std::cout << total_radius << std::endl;
+
   uint32_t face_A = 0;
   float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
-  if (pen_A >= 0.0) {
+  if (pen_A > total_radius) {
     // std::cout << "No Collision" << std::endl;
     return;
   }
   uint32_t face_B = 0;
   float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
-  if (pen_B >= 0.0) {
+  if (pen_B > total_radius) {
     // std::cout << "No Collision" << std::endl;
     return;
   }
@@ -313,15 +347,10 @@ void Manifold::PolyvsPoly() {
   vec2d ref_pos;
   vec2d inc_pos;
 
-  if (biasSelect(pen_A, pen_B)) {
-    ref = P1;
-    ref_pos = A->position;
-    inc = P2;
-    inc_pos = B->position;
-    ref_index = face_A;
-    flip = false;
-    // std::cout << "Poly A is Ref" << std::endl;
-  } else {
+  // Bias selection of ref/inc poly taken from box2d
+  const float k_tol = 0.1 * linearSlop;
+
+  if (pen_B > pen_A + k_tol) {
     ref = P2;
     ref_pos = B->position;
     inc = P1;
@@ -329,10 +358,17 @@ void Manifold::PolyvsPoly() {
     ref_index = face_B;
     flip = true;
     // std::cout << "Poly B is Ref" << std::endl;
+  } else {
+    ref = P1;
+    ref_pos = A->position;
+    inc = P2;
+    inc_pos = B->position;
+    ref_index = face_A;
+    flip = false;
+    // std::cout << "Poly A is Ref" << std::endl;
   }
 
-  vec2d incident_edge[2];
-  // std::array<vec2d, 2> incident_edge;
+  std::array<vec2d, 2> incident_edge;
   findIncidentFace(incident_edge, ref, inc, inc_pos, ref_index);
 
   vec2d r_v1 = ref->getVertexList()[ref_index];
@@ -352,9 +388,10 @@ void Manifold::PolyvsPoly() {
 
   // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
 
+  // Finding front offsets and sides
   float front_offset = dp(side_normal, r_v1);
-  float neg_side = -dp(side_tangent, r_v1);
-  float pos_side = dp(side_tangent, r_v2);
+  float neg_side = -dp(side_tangent, r_v1) + total_radius;
+  float pos_side = dp(side_tangent, r_v2) + total_radius;
 
   if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
     return;
@@ -362,10 +399,7 @@ void Manifold::PolyvsPoly() {
   if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
     return;
 
-  normal = flip ? -side_normal : side_normal;
-  // std::cout << flip << std::endl;
-  // normal = side_normal;
-
+  // Checking for penetration by clipping points
   uint32_t clipped_points = 0;
   float sep = dp(side_normal, incident_edge[0]) - front_offset;
   if (sep <= 0.0) {
@@ -390,14 +424,5 @@ void Manifold::PolyvsPoly() {
   // std::cout << normal.x << " " << normal.y << std::endl;
   contact_count = clipped_points;
   // std::cout << penetration << std::endl;
-}
-
-void Manifold::correctPositions() {
-  const float k_slop = 0.05;  // Penetration allowance
-  const float percent = 1.00; // Penetration percentage to correct
-  vec2d correction =
-      normal * (std::max(penetration - k_slop, 0.0f) / (A->inv_m + B->inv_m)) *
-      percent;
-  A->position -= correction * A->inv_m;
-  B->position += correction * B->inv_m;
+  normal = flip ? -side_normal : side_normal;
 }

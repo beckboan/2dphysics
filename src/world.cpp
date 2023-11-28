@@ -133,12 +133,6 @@ void World::worldStep(float dt) {
 
   integrateForces(dt);
 
-  // for (unsigned int i = 0; i < iterations; i++) {
-  //   for (auto c : contact_list) {
-  //     c->solve();
-  //   }
-  // }
-  //
   for (auto c : contact_list) {
     c->solve();
   }
@@ -146,19 +140,6 @@ void World::worldStep(float dt) {
   // std::cout << dt << std::endl;
   integrateVelocities(dt);
   updateAABB();
-
-  // for (auto c : contact_list) {
-  //   c->correctPositions();
-  // }
-
-  for (unsigned int i = 0; i < iterations; i++) {
-    for (auto c : contact_list) {
-      c->correctPositions();
-    }
-  }
-  for (auto b : world_objects) {
-    // std::cout << b->rotation << std::endl;
-  }
 }
 
 void World::integrateForces(float dt) {
@@ -166,7 +147,7 @@ void World::integrateForces(float dt) {
     if (bod->inv_m == 0.0)
       continue;
     bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
-    // bod->angular_velocity -= (bod->torque * bod->inv_I) * dt;
+    bod->angular_velocity += (bod->torque * bod->inv_I) * dt;
     bod->force.assign(0, 0);
     bod->torque = 0;
   }
