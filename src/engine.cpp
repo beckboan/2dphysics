@@ -11,11 +11,14 @@ void Engine::createWorld() { m_world = std::make_unique<World>(); }
 void Engine::createWorld(float g) { m_world = std::make_unique<World>(g); }
 
 void Engine::run() {
-  static double accumulator = 0;
   while (m_scene->getActive()) {
     m_runtimedata.updateClock();
     m_scene->checkEvent();
     while (m_runtimedata.goPhysics()) {
+      // if (m_world->contact_list.size() > 0) {
+      //   m_scene->setActive(0);
+      //   return;
+      // }
       m_world->worldStep(m_runtimedata.getDTFloat());
       m_runtimedata.updateInternalTimers();
     }
