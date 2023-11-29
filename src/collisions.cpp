@@ -116,13 +116,32 @@ void Manifold::PolyvsEdge() {
 void Manifold::CirclevsEdge() {
 
   std::cout << "Circle/Edge Collision" << std::endl;
+
+  RigidBody *circ_bod;
+  RigidBody *edge_bod;
+  Circle *C;
+  Edge *E;
+
   if (reverse == true) {
-    Circle *C = dynamic_cast<Circle *>(B->shape.get());
-    Edge *E = dynamic_cast<Edge *>(A->shape.get());
+    C = dynamic_cast<Circle *>(B->shape.get());
+    circ_bod = B.get();
+    E = dynamic_cast<Edge *>(A->shape.get());
+    edge_bod = A.get();
   } else {
-    Circle *C = dynamic_cast<Circle *>(A->shape.get());
-    Edge *E = dynamic_cast<Edge *>(B->shape.get());
+    C = dynamic_cast<Circle *>(A->shape.get());
+    circ_bod = A.get();
+    E = dynamic_cast<Edge *>(B->shape.get());
+    edge_bod = B.get();
   }
+
+  contact_count = 0;
+
+  vec2d center = circ_bod->position;
+  center = E->rotation->transpose() * (center - edge_bod->position);
+
+  vec2d s = E->start_vertex;
+  vec2d e = E->end_vertex;
+  vec2d f = e - s;
 }
 void Manifold::EdgevsEdge() {
 

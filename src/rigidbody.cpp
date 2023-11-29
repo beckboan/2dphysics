@@ -48,7 +48,7 @@ void RigidBody::setRotation(float radians) {
 
 void RigidBody::applyForce(vec2d &other_force, vec2d &point) {
   force += other_force;
-  torque -= cp(point, other_force);
+  torque += cp(point, other_force);
   std::cout << point.x << " " << point.y << std::endl;
 }
 
@@ -57,7 +57,7 @@ void RigidBody::applyCenterForce(vec2d &other_force) { force += other_force; }
 void RigidBody::applyLinearImpulse(vec2d &impulse, vec2d &point) {
   velocity += impulse * inv_m;
   // std::cout << point.x << " " << point.y << std::endl;
-  angular_velocity -= inv_I * cp(point, impulse);
+  angular_velocity += inv_I * cp(point, impulse);
 }
 
 void RigidBody::applyCenterLinearImpulse(vec2d &impulse) {

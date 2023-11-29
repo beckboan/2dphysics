@@ -42,8 +42,8 @@ private:
 public:
   static constexpr float min_body_area = 0.01;      // m^2
   static constexpr float max_body_area = 100 * 100; // m^2
-  static constexpr float min_body_density = 1;      // kg/m^3
-  static constexpr float max_body_density = 100;    // kg/m^3
+  static constexpr float min_body_density = 500;    // kg/m^3
+  static constexpr float max_body_density = 25000;  // kg/m^3
 };
 
 // Physics Validation
