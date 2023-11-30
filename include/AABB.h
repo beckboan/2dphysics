@@ -2,7 +2,6 @@
 #define AABB_H
 
 #include "mathfuncs.h"
-#include <iostream>
 
 struct AABB {
   AABB() {}

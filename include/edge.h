@@ -1,10 +1,9 @@
 #ifndef EDGE_H
 #define EDGE_H
 
+#include "common.h"
 #include "mathfuncs.h"
 #include "shape.h"
-#include <iostream>
-#include <vector>
 
 struct Edge : public Shape {
   Edge(vec2d s, vec2d e);
@@ -13,6 +12,8 @@ struct Edge : public Shape {
   ShapeType getType() const;
   std::string getName() const;
   void calculateMassProperties(float density);
+
+  const float edge_radius = polygonRadius;
 
   // Getters/Setters
 

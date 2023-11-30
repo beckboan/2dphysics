@@ -1,10 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "mathfuncs.h"
 #include "shape.h"
-#include <iostream>
-#include <vector>
 
 struct Circle : public Shape {
   Circle(float radius);

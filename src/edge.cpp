@@ -1,4 +1,5 @@
 #include "edge.h"
+#include <string>
 
 Edge::Edge(vec2d s, vec2d e) : start_vertex(s), end_vertex(e) {
   centroid = (start_vertex + end_vertex) / 2;

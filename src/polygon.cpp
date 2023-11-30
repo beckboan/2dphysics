@@ -4,6 +4,8 @@
 #include <cassert>
 #include <cfloat>
 #include <cstdint>
+#include <iostream>
+#include <string>
 
 // Polygon
 
