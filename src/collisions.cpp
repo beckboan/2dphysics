@@ -10,9 +10,6 @@
 #include <cstdint>
 #include <iostream>
 
-static const float BIAS_RELATIVE = 0.95f;
-static const float BIAS_ABSOLUTE = 0.01f;
-
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
     : A(A_), B(B_) {
   // std::cout << "Manifold Created" << std::endl;

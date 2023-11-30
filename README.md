@@ -16,6 +16,12 @@ Majority of credit for this project can go to Randy Gaul's Impulse Engine (https
 - **Collision Detection**
 - **Broad Phase and Narrow Phase**
 
+## To Do
+
+- **Circle/Edge Collision**
+- **Circle/Poly Collision**
+- **Poly/Edge Collision**
+
 ## Getting Started
 
 ### Prerequisites 
