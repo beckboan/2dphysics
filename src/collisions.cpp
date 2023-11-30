@@ -3,7 +3,6 @@
 #include "common.h"
 #include "edge.h"
 #include "mathfuncs.h"
-#include "polygon.h"
 #include "shape.h"
 #include <assert.h>
 #include <cfloat>
@@ -20,6 +19,90 @@ Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_)
   e = std::min(A->restitution, B->restitution);
   df = std::sqrt(A->dynamic_friction * B->dynamic_friction);
   sf = std::sqrt(A->static_friction * B->dynamic_friction);
+}
+
+void Manifold::solve() {
+  for (uint32_t i = 0; i < contact_count; i++) {
+    // Calculate vector from COM to contact
+    vec2d a_con = contacts[i] - A->position;
+    vec2d b_con = contacts[i] - B->position;
+
+    // std::cout << "Solving" << std::endl;
+    // std::cout << a_con.x << " " << a_con.y << std::endl;
+    // std::cout << b_con.x << " " << b_con.y << std::endl;
+    // std::cout << contacts[i].x << " " << contacts[i].y << std::endl;
+
+    // Compute relative velocity
+    vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
+                  cp(A->angular_velocity, a_con);
+
+    // std::cout << B->velocity.x << " " << B->velocity.y << std::endl;
+    // std::cout << A->velocity.x << " " << A->velocity.y << std::endl;
+    // std::cout << A->angular_velocity << " " << B->angular_velocity <<
+    // std::endl;
+
+    // Compute relative velocity along normal
+    float contact_vel = dp(r_vel, normal);
+    // std::cout << contact_vel << std::endl;
+
+    // Only solve if objects are moving towards each other
+    if (contact_vel >= 0.0)
+      return;
+
+    // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
+    float acn = cp(a_con, normal);
+    float bcn = cp(b_con, normal);
+
+    // std::cout << acn << std::endl;
+    // std::cout << bcn << std::endl;
+
+    float inv_mass_sum =
+        A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
+    // std::cout << A->inv_I << " " << B->inv_I << std::endl;
+    // std::cout << inv_mass_sum << std::endl;
+
+    float j = (-(e + 1.0) * contact_vel) / inv_mass_sum;
+    j /= (float)contact_count;
+
+    // std::cout << j << std::endl;
+    // std::cout << normal.x << " " << normal.y << std::endl;
+    vec2d imp = normal * j;
+
+    // std::cout << imp.x << " " << imp.y << std::endl;
+
+    vec2d imp_neg = -imp;
+
+    // if (std::abs(imp.length() - 0.0) < EPSILON)
+    //   return;
+
+    B->applyLinearImpulse(imp, b_con);
+    A->applyLinearImpulse(imp_neg, a_con);
+
+    r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
+            cp(A->angular_velocity, a_con);
+
+    vec2d t = r_vel;
+    t += normal * -dp(r_vel, normal);
+    t = t.normalize();
+
+    float jt = -dp(r_vel, t);
+    jt /= inv_mass_sum;
+    jt /= (float)contact_count;
+
+    if (std::abs(jt - 0.0) < EPSILON)
+      return;
+
+    vec2d tan_imp;
+    if (std::abs(jt) < j * sf) {
+      tan_imp = t * jt;
+    } else {
+      tan_imp = t * j * (-df);
+    }
+
+    vec2d tan_imp_neg = -tan_imp;
+    // B->applyLinearImpulse(tan_imp, b_con);
+    // A->applyLinearImpulse(tan_imp_neg, a_con);
+  }
 }
 
 void Manifold::collisionCaller() {
@@ -40,6 +123,7 @@ void Manifold::collisionCaller() {
     CirclevsCircle();
   } else if (A_type == Shape::ShapeType::Edge &&
              B_type == Shape::ShapeType::Edge) {
+    // Edge vs Edge not supported
     return;
   } else if (A_type == Shape::ShapeType::Poly &&
              B_type == Shape::ShapeType::Edge) {
@@ -142,195 +226,6 @@ void Manifold::CirclevsEdge() {
   vec2d s = E->start_vertex;
   vec2d e = E->end_vertex;
   vec2d f = e - s;
-}
-void Manifold::EdgevsEdge() {
-
-  Edge *E1 = dynamic_cast<Edge *>(A->shape.get());
-  Edge *E2 = dynamic_cast<Edge *>(B->shape.get());
-}
-
-void Manifold::solve() {
-  for (uint32_t i = 0; i < contact_count; i++) {
-    // Calculate vector from COM to contact
-    vec2d a_con = contacts[i] - A->position;
-    vec2d b_con = contacts[i] - B->position;
-
-    // std::cout << "Solving" << std::endl;
-    // std::cout << a_con.x << " " << a_con.y << std::endl;
-    // std::cout << b_con.x << " " << b_con.y << std::endl;
-    // std::cout << contacts[i].x << " " << contacts[i].y << std::endl;
-
-    // Compute relative velocity
-    vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
-                  cp(A->angular_velocity, a_con);
-
-    // std::cout << B->velocity.x << " " << B->velocity.y << std::endl;
-    // std::cout << A->velocity.x << " " << A->velocity.y << std::endl;
-    // std::cout << A->angular_velocity << " " << B->angular_velocity <<
-    // std::endl;
-
-    // Compute relative velocity along normal
-    float contact_vel = dp(r_vel, normal);
-    // std::cout << contact_vel << std::endl;
-
-    // Only solve if objects are moving towards each other
-    if (contact_vel >= 0.0)
-      return;
-
-    // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
-    float acn = cp(a_con, normal);
-    float bcn = cp(b_con, normal);
-
-    // std::cout << acn << std::endl;
-    // std::cout << bcn << std::endl;
-
-    float inv_mass_sum =
-        A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
-    // std::cout << A->inv_I << " " << B->inv_I << std::endl;
-    // std::cout << inv_mass_sum << std::endl;
-
-    float j = (-(e + 1.0) * contact_vel) / inv_mass_sum;
-    j /= (float)contact_count;
-
-    // std::cout << j << std::endl;
-    // std::cout << normal.x << " " << normal.y << std::endl;
-    vec2d imp = normal * j;
-
-    // std::cout << imp.x << " " << imp.y << std::endl;
-
-    vec2d imp_neg = -imp;
-
-    // if (std::abs(imp.length() - 0.0) < EPSILON)
-    //   return;
-
-    B->applyLinearImpulse(imp, b_con);
-    A->applyLinearImpulse(imp_neg, a_con);
-
-    r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity -
-            cp(A->angular_velocity, a_con);
-
-    vec2d t = r_vel;
-    t += normal * -dp(r_vel, normal);
-    t = t.normalize();
-
-    float jt = -dp(r_vel, t);
-    jt /= inv_mass_sum;
-    jt /= (float)contact_count;
-
-    if (std::abs(jt - 0.0) < EPSILON)
-      return;
-
-    vec2d tan_imp;
-    if (std::abs(jt) < j * sf) {
-      tan_imp = t * jt;
-    } else {
-      tan_imp = t * j * (-df);
-    }
-
-    vec2d tan_imp_neg = -tan_imp;
-    // B->applyLinearImpulse(tan_imp, b_con);
-    // A->applyLinearImpulse(tan_imp_neg, a_con);
-  }
-}
-
-// AOLP adapted from Randy Gaul's Impulse Engine and box2d
-float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A,
-               vec2d pos_B) {
-  float best_dist = -FLT_MAX;
-  uint32_t best_index;
-
-  for (uint32_t i = 0; i < A->getVertexCount(); i++) {
-    vec2d a_norm = A->getNormals()[i];
-
-    mat2d b_rotation_T = B->rotation->transpose();
-    a_norm = b_rotation_T * A->rotation->mul(a_norm);
-
-    float best_proj = -FLT_MAX;
-    vec2d best_vert;
-
-    // Find best projection of B verticies onto normal
-    for (uint32_t i = 0; i < B->getVertexCount(); i++) {
-      vec2d b_vert = B->getVertexList()[i];
-      float proj = dp(b_vert, -a_norm);
-
-      if (proj > best_proj) {
-        best_vert = b_vert;
-        best_proj = proj;
-      }
-    }
-
-    // std::cout << best_vert.x << " " << best_vert.y << std::endl;
-
-    vec2d a_vert = A->getVertexList()[i];
-
-    a_vert = b_rotation_T * (A->rotation->mul(a_vert) + pos_A - pos_B);
-
-    float dist = dp(a_norm, best_vert - a_vert);
-
-    if (dist > best_dist) {
-      best_dist = dist;
-      best_index = i;
-    }
-  }
-
-  face_index = best_index;
-  return best_dist;
-}
-
-void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc,
-                      vec2d inc_pos, uint32_t ref_face) {
-
-  vec2d ref_norm = ref->getNormals()[ref_face];
-  // Move ref_norm to incident frame of rerence (does not have positions
-  // factored in)
-  ref_norm = ref->rotation->mul(ref_norm);
-  ref_norm = inc->rotation->transpose() * ref_norm;
-
-  // Find least normal (lowest dot product)
-  uint32_t inc_face = 0;
-  float min_dot = FLT_MAX;
-  for (uint32_t i = 0; i < inc->getVertexCount(); i++) {
-    float dot = dp(ref_norm, inc->getNormals()[i]);
-    if (dot < min_dot) {
-      min_dot = dot;
-      inc_face = i;
-    }
-  }
-
-  // Compute incident face in world coordinates
-  vec2d inc_vert = inc->getVertexList()[inc_face];
-  v[0] = inc->rotation->mul(inc_vert) + inc_pos;
-  inc_face = inc_face + 1 >= inc->getVertexCount() ? 0 : inc_face + 1;
-  inc_vert = inc->getVertexList()[inc_face];
-  v[1] = inc->rotation->mul(inc_vert) + inc_pos;
-}
-
-uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v) {
-  uint32_t sp = 0;
-
-  std::array<vec2d, 2> out = {vec2d(v[0]), vec2d(v[1])};
-
-  float d1 = dp(norm, v[0]) - dist;
-  float d2 = dp(norm, v[1]) - dist;
-
-  if (d1 <= 0.0f)
-    out[sp++] = v[0];
-
-  if (d2 <= 0.0f)
-    out[sp++] = v[1];
-
-  if (d1 * d2 < 0.0) {
-    float alpha = d1 / (d1 - d2);
-    out[sp] = v[0] + (v[1] - v[0]) * alpha;
-    ++sp;
-  }
-
-  v[0] = out[0];
-  v[1] = out[1];
-
-  assert(sp != 3);
-
-  return sp;
 }
 
 void Manifold::PolyvsPoly() {
@@ -444,4 +339,104 @@ void Manifold::PolyvsPoly() {
   contact_count = clipped_points;
   // std::cout << penetration << std::endl;
   normal = flip ? -side_normal : side_normal;
+}
+
+// AOLP adapted from Randy Gaul's Impulse Engine and box2d
+float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A,
+               vec2d pos_B) {
+  float best_dist = -FLT_MAX;
+  uint32_t best_index;
+
+  for (uint32_t i = 0; i < A->getVertexCount(); i++) {
+    vec2d a_norm = A->getNormals()[i];
+
+    mat2d b_rotation_T = B->rotation->transpose();
+    a_norm = b_rotation_T * A->rotation->mul(a_norm);
+
+    float best_proj = -FLT_MAX;
+    vec2d best_vert;
+
+    // Find best projection of B verticies onto normal
+    for (uint32_t i = 0; i < B->getVertexCount(); i++) {
+      vec2d b_vert = B->getVertexList()[i];
+      float proj = dp(b_vert, -a_norm);
+
+      if (proj > best_proj) {
+        best_vert = b_vert;
+        best_proj = proj;
+      }
+    }
+
+    // std::cout << best_vert.x << " " << best_vert.y << std::endl;
+
+    vec2d a_vert = A->getVertexList()[i];
+
+    a_vert = b_rotation_T * (A->rotation->mul(a_vert) + pos_A - pos_B);
+
+    float dist = dp(a_norm, best_vert - a_vert);
+
+    if (dist > best_dist) {
+      best_dist = dist;
+      best_index = i;
+    }
+  }
+
+  face_index = best_index;
+  return best_dist;
+}
+
+void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc,
+                      vec2d inc_pos, uint32_t ref_face) {
+
+  vec2d ref_norm = ref->getNormals()[ref_face];
+  // Move ref_norm to incident frame of rerence (does not have positions
+  // factored in)
+  ref_norm = ref->rotation->mul(ref_norm);
+  ref_norm = inc->rotation->transpose() * ref_norm;
+
+  // Find least normal (lowest dot product)
+  uint32_t inc_face = 0;
+  float min_dot = FLT_MAX;
+  for (uint32_t i = 0; i < inc->getVertexCount(); i++) {
+    float dot = dp(ref_norm, inc->getNormals()[i]);
+    if (dot < min_dot) {
+      min_dot = dot;
+      inc_face = i;
+    }
+  }
+
+  // Compute incident face in world coordinates
+  vec2d inc_vert = inc->getVertexList()[inc_face];
+  v[0] = inc->rotation->mul(inc_vert) + inc_pos;
+  inc_face = inc_face + 1 >= inc->getVertexCount() ? 0 : inc_face + 1;
+  inc_vert = inc->getVertexList()[inc_face];
+  v[1] = inc->rotation->mul(inc_vert) + inc_pos;
+}
+
+uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v) {
+  uint32_t sp = 0;
+
+  std::array<vec2d, 2> out = {vec2d(v[0]), vec2d(v[1])};
+
+  float d1 = dp(norm, v[0]) - dist;
+  float d2 = dp(norm, v[1]) - dist;
+
+  if (d1 <= 0.0f)
+    out[sp++] = v[0];
+
+  if (d2 <= 0.0f)
+    out[sp++] = v[1];
+
+  if (d1 * d2 < 0.0) {
+    float alpha = d1 / (d1 - d2);
+    out[sp] = v[0] + (v[1] - v[0]) * alpha;
+    ++sp;
+  }
+
+  v[0] = out[0];
+  v[1] = out[1];
+
+  assert(sp != 3);
+
+  return sp;
 }
