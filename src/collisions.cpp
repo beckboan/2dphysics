@@ -223,6 +223,13 @@ void Manifold::CirclevsEdge() {
   vec2d v1 = e - s;
   vec2d v2 = s - e;
 
+  float total_radius = C->radius + E->edge_radius;
+
+  // Start with typical CCW norm (doesn't matter for edge)
+
+  vec2d norm = vec2d(v1.y, -v1.x);
+  norm = norm.normalize();
+
   // Want to determine which side of the edge the circle is on
   // Also check if circle is closer to vertex or face
   //   |      A       |
@@ -232,12 +239,44 @@ void Manifold::CirclevsEdge() {
   float dp1 = dp(v1, center - s);
   float dp2 = dp(v2, center - e);
 
-  if (dp1 <= 0.0)
-    return;
-  else if (dp2 <= 0.0)
-    return;
-  else
-    std::cout << "Over Face" << std::endl;
+  if (dp1 <= 0.0) {
+    if (distSquared(center, s) > total_radius * total_radius)
+      return;
+    contact_count = 1;
+    contacts[0] = s;
+    norm = s - center;
+    normal = norm.normalize();
+    penetration = C->radius - dist(center, s);
+    std::cout << "Here" << std::endl;
+  } else if (dp2 <= 0.0) {
+    if (distSquared(center, e) > total_radius * total_radius)
+      return;
+    contact_count = 1;
+    contacts[0] = e;
+    norm = e - center;
+    normal = norm.normalize();
+    penetration = C->radius - dist(center, s);
+  } else {
+    float edge_sep = dp(center - edge_bod->position, norm);
+    float edge_abs = std::abs(edge_sep);
+    // On normal side
+    if (edge_abs < total_radius && edge_sep < 0) {
+      normal = norm;
+      contact_count = 1;
+      penetration = C->radius - edge_abs - E->edge_radius;
+      contacts[0] = normal * C->radius + center;
+    }
+    // On opposite side
+    else if (edge_abs < total_radius && edge_sep > 0) {
+      normal = -norm;
+      contact_count = 1;
+      penetration = C->radius - edge_abs - E->edge_radius;
+      contacts[0] = normal * total_radius + center;
+    }
+    // Not contacting
+    else
+      return;
+  }
 }
 
 void Manifold::PolyvsPoly() {

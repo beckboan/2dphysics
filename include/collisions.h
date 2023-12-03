@@ -21,7 +21,7 @@ private:
   float penetration;
   uint32_t contact_count = 0;
   vec2d normal = vec2d(0, 0);
-  vec2d contacts[2] = {vec2d(0, 0), vec2d(0, 0)};
+  vec2d contacts[2];
   float e;
   float df;
   float sf;
