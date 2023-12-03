@@ -218,11 +218,26 @@ void Manifold::CirclevsEdge() {
   contact_count = 0;
 
   vec2d center = circ_bod->position;
-  center = E->rotation->transpose() * (center - edge_bod->position);
-
   vec2d s = E->start_vertex;
   vec2d e = E->end_vertex;
-  vec2d f = e - s;
+  vec2d v1 = e - s;
+  vec2d v2 = s - e;
+
+  // Want to determine which side of the edge the circle is on
+  // Also check if circle is closer to vertex or face
+  //   |      A       |
+  //   <-------------->
+  //   |      B       |
+
+  float dp1 = dp(v1, center - s);
+  float dp2 = dp(v2, center - e);
+
+  if (dp1 <= 0.0)
+    return;
+  else if (dp2 <= 0.0)
+    return;
+  else
+    std::cout << "Over Face" << std::endl;
 }
 
 void Manifold::PolyvsPoly() {
