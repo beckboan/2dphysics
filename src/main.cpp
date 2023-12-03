@@ -1,8 +1,6 @@
 #include "engine.h"
 #include <unistd.h>
 
-#define DBG(msg) std::cout << msg << std::endl;
-
 int main(int argc, char *args[]) {
   Engine engine;
   engine.createWorld(9.8);
@@ -18,13 +16,10 @@ int main(int argc, char *args[]) {
                                     vec2d(0, 10), vec2d(15, 20)};
   // engine.m_world->addCircle(10, position, 1000, 1);
   engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
-  engine.m_world->addCircle(10, vec2d(0, 130), 1000, 0);
-  engine.m_world->addCircle(10, vec2d(0, 160), 1000, 0);
-  engine.m_world->addCircle(10, vec2d(0, 190), 1000, 0);
-  // engine.m_world->addPoly(verticies_2, position, density, 1);
+  engine.m_world->addPoly(verticies_2, position, density, 1);
   // engine.m_world->addPoly(verticies_2, vec2d(0.0, 90.0), density, 0);
   // engine.m_world->addPoly(verticies, vec2d(0, 400), density, 0);
-  engine.m_world->addEdge(vec2d(500, 200), vec2d(5, 0));
+  // engine.m_world->addEdge(vec2d(500, 0), vec2d(-200, 0));
   // engine.m_world->addCircle(10, vec2d(1, -100), 1000, 1);
 
   engine.run();

@@ -1,6 +1,7 @@
 #ifndef COLLISIONS_H
 #define COLLISIONS_H
 
+#include "circle.h"
 #include "polygon.h"
 #include "rigidbody.h"
 #include <memory>
@@ -41,5 +42,8 @@ void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc,
                       vec2d inc_pos, uint32_t ref_face);
 
 uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v);
+
+float findCirclePolyMinPenetration(uint32_t &normal_index, Circle *C, Poly *P,
+                                   vec2d c);
 
 #endif
