@@ -217,19 +217,47 @@ void Manifold::CirclevsPoly() {
     norm = (P->rotation->mul(norm)).normalize();
     normal = norm;
     contacts[0] = P->rotation->mul(e) + poly_bod->position;
+  } else {
+    vec2d norm = P->getNormals()[normal_index];
+
+    // Check if actually within distance of poylgon face
+    if (dp(norm, center - s) > total_radius)
+      return;
+
+    contact_count = 1;
+    norm = (P->rotation->mul(norm));
+    contacts[0] = -norm * C->radius + circ_bod->position;
+    normal = -norm;
   }
 }
 
 void Manifold::PolyvsEdge() {
 
+  RigidBody *edge_bod;
+  RigidBody *poly_bod;
+  Poly *P;
+  Edge *E;
+
   std::cout << "Poly/Edge Collision" << std::endl;
   if (reverse == true) {
-    Poly *P = dynamic_cast<Poly *>(B->shape.get());
-    Edge *E = dynamic_cast<Edge *>(A->shape.get());
+    P = dynamic_cast<Poly *>(B->shape.get());
+    poly_bod = B.get();
+    E = dynamic_cast<Edge *>(A->shape.get());
+    edge_bod = A.get();
   } else {
-    Poly *P = dynamic_cast<Poly *>(A->shape.get());
-    Edge *E = dynamic_cast<Edge *>(B->shape.get());
+    P = dynamic_cast<Poly *>(A->shape.get());
+    poly_bod = A.get();
+    E = dynamic_cast<Edge *>(B->shape.get());
+    edge_bod = B.get();
   }
+  contact_count = 0;
+
+  vec2d s = E->start_vertex;
+  vec2d e = E->end_vertex;
+  vec2d v1 = e - s;
+  vec2d v2 = s - e;
+
+  float total_radius = P->poly_radius + E->edge_radius;
 }
 
 void Manifold::CirclevsEdge() {
