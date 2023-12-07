@@ -6,20 +6,20 @@
 #include "shape.h"
 
 struct Edge : public Shape {
-  Edge(vec2d s, vec2d e);
+    Edge(vec2d s, vec2d e);
 
-  void createAABB();
-  ShapeType getType() const;
-  std::string getName() const;
-  void calculateMassProperties(float density);
+    void createAABB();
+    ShapeType getType() const;
+    std::string getName() const;
+    void calculateMassProperties(float density);
 
-  const float edge_radius = polygonRadius;
+    const float edge_radius = polygonRadius;
 
-  // Getters/Setters
+    // Getters/Setters
 
-  vec2d start_vertex;
-  vec2d end_vertex;
-  vec2d centroid;
+    vec2d start_vertex;
+    vec2d end_vertex;
+    vec2d centroid;
 };
 
 #endif
