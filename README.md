@@ -18,9 +18,9 @@ Majority of credit for this project can go to Randy Gaul's Impulse Engine (https
 
 ## To Do
 
-- **Circle/Edge Collision**
-- **Circle/Poly Collision**
 - **Poly/Edge Collision**
+- **Collision Positional Correction**
+- **AABB Broadphase Tree**
 
 ## Getting Started
 
