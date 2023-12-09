@@ -41,7 +41,5 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A, vec2d pos_B)
 void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc, vec2d inc_pos, uint32_t ref_face);
 uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v);
 float findCirclePolyMinPenetration(uint32_t &normal_index, Circle *C, Poly *P, vec2d c);
-float findPolyEdgeMinPenetration(uint32_t &edge_index, Poly *P, Edge *E, vec2d poly_position, vec2d edge_position, vec2d *edge_verts);
-float findEdgePolyMinPenetration(uint32_t &edge_index, Edge *E, Poly *P, vec2d poly_position, vec2d edge_position, vec2d *norm_axes);
 
 #endif

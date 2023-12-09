@@ -260,6 +260,41 @@ float findMTVEdgePoly(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P
     return best_dist;
 }
 
+float findMTVPolyEdge(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P, vec2d pos_polygon) {
+    float best_dist = -FLT_MAX;
+    uint32_t best_index;
+
+    for (uint32_t i = 0; i < P->getVertexCount(); i++) {
+        vec2d a_norm = P->getNormals()[i];
+        a_norm = P->rotation->mul(a_norm);
+
+        float best_proj = -FLT_MAX;
+        vec2d best_vert;
+
+        for (uint32_t j = 0; j < 2; j++) {
+            vec2d b_vert = (j == 0) ? start_line : end_line;
+            float proj = dp(b_vert, -a_norm);
+
+            if (proj > best_proj) {
+                best_vert = b_vert;
+                best_proj = proj;
+            }
+        }
+
+        vec2d a_vert = P->getVertexList()[i];
+        a_vert = P->rotation->mul(a_vert) + pos_polygon;
+
+        float dist = dp(a_norm, best_vert - a_vert);
+        if (dist > best_dist) {
+            best_dist = dist;
+            best_index = i;
+        }
+    }
+
+    index = best_index;
+    return best_dist;
+}
+
 void Manifold::PolyvsEdge() {
     RigidBody *edge_bod;
     RigidBody *poly_bod;
@@ -293,16 +328,21 @@ void Manifold::PolyvsEdge() {
 
     uint32_t edge_norm_index;
     float pen_A = findMTVEdgePoly(edge_norm_index, s, e, P, poly_pos);
+    DBG(edge_norm_index);
+    DBG(pen_A);
     if (pen_A > total_radius) {
         return;
     }
 
     uint32_t poly_norm_index;
-    // float pen_B = findAOLPPolyEdge(poly_norm_index, s, e, edge_pos, P, poly_pos);
-    // DBG(poly_norm_index);
-    // if (pen_B > total_radius) {
-    //     return;
-    // }
+    float pen_B = findMTVPolyEdge(poly_norm_index, s, e, P, poly_pos);
+    DBG(poly_norm_index);
+    DBG(pen_B);
+    if (pen_B > total_radius) {
+        return;
+    }
+
+    DBG("Collisions");
 }
 
 void Manifold::CirclevsEdge() {
