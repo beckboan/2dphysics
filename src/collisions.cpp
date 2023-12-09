@@ -219,6 +219,47 @@ void Manifold::CirclevsPoly() {
     }
 }
 
+float findMTVEdgePoly(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P, vec2d pos_polygon) {
+    float best_dist = -FLT_MAX;
+    uint32_t best_index;
+
+    // Calculate the normal vectors of the line (start_line to end_line)
+    vec2d line_dir = end_line - start_line;
+    vec2d line_normal1 = (vec2d(line_dir.y, -line_dir.x)).normalize();
+    vec2d line_normal2 = -line_normal1; // Invert the normal for the second side
+
+    mat2d polygon_rotation_T = P->rotation->transpose();
+
+    for (uint32_t j = 0; j < 2; ++j) {
+        vec2d line_normal = (j == 0) ? line_normal1 : line_normal2;
+        line_normal = polygon_rotation_T * line_normal;
+
+        float best_proj = -FLT_MAX;
+        vec2d best_vert;
+        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
+            vec2d b_vert = P->getVertexList()[i];
+            float proj = dp(b_vert, -line_normal);
+
+            if (proj > best_proj) {
+                best_vert = b_vert;
+                best_proj = proj;
+            }
+        }
+
+        vec2d a_vert = (j == 0) ? start_line : end_line;
+        a_vert = polygon_rotation_T * (a_vert - pos_polygon);
+
+        float dist = dp(line_normal, best_vert - a_vert);
+        if (dist > best_dist) {
+            best_dist = dist;
+            best_index = j;
+        }
+    }
+
+    index = best_index;
+    return best_dist;
+}
+
 void Manifold::PolyvsEdge() {
     RigidBody *edge_bod;
     RigidBody *poly_bod;
@@ -247,105 +288,21 @@ void Manifold::PolyvsEdge() {
 
     vec2d s = E->start_vertex;
     vec2d e = E->end_vertex;
-    vec2d edge_vert_list[2] = {s, e};
-    vec2d v1 = e - s;
-    vec2d v2 = s - e;
-
-    vec2d norm = vec2d(v1.y, -v1.x);
-    norm = norm.normalize();
 
     float total_radius = P->poly_radius + E->edge_radius;
-    mat2d p_rotation_T = P->rotation->transpose();
-    vec2d norm_axes[2] = {norm, -norm};
 
     uint32_t edge_norm_index;
-    float pen_A = findEdgePolyMinPenetration(edge_norm_index, E, P, poly_bod->position, edge_pos, norm_axes);
-    DBG(edge_norm_index);
+    float pen_A = findMTVEdgePoly(edge_norm_index, s, e, P, poly_pos);
     if (pen_A > total_radius) {
         return;
     }
 
     uint32_t poly_norm_index;
-    float pen_B = findPolyEdgeMinPenetration(poly_norm_index, P, E, poly_bod->position, edge_pos, edge_vert_list);
-
-    if (pen_B > total_radius) {
-        return;
-    }
-    std::array<vec2d, 2> incident_edge;
-
-    {
-        vec2d ref_norm = norm_axes[edge_norm_index];
-        ref_norm = P->rotation->transpose() * ref_norm;
-
-        uint32_t inc_face = 0;
-        float min_dot = FLT_MAX;
-        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
-            float dot = dp(ref_norm, P->getNormals()[i]);
-            if (dot < min_dot) {
-                min_dot = dot;
-                inc_face = i;
-            }
-        }
-
-        vec2d inc_vert = P->getVertexList()[inc_face];
-        incident_edge[0] = P->rotation->mul(inc_vert) + poly_pos;
-        inc_face = inc_face + 1 >= P->getVertexCount() ? 0 : inc_face + 1;
-        inc_vert = P->getVertexList()[inc_face];
-        incident_edge[1] = P->rotation->mul(inc_vert) + poly_pos;
-    }
-
-    vec2d r_v1 = edge_vert_list[edge_norm_index];
-    edge_norm_index = edge_norm_index + 1 >= 2 ? 0 : edge_norm_index + 1;
-    vec2d r_v2 = edge_vert_list[edge_norm_index];
-
-    vec2d side_tangent = (r_v2 - r_v1).normalize();
-
-    // Find orthogonal
-    vec2d side_normal(side_tangent.y, -side_tangent.x);
-
-    // Finding front offsets and sides
-    float front_offset = dp(side_normal, r_v1);
-    float neg_side = -dp(side_tangent, r_v1) + total_radius;
-    float pos_side = dp(side_tangent, r_v2) + total_radius;
-    if (clipEdges(-side_tangent, neg_side, incident_edge) < 2) {
-        return;
-    }
-
-    if (clipEdges(side_tangent, pos_side, incident_edge) < 2) {
-        return;
-    }
-
-    // Checking for penetration by clipping points
-    uint32_t clipped_points = 0;
-    float sep = dp(side_normal, incident_edge[0]) - front_offset;
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[0];
-
-        penetration = -sep;
-        ++clipped_points;
-    } else {
-        penetration = 0;
-    }
-
-    sep = dp(side_normal, incident_edge[1]) - front_offset;
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[1];
-
-        penetration += -sep;
-        ++clipped_points;
-
-        penetration /= clipped_points * 1.0;
-    }
-
-    // std::cout << normal.x << " " << normal.y << std::endl;
-    contact_count = clipped_points;
-
-    normal = poly_norm_index >= 1 ? -side_normal : -side_normal;
-
-    // DBG(penetration);
-    // DBG(contact_count);
-    // DBG(contacts[0].x);
-    // DBG(contacts[1].x);
+    // float pen_B = findAOLPPolyEdge(poly_norm_index, s, e, edge_pos, P, poly_pos);
+    // DBG(poly_norm_index);
+    // if (pen_B > total_radius) {
+    //     return;
+    // }
 }
 
 void Manifold::CirclevsEdge() {
@@ -443,12 +400,15 @@ void Manifold::PolyvsPoly() {
 
     uint32_t face_A = 0;
     float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
+    DBG(B->position.y);
+    DBG(face_A);
     if (pen_A > total_radius) {
         // std::cout << "No Collision" << std::endl;
         return;
     }
     uint32_t face_B = 0;
     float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
+    DBG(face_B);
     if (pen_B > total_radius) {
         // std::cout << "No Collision" << std::endl;
         return;
@@ -560,8 +520,8 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A, vec2d pos_B)
         vec2d best_vert;
 
         // Find best projection of B verticies onto normal
-        for (uint32_t i = 0; i < B->getVertexCount(); i++) {
-            vec2d b_vert = B->getVertexList()[i];
+        for (uint32_t j = 0; j < B->getVertexCount(); j++) {
+            vec2d b_vert = B->getVertexList()[j];
             float proj = dp(b_vert, -a_norm);
 
             if (proj > best_proj) {
@@ -657,79 +617,5 @@ float findCirclePolyMinPenetration(uint32_t &normal_index, Circle *C, Poly *P, v
     }
 
     normal_index = best_index;
-    return best_dist;
-}
-
-float findEdgePolyMinPenetration(uint32_t &edge_index, Edge *E, Poly *P, vec2d poly_position, vec2d edge_position, vec2d *norm_axes) {
-
-    float best_dist = -FLT_MAX;
-    uint32_t best_index;
-
-    vec2d edge_vert_list[2] = {E->start_vertex, E->end_vertex};
-    mat2d p_rotation_T = P->rotation->transpose();
-
-    for (uint32_t j = 0; j < 2; j++) {
-        vec2d a_norm = p_rotation_T * norm_axes[j];
-
-        float best_proj = -FLT_MAX;
-        vec2d best_vert;
-        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
-            vec2d b_vert = P->getVertexList()[i];
-            float proj = dp(b_vert, -a_norm);
-
-            if (proj > best_proj) {
-                best_vert = b_vert;
-                best_proj = proj;
-            }
-        }
-
-        vec2d a_vert = edge_vert_list[j];
-        a_vert = p_rotation_T * (a_vert - poly_position);
-
-        float dist = dp(a_norm, best_vert - a_vert);
-        if (dist > best_dist) {
-            best_dist = dist;
-            best_index = j;
-        }
-    }
-
-    edge_index = best_index;
-    return best_dist;
-}
-
-float findPolyEdgeMinPenetration(uint32_t &edge_index, Poly *P, Edge *E, vec2d poly_position, vec2d edge_position, vec2d *edge_verts) {
-
-    float best_dist = -FLT_MAX;
-    uint32_t best_index;
-
-    mat2d p_rotation_T = P->rotation->transpose();
-
-    for (uint32_t j = 0; j < P->getVertexCount(); j++) {
-        vec2d a_norm = p_rotation_T * P->getNormals()[j];
-
-        float best_proj = -FLT_MAX;
-        vec2d best_vert;
-
-        for (uint32_t i = 0; i < 2; i++) {
-            vec2d b_vert = edge_verts[i];
-            float proj = dp(b_vert, -a_norm);
-
-            if (proj > best_proj) {
-                best_vert = b_vert;
-                best_proj = proj;
-            }
-        }
-
-        vec2d a_vert = P->getVertexList()[j];
-        a_vert = P->rotation->mul(a_vert) + poly_position;
-
-        float dist = dp(a_norm, best_vert - a_vert);
-        if (dist > best_dist) {
-            best_dist = dist;
-            best_index = j;
-        }
-    }
-
-    edge_index = best_index;
     return best_dist;
 }

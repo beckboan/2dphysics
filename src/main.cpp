@@ -15,9 +15,9 @@ int main(int argc, char *args[]) {
     // engine.m_world->addCircle(10, position, 1000, 1);
     // engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
     engine.m_world->addPoly(verticies_2, vec2d(0, 0), density, 0);
-    engine.m_world->addPoly(verticies_2, vec2d(0, 25), density, 0);
-    engine.m_world->addPoly(verticies_2, vec2d(0, 50), density, 0);
-    engine.m_world->addPoly(verticies_2, vec2d(0, 75), density, 0);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 25), density, 1);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 50), density, 0);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 75), density, 0);
     // engine.m_world->addPoly(verticies_2, vec2d(0.0, 90.0), density, 0);
     // engine.m_world->addPoly(verticies, vec2d(0, 400), density, 0);
     engine.m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
