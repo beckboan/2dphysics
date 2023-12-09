@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <cfloat>
 #include <cmath>
+#include <complex>
 #include <cstdint>
 #include <iostream>
 
@@ -218,95 +219,24 @@ void Manifold::CirclevsPoly() {
     }
 }
 
-float findEdgePolyMinPenetration(uint32_t &edge_index, Edge *E, Poly *P, vec2d poly_position, vec2d *norm_axes) {
-
-    float best_dist = -FLT_MAX;
-    uint32_t best_index;
-
-    vec2d edge_vert_list[2] = {E->start_vertex, E->end_vertex};
-    mat2d p_rotation_T = P->rotation->transpose();
-
-    for (uint32_t j = 0; j < 2; j++) {
-        vec2d a_norm = p_rotation_T * norm_axes[j];
-
-        float best_proj = -FLT_MAX;
-        vec2d best_vert;
-        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
-            vec2d b_vert = P->getVertexList()[i];
-            float proj = dp(b_vert, -a_norm);
-
-            if (proj > best_proj) {
-                best_vert = b_vert;
-                best_proj = proj;
-            }
-        }
-
-        vec2d a_vert = edge_vert_list[j];
-        a_vert = p_rotation_T * a_vert - poly_position;
-
-        float dist = dp(a_norm, best_vert - a_vert);
-        if (dist > best_dist) {
-            best_dist = dist;
-            best_index = j;
-        }
-    }
-
-    edge_index = best_index;
-    return best_dist;
-}
-
-float findPolyEdgeMinPenetration(uint32_t &edge_index, Poly *P, Edge *E, vec2d poly_position, vec2d *edge_verts) {
-
-    float best_dist = -FLT_MAX;
-    uint32_t best_index;
-
-    mat2d p_rotation_T = P->rotation->transpose();
-
-    for (uint32_t j = 0; j < P->getVertexCount(); j++) {
-        vec2d a_norm = p_rotation_T * P->getNormals()[j];
-
-        float best_proj = -FLT_MAX;
-        vec2d best_vert;
-
-        for (uint32_t i = 0; i < 2; i++) {
-            vec2d b_vert = edge_verts[i];
-            float proj = dp(b_vert, -a_norm);
-
-            if (proj > best_proj) {
-                best_vert = b_vert;
-                best_proj = proj;
-            }
-        }
-
-        vec2d a_vert = P->getVertexList()[j];
-        a_vert = p_rotation_T * a_vert + poly_position;
-
-        float dist = dp(a_norm, best_vert - a_vert);
-        if (dist > best_dist) {
-            best_dist = dist;
-            best_index = j;
-        }
-    }
-
-    edge_index = best_index;
-    return best_dist;
-}
-
 void Manifold::PolyvsEdge() {
     RigidBody *edge_bod;
     RigidBody *poly_bod;
     Poly *P;
     Edge *E;
+    vec2d poly_pos;
 
     std::cout << "Poly/Edge Collision" << std::endl;
     if (reverse == true) {
         P = dynamic_cast<Poly *>(B->shape.get());
         poly_bod = B.get();
+        poly_pos = B->position;
         E = dynamic_cast<Edge *>(A->shape.get());
         edge_bod = A.get();
     } else {
         P = dynamic_cast<Poly *>(A->shape.get());
         poly_bod = A.get();
+        poly_pos = A->position;
         E = dynamic_cast<Edge *>(B->shape.get());
         edge_bod = B.get();
     }
@@ -328,9 +258,7 @@ void Manifold::PolyvsEdge() {
     uint32_t edge_norm_index;
     float pen_A = findEdgePolyMinPenetration(edge_norm_index, E, P, poly_bod->position, norm_axes);
     DBG(edge_norm_index);
-    DBG(pen_A);
     if (pen_A > total_radius) {
-        DBG("Not colliding");
         return;
     }
 
@@ -338,11 +266,127 @@ void Manifold::PolyvsEdge() {
     float pen_B = findPolyEdgeMinPenetration(poly_norm_index, P, E, poly_bod->position, edge_vert_list);
 
     if (pen_B > total_radius) {
-        DBG("Not colliding");
         return;
     }
-    DBG(poly_norm_index);
-    DBG(pen_B);
+
+    bool type; // type 0 means edge is incident, type 1 means poly is incident
+    uint32_t ref_index;
+    bool flip;
+
+    const float k_tol = 0.1 * linearSlop;
+
+    if (pen_B > pen_A + k_tol) {
+        // Edge is Incident
+        // Poly is Ref
+        type = 0;
+        ref_index = poly_norm_index;
+        flip = true;
+
+    } else {
+        // Poly is Incident
+        // Edge is Incident
+        type = 1;
+        ref_index = edge_norm_index;
+        flip = false;
+    }
+
+    std::array<vec2d, 2> incident_edge;
+    vec2d r_v1;
+    vec2d r_v2;
+
+    if (type == 0) {
+        // Poly is Ref
+        // Edge is Incident
+        vec2d ref_norm = P->getNormals()[ref_index];
+
+        r_v1 = P->getVertexList()[ref_index];
+        ref_index = ref_index + 1 >= P->getVertexCount() ? 0 : ref_index + 1;
+        r_v2 = P->getVertexList()[ref_index];
+
+        ref_norm = P->rotation->mul(ref_norm);
+
+        uint32_t inc_face = 0;
+        float min_dot = FLT_MAX;
+        for (uint32_t i = 0; i < 2; i++) {
+            float dot = dp(ref_norm, norm_axes[i]);
+            if (dot < min_dot) {
+                min_dot = dot;
+                inc_face = i;
+            }
+        }
+
+        incident_edge[0] = edge_vert_list[inc_face];
+        inc_face = inc_face + 1 >= 2 ? 0 : inc_face + 1;
+        incident_edge[1] = edge_vert_list[inc_face];
+    } else {
+        vec2d ref_norm = norm_axes[ref_index];
+        r_v1 = edge_vert_list[ref_index];
+        ref_index = ref_index + 1 >= 2 ? 0 : ref_index + 1;
+        r_v2 = edge_vert_list[ref_index];
+        ref_norm = P->rotation->transpose() * ref_norm;
+
+        uint32_t inc_face = 0;
+        float min_dot = FLT_MAX;
+        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
+            float dot = dp(ref_norm, P->getNormals()[i]);
+            if (dot < min_dot) {
+                min_dot = dot;
+                inc_face = i;
+            }
+        }
+
+        // Compute incident face in world coordinates
+        vec2d inc_vert = P->getVertexList()[inc_face];
+        incident_edge[0] = P->rotation->mul(inc_vert) + poly_pos;
+        inc_face = inc_face + 1 >= P->getVertexCount() ? 0 : inc_face + 1;
+        inc_vert = P->getVertexList()[inc_face];
+        incident_edge[1] = P->rotation->mul(inc_vert) + poly_pos;
+    }
+
+    vec2d side_tangent = (r_v2 - r_v1).normalize();
+    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+    // Find orthogonal
+    vec2d side_normal(side_tangent.y, -side_tangent.x);
+
+    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+    // Finding front offsets and sides
+    float front_offset = dp(side_normal, r_v1);
+    float neg_side = -dp(side_tangent, r_v1) + total_radius;
+    float pos_side = dp(side_tangent, r_v2) + total_radius;
+
+    if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
+        return;
+
+    if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
+        return;
+
+    // Checking for penetration by clipping points
+    uint32_t clipped_points = 0;
+    float sep = dp(side_normal, incident_edge[0]) - front_offset;
+    if (sep <= 0.0) {
+        contacts[clipped_points] = incident_edge[0];
+
+        penetration = -sep;
+        ++clipped_points;
+    } else {
+        penetration = 0;
+    }
+
+    sep = dp(side_normal, incident_edge[1]) - front_offset;
+    if (sep <= 0.0) {
+        contacts[clipped_points] = incident_edge[1];
+
+        penetration += -sep;
+        ++clipped_points;
+
+        penetration /= clipped_points * 1.0;
+    }
+
+    // std::cout << normal.x << " " << normal.y << std::endl;
+    contact_count = clipped_points;
+    normal = flip ? side_normal : -side_normal;
 }
 
 void Manifold::CirclevsEdge() {
@@ -654,5 +698,79 @@ float findCirclePolyMinPenetration(uint32_t &normal_index, Circle *C, Poly *P, v
     }
 
     normal_index = best_index;
+    return best_dist;
+}
+
+float findEdgePolyMinPenetration(uint32_t &edge_index, Edge *E, Poly *P, vec2d poly_position, vec2d *norm_axes) {
+
+    float best_dist = -FLT_MAX;
+    uint32_t best_index;
+
+    vec2d edge_vert_list[2] = {E->start_vertex, E->end_vertex};
+    mat2d p_rotation_T = P->rotation->transpose();
+
+    for (uint32_t j = 0; j < 2; j++) {
+        vec2d a_norm = p_rotation_T * norm_axes[j];
+
+        float best_proj = -FLT_MAX;
+        vec2d best_vert;
+        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
+            vec2d b_vert = P->getVertexList()[i];
+            float proj = dp(b_vert, -a_norm);
+
+            if (proj > best_proj) {
+                best_vert = b_vert;
+                best_proj = proj;
+            }
+        }
+
+        vec2d a_vert = edge_vert_list[j];
+        a_vert = p_rotation_T * a_vert - poly_position;
+
+        float dist = dp(a_norm, best_vert - a_vert);
+        if (dist > best_dist) {
+            best_dist = dist;
+            best_index = j;
+        }
+    }
+
+    edge_index = best_index;
+    return best_dist;
+}
+
+float findPolyEdgeMinPenetration(uint32_t &edge_index, Poly *P, Edge *E, vec2d poly_position, vec2d *edge_verts) {
+
+    float best_dist = -FLT_MAX;
+    uint32_t best_index;
+
+    mat2d p_rotation_T = P->rotation->transpose();
+
+    for (uint32_t j = 0; j < P->getVertexCount(); j++) {
+        vec2d a_norm = p_rotation_T * P->getNormals()[j];
+
+        float best_proj = -FLT_MAX;
+        vec2d best_vert;
+
+        for (uint32_t i = 0; i < 2; i++) {
+            vec2d b_vert = edge_verts[i];
+            float proj = dp(b_vert, -a_norm);
+
+            if (proj > best_proj) {
+                best_vert = b_vert;
+                best_proj = proj;
+            }
+        }
+
+        vec2d a_vert = P->getVertexList()[j];
+        a_vert = P->rotation->mul(a_vert) + poly_position;
+
+        float dist = dp(a_norm, best_vert - a_vert);
+        if (dist > best_dist) {
+            best_dist = dist;
+            best_index = j;
+        }
+    }
+
+    edge_index = best_index;
     return best_dist;
 }

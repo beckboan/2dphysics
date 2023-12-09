@@ -11,10 +11,13 @@ int main(int argc, char *args[]) {
 
     std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(50, 0), vec2d(50, 50), vec2d(0, 50), vec2d(75, 100)};
 
-    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
+    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20), vec2d(-10, 10)};
     // engine.m_world->addCircle(10, position, 1000, 1);
     // engine.m_world->addCircle(10, vec2d(0, 100), 1000, 0);
-    engine.m_world->addPoly(verticies_2, vec2d(500, -55), density, 1);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 0), density, 0);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 25), density, 0);
+    // engine.m_world->addPoly(verticies_2, vec2d(0, 50), density, 0);
+    engine.m_world->addPoly(verticies_2, vec2d(0, 75), density, 0);
     // engine.m_world->addPoly(verticies_2, vec2d(0.0, 90.0), density, 0);
     // engine.m_world->addPoly(verticies, vec2d(0, 400), density, 0);
     engine.m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
