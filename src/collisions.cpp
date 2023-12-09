@@ -219,6 +219,14 @@ void Manifold::CirclevsPoly() {
     }
 }
 
+struct AxisData {
+    enum Type { primary_edge, primary_poly };
+    vec2d normal;
+    Type type;
+    int32 primary_normal_index;
+    float separation;
+};
+
 float findMTVEdgePoly(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P, vec2d pos_polygon) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
@@ -328,21 +336,33 @@ void Manifold::PolyvsEdge() {
 
     uint32_t edge_norm_index;
     float pen_A = findMTVEdgePoly(edge_norm_index, s, e, P, poly_pos);
-    DBG(edge_norm_index);
-    DBG(pen_A);
     if (pen_A > total_radius) {
         return;
     }
 
     uint32_t poly_norm_index;
     float pen_B = findMTVPolyEdge(poly_norm_index, s, e, P, poly_pos);
-    DBG(poly_norm_index);
-    DBG(pen_B);
     if (pen_B > total_radius) {
         return;
     }
 
-    DBG("Collisions");
+    AxisData PrimaryAxis;
+
+    const float k_tol = 0.1 * linearSlop;
+    if (pen_B > pen_A + k_tol) {
+        PrimaryAxis.type = AxisData::primary_poly;
+        PrimaryAxis.normal = P->getNormals()[poly_norm_index];
+        PrimaryAxis.separation = pen_B;
+        PrimaryAxis.primary_normal_index = poly_norm_index;
+    } else {
+        PrimaryAxis.type = AxisData::primary_edge;
+        vec2d line_dir = e - s;
+        vec2d line_normal = (vec2d(line_dir.y, -line_dir.x)).normalize();
+        PrimaryAxis.normal = (edge_norm_index) == 0 ? line_normal : -line_normal;
+        PrimaryAxis.separation = pen_A;
+        PrimaryAxis.primary_normal_index = edge_norm_index;
+    }
+    std::array<vec2d, 2> incident_edge;
 }
 
 void Manifold::CirclevsEdge() {
