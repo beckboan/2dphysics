@@ -361,74 +361,15 @@ void Manifold::PolyvsEdge() {
 
     uint32_t poly_norm_index;
     float pen_A = findMTVPolyEdge(poly_norm_index, s, e, P, poly_pos);
-    // DBG(poly_norm_index);
     if (pen_A > total_radius) {
         return;
     }
 
     uint32_t edge_norm_index;
     float pen_B = findMTVEdgePoly(edge_norm_index, s, e, P, poly_pos);
-    // DBG(edge_norm_index);
     if (pen_B > total_radius) {
         return;
     }
-
-    // Assume reference is always edge and incident is always polygon
-
-    // std::array<vec2d, 2> incident_edge;
-    // findEdgePolyIncident(incident_edge, P, poly_pos, s, e, edge_norm_index);
-    //
-    // vec2d r_v1 = (edge_norm_index == 0) ? s : e;
-    // vec2d r_v2 = (edge_norm_index == 0) ? e : s;
-    //
-    // vec2d side_tangent = (r_v2 - r_v1).normalize();
-    // // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
-    //
-    // // Find orthogonal
-    // vec2d side_normal(side_tangent.y, -side_tangent.x);
-    //
-    // // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
-    //
-    // // Finding front offsets and sides
-    // float front_offset = dp(side_normal, r_v1);
-    // float neg_side = -dp(side_tangent, r_v1) + total_radius;
-    // float pos_side = dp(side_tangent, r_v2) + total_radius;
-    //
-    // if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
-    //     return;
-    //
-    // if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
-    //     return;
-    //
-    // // Checking for penetration by clipping points
-    // uint32_t clipped_points = 0;
-    // float sep = dp(side_normal, incident_edge[0]) - front_offset;
-    // // DBG(sep);
-    // if (sep <= 0.0) {
-    //     contacts[clipped_points] = incident_edge[0];
-    //
-    //     penetration = -sep;
-    //     ++clipped_points;
-    // } else {
-    //     penetration = 0;
-    // }
-    //
-    // sep = dp(side_normal, incident_edge[1]) - front_offset;
-    // // DBG(sep);
-    // if (sep <= 0.0) {
-    //     contacts[clipped_points] = incident_edge[1];
-    //
-    //     penetration += -sep;
-    //     ++clipped_points;
-    //
-    //     penetration /= clipped_points * 1.0;
-    // }
-    //
-    // // std::cout << normal.x << " " << normal.y << std::endl;
-    // contact_count = clipped_points;
-    // normal = -side_normal;
-    //
-    // // DBG(contact_count);
 
     AxisData PrimaryAxis;
 
@@ -471,11 +412,10 @@ void Manifold::PolyvsEdge() {
         incident_edge[1] = P->getVertexList()[best_index2];
         incident_edge[1] = P->rotation->mul(incident_edge[1]) + poly_pos;
 
-        // DBG(edge_norm_index);
         r_v1 = (edge_norm_index == 1) ? e : s; //(edge_norm_index == 1);
         r_v2 = (edge_norm_index == 1) ? s : e; //(edge_norm_index == 1);
         normal = PrimaryAxis.normal;
-        std::cout << normal.x << " " << normal.y << std::endl;
+        // std::cout << normal.x << " " << normal.y << std::endl;
 
         flip = true;
     }
@@ -496,21 +436,14 @@ void Manifold::PolyvsEdge() {
     }
 
     vec2d side_tangent = (r_v2 - r_v1).normalize();
-    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
 
     // Find orthogonal
     vec2d side_normal(side_tangent.y, -side_tangent.x);
 
-    // std::cout << side_normal.x << " " << side_normal.y << std::endl;
-
     // Finding front offsets and sides
     float front_offset = dp(side_normal, r_v1);
     float neg_side = -dp(side_tangent, r_v1) + total_radius;
-    // DBG(neg_side);
-    // DBG(neg_side);
     float pos_side = dp(side_tangent, r_v2) + total_radius;
-    // DBG(pos_side);
-    // DBG(pos_side);
 
     if (clipEdges(-side_tangent, neg_side, incident_edge) < 2) {
         DBG("Clipp Error");
@@ -524,8 +457,6 @@ void Manifold::PolyvsEdge() {
     // Checking for penetration by clipping points
     uint32_t clipped_points = 0;
     float sep = dp(side_normal, incident_edge[0]) - front_offset;
-    // std::cout << side_normal.x << " " << side_normal.y << std::endl;
-    DBG(sep);
     if (sep <= 0.0) {
         contacts[clipped_points] = incident_edge[0];
 
@@ -534,10 +465,8 @@ void Manifold::PolyvsEdge() {
     } else {
         penetration = 0;
     }
-    // DBG(sep);
 
     sep = dp(side_normal, incident_edge[1]) - front_offset;
-    DBG(sep);
     if (sep <= 0.0) {
         contacts[clipped_points] = incident_edge[1];
 
@@ -546,14 +475,8 @@ void Manifold::PolyvsEdge() {
 
         penetration /= clipped_points * 1.0;
     }
-    // std::cout << incident_edge[0].x << " " << incident_edge[0].y << std::endl;
-    // std::cout << incident_edge[1].x << " " << incident_edge[1].y << std::endl;
-
-    // std::cout << contacts[0].x << " " << contacts[0].y << std::endl;
-    // std::cout << contacts[1].x << " " << contacts[1].y << std::endl;
     contact_count = clipped_points;
     normal = (flip == true) ? -side_normal : side_normal;
-    // DBG(contact_count);
 }
 
 void Manifold::CirclevsEdge() {
