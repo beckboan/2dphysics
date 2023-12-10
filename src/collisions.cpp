@@ -223,7 +223,7 @@ struct AxisData {
     enum Type { primary_edge, primary_poly };
     vec2d normal;
     Type type;
-    int32 primary_normal_index;
+    uint32_t primary_normal_index;
     float separation;
 };
 
@@ -358,11 +358,90 @@ void Manifold::PolyvsEdge() {
         PrimaryAxis.type = AxisData::primary_edge;
         vec2d line_dir = e - s;
         vec2d line_normal = (vec2d(line_dir.y, -line_dir.x)).normalize();
-        PrimaryAxis.normal = (edge_norm_index) == 0 ? line_normal : -line_normal;
+        PrimaryAxis.normal = (edge_norm_index) == 0 ? -line_normal : line_normal;
         PrimaryAxis.separation = pen_A;
         PrimaryAxis.primary_normal_index = edge_norm_index;
     }
     std::array<vec2d, 2> incident_edge;
+    vec2d r_v1;
+    vec2d r_v2;
+    if (PrimaryAxis.type == AxisData::primary_edge) {
+        uint32_t best_index = 0;
+        float best_value = FLT_MAX;
+        for (uint32_t i = 1; i < P->getVertexCount(); i++) {
+            vec2d poly_norm = P->getNormals()[i];
+            poly_norm = P->rotation->mul(poly_norm);
+            float value = dp(PrimaryAxis.normal, poly_norm);
+            if (value < best_value) {
+                best_value = value;
+                best_index = i;
+            }
+        }
+
+        incident_edge[0] = P->getVertexList()[best_index];
+        uint32_t best_index2 = best_index + 1 >= P->getVertexCount() ? 0 : best_index + 1;
+        incident_edge[1] = P->getVertexList()[best_index2];
+
+        r_v1 = s;
+        r_v2 = e;
+        normal = PrimaryAxis.normal;
+    } else {
+        incident_edge[0] = s;
+        incident_edge[1] = e;
+
+        r_v1 = P->getVertexList()[PrimaryAxis.primary_normal_index];
+        uint32_t primary_normal_index2 = PrimaryAxis.primary_normal_index + 1 >= P->getVertexCount() ? 0 : PrimaryAxis.primary_normal_index + 1;
+        r_v2 = P->getVertexList()[primary_normal_index2];
+
+        r_v1 = P->rotation->mul(r_v1) + poly_pos;
+        r_v2 = P->rotation->mul(r_v2) + poly_pos;
+
+        normal = P->getNormals()[PrimaryAxis.primary_normal_index];
+    }
+
+    vec2d side_tangent = (r_v2 - r_v1).normalize();
+    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+    // Find orthogonal
+    vec2d side_normal(side_tangent.y, -side_tangent.x);
+
+    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
+
+    // Finding front offsets and sides
+    float front_offset = dp(side_normal, r_v1);
+    float neg_side = -dp(side_tangent, r_v1) + total_radius;
+    float pos_side = dp(side_tangent, r_v2) + total_radius;
+
+    if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
+        return;
+
+    if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
+        return;
+
+    // Checking for penetration by clipping points
+    uint32_t clipped_points = 0;
+    float sep = dp(side_normal, incident_edge[0]) - front_offset;
+    if (sep <= 0.0) {
+        contacts[clipped_points] = incident_edge[0];
+
+        penetration = -sep;
+        ++clipped_points;
+    } else {
+        penetration = 0;
+    }
+
+    sep = dp(side_normal, incident_edge[1]) - front_offset;
+    if (sep <= 0.0) {
+        contacts[clipped_points] = incident_edge[1];
+
+        penetration += -sep;
+        ++clipped_points;
+
+        penetration /= clipped_points * 1.0;
+    }
+
+    // std::cout << normal.x << " " << normal.y << std::endl;
+    contact_count = clipped_points;
 }
 
 void Manifold::CirclevsEdge() {
