@@ -128,6 +128,9 @@ void World::worldStep(float dt) {
     }
 
     integrateVelocities(dt);
+    for (auto c : contact_list) {
+        c->correctPositions();
+    }
     updateAABB();
 }
 

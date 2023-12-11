@@ -793,3 +793,11 @@ float findCirclePolyMinPenetration(uint32_t &normal_index, Circle *C, Poly *P, v
     normal_index = best_index;
     return best_dist;
 }
+
+void Manifold::correctPositions() {
+    const float k_slop = 0.05;
+    const float percent = 0.4;
+    vec2d correction = normal * (std::max(penetration - k_slop, 0.0f) / (A->inv_m + B->inv_m)) * percent;
+    A->position -= correction * A->inv_m;
+    B->position += correction * B->inv_m;
+}

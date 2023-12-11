@@ -32,6 +32,7 @@ struct World {
     const vec2d origin = vec2d(0, 0);
     void integrateForces(float dt);
     void integrateVelocities(float dt);
+    void updatePositions();
     void updateAABB();
     unsigned int iterations = 1;
 
