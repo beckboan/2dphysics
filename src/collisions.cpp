@@ -10,12 +10,14 @@
 #include <complex>
 #include <cstdint>
 #include <iostream>
+#include <utility>
 
-Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_) : A(A_), B(B_) {
+Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_) : A(std::move(A_)), B(std::move(B_)) {
     // std::cout << "Manifold Created" << std::endl;
     e = std::min(A->restitution, B->restitution);
     df = std::sqrt(A->dynamic_friction * B->dynamic_friction);
     sf = std::sqrt(A->static_friction * B->dynamic_friction);
+    penetration = 0.0;
 }
 
 void Manifold::solve() {
@@ -40,7 +42,7 @@ void Manifold::solve() {
         float bcn = cp(b_con, normal);
 
         float inv_mass_sum = A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
-        float j = (-(e + 1.0) * contact_vel) / inv_mass_sum;
+        float j = float((-(e + 1.0) * contact_vel)) / inv_mass_sum;
         j /= (float)contact_count;
 
         vec2d imp = normal * j;
@@ -109,8 +111,8 @@ void Manifold::collisionCaller() {
 
 void Manifold::CirclevsCircle() {
     std::cout << "Circle Collision" << std::endl;
-    Circle *C1 = dynamic_cast<Circle *>(A->shape.get());
-    Circle *C2 = dynamic_cast<Circle *>(B->shape.get());
+    auto *C1 = dynamic_cast<Circle *>(A->shape.get());
+    auto *C2 = dynamic_cast<Circle *>(B->shape.get());
 
     float dist_sq = distSquared(A->position, B->position);
     float radii = C1->radius + C2->radius;
@@ -148,7 +150,7 @@ void Manifold::CirclevsPoly() {
     Circle *C;
     Poly *P;
 
-    if (reverse == true) {
+    if (reverse) {
         C = dynamic_cast<Circle *>(B->shape.get());
         circ_bod = B.get();
         P = dynamic_cast<Poly *>(A->shape.get());
@@ -179,13 +181,13 @@ void Manifold::CirclevsPoly() {
     vec2d s = P->getVertexList()[normal_index];
     // Need to safe normal index, so don't increment
     uint32_t next_normal_index = normal_index + 1 < P->getVertexCount() ? normal_index + 1 : 0;
-    vec2d e = P->getVertexList()[next_normal_index];
+    vec2d end = P->getVertexList()[next_normal_index];
 
-    vec2d v1 = e - s;
-    vec2d v2 = s - e;
+    vec2d v1 = end - s;
+    vec2d v2 = s - end;
 
     float dp1 = dp(v1, center - s);
-    float dp2 = dp(v2, center - e);
+    float dp2 = dp(v2, center - end);
 
     if (dp1 <= 0.0) {
         if (distSquared(center, s) > total_radius * total_radius)
@@ -197,14 +199,14 @@ void Manifold::CirclevsPoly() {
         normal = norm;
         contacts[0] = P->rotation->mul(s) + poly_bod->position;
     } else if (dp2 <= 0.0) {
-        if (distSquared(center, e) > total_radius * total_radius)
+        if (distSquared(center, end) > total_radius * total_radius)
             return;
 
         contact_count = 1;
-        vec2d norm = e - center;
+        vec2d norm = end - center;
         norm = (P->rotation->mul(norm)).normalize();
         normal = norm;
-        contacts[0] = P->rotation->mul(e) + poly_bod->position;
+        contacts[0] = P->rotation->mul(end) + poly_bod->position;
     } else {
         vec2d norm = P->getNormals()[normal_index];
 
@@ -227,7 +229,7 @@ struct AxisData {
     float separation;
 };
 
-float findMTVEdgePoly(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P, vec2d pos_polygon) {
+float findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -269,7 +271,7 @@ float findMTVEdgePoly(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P
     return best_dist;
 }
 
-float findMTVPolyEdge(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P, vec2d pos_polygon) {
+float findMTVPolyEdge(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -303,7 +305,7 @@ float findMTVPolyEdge(uint32_t &index, vec2d start_line, vec2d end_line, Poly *P
     index = best_index;
     return best_dist;
 }
-void findEdgePolyIncident(std::array<vec2d, 2> &v, Poly *P, vec2d poly_pos, vec2d s, vec2d e, uint32_t index) {
+void findEdgePolyIncident(std::array<vec2d, 2> &v, Poly *P, const vec2d &poly_pos, const vec2d &s, const vec2d &e, uint32_t index) {
     vec2d line_dir = e - s;
     vec2d line_norm = vec2d(line_dir.x, -line_dir.y).normalize();
 
@@ -337,7 +339,7 @@ void Manifold::PolyvsEdge() {
     vec2d edge_pos;
 
     std::cout << "Poly/Edge Collision" << std::endl;
-    if (reverse == true) {
+    if (reverse) {
         P = dynamic_cast<Poly *>(B->shape.get());
         poly_bod = B.get();
         poly_pos = B->position;
@@ -355,18 +357,18 @@ void Manifold::PolyvsEdge() {
     contact_count = 0;
 
     vec2d s = E->start_vertex;
-    vec2d e = E->end_vertex;
+    vec2d end = E->end_vertex;
 
     float total_radius = P->poly_radius + E->edge_radius;
 
     uint32_t poly_norm_index;
-    float pen_A = findMTVPolyEdge(poly_norm_index, s, e, P, poly_pos);
+    float pen_A = findMTVPolyEdge(poly_norm_index, s, end, P, poly_pos);
     if (pen_A > total_radius) {
         return;
     }
 
     uint32_t edge_norm_index;
-    float pen_B = findMTVEdgePoly(edge_norm_index, s, e, P, poly_pos);
+    float pen_B = findMTVEdgePoly(edge_norm_index, s, end, P, poly_pos);
     if (pen_B > total_radius) {
         return;
     }
@@ -381,7 +383,7 @@ void Manifold::PolyvsEdge() {
         PrimaryAxis.primary_normal_index = poly_norm_index;
     } else {
         PrimaryAxis.type = AxisData::primary_edge;
-        vec2d line_dir = e - s;
+        vec2d line_dir = end - s;
         vec2d line_normal = (vec2d(line_dir.y, -line_dir.x)).normalize();
         PrimaryAxis.normal = (edge_norm_index) == 0 ? line_normal : -line_normal;
         PrimaryAxis.separation = pen_A;
@@ -412,8 +414,8 @@ void Manifold::PolyvsEdge() {
         incident_edge[1] = P->getVertexList()[best_index2];
         incident_edge[1] = P->rotation->mul(incident_edge[1]) + poly_pos;
 
-        r_v1 = (edge_norm_index == 1) ? e : s; //(edge_norm_index == 1);
-        r_v2 = (edge_norm_index == 1) ? s : e; //(edge_norm_index == 1);
+        r_v1 = (edge_norm_index == 1) ? end : s; //(edge_norm_index == 1);
+        r_v2 = (edge_norm_index == 1) ? s : end; //(edge_norm_index == 1);
         normal = PrimaryAxis.normal;
         // std::cout << normal.x << " " << normal.y << std::endl;
 
@@ -421,7 +423,7 @@ void Manifold::PolyvsEdge() {
     }
 
     else {
-        incident_edge[0] = e;
+        incident_edge[0] = end;
         incident_edge[1] = s;
 
         r_v1 = P->getVertexList()[PrimaryAxis.primary_normal_index];
@@ -476,7 +478,7 @@ void Manifold::PolyvsEdge() {
         penetration /= clipped_points * 1.0;
     }
     contact_count = clipped_points;
-    normal = (flip == true) ? -side_normal : side_normal;
+    normal = flip ? -side_normal : side_normal;
 }
 
 void Manifold::CirclevsEdge() {
@@ -487,7 +489,7 @@ void Manifold::CirclevsEdge() {
     Circle *C;
     Edge *E;
 
-    if (reverse == true) {
+    if (reverse) {
         C = dynamic_cast<Circle *>(B->shape.get());
         circ_bod = B.get();
         E = dynamic_cast<Edge *>(A->shape.get());
@@ -670,7 +672,7 @@ void Manifold::PolyvsPoly() {
         penetration += -sep;
         ++clipped_points;
 
-        penetration /= clipped_points * 1.0;
+        penetration /= float(clipped_points) * 1.0;
     }
 
     // std::cout << normal.x << " " << normal.y << std::endl;
@@ -680,7 +682,7 @@ void Manifold::PolyvsPoly() {
 }
 
 // AOLP adapted from Randy Gaul's Impulse Engine and box2d
-float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A, vec2d pos_B) {
+float findAOLP(uint32_t &face_index, Poly *A, Poly *B, const vec2d &pos_A, const vec2d &pos_B) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -722,7 +724,7 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, vec2d pos_A, vec2d pos_B)
     return best_dist;
 }
 
-void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc, vec2d inc_pos, uint32_t ref_face) {
+void findIncidentFace(std::array<vec2d, 2> &v, Poly *ref, Poly *inc, const vec2d &inc_pos, uint32_t ref_face) {
     vec2d ref_norm = ref->getNormals()[ref_face];
     // Move ref_norm to incident frame of rerence (does not have positions
     // factored in)
