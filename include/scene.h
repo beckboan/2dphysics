@@ -16,10 +16,10 @@ struct Scene {
     Scene &operator=(Scene &&other) = delete;
     ~Scene();
 
-    void drawBody(const std::shared_ptr<RigidBody> body);
-    void drawAABB(const std::shared_ptr<RigidBody> body);
+    void drawBody(std::shared_ptr<RigidBody> body);
+    void drawAABB(std::shared_ptr<RigidBody> body);
     void drawBoundary(const std::shared_ptr<Edge> edge);
-    void drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies);
+    void drawObjects(std::vector<std::shared_ptr<RigidBody>> bodies);
     void checkEvent();
     void init();
     void clear();
