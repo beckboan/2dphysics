@@ -14,12 +14,12 @@ struct World {
     bool addCircle(float radius, vec2d position, float density, bool is_static);
     bool addRect(float width, float height, vec2d position, float density, bool is_static);
     bool addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
-    bool addEdge(vec2d s, vec2d e);
+    bool addEdge(const vec2d &s, const vec2d &e);
 
     const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
 
-    void setGravity(float g);
-    void removePhysicsObject(std::shared_ptr<RigidBody>);
+    [[maybe_unused]] [[maybe_unused]] void setGravity(float g);
+    void removePhysicsObject(const std::shared_ptr<RigidBody> &);
     void printPhysicsObjects();
     void worldStep(float dt);
     void checkCollisions();

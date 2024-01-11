@@ -1,7 +1,6 @@
 
 #include "mathfuncs.h"
 #include <cmath>
-#include <iostream>
 
 // Vector Methods//
 
@@ -50,17 +49,17 @@ vec2d &vec2d::operator/=(const float val) {
     return *this;
 }
 
-vec2d vec2d::operator-() const { return vec2d(-x, -y); }
+vec2d vec2d::operator-() const { return {-x, -y}; }
 // Arithmetic Operators
 // Vector Input
-vec2d vec2d::operator+(const vec2d &vec) const { return vec2d(x + vec.x, y + vec.y); }
-vec2d vec2d::operator-(const vec2d &vec) const { return vec2d(x - vec.x, y - vec.y); }
+vec2d vec2d::operator+(const vec2d &vec) const { return {x + vec.x, y + vec.y}; }
+vec2d vec2d::operator-(const vec2d &vec) const { return {x - vec.x, y - vec.y}; }
 
 // Float Input
-vec2d vec2d::operator+(const float val) const { return vec2d(x + val, y + val); }
-vec2d vec2d::operator-(const float val) const { return vec2d(x - val, y - val); }
-vec2d vec2d::operator*(const float val) const { return vec2d(x * val, y * val); }
-vec2d vec2d::operator/(const float val) const { return vec2d(x / val, y / val); }
+vec2d vec2d::operator+(const float val) const { return {x + val, y + val}; }
+vec2d vec2d::operator-(const float val) const { return {x - val, y - val}; }
+vec2d vec2d::operator*(const float val) const { return {x * val, y * val}; }
+vec2d vec2d::operator/(const float val) const { return {x / val, y / val}; }
 
 float vec2d::length() const { return std::sqrt((x * x) + (y * y)); }
 
@@ -68,17 +67,13 @@ vec2d vec2d::normalize() {
     float len = length();
     // std::cout << len << std::endl;
     // std::cout << x << std::endl;
-    return vec2d(x / len, y / len);
+    return {x / len, y / len};
 }
 
-void vec2d::assign(float x, float y) {
-    this->x = x;
-    this->y = y;
+void vec2d::assign(float x_, float y_) {
+    this->x = x_;
+    this->y = y_;
 }
-
-vec2d vec2d::negY() { return vec2d(x, -y); }
-
-vec2d vec2d::negate() { return vec2d(-x, -y); }
 
 // Rotation Matrix
 
@@ -103,7 +98,7 @@ void mat2d::setMatrixRotation(float radians) {
     row_2[1] = c_val;
 }
 
-mat2d mat2d::transpose() { return mat2d(row_1[0], row_2[0], row_1[1], row_2[1]); }
+mat2d mat2d::transpose() { return {row_1[0], row_2[0], row_1[1], row_2[1]}; }
 
-vec2d mat2d::mul(vec2d &vec) { return vec2d(row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y); }
-vec2d mat2d::operator*(const vec2d &vec) { return vec2d(row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y); }
+vec2d mat2d::mul(vec2d &vec) { return {row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y}; }
+vec2d mat2d::operator*(const vec2d &vec) { return {row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y}; }

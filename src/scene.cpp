@@ -1,12 +1,11 @@
 #include "scene.h"
-#include <SDL.h>
-#include <SDL_render.h>
-#define GL_GLEXT_PROTOTYPES
 #include "circle.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "rigidbody.h"
 #include "shape.h"
+#include <SDL.h>
+#include <SDL_render.h>
 #include <vector>
 
 Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_), hw_x(screen_x_ / 2), hw_y(screen_y_ / 2) {}
@@ -15,7 +14,7 @@ Scene::~Scene() {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
-    is_active = 0;
+    is_active = false;
 }
 
 void Scene::init() {
@@ -27,7 +26,7 @@ void Scene::init() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
-    is_active = 1;
+    is_active = true;
 }
 
 void Scene::clear() {
@@ -35,20 +34,20 @@ void Scene::clear() {
     SDL_RenderClear(renderer);
 }
 
-void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
+void Scene::drawBody(const std::shared_ptr<RigidBody> &body) {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     switch (body->shape->getType()) {
     case Shape::ShapeType::Circle: {
-        Circle *c = dynamic_cast<Circle *>(body->shape.get());
-        int32_t radius_int = int(c->radius);
+        auto *c = dynamic_cast<Circle *>(body->shape.get());
+        auto radius_int = int(c->radius);
         const int32_t diameter = radius_int * 2;
         int32_t x = (radius_int - 1);
         int32_t y = 0;
         int32_t dx = 1;
         int32_t dy = 1;
         int32_t err = dx - diameter;
-        int32_t bod_x_hw = renderXTransfer(body->position.x);
-        int32_t bod_y_hw = renderYTransfer(body->position.y);
+        int32_t bod_x_hw = renderXTransfer(int32_t(body->position.x));
+        int32_t bod_y_hw = renderYTransfer(int32_t(body->position.y));
 
         while (x >= y) {
             SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw - y);
@@ -77,8 +76,6 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
     case Shape::ShapeType::Poly: {
         Poly *p = dynamic_cast<Poly *>(body->shape.get());
         std::vector<vec2d> v_list_temp = p->getVertexList();
-        int32_t body_pos_x = body->position.x;
-        int32_t body_pos_y = body->position.y;
         vec2d position = body->position;
 
         unsigned int v_c = p->getVertexCount();
@@ -98,10 +95,10 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
     }
     case Shape::ShapeType::Edge: {
         Edge *e = dynamic_cast<Edge *>(body->shape.get());
-        float x1 = renderXTransfer(e->start_vertex.x);
-        float y1 = renderYTransfer(e->start_vertex.y);
-        float x2 = renderXTransfer(e->end_vertex.x);
-        float y2 = renderYTransfer(e->end_vertex.y);
+        int x1 = renderXTransfer(e->start_vertex.x);
+        int y1 = renderYTransfer(e->start_vertex.y);
+        int x2 = renderXTransfer(e->end_vertex.x);
+        int y2 = renderYTransfer(e->end_vertex.y);
 
         // std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << std::endl;
 
@@ -113,7 +110,7 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> body) {
     }
 }
 
-void Scene::drawAABB(const std::shared_ptr<RigidBody> body) {
+void Scene::drawAABB(const std::shared_ptr<RigidBody> &body) {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
     auto [min_x, min_y, max_x, max_y] = body->shape->getAABB();
@@ -159,5 +156,7 @@ void Scene::checkEvent() {
     }
 }
 
-int Scene::renderYTransfer(int y) { return hw_y + -1 * y; }
-int Scene::renderXTransfer(int x) { return hw_x + x; }
+int Scene::renderYTransfer(int y) const { return hw_y + -1 * y; }
+int Scene::renderXTransfer(int x) const { return hw_x + x; }
+int Scene::renderYTransfer(float y) const { return hw_y + -1 * int(y); }
+int Scene::renderXTransfer(float x) const { return hw_x + int(x); }

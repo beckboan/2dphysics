@@ -6,15 +6,15 @@
 struct AABB {
     AABB() {}
 
-    vec2d getMin() const { return min; }
-    vec2d getMax() const { return max; }
-    void setAABB(vec2d min_, vec2d max_);
-    void setMin(vec2d min_);
-    void setMax(vec2d max_);
+    [[nodiscard]] vec2d getMin() const { return min; }
+    [[nodiscard]] vec2d getMax() const { return max; }
+    [[maybe_unused]] void setAABB(const vec2d &min_, const vec2d &max_);
+    [[maybe_unused]] void setMin(const vec2d &min_);
+    [[maybe_unused]] void setMax(const vec2d &max_);
     void setMin(float min_x, float min_y);
     void setMax(float max_x, float max_y);
 
-    void move(const vec2d vec);
+    [[maybe_unused]] void move(const vec2d &vec);
 
   private:
     vec2d min; // Bottom Left

@@ -16,10 +16,10 @@ struct RunTimeData {
     duration accumulator = 0s;
     float dt_f = 1.0 / 60;
     time_point curr_time = Clock::now();
-    float getDTFloat() { return dt_f; }
+    [[nodiscard]] float getDTFloat() const { return dt_f; }
     void updateClock();
     void updateInternalTimers();
-    bool goPhysics() { return accumulator >= dt; }
+    [[nodiscard]] bool goPhysics() const { return accumulator >= dt; }
 };
 
 #endif // !RUNTIMEDATA_H

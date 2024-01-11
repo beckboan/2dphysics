@@ -4,7 +4,6 @@
 #include "mathfuncs.h"
 #include <memory>
 
-struct Transform;
 struct Shape;
 
 struct RigidBody {
@@ -22,40 +21,40 @@ struct RigidBody {
     float torque = 0.0;
 
     // Shape Features
-    float I;
+    float I{};
     float inv_I = 0.0;
     float m = 0.0;
-    float inv_m;
-    float area;
+    float inv_m{};
+    float area{};
     float density;
 
     // Friction and Rest
     float static_friction;
     float dynamic_friction;
     float restitution;
-    bool hasProperties = 0;
-    bool isStatic = 0;
+    [[maybe_unused]] bool hasProperties = false;
+    [[maybe_unused]] bool isStatic = false;
 
     // Shape Reference
     std::unique_ptr<Shape> shape;
 
     // Body Color
-    int r, g, b;
+    [[maybe_unused]] int r, g, b;
 
     // Property Functions
     void rigidIni();
     void setBodyStatic();
 
     // Getters
-    const vec2d &getPosition() const { return position; };
+    [[maybe_unused]] [[nodiscard]] const vec2d &getPosition() const { return position; };
 
     // Physics Functions
-    void move(const vec2d &amount);
-    void moveto(const vec2d &position_new);
+    [[maybe_unused]] void move(const vec2d &amount);
+    [[maybe_unused]] void moveto(const vec2d &position_new);
     void setRotation(float radians);
-    void applyForce(vec2d &force, vec2d &point);
-    void applyCenterForce(vec2d &force);
+    [[maybe_unused]] void applyForce(vec2d &force, vec2d &point);
+    [[maybe_unused]] void applyCenterForce(vec2d &force);
     void applyLinearImpulse(vec2d &impulse, vec2d &point);
-    void applyCenterLinearImpulse(vec2d &impulse);
+    [[maybe_unused]] void applyCenterLinearImpulse(vec2d &impulse);
 };
 #endif

@@ -16,8 +16,8 @@ struct Scene {
     Scene &operator=(Scene &&other) = delete;
     ~Scene();
 
-    void drawBody(std::shared_ptr<RigidBody> body);
-    void drawAABB(std::shared_ptr<RigidBody> body);
+    void drawBody(const std::shared_ptr<RigidBody> &body);
+    void drawAABB(const std::shared_ptr<RigidBody> &body);
     void drawObjects(std::vector<std::shared_ptr<RigidBody>> bodies);
     void checkEvent();
     void init();
@@ -35,8 +35,10 @@ struct Scene {
     SDL_Event e;
     bool is_active = 0;
     const int scale{20};
-    int renderYTransfer(int y);
-    int renderXTransfer(int x);
+    [[nodiscard]] int renderYTransfer(int y) const;
+    [[nodiscard]] int renderXTransfer(int x) const;
+    [[nodiscard]] int renderYTransfer(float y) const;
+    [[nodiscard]] int renderXTransfer(float x) const;
 };
 
 #endif

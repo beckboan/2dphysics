@@ -2,10 +2,10 @@
 #include "circle.h"
 #include "collisions.h"
 #include "edge.h"
-#include "math.h"
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
+#include <cmath>
 #include <iostream>
 #include <memory>
 
@@ -17,12 +17,12 @@ World::World() { gravity.assign(0, 0); }
 
 World::World(float g) { gravity.assign(0, -g); }
 
-void World::setGravity(float g) { gravity.assign(0, -g); }
+[[maybe_unused]] void World::setGravity(float g) { gravity.assign(0, -g); }
 // Creating and Destroying Rigid Bodies
 
 bool World::addCircle(float radius, vec2d position, float density, bool is_static) {
 
-    float area = radius * radius * M_PI;
+    float area = radius * radius * float(M_PI);
     if (!isValidArea(area))
         return false;
     if (!isValidDensity(density))
@@ -38,7 +38,7 @@ bool World::addCircle(float radius, vec2d position, float density, bool is_stati
         bod->setBodyStatic();
     }
     return true;
-};
+}
 
 bool World::addRect(float width, float height, vec2d position, float density, bool is_static) {
 
@@ -80,7 +80,7 @@ bool World::addPoly(std::vector<vec2d> verticies, vec2d position, float density,
     return true;
 }
 
-bool World::addEdge(vec2d s, vec2d e) {
+bool World::addEdge(const vec2d &s, const vec2d &e) {
     vec2d position = (s + e) * 0.5;
     std::unique_ptr<Shape> shp = std::make_unique<Edge>(s, e);
     std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp, position, 1);
@@ -91,9 +91,7 @@ bool World::addEdge(vec2d s, vec2d e) {
     return true;
 }
 
-void World::removePhysicsObject(std::shared_ptr<RigidBody>){
-
-};
+void World::removePhysicsObject(const std::shared_ptr<RigidBody> &) {}
 
 void World::checkCollisions() {
     // Brute Force for now, want to optimize in future
@@ -123,19 +121,19 @@ void World::worldStep(float dt) {
 
     integrateForces(dt);
 
-    for (auto c : contact_list) {
+    for (const auto &c : contact_list) {
         c->solve();
     }
 
     integrateVelocities(dt);
-    for (auto c : contact_list) {
+    for (const auto &c : contact_list) {
         c->correctPositions();
     }
     updateAABB();
 }
 
 void World::integrateForces(float dt) {
-    for (auto bod : world_objects) {
+    for (const auto &bod : world_objects) {
         if (bod->inv_m == 0.0)
             continue;
         bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
@@ -146,7 +144,7 @@ void World::integrateForces(float dt) {
 }
 
 void World::integrateVelocities(float dt) {
-    for (auto bod : world_objects) {
+    for (const auto &bod : world_objects) {
         if (bod->inv_m == 0.0)
             continue;
         bod->position += bod->velocity * dt;
@@ -156,7 +154,7 @@ void World::integrateVelocities(float dt) {
 }
 
 void World::updateAABB() {
-    for (auto bod : world_objects) {
+    for (const auto &bod : world_objects) {
         bod->shape->createAABB();
     }
 }

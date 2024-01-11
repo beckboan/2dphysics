@@ -25,7 +25,7 @@ void RigidBody::rigidIni() {
 }
 
 void RigidBody::setBodyStatic() {
-    isStatic = 1;
+    isStatic = true;
     m = 0.0f;
     I = 0.0f;
     inv_I = 0.0f;
@@ -35,22 +35,22 @@ void RigidBody::setBodyStatic() {
 // Getters
 
 // Physics Functions
-void RigidBody::move(const vec2d &amount) { position += amount; }
+[[maybe_unused]] void RigidBody::move(const vec2d &amount) { position += amount; }
 
-void RigidBody::moveto(const vec2d &position_new) { position = position_new; }
+[[maybe_unused]] void RigidBody::moveto(const vec2d &position_new) { position = position_new; }
 
 void RigidBody::setRotation(float radians) {
     rotation = radians;
     shape->setSpaceOrientation(radians);
 }
 
-void RigidBody::applyForce(vec2d &other_force, vec2d &point) {
+[[maybe_unused]] void RigidBody::applyForce(vec2d &other_force, vec2d &point) {
     force += other_force;
     torque += cp(point, other_force);
-    std::cout << point.x << " " << point.y << std::endl;
+    //    std::cout << point.x << " " << point.y << std::endl;
 }
 
-void RigidBody::applyCenterForce(vec2d &other_force) { force += other_force; }
+[[maybe_unused]] void RigidBody::applyCenterForce(vec2d &other_force) { force += other_force; }
 
 void RigidBody::applyLinearImpulse(vec2d &impulse, vec2d &point) {
     velocity += impulse * inv_m;
@@ -58,4 +58,4 @@ void RigidBody::applyLinearImpulse(vec2d &impulse, vec2d &point) {
     angular_velocity += inv_I * cp(point, impulse);
 }
 
-void RigidBody::applyCenterLinearImpulse(vec2d &impulse) { velocity += impulse * inv_m; }
+[[maybe_unused]] void RigidBody::applyCenterLinearImpulse(vec2d &impulse) { velocity += impulse * inv_m; }

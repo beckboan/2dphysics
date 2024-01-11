@@ -1,7 +1,8 @@
 #include "edge.h"
 #include <string>
+#include <utility>
 
-Edge::Edge(vec2d s, vec2d e) : start_vertex(s), end_vertex(e) { centroid = (start_vertex + end_vertex) / 2; }
+Edge::Edge(vec2d s, vec2d e) : start_vertex(std::move(s)), end_vertex(std::move(e)) { centroid = (start_vertex + end_vertex) / 2; }
 
 void Edge::createAABB() {
     vec2d v1 = rotation->mul(start_vertex);
@@ -13,9 +14,6 @@ void Edge::createAABB() {
     float min_y = std::min(v1.y, v2.y);
 
     std::shared_ptr<RigidBody> body_temp = body.lock();
-    float position_x = body_temp->position.x;
-    float position_y = body_temp->position.y;
-
     aabb.setMax(max_x, max_y);
     aabb.setMin(min_x, min_y);
     // std::cout << min_x << min_y << std::endl;
@@ -41,6 +39,6 @@ void Edge::calculateMassProperties(float density) {
     body_ref->area = 0;
     body_ref->m = body_ref->area * density;
     body_ref->I = 0;
-    body_ref->inv_m = (body_ref->m) ? 1.0f / body_ref->I : 0;
-    body_ref->inv_I = (body_ref->I) ? 1.0f / body_ref->I : 0;
+    body_ref->inv_m = (body_ref->m > 0.0) ? 1.0f / body_ref->I : 0;
+    body_ref->inv_I = (body_ref->I > 0.0) ? 1.0f / body_ref->I : 0;
 }

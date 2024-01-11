@@ -24,10 +24,10 @@ struct Shape {
     void setBody(const std::shared_ptr<RigidBody> &body_);
 
     AABB aabb = AABB();
-    std::tuple<int, int, int, int> getAABB();
+    std::tuple<int, int, int, int> getAABB() const;
 
     std::unique_ptr<mat2d> rotation = std::make_unique<mat2d>();
-    void setSpaceOrientation(float radians);
+    void setSpaceOrientation(float radians) const;
 };
 
 #endif

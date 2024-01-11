@@ -1,10 +1,6 @@
 #include "polygon.h"
-#include "common.h"
 #include <algorithm>
 #include <cassert>
-#include <cfloat>
-#include <cstdint>
-#include <iostream>
 #include <string>
 
 // Polygon
@@ -13,7 +9,7 @@
 struct GrahamCCWSorter {
     const vec2d &pivot;
 
-    GrahamCCWSorter(const vec2d &pivot_) : pivot(pivot_) {}
+    explicit GrahamCCWSorter(const vec2d &pivot_) : pivot(pivot_) {}
 
     bool operator()(const vec2d &a, const vec2d &b) { return findOrientation(a, b, pivot) < 0; }
 };
@@ -69,11 +65,11 @@ Poly::Poly(float width, float height) : vertex_count(4) {
 
 Shape::ShapeType Poly::getType() const { return ShapeType::Poly; }
 
-std::string Poly::getName() const { return "Poylgon"; }
+std::string Poly::getName() const { return "Polygon"; }
 
 // Using triangulation of the polygon to get its area/centroid/inertia
 void Poly::calculateMassProperties(float density) {
-    vec2d centroid(0, 0);
+    vec2d local_centroid(0, 0);
     float area = 0;
     float I = 0;
     float k_c = 1.0 / 3.0;
@@ -91,18 +87,17 @@ void Poly::calculateMassProperties(float density) {
         float t_I = t_area * (dp(p1, p1) + dp(p2, p2) + dp(p1, p2)) / 6;
 
         // Calculate triangle center and average w/ area
-        centroid += (p1 + p2) * k_c * t_area;
+        local_centroid += (p1 + p2) * k_c * t_area;
 
         I += t_I;
     }
 
     I *= density;
-    centroid *= 1.0 / area;
+    local_centroid *= 1.0 / area;
     std::shared_ptr<RigidBody> body_ref = body.lock();
-    vec2d position = body_ref->position;
 
     for (unsigned int i = 0; i < vertex_count; i++) {
-        vertex_list[i] -= centroid;
+        vertex_list[i] -= local_centroid;
         // std::cout << "X: " << vertex_list[i].x << "Y: " << vertex_list[i].y <<
         // std::endl;
     }
@@ -115,7 +110,7 @@ void Poly::calculateMassProperties(float density) {
 }
 
 void Poly::createAABB() {
-    // Multiple by rotation vector for new points.
+    // Multiply by rotation vector for new points.
     vec2d start = rotation->mul(vertex_list[0]);
     float max_x = start.x;
     float max_y = start.y;
@@ -156,9 +151,5 @@ void Poly::calculatePolyNormals() {
     for (unsigned int i = 0; i < vertex_count; i++) {
         vec2d face = vertex_list[(i + 1) % vertex_count] - vertex_list[i];
         normals.push_back(vec2d(face.y, -face.x).normalize());
-    }
-
-    for (auto c : normals) {
-        // std::cout << c.x << " " << c.y << std::endl;
     }
 }

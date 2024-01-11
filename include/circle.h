@@ -4,14 +4,14 @@
 #include "shape.h"
 
 struct Circle : public Shape {
-    Circle(float radius);
+    explicit Circle(float radius);
 
     const float radius;
 
-    ShapeType getType() const;
-    std::string getName() const;
-    void calculateMassProperties(float density);
-    void createAABB();
+    [[nodiscard]] ShapeType getType() const override;
+    [[nodiscard]] std::string getName() const override;
+    void calculateMassProperties(float density) override;
+    void createAABB() override;
 };
 
 #endif
