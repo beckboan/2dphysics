@@ -24,9 +24,14 @@ void Manifold::solve() {
         // Calculate vector from COM to contact
         vec2d a_con = contacts[i] - A->position;
         vec2d b_con = contacts[i] - B->position;
+        //        std::cout << A->position.x << ", " << A->position.y << std::endl;
+        //        std::cout << B->position.x << ", " << B->position.y << std::endl;
+
+        //        std::cout << contacts[i].x << ", " << contacts[i].y << std::endl;
 
         // Compute relative velocity
         vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
+        std::cout << r_vel.x << ", " << r_vel.y << std::endl;
 
         // Compute relative velocity along normal
         float contact_vel = dp(r_vel, normal);
@@ -39,10 +44,15 @@ void Manifold::solve() {
         // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
         float acn = cp(a_con, normal);
         float bcn = cp(b_con, normal);
+        //        std::cout << normal.x << ", " << normal.y << std::endl;
+        //        std::cout << acn << std::endl;
+        //        std::cout << acn << std::endl;
 
         float inv_mass_sum = A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
+        //        std::cout << inv_mass_sum << std::endl;
+
         float j = float((-(e + 1.0) * contact_vel)) / inv_mass_sum;
-        j /= (float)contact_count;
+        j /= (float) contact_count;
 
         vec2d imp = normal * j;
         vec2d imp_neg = -imp;
@@ -53,6 +63,10 @@ void Manifold::solve() {
         B->applyLinearImpulse(imp, b_con);
         A->applyLinearImpulse(imp_neg, a_con);
 
+        //        std::cout << imp.x << ", " << imp.y << std::endl;
+        //        std::cout << imp_neg.x << ", " << imp_neg.y << std::endl;
+
+
         r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
 
         vec2d t = r_vel;
@@ -61,7 +75,7 @@ void Manifold::solve() {
 
         float jt = -dp(r_vel, t);
         jt /= inv_mass_sum;
-        jt /= (float)contact_count;
+        jt /= (float) contact_count;
 
         if (std::abs(jt - 0.0) < EPSILON)
             return;
@@ -154,11 +168,13 @@ void Manifold::CirclevsPoly() {
         circ_bod = B.get();
         P = dynamic_cast<Poly *>(A->shape.get());
         poly_bod = A.get();
+        std::cout << "Poly A" << std::endl;
     } else {
         C = dynamic_cast<Circle *>(A->shape.get());
         circ_bod = A.get();
         P = dynamic_cast<Poly *>(B->shape.get());
         poly_bod = B.get();
+        std::cout << "Poly B" << std::endl;
     }
 
     float total_radius = C->radius + P->poly_radius;
@@ -167,7 +183,11 @@ void Manifold::CirclevsPoly() {
 
     vec2d center = circ_bod->position;
 
+    //    std::cout << poly_bod->position.x << ", " << poly_bod->position.y << std::endl;
+
     center = P->rotation->transpose() * (center - poly_bod->position);
+
+    //    std::cout << center.x << ", " << center.y << std::endl;
 
     uint32_t normal_index;
 
@@ -195,7 +215,8 @@ void Manifold::CirclevsPoly() {
         contact_count = 1;
         vec2d norm = s - center;
         norm = (P->rotation->mul(norm)).normalize();
-        normal = norm;
+
+        normal = reverse ? -norm : norm;
         contacts[0] = P->rotation->mul(s) + poly_bod->position;
     } else if (dp2 <= 0.0) {
         if (distSquared(center, end) > total_radius * total_radius)
@@ -204,7 +225,7 @@ void Manifold::CirclevsPoly() {
         contact_count = 1;
         vec2d norm = end - center;
         norm = (P->rotation->mul(norm)).normalize();
-        normal = norm;
+        normal = reverse ? -norm : norm;
         contacts[0] = P->rotation->mul(end) + poly_bod->position;
     } else {
         vec2d norm = P->getNormals()[normal_index];
@@ -216,12 +237,13 @@ void Manifold::CirclevsPoly() {
         contact_count = 1;
         norm = (P->rotation->mul(norm));
         contacts[0] = -norm * C->radius + circ_bod->position;
-        normal = -norm;
+        normal = reverse ? norm : -norm;
     }
 }
 
 struct AxisData {
-    enum Type { primary_edge, primary_poly };
+    enum Type { primary_edge,
+                primary_poly };
     vec2d normal;
     Type type{};
     uint32_t primary_normal_index = 0;
@@ -236,7 +258,7 @@ float findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end
     vec2d line_dir = end_line - start_line;
     vec2d line_normal1 = (vec2d(line_dir.y, -line_dir.x)).normalize();
     // std::cout << line_normal1.x << " " << line_normal1.y << std::endl;
-    vec2d line_normal2 = -line_normal1; // Invert the normal for the second side
+    vec2d line_normal2 = -line_normal1;// Invert the normal for the second side
 
     mat2d polygon_rotation_T = P->rotation->transpose();
 
@@ -404,8 +426,8 @@ void Manifold::PolyvsEdge() {
         incident_edge[1] = P->getVertexList()[best_index2];
         incident_edge[1] = P->rotation->mul(incident_edge[1]) + poly_pos;
 
-        r_v1 = (edge_norm_index == 1) ? end : s; //(edge_norm_index == 1);
-        r_v2 = (edge_norm_index == 1) ? s : end; //(edge_norm_index == 1);
+        r_v1 = (edge_norm_index == 1) ? end : s;//(edge_norm_index == 1);
+        r_v2 = (edge_norm_index == 1) ? s : end;//(edge_norm_index == 1);
         normal = PrimaryAxis.normal;
         // std::cout << normal.x << " " << normal.y << std::endl;
 

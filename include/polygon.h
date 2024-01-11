@@ -7,12 +7,12 @@
 #include <vector>
 
 struct Poly : public Shape {
-    explicit Poly(std::vector<vec2d> &verticies); // Normal Poly
-    Poly(float width, float height);              // Rectangle Poly
+    explicit Poly(std::vector<vec2d> &verticies);// Normal Poly
+    Poly(float width, float height);             // Rectangle Poly
     // Poly(float radius, int side_number); //Regular Polygon (think stop sign)
 
-    [[nodiscard]] ShapeType getType() const;
-    [[nodiscard]] std::string getName() const;
+    [[nodiscard]] ShapeType getType() const override;
+    [[nodiscard]] std::string getName() const override;
     void calculateMassProperties(float density) override;
     void createAABB() override;
 
@@ -23,7 +23,7 @@ struct Poly : public Shape {
 
     const float poly_radius = polygonRadius;
 
-  private:
+private:
     unsigned int vertex_count = 0;
     std::vector<vec2d> vertex_list;
     std::vector<vec2d> normals;

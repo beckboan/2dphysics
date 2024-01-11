@@ -17,8 +17,8 @@ void Circle::calculateMassProperties(float density) {
     body_ref->area = float(radius * radius * M_PI);
     body_ref->m = body_ref->area * density;
     body_ref->I = body_ref->m * radius * radius / 2;
-    body_ref->inv_m = (body_ref->m > 0) ? 1.0f / body_ref->I : 0;
-    body_ref->inv_I = (body_ref->I > 0) ? 1.0f / body_ref->I : 0;
+    body_ref->inv_m = (body_ref->m > 0) ? 1.0 / body_ref->I : 0;
+    body_ref->inv_I = (body_ref->I > 0) ? 1.0 / body_ref->I : 0;
 }
 
 // Inertia return mass * radius * radius /2;

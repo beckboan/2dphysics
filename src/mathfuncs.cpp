@@ -63,7 +63,7 @@ vec2d vec2d::operator/(const float val) const { return {x / val, y / val}; }
 
 float vec2d::length() const { return std::sqrt((x * x) + (y * y)); }
 
-vec2d vec2d::normalize() {
+vec2d vec2d::normalize() const {
     float len = length();
     // std::cout << len << std::endl;
     // std::cout << x << std::endl;

@@ -19,7 +19,7 @@ struct Manifold {
     void correctPositions();
     [[nodiscard]] const uint32_t &getContactCount() const { return contact_count; }
 
-  private:
+private:
     float penetration;
     uint32_t contact_count;
     vec2d normal = vec2d(0, 0);
@@ -34,6 +34,7 @@ struct Manifold {
     void PolyvsPoly();
     void PolyvsEdge();
     void CirclevsEdge();
+    void PolyvsCircle();
 };
 
 float findAOLP(uint32_t &face_index, Poly *A, Poly *B, const vec2d &pos_A, const vec2d &pos_B);

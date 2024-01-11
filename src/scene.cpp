@@ -37,76 +37,76 @@ void Scene::clear() {
 void Scene::drawBody(const std::shared_ptr<RigidBody> &body) {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     switch (body->shape->getType()) {
-    case Shape::ShapeType::Circle: {
-        auto *c = dynamic_cast<Circle *>(body->shape.get());
-        auto radius_int = int(c->radius);
-        const int32_t diameter = radius_int * 2;
-        int32_t x = (radius_int - 1);
-        int32_t y = 0;
-        int32_t dx = 1;
-        int32_t dy = 1;
-        int32_t err = dx - diameter;
-        int32_t bod_x_hw = renderXTransfer(int32_t(body->position.x));
-        int32_t bod_y_hw = renderYTransfer(int32_t(body->position.y));
+        case Shape::ShapeType::Circle: {
+            auto *c = dynamic_cast<Circle *>(body->shape.get());
+            auto radius_int = int(c->radius);
+            const int32_t diameter = radius_int * 2;
+            int32_t x = (radius_int - 1);
+            int32_t y = 0;
+            int32_t dx = 1;
+            int32_t dy = 1;
+            int32_t err = dx - diameter;
+            int32_t bod_x_hw = renderXTransfer(int32_t(body->position.x));
+            int32_t bod_y_hw = renderYTransfer(int32_t(body->position.y));
 
-        while (x >= y) {
-            SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw - y);
-            SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw + y);
-            SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw - y);
-            SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw + y);
-            SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw - x);
-            SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw + x);
-            SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw - x);
-            SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw + x);
+            while (x >= y) {
+                SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw - y);
+                SDL_RenderDrawPoint(renderer, bod_x_hw + x, bod_y_hw + y);
+                SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw - y);
+                SDL_RenderDrawPoint(renderer, bod_x_hw - x, bod_y_hw + y);
+                SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw - x);
+                SDL_RenderDrawPoint(renderer, bod_x_hw + y, bod_y_hw + x);
+                SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw - x);
+                SDL_RenderDrawPoint(renderer, bod_x_hw - y, bod_y_hw + x);
 
-            if (err <= 0) {
-                ++y;
-                err += dy;
-                dy += 2;
+                if (err <= 0) {
+                    ++y;
+                    err += dy;
+                    dy += 2;
+                }
+
+                if (err > 0) {
+                    --x;
+                    dx += 2;
+                    err += (dx - diameter);
+                }
+            }
+            break;
+        }
+        case Shape::ShapeType::Poly: {
+            Poly *p = dynamic_cast<Poly *>(body->shape.get());
+            std::vector<vec2d> v_list_temp = p->getVertexList();
+            vec2d position = body->position;
+
+            unsigned int v_c = p->getVertexCount();
+
+            for (unsigned int i = 0; i < v_c; i++) {
+                v_list_temp[i] = p->rotation->mul(v_list_temp[i]) + position;
             }
 
-            if (err > 0) {
-                --x;
-                dx += 2;
-                err += (dx - diameter);
+            for (unsigned int i = 0; i < v_c; i++) {
+                int x1 = renderXTransfer(v_list_temp[i].x);
+                int y1 = renderYTransfer(v_list_temp[i].y);
+                int x2 = renderXTransfer(v_list_temp[(i + 1) % v_c].x);
+                int y2 = renderYTransfer(v_list_temp[(i + 1) % v_c].y);
+                SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
             }
+            break;
         }
-        break;
-    }
-    case Shape::ShapeType::Poly: {
-        Poly *p = dynamic_cast<Poly *>(body->shape.get());
-        std::vector<vec2d> v_list_temp = p->getVertexList();
-        vec2d position = body->position;
+        case Shape::ShapeType::Edge: {
+            Edge *e = dynamic_cast<Edge *>(body->shape.get());
+            int x1 = renderXTransfer(e->start_vertex.x);
+            int y1 = renderYTransfer(e->start_vertex.y);
+            int x2 = renderXTransfer(e->end_vertex.x);
+            int y2 = renderYTransfer(e->end_vertex.y);
 
-        unsigned int v_c = p->getVertexCount();
+            // std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << std::endl;
 
-        for (unsigned int i = 0; i < v_c; i++) {
-            v_list_temp[i] = p->rotation->mul(v_list_temp[i]) + position;
-        }
-
-        for (unsigned int i = 0; i < v_c; i++) {
-            int x1 = renderXTransfer(v_list_temp[i].x);
-            int y1 = renderYTransfer(v_list_temp[i].y);
-            int x2 = renderXTransfer(v_list_temp[(i + 1) % v_c].x);
-            int y2 = renderYTransfer(v_list_temp[(i + 1) % v_c].y);
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+            break;
         }
-        break;
-    }
-    case Shape::ShapeType::Edge: {
-        Edge *e = dynamic_cast<Edge *>(body->shape.get());
-        int x1 = renderXTransfer(e->start_vertex.x);
-        int y1 = renderYTransfer(e->start_vertex.y);
-        int x2 = renderXTransfer(e->end_vertex.x);
-        int y2 = renderYTransfer(e->end_vertex.y);
-
-        // std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << std::endl;
-
-        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-        break;
-    }
-    default:
-        break;
+        default:
+            break;
     }
 }
 
@@ -129,7 +129,7 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> &body) {
 
 void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
     clear();
-    for (auto bod : bodies) {
+    for (auto bod: bodies) {
         drawBody(bod);
         // drawAABB(bod);
     }
@@ -139,19 +139,19 @@ void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
 void Scene::checkEvent() {
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
-        case SDL_QUIT:
-            is_active = 0;
-            break;
-        case SDL_KEYDOWN:
-            switch (e.key.keysym.scancode) {
-            case SDL_SCANCODE_ESCAPE:
+            case SDL_QUIT:
                 is_active = 0;
                 break;
+            case SDL_KEYDOWN:
+                switch (e.key.keysym.scancode) {
+                    case SDL_SCANCODE_ESCAPE:
+                        is_active = 0;
+                        break;
+                    default:
+                        break;
+                }
             default:
                 break;
-            }
-        default:
-            break;
         }
     }
 }
