@@ -15,15 +15,15 @@ int main(int argc, char *args[]) {
 
     std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20), vec2d(-10, 5)};
     std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
-    //    engine.m_world->addCircle(10, vec2d(0, 5), 1000, 0);
-    //    engine.m_world->addCircle(10, vec2d(5, 30), 1000, 0);
-    //    engine.m_world->addCircle(10, vec2d(-5, 55), 1000, 0);
+    engine.m_world->addCircle(10, vec2d(0, 5), 1000, 0);
+    engine.m_world->addCircle(10, vec2d(5, 30), 1000, 0);
+    engine.m_world->addCircle(10, vec2d(-5, 55), 1000, 0);
     engine.m_world->addCircle(10, vec2d(0, 80), 1000, 0);
     engine.m_world->addPoly(verticies_3, vec2d(0, -15), density, 0);
     //    engine.m_world->addCircle(10, vec2d(20, 5), 1000, 0);
     // engine.m_world->addCircle(10, vec2d(25, 30), 1000, 0);
-    //    engine.m_world->addPoly(verticies_2, vec2d(0, -35), density, 0);
-    //    engine.m_world->addPoly(verticies_2, vec2d(0, 60), density, 0);
+    engine.m_world->addPoly(verticies_2, vec2d(0, -35), density, 0);
+    engine.m_world->addPoly(verticies_2, vec2d(0, 60), density, 0);
     // engine.m_world->addPoly(verticies_3, vec2d(0, 10), density, 0);
     // engine.m_world->addPoly(verticies_3, vec2d(0, 40), density, 0);
     // engine.m_world->addPoly(verticies_3, vec2d(0, 65), density, 0);

@@ -31,7 +31,7 @@ void Manifold::solve() {
 
         // Compute relative velocity
         vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
-        std::cout << r_vel.x << ", " << r_vel.y << std::endl;
+        //        std::cout << r_vel.x << ", " << r_vel.y << std::endl;
 
         // Compute relative velocity along normal
         float contact_vel = dp(r_vel, normal);
@@ -50,6 +50,7 @@ void Manifold::solve() {
 
         float inv_mass_sum = A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
         //        std::cout << inv_mass_sum << std::endl;
+        std::cout << A->inv_m << ", " << B->inv_m << std::endl;
 
         float j = float((-(e + 1.0) * contact_vel)) / inv_mass_sum;
         j /= (float) contact_count;
@@ -63,8 +64,8 @@ void Manifold::solve() {
         B->applyLinearImpulse(imp, b_con);
         A->applyLinearImpulse(imp_neg, a_con);
 
-        //        std::cout << imp.x << ", " << imp.y << std::endl;
-        //        std::cout << imp_neg.x << ", " << imp_neg.y << std::endl;
+        std::cout << imp.x << ", " << imp.y << std::endl;
+        std::cout << imp_neg.x << ", " << imp_neg.y << std::endl;
 
 
         r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
