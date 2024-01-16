@@ -24,18 +24,12 @@ void Manifold::solve() {
         // Calculate vector from COM to contact
         vec2d a_con = contacts[i] - A->position;
         vec2d b_con = contacts[i] - B->position;
-        //        std::cout << A->position.x << ", " << A->position.y << std::endl;
-        //        std::cout << B->position.x << ", " << B->position.y << std::endl;
-
-        //        std::cout << contacts[i].x << ", " << contacts[i].y << std::endl;
 
         // Compute relative velocity
         vec2d r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
-        //        std::cout << r_vel.x << ", " << r_vel.y << std::endl;
 
         // Compute relative velocity along normal
         float contact_vel = dp(r_vel, normal);
-        // std::cout << contact_vel << std::endl;
 
         // Only solve if objects are moving towards each other
         if (contact_vel > 0.0)
@@ -44,12 +38,8 @@ void Manifold::solve() {
         // Method from Chris Hecker's 3D Dynamics in Game Developer Maganize 1997
         float acn = cp(a_con, normal);
         float bcn = cp(b_con, normal);
-        //        std::cout << normal.x << ", " << normal.y << std::endl;
-        //        std::cout << acn << std::endl;
-        //        std::cout << acn << std::endl;
 
         float inv_mass_sum = A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
-        //        std::cout << inv_mass_sum << std::endl;
         std::cout << A->inv_m << ", " << B->inv_m << std::endl;
 
         float j = float((-(e + 1.0) * contact_vel)) / inv_mass_sum;
@@ -57,9 +47,6 @@ void Manifold::solve() {
 
         vec2d imp = normal * j;
         vec2d imp_neg = -imp;
-
-        // if (std::abs(imp.length() - 0.0) < EPSILON)
-        //   return;
 
         B->applyLinearImpulse(imp, b_con);
         A->applyLinearImpulse(imp_neg, a_con);
@@ -124,7 +111,6 @@ void Manifold::collisionCaller() {
 }
 
 void Manifold::CirclevsCircle() {
-    //    std::cout << "Circle Collision" << std::endl;
     auto *C1 = dynamic_cast<Circle *>(A->shape.get());
     auto *C2 = dynamic_cast<Circle *>(B->shape.get());
 
@@ -157,7 +143,6 @@ void Manifold::CirclevsCircle() {
 }
 
 void Manifold::CirclevsPoly() {
-    //    std::cout << "Circle/Polygon Collision" << std::endl;
 
     RigidBody *circ_bod;
     RigidBody *poly_bod;
@@ -184,11 +169,7 @@ void Manifold::CirclevsPoly() {
 
     vec2d center = circ_bod->position;
 
-    //    std::cout << poly_bod->position.x << ", " << poly_bod->position.y << std::endl;
-
     center = P->rotation->transpose() * (center - poly_bod->position);
-
-    //    std::cout << center.x << ", " << center.y << std::endl;
 
     uint32_t normal_index;
 
@@ -199,7 +180,7 @@ void Manifold::CirclevsPoly() {
     penetration = total_radius - sep;
 
     vec2d s = P->getVertexList()[normal_index];
-    // Need to safe normal index, so don't increment
+    // Need to save normal index, so don't increment
     uint32_t next_normal_index = normal_index + 1 < P->getVertexCount() ? normal_index + 1 : 0;
     vec2d end = P->getVertexList()[next_normal_index];
 
@@ -258,7 +239,6 @@ float findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end
     // Calculate the normal vectors of the line (start_line to end_line)
     vec2d line_dir = end_line - start_line;
     vec2d line_normal1 = (vec2d(line_dir.y, -line_dir.x)).normalize();
-    // std::cout << line_normal1.x << " " << line_normal1.y << std::endl;
     vec2d line_normal2 = -line_normal1;// Invert the normal for the second side
 
     mat2d polygon_rotation_T = P->rotation->transpose();
@@ -327,37 +307,12 @@ float findMTVPolyEdge(uint32_t &index, const vec2d &start_line, const vec2d &end
     index = best_index;
     return best_dist;
 }
-// void findEdgePolyIncident(std::array<vec2d, 2> &v, Poly *P, const vec2d &poly_pos, const vec2d &s, const vec2d &e, uint32_t index) {
-//     vec2d line_dir = e - s;
-//     vec2d line_norm = vec2d(line_dir.x, -line_dir.y).normalize();
-//
-//     vec2d normal = (index == 0) ? line_norm : -line_norm;
-//
-//     normal = P->rotation->transpose() * normal;
-//
-//     uint32_t inc_face = 0;
-//     float min_dot = FLT_MAX;
-//     for (uint i = 0; i < P->getVertexCount(); i++) {
-//         float dot = dp(normal, P->getNormals()[i]);
-//         if (dot < min_dot) {
-//             min_dot = dot;
-//             inc_face = i;
-//         }
-//     }
-//
-//     vec2d inc_vert = P->getVertexList()[inc_face];
-//     v[0] = P->rotation->mul(inc_vert) + poly_pos;
-//     inc_face = inc_face + 1 >= P->getVertexCount() ? 0 : inc_face + 1;
-//     inc_vert = P->getVertexList()[inc_face];
-//     v[1] = P->rotation->mul(inc_vert) + poly_pos;
-// }
 
 void Manifold::PolyvsEdge() {
     Poly *P;
     Edge *E;
     vec2d poly_pos;
 
-    //    std::cout << "Poly/Edge Collision" << std::endl;
     if (reverse) {
         P = dynamic_cast<Poly *>(B->shape.get());
         poly_pos = B->position;
@@ -430,7 +385,6 @@ void Manifold::PolyvsEdge() {
         r_v1 = (edge_norm_index == 1) ? end : s;//(edge_norm_index == 1);
         r_v2 = (edge_norm_index == 1) ? s : end;//(edge_norm_index == 1);
         normal = PrimaryAxis.normal;
-        // std::cout << normal.x << " " << normal.y << std::endl;
 
         flip = true;
     }
@@ -495,8 +449,6 @@ void Manifold::PolyvsEdge() {
 }
 
 void Manifold::CirclevsEdge() {
-    //    std::cout << "Circle/Edge Collision" << std::endl;
-
     RigidBody *circ_bod;
     RigidBody *edge_bod;
     Circle *C;
@@ -584,26 +536,17 @@ void Manifold::PolyvsPoly() {
 
     contact_count = 0;
     float total_radius = P1->poly_radius + P2->poly_radius;
-    // std::cout << total_radius << std::endl;
 
     uint32_t face_A = 0;
     float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
-    //    DBG(A->position.y);
-    //    DBG(face_A);
     if (pen_A > total_radius) {
-        // std::cout << "No Collision" << std::endl;
         return;
     }
     uint32_t face_B = 0;
     float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
-    //    DBG(face_B);
     if (pen_B > total_radius) {
-        // std::cout << "No Collision" << std::endl;
         return;
     }
-
-    // std::cout << pen_A << " " << pen_B << std::endl;
-    // std::cout << "Collision Detected" << std::endl;
 
     Poly *ref;
     Poly *inc;
@@ -623,7 +566,6 @@ void Manifold::PolyvsPoly() {
         inc_pos = A->position;
         ref_index = face_B;
         flip = true;
-        // std::cout << "Poly B is Ref" << std::endl;
     } else {
         ref = P1;
         ref_pos = A->position;
@@ -631,7 +573,6 @@ void Manifold::PolyvsPoly() {
         inc_pos = B->position;
         ref_index = face_A;
         flip = false;
-        // std::cout << "Poly A is Ref" << std::endl;
     }
 
     std::array<vec2d, 2> incident_edge;
@@ -647,12 +588,9 @@ void Manifold::PolyvsPoly() {
 
     // Find side tangent and normalize
     vec2d side_tangent = (r_v2 - r_v1).normalize();
-    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
 
     // Find orthogonal
     vec2d side_normal(side_tangent.y, -side_tangent.x);
-
-    // std::cout << side_tangent.x << " " << side_tangent.y << std::endl;
 
     // Finding front offsets and sides
     float front_offset = dp(side_normal, r_v1);
@@ -688,9 +626,7 @@ void Manifold::PolyvsPoly() {
         penetration /= clipped_points * 1.0;
     }
 
-    // std::cout << normal.x << " " << normal.y << std::endl;
     contact_count = clipped_points;
-    // std::cout << penetration << std::endl;
     normal = flip ? -side_normal : side_normal;
 }
 
@@ -718,8 +654,6 @@ float findAOLP(uint32_t &face_index, Poly *A, Poly *B, const vec2d &pos_A, const
                 best_proj = proj;
             }
         }
-
-        // std::cout << best_vert.x << " " << best_vert.y << std::endl;
 
         vec2d a_vert = A->getVertexList()[i];
 
