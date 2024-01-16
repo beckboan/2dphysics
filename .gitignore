@@ -3,3 +3,5 @@ cmake-build-debug-wsl/
 [Bb]uild
 .cache/
 .idea/
+.clang-format
+.clang-tidy
