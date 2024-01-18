@@ -1,47 +1,43 @@
 cmake_minimum_required(VERSION 3.27.0)
+
 project(
-  2dphysics
-  VERSION 0.1.0
-  LANGUAGES C CXX)
+        2dphysics
+        DESCRIPTION "Simple 2D Physics Engine"
+        VERSION 0.1.0
+        LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS
-    ON
-    CACHE INTERNAL "")
-
-include(CTest)
-enable_testing()
-
-find_package(SDL2 REQUIRED)
-find_package(OpenGL REQUIRED)
-
-set(SOURCES
-    src/mathfuncs.cpp
-    src/main.cpp
-    src/world.cpp
-    src/shape.cpp
-    src/rigidbody.cpp
-    src/collisions.cpp
-    src/circle.cpp
-    src/polygon.cpp
-    src/scene.cpp
-    src/AABB.cpp
-    src/engine.cpp
-    src/runtimedata.cpp
-    src/edge.cpp)
-
-add_executable(2dphysics ${SOURCES})
-
-target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/include ())
-# target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/tests())
-target_include_directories(2dphysics PUBLIC $(SDL2_INCLUDE_DIR))
-target_include_directories(2dphysics PUBLIC $(OPENGL_INCLUDE_DIR))
-
-target_link_libraries(2dphysics SDL2::SDL2)
-target_link_libraries(2dphysics OpenGL::GL)
+        ON
+        CACHE INTERNAL "")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_subdirectory(vendor)
+add_subdirectory(src)
+
+#find_package(SDL2 REQUIRED)
+#find_package(OpenGL REQUIRED)
+#
+#set(SOURCES
+#        src/core/common/mathfuncs.cpp
+#        src/app/main.cpp
+#        src/core/engine/world.cpp
+#        src/core/primitives/shape.cpp
+#        src/core/collisions/rigidbody.cpp
+#        src/core/collisions/collisions.cpp
+#        src/core/primitives/circle.cpp
+#        src/core/primitives/polygon.cpp
+#        src/core/engine/scene.cpp
+#        src/core/collisions/AABB.cpp
+#        src/core/engine/engine.cpp
+#        src/core/engine/runtimedata.cpp
+#        src/core/primitives/edge.cpp)
+#
+#add_executable(2dphysics ${SOURCES})
+#
+#target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/include ())
+## target_include_directories(2dphysics PRIVATE ${PROJECT_SOURCE_DIR}/tests())
+#target_include_directories(2dphysics PUBLIC $(SDL2_INCLUDE_DIR))
+#target_include_directories(2dphysics PUBLIC $(OPENGL_INCLUDE_DIR))
+##target_link_libraries(2dphysics OpenGL::GL)

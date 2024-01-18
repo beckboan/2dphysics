@@ -1,42 +1,55 @@
 #ifndef WORLD
 #define WORLD
 
-#include "collisions.h"
-#include "mathfuncs.h"
-#include "rigidbody.h"
+#include "../collisions/collisions.h"
+#include "../common/mathfuncs.h"
+#include "../collisions/rigidbody.h"
 #include <iostream>
 #include <vector>
 
 struct World {
     World();
-    World(const float g);
+
+    explicit World(float g);
 
     bool addCircle(float radius, vec2d position, float density, bool is_static);
+
     bool addRect(float width, float height, vec2d position, float density, bool is_static);
+
     bool addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
+
     bool addEdge(const vec2d &s, const vec2d &e);
 
     const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
 
     [[maybe_unused]] [[maybe_unused]] void setGravity(float g);
+
     void removePhysicsObject(const std::shared_ptr<RigidBody> &);
+
     void printPhysicsObjects();
+
     void worldStep(float dt);
+
     void checkCollisions();
 
     std::vector<std::shared_ptr<Manifold>> contact_list;
 
-  private:
+private:
     std::vector<std::shared_ptr<RigidBody>> world_objects;
     vec2d gravity;
     const vec2d origin = vec2d(0, 0);
+
     void integrateForces(float dt);
+
     void integrateVelocities(float dt);
+
     void updatePositions();
+
     void updateAABB();
+
     unsigned int iterations = 1;
 
-  public:
+public:
     static constexpr float min_body_area = 0.01;      // m^2
     static constexpr float max_body_area = 100 * 100; // m^2
     static constexpr float min_body_density = 500;    // kg/m^3

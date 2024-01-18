@@ -1,15 +1,18 @@
 #ifndef RIGIDBODY_H
 #define RIGIDBODY_H
 
-#include "mathfuncs.h"
+#include "../common/mathfuncs.h"
 #include <memory>
 
 struct Shape;
 
 struct RigidBody {
     RigidBody(std::unique_ptr<Shape> &shape_, vec2d &position_, float density_);
+
     RigidBody(const RigidBody &) = delete;
+
     RigidBody &operator=(const RigidBody &) = delete;
+
     ~RigidBody() = default;
 
     vec2d position;
@@ -43,6 +46,7 @@ struct RigidBody {
 
     // Property Functions
     void rigidIni();
+
     void setBodyStatic();
 
     // Getters
@@ -50,11 +54,18 @@ struct RigidBody {
 
     // Physics Functions
     [[maybe_unused]] void move(const vec2d &amount);
+
     [[maybe_unused]] void moveto(const vec2d &position_new);
+
     void setRotation(float radians);
+
     [[maybe_unused]] void applyForce(vec2d &force, vec2d &point);
+
     [[maybe_unused]] void applyCenterForce(vec2d &force);
+
     void applyLinearImpulse(vec2d &impulse, vec2d &point);
+
     [[maybe_unused]] void applyCenterLinearImpulse(vec2d &impulse);
 };
+
 #endif

@@ -1,7 +1,7 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-#include "../include/simplephysics.h"
+#include "../src/engine/simplephysics.h"
 
 #include "simplecirclecollision.h"
 

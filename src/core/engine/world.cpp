@@ -1,10 +1,12 @@
 #include "world.h"
-#include "circle.h"
-#include "collisions.h"
-#include "edge.h"
-#include "mathfuncs.h"
-#include "polygon.h"
-#include "shape.h"
+#include "../primitives/circle.h"
+#include "../collisions/collisions.h"
+#include "../primitives/edge.h"
+#include "../common/mathfuncs.h"
+#include "../primitives/polygon.h"
+#include "../primitives/shape.h"
+
+
 #include <cmath>
 #include <iostream>
 #include <memory>
@@ -121,19 +123,19 @@ void World::worldStep(float dt) {
 
     integrateForces(dt);
 
-    for (const auto &c : contact_list) {
+    for (const auto &c: contact_list) {
         c->solve();
     }
 
     integrateVelocities(dt);
-    for (const auto &c : contact_list) {
+    for (const auto &c: contact_list) {
         c->correctPositions();
     }
     updateAABB();
 }
 
 void World::integrateForces(float dt) {
-    for (const auto &bod : world_objects) {
+    for (const auto &bod: world_objects) {
         if (bod->inv_m == 0.0)
             continue;
         bod->velocity += (bod->force * bod->inv_m + gravity) * dt;
@@ -144,7 +146,7 @@ void World::integrateForces(float dt) {
 }
 
 void World::integrateVelocities(float dt) {
-    for (const auto &bod : world_objects) {
+    for (const auto &bod: world_objects) {
         if (bod->inv_m == 0.0)
             continue;
         bod->position += bod->velocity * dt;
@@ -154,7 +156,7 @@ void World::integrateVelocities(float dt) {
 }
 
 void World::updateAABB() {
-    for (const auto &bod : world_objects) {
+    for (const auto &bod: world_objects) {
         bod->shape->createAABB();
     }
 }

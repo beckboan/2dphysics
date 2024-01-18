@@ -1,9 +1,9 @@
 #include "collisions.h"
-#include "circle.h"
-#include "common.h"
-#include "edge.h"
-#include "mathfuncs.h"
-#include "shape.h"
+#include "../primitives/circle.h"
+#include "../common/common.h"
+#include "../primitives/edge.h"
+#include "../common/mathfuncs.h"
+#include "../primitives/shape.h"
 #include <cassert>
 #include <cfloat>
 #include <cmath>
@@ -40,7 +40,6 @@ void Manifold::solve() {
         float bcn = cp(b_con, normal);
 
         float inv_mass_sum = A->inv_m + B->inv_m + (acn * acn) * A->inv_I + (bcn * bcn) * B->inv_I;
-        std::cout << A->inv_m << ", " << B->inv_m << std::endl;
 
         float j = float((-(e + 1.0) * contact_vel)) / inv_mass_sum;
         j /= (float) contact_count;
@@ -50,10 +49,6 @@ void Manifold::solve() {
 
         B->applyLinearImpulse(imp, b_con);
         A->applyLinearImpulse(imp_neg, a_con);
-
-        std::cout << imp.x << ", " << imp.y << std::endl;
-        std::cout << imp_neg.x << ", " << imp_neg.y << std::endl;
-
 
         r_vel = B->velocity + cp(B->angular_velocity, b_con) - A->velocity - cp(A->angular_velocity, a_con);
 
@@ -75,7 +70,7 @@ void Manifold::solve() {
             tan_imp = t * j * (-df);
         }
 
-        vec2d tan_imp_neg = -tan_imp;
+        // vec2d tan_imp_neg = -tan_imp;
         // B->applyLinearImpulse(tan_imp, b_con);
         // A->applyLinearImpulse(tan_imp_neg, a_con);
     }
@@ -154,13 +149,11 @@ void Manifold::CirclevsPoly() {
         circ_bod = B.get();
         P = dynamic_cast<Poly *>(A->shape.get());
         poly_bod = A.get();
-        std::cout << "Poly A" << std::endl;
     } else {
         C = dynamic_cast<Circle *>(A->shape.get());
         circ_bod = A.get();
         P = dynamic_cast<Poly *>(B->shape.get());
         poly_bod = B.get();
-        std::cout << "Poly B" << std::endl;
     }
 
     float total_radius = C->radius + P->poly_radius;
@@ -224,15 +217,18 @@ void Manifold::CirclevsPoly() {
 }
 
 struct AxisData {
-    enum Type { primary_edge,
-                primary_poly };
+    enum Type {
+        primary_edge,
+        primary_poly
+    };
     vec2d normal;
     Type type{};
     uint32_t primary_normal_index = 0;
     float separation = 0.0;
 };
 
-float findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
+float
+findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -273,7 +269,8 @@ float findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end
     return best_dist;
 }
 
-float findMTVPolyEdge(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
+float
+findMTVPolyEdge(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -387,14 +384,13 @@ void Manifold::PolyvsEdge() {
         normal = PrimaryAxis.normal;
 
         flip = true;
-    }
-
-    else {
+    } else {
         incident_edge[0] = end;
         incident_edge[1] = s;
 
         r_v1 = P->getVertexList()[PrimaryAxis.primary_normal_index];
-        uint32_t primary_normal_index2 = PrimaryAxis.primary_normal_index + 1 >= P->getVertexCount() ? 0 : PrimaryAxis.primary_normal_index + 1;
+        uint32_t primary_normal_index2 =
+                PrimaryAxis.primary_normal_index + 1 >= P->getVertexCount() ? 0 : PrimaryAxis.primary_normal_index + 1;
         r_v2 = P->getVertexList()[primary_normal_index2];
 
         r_v1 = P->rotation->mul(r_v1) + poly_pos;
@@ -516,14 +512,14 @@ void Manifold::CirclevsEdge() {
             penetration = C->radius - edge_abs + E->edge_radius;
             contacts[0] = normal * C->radius + center;
         }
-        // On opposite side
+            // On opposite side
         else if (edge_abs < total_radius && edge_sep > 0) {
             normal = -norm;
             contact_count = 1;
             penetration = C->radius - edge_abs + E->edge_radius;
             contacts[0] = normal * total_radius + center;
         }
-        // Not contacting
+            // Not contacting
         else
             return;
     }
@@ -623,7 +619,7 @@ void Manifold::PolyvsPoly() {
         penetration += -sep;
         ++clipped_points;
 
-        penetration /= clipped_points * 1.0;
+        penetration /= float(clipped_points);
     }
 
     contact_count = clipped_points;

@@ -1,14 +1,15 @@
 #include "scene.h"
-#include "circle.h"
-#include "mathfuncs.h"
-#include "polygon.h"
-#include "rigidbody.h"
-#include "shape.h"
-#include <SDL.h>
-#include <SDL_render.h>
+#include "../primitives/circle.h"
+#include "../common/mathfuncs.h"
+#include "../primitives/polygon.h"
+#include "../collisions/rigidbody.h"
+#include "../primitives/shape.h"
 #include <vector>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_render.h>
 
-Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_), hw_x(screen_x_ / 2), hw_y(screen_y_ / 2) {}
+Scene::Scene(int screen_x_, int screen_y_) : screen_x(screen_x_), screen_y(screen_y_), hw_x(screen_x_ / 2),
+                                             hw_y(screen_y_ / 2) {}
 
 Scene::~Scene() {
     SDL_DestroyWindow(window);
@@ -20,7 +21,8 @@ Scene::~Scene() {
 void Scene::init() {
     SDL_Init(SDL_INIT_EVERYTHING);
 
-    window = SDL_CreateWindow("OpenGL Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_x, screen_y, SDL_WINDOW_FULLSCREEN);
+    window = SDL_CreateWindow("OpenGL Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_x, screen_y,
+                              SDL_WINDOW_OPENGL);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -127,9 +129,9 @@ void Scene::drawAABB(const std::shared_ptr<RigidBody> &body) {
     SDL_RenderDrawLine(renderer, adjust_min_x, adjust_max_y, adjust_min_x, adjust_min_y);
 }
 
-void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> bodies) {
+void Scene::drawObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies) {
     clear();
-    for (auto bod: bodies) {
+    for (const auto &bod: bodies) {
         drawBody(bod);
         // drawAABB(bod);
     }
@@ -140,12 +142,12 @@ void Scene::checkEvent() {
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
             case SDL_QUIT:
-                is_active = 0;
+                is_active = false;
                 break;
             case SDL_KEYDOWN:
                 switch (e.key.keysym.scancode) {
                     case SDL_SCANCODE_ESCAPE:
-                        is_active = 0;
+                        is_active = false;
                         break;
                     default:
                         break;
@@ -157,6 +159,9 @@ void Scene::checkEvent() {
 }
 
 int Scene::renderYTransfer(int y) const { return hw_y + -1 * y; }
+
 int Scene::renderXTransfer(int x) const { return hw_x + x; }
+
 int Scene::renderYTransfer(float y) const { return hw_y + -1 * int(y); }
+
 int Scene::renderXTransfer(float x) const { return hw_x + int(x); }
