@@ -1,5 +1,5 @@
 #include "rigidbody.h"
-#include "../primitives/shape.h"
+#include "shape.h"
 #include <iostream>
 
 RigidBody::RigidBody(std::unique_ptr<Shape> &shape_, vec2d &position_, float density_) : shape(std::move(shape_)),

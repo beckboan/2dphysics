@@ -1,9 +1,9 @@
 #ifndef COLLISIONS_H
 #define COLLISIONS_H
 
-#include "../primitives/circle.h"
-#include "../primitives/edge.h"
-#include "../primitives/polygon.h"
+#include "circle.h"
+#include "edge.h"
+#include "polygon.h"
 #include "rigidbody.h"
 #include <memory>
 

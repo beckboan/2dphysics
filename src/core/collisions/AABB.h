@@ -1,7 +1,7 @@
 #ifndef AABB_H
 #define AABB_H
 
-#include "../common/mathfuncs.h"
+#include "mathfuncs.h"
 
 struct AABB {
     AABB() {}

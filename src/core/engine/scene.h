@@ -3,8 +3,8 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_opengl.h"
-#include "../primitives/edge.h"
-#include "../collisions/rigidbody.h"
+#include "edge.h"
+#include "rigidbody.h"
 #include <memory>
 #include <vector>
 

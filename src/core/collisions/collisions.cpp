@@ -1,9 +1,9 @@
 #include "collisions.h"
-#include "../primitives/circle.h"
-#include "../common/common.h"
-#include "../primitives/edge.h"
-#include "../common/mathfuncs.h"
-#include "../primitives/shape.h"
+#include "circle.h"
+#include "common.h"
+#include "edge.h"
+#include "mathfuncs.h"
+#include "shape.h"
 #include <cassert>
 #include <cfloat>
 #include <cmath>

@@ -1,9 +1,9 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include "../collisions/AABB.h"
-#include "../common/mathfuncs.h"
-#include "../collisions/rigidbody.h"
+#include "AABB.h"
+#include "mathfuncs.h"
+#include "rigidbody.h"
 #include <memory>
 
 #define max_poly_count 32

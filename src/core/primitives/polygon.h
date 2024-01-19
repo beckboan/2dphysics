@@ -1,8 +1,8 @@
 #ifndef POLYGON
 #define POLYGON
 
-#include "../common/common.h"
-#include "../common/mathfuncs.h"
+#include "common.h"
+#include "mathfuncs.h"
 #include "shape.h"
 #include <vector>
 

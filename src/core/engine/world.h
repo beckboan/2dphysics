@@ -1,9 +1,9 @@
 #ifndef WORLD
 #define WORLD
 
-#include "../collisions/collisions.h"
-#include "../common/mathfuncs.h"
-#include "../collisions/rigidbody.h"
+#include "collisions.h"
+#include "mathfuncs.h"
+#include "rigidbody.h"
 #include <iostream>
 #include <vector>
 

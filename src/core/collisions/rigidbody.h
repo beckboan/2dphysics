@@ -1,7 +1,7 @@
 #ifndef RIGIDBODY_H
 #define RIGIDBODY_H
 
-#include "../common/mathfuncs.h"
+#include "mathfuncs.h"
 #include <memory>
 
 struct Shape;

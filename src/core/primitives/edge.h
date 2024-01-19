@@ -1,8 +1,8 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-#include "../common/common.h"
-#include "../common/mathfuncs.h"
+#include "common.h"
+#include "mathfuncs.h"
 #include "shape.h"
 
 struct Edge : public Shape {

@@ -1,10 +1,10 @@
 #include "world.h"
-#include "../primitives/circle.h"
-#include "../collisions/collisions.h"
-#include "../primitives/edge.h"
-#include "../common/mathfuncs.h"
-#include "../primitives/polygon.h"
-#include "../primitives/shape.h"
+#include "circle.h"
+#include "collisions.h"
+#include "edge.h"
+#include "mathfuncs.h"
+#include "polygon.h"
+#include "shape.h"
 
 
 #include <cmath>
