@@ -9,29 +9,48 @@ public:
     float y;
 
     vec2d();
+
     vec2d(float x, float y);
+
     vec2d(const vec2d &vector);
+
     vec2d(vec2d &&other) = default;
+
     vec2d &operator=(vec2d &&other) = default;
 
     vec2d &operator=(const vec2d &vec);
+
     vec2d &operator+=(const vec2d &vec);
+
     vec2d &operator-=(const vec2d &vec);
+
     vec2d &operator+=(float val);
+
     vec2d &operator-=(float val);
+
     vec2d &operator*=(float val);
+
     vec2d &operator/=(float val);
+
     vec2d operator+(const vec2d &vec) const;
+
     vec2d operator-(const vec2d &vec) const;
+
     vec2d operator+(float val) const;
+
     vec2d operator-(float val) const;
+
     vec2d operator*(float val) const;
+
     vec2d operator/(float val) const;
+
     vec2d operator-() const;
 
     void assign(float x_, float y);
+
     [[nodiscard]] float length() const;
-    vec2d normalize() const;
+
+    [[nodiscard]] vec2d normalize() const;
 };
 
 // Dot Product
@@ -102,7 +121,9 @@ inline bool isLeftOf(const vec2d &p1, const vec2d &p2) { return p1.x < p2.x || (
 // Rotation matrix for 2D Vectors [2x2]
 struct mat2d {
     mat2d();
+
     explicit mat2d(float radians);
+
     mat2d(float v_00, float v_01, float v_10, float v_11);
 
     void setMatrixRotation(float radians);
@@ -111,7 +132,9 @@ struct mat2d {
     std::array<float, 2> row_2{0};
 
     vec2d mul(vec2d &vec);
+
     vec2d operator*(const vec2d &vec);
+
     // const mat2d operator*(const mat2d &mat) const;
     mat2d transpose();
 };

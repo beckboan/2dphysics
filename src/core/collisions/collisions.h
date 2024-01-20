@@ -42,8 +42,6 @@ private:
     void PolyvsEdge();
 
     void CirclevsEdge();
-
-    void PolyvsCircle();
 };
 
 float findAOLP(uint32_t &face_index, Poly *A, Poly *B, const vec2d &pos_A, const vec2d &pos_B);
