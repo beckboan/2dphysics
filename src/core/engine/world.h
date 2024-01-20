@@ -20,7 +20,7 @@ struct World {
 
     bool addEdge(const vec2d &s, const vec2d &e);
 
-    const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
+    [[nodiscard]] const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
 
     [[maybe_unused]] [[maybe_unused]] void setGravity(float g);
 

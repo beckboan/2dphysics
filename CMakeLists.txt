@@ -24,12 +24,12 @@ add_subdirectory(src)
 #        src/app/main.cpp
 #        src/core/engine/world.cpp
 #        src/core/primitives/shape.cpp
-#        src/core/collisions/rigidbody.cpp
-#        src/core/collisions/collisions.cpp
+#        src/core/dynamics/rigidbody.cpp
+#        src/core/dynamics/dynamics.cpp
 #        src/core/primitives/circle.cpp
 #        src/core/primitives/polygon.cpp
 #        src/core/engine/scene.cpp
-#        src/core/collisions/AABB.cpp
+#        src/core/dynamics/AABB.cpp
 #        src/core/engine/engine.cpp
 #        src/core/engine/runtimedata.cpp
 #        src/core/primitives/edge.cpp)

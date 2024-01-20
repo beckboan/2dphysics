@@ -1,7 +1,7 @@
 set(NAME "engine")
 
 add_library(${NAME} STATIC
-        engine.cpp engine.h runtimedata.cpp runtimedata.h scene.cpp scene.h world.cpp world.h)
+        engine.cpp engine.h runtimedata.cpp runtimedata.h world.cpp world.h)
 
 target_include_directories(${NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${NAME} PUBLIC SDL2::SDL2 imgui PRIVATE core)

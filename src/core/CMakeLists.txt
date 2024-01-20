@@ -1,8 +1,9 @@
 set(CORE_MODULES
-        collisions
+        dynamics
         engine
         primitives
-        common)
+        common
+        renderer)
 
 set(NAME "core")
 

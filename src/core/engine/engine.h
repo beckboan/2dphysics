@@ -2,15 +2,18 @@
 #define ENGINE_H
 
 #include "runtimedata.h"
-#include "scene.h"
+#include "renderer/scene.h"
 #include "world.h"
 #include <unistd.h>
 
 class Engine {
-  public:
+public:
     Engine();
+
     void createWorld();
+
     void createWorld(float g);
+
     void run();
 
     RunTimeData m_runtimedata;
