@@ -5,7 +5,7 @@
 #include "mathfuncs.h"
 #include "polygon.h"
 #include "shape.h"
-
+#include "rigidbody.h"
 
 #include <cmath>
 #include <iostream>

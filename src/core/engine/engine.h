@@ -2,7 +2,7 @@
 #define ENGINE_H
 
 #include "runtimedata.h"
-#include "renderer/scene.h"
+#include "scene.h"
 #include "world.h"
 #include <unistd.h>
 

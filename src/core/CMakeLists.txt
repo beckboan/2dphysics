@@ -1,9 +1,11 @@
 set(CORE_MODULES
-        dynamics
         engine
         primitives
+        dynamics
+        rendering
         common
-        renderer)
+        gui
+)
 
 set(NAME "core")
 
