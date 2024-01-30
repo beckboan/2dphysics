@@ -1,7 +1,9 @@
 set(NAME "rendering")
 
 add_library(${NAME} STATIC
-        scene.cpp scene.h
+        #        scene.cpp scene.h
+        imgui_scene.cpp
+        imgui_scene.h
 )
 
 target_include_directories(${NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -25,6 +25,7 @@ Application::Application(const std::string &title) {
 
     m_window = std::make_unique<Window>(Window::WindowSettings{title});
     m_world = std::make_unique<World>(9.8);
+    m_scene = std::make_unique<ImGuiScene>(640, 360);
 }
 
 Application::~Application() {
@@ -49,6 +50,30 @@ ExitStatus Application::run() {
     ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
     ImGui_ImplSDLRenderer2_Init(m_window->get_renderer());
 
+    vec2d position = vec2d(0.0, 0.0);
+    float density = 1000.0;
+    vec2d movetopos = vec2d(-300, 0);
+
+    std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(50, 0), vec2d(50, 50), vec2d(0, 50), vec2d(75, 100)};
+
+    std::vector<vec2d> box_verts = {vec2d(0, 0), vec2d(100, 0), vec2d(0, 100), vec2d(100, 100)};
+
+    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20),
+                                      vec2d(-10, 5)};
+    std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
+
+    m_world->addCircle(10, vec2d(0, 5), 1000, false);
+    m_world->addCircle(10, vec2d(5, 30), 1000, false);
+    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
+    m_world->addCircle(10, vec2d(0, 90), 1000, false);
+    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
+    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
+    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
+    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
+    m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
+    m_world->addEdge(vec2d(-200, -50), vec2d(-200, 500));
+    m_world->addEdge(vec2d(500, -50), vec2d(500, 500));
+
     //Main Loop
     m_running = true;
     while (m_running) {
@@ -65,11 +90,7 @@ ExitStatus Application::run() {
         }
 
         while (m_runtimedata.goPhysics()) {
-            // if (m_world->contact_list.size() > 0) {
-            //   m_scene->setActive(0);
-            //   return;
-            // }
-//            m_world->worldStep(m_runtimedata.getDTFloat());
+            m_world->worldStep(m_runtimedata.getDTFloat());
             m_runtimedata.updateInternalTimers();
         }
 
@@ -87,7 +108,7 @@ ExitStatus Application::run() {
                     ImGui::EndMenu();
                 }
                 if (ImGui::BeginMenu("View")) {
-                    ImGui::MenuItem("Engine View", nullptr, &m_show_main_panel);
+                    ImGui::MenuItem("Engine Panel", nullptr, &m_show_main_panel);
                     ImGui::MenuItem("Tools Panel", nullptr, &m_show_tools_panel);
                     ImGui::EndMenu();
                 }
@@ -96,12 +117,24 @@ ExitStatus Application::run() {
 
 
             if (m_show_main_panel) {
-                ImGui::Begin("Some panel", &m_show_main_panel);
-                ImGui::Text("Hello World");
+                ImVec2 screen_size = ImGui::GetIO().DisplaySize;
+                float menu_bar_height = ImGui::GetFrameHeight();
+                ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
+                ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
+
+                ImGui::Begin("Engine Panel", &m_show_main_panel,
+                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+                             ImGuiWindowFlags_NoCollapse);
+                m_scene->drawImGuiObjects(m_world->getBodies());
+//                ImGui::GetWindowDrawList()->AddCircle(ImVec2(0, 0), 100, IM_COL32(255, 0, 0, 255), 0, 1.0f);
                 ImGui::End();
             }
 
-            if (m_show_tools_panel) {}
+            if (m_show_tools_panel) {
+
+                ImGui::Begin("Tools Panel", &m_show_tools_panel);
+                ImGui::End();
+            }
 
             ImGui::Render();
             SDL_SetRenderDrawColor(m_window->get_renderer(), 100, 100, 100, 255);

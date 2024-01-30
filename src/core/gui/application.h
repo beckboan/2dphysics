@@ -11,6 +11,7 @@
 #include "window.h"
 #include "runtimedata.h"
 #include "world.h"
+#include "imgui_scene.h"
 
 enum class ExitStatus : int {
     SUCCESS = 0, FAILURE = 1
@@ -43,6 +44,7 @@ public:
     void on_close();
 
     std::unique_ptr<World> m_world{nullptr};
+    std::unique_ptr<ImGuiScene> m_scene{nullptr};
 private:
     ExitStatus m_exit_status{ExitStatus::SUCCESS};
     std::unique_ptr<Window> m_window{nullptr};
@@ -51,7 +53,7 @@ private:
     bool m_running{true};
     bool m_minimize{true};
     bool m_show_main_panel{true};
-    bool m_show_tools_panel{true};
+    bool m_show_tools_panel{false};
 };
 
 
