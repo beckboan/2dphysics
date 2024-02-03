@@ -18,8 +18,12 @@ Majority of credit for this project can go to Randy Gaul's Impulse Engine (https
 
 ## To Do
 
-- **Fix Clipping Issues**
-- **AABB Broadphase Tree**
+- **Fix ImGui Windowing**
+- **Add Menu for Placing Shapes**
+- **Add Start/Stop and Gravity Adjustment**
+- **Add Edge Drawing on Main Screen**
+- **Add Shape Drawing on Main Screen**
+- **Move Shapes on Screen**
 
 ## Getting Started
 

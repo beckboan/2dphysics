@@ -5,16 +5,17 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <string>
+#include "imgui_scene.h"
+#include "runtimedata.h"
+#include "window.h"
+#include "world.h"
 #include <SDL.h>
 #include <memory>
-#include "window.h"
-#include "runtimedata.h"
-#include "world.h"
-#include "imgui_scene.h"
+#include <string>
 
 enum class ExitStatus : int {
-    SUCCESS = 0, FAILURE = 1
+    SUCCESS = 0,
+    FAILURE = 1
 };
 
 class Application {
@@ -45,8 +46,11 @@ public:
 
     void addTestParams() const;
 
+    void updateEnginePanel();
+
     std::unique_ptr<World> m_world{nullptr};
     std::unique_ptr<ImGuiScene> m_scene{nullptr};
+
 private:
     ExitStatus m_exit_status{ExitStatus::SUCCESS};
     std::unique_ptr<Window> m_window{nullptr};
@@ -59,4 +63,4 @@ private:
 };
 
 
-#endif //APPLICATION_H
+#endif//APPLICATION_H

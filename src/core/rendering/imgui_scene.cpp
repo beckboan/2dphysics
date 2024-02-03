@@ -3,15 +3,15 @@
 //
 
 #include "imgui_scene.h"
-#include <SDL.h>
-#include "imgui.h"
-#include "shape.h"
-#include <backends/imgui_impl_sdl2.h>
-#include <backends/imgui_impl_sdlrenderer2.h>
-#include "polygon.h"
 #include "circle.h"
 #include "edge.h"
+#include "imgui.h"
 #include "mathfuncs.h"
+#include "polygon.h"
+#include "shape.h"
+#include <SDL.h>
+#include <backends/imgui_impl_sdl2.h>
+#include <backends/imgui_impl_sdlrenderer2.h>
 
 void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) {
     switch (body->shape->getType()) {
@@ -82,4 +82,3 @@ void ImGuiScene::setHalfWidths(float hw_x, float hw_y) {
     m_hw_x = hw_x;
     m_hw_y = hw_y;
 }
-

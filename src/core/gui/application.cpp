@@ -3,18 +3,18 @@
 //
 
 #include "application.h"
+#include "mathfuncs.h"
 #include <SDL.h>
+#include <SDL_error.h>
 #include <SDL_events.h>
+#include <SDL_filesystem.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
-#include <SDL_error.h>
-#include <SDL_filesystem.h>
-#include <imgui.h>
 #include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer2.h>
-#include <memory>
+#include <imgui.h>
 #include <iostream>
-#include "mathfuncs.h"
+#include <memory>
 
 Application::Application(const std::string &title) {
     const unsigned int app_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
@@ -49,17 +49,36 @@ void Application::addTestParams() const {
     std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
 
     m_world->addCircle(10, vec2d(0, 50), 500, false);
-//    m_world->addCircle(10, vec2d(5, 30), 1000, false);
-//    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
-//    m_world->addCircle(10, vec2d(0, 90), 1000, false);
-//    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
-//    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
-//    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
-//    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
+    //    m_world->addCircle(10, vec2d(5, 30), 1000, false);
+    //    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
+    //    m_world->addCircle(10, vec2d(0, 90), 1000, false);
+    //    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
+    //    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
+    //    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
+    //    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
     m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
     m_world->addEdge(vec2d(-200, -50), vec2d(-200, 500));
     m_world->addEdge(vec2d(500, -50), vec2d(500, 500));
 }
+
+
+void Application::updateEnginePanel() {
+    if (m_show_main_panel) {
+        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
+        float menu_bar_height = ImGui::GetFrameHeight();
+        ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
+        ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
+
+        ImGui::Begin("Engine Panel", &m_show_main_panel, ImGuiWindowFlags_NoCollapse);
+        //                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+        //                             ImGuiWindowFlags_NoCollapse
+        m_scene->m_hw_x = screen_size.x / 2;
+        m_scene->m_hw_y = (screen_size.y - menu_bar_height) / 2;
+        m_scene->drawImGuiObjects(m_world->getBodies());
+        ImGui::End();
+    }
+}
+
 
 ExitStatus Application::run() {
     if (m_exit_status == ExitStatus::FAILURE) {
@@ -71,13 +90,39 @@ ExitStatus Application::run() {
     ImGuiIO &io{ImGui::GetIO()};
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    //    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     //Set up backends
     ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
     ImGui_ImplSDLRenderer2_Init(m_window->get_renderer());
 
     addTestParams();
+
+    //    ImGuiWindowFlags dock_window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+    //    ImGuiViewport *viewport = ImGui::GetMainViewport();
+    //    ImGui::SetNextWindowPos(viewport->Pos);
+    //    ImGui::SetNextWindowSize(viewport->Size);
+    //    ImGui::SetNextWindowViewport(viewport->ID);
+    //    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+    //    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+    //    dock_window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |
+    //                         ImGuiWindowFlags_NoMove;
+    //    dock_window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+    //
+    //    ImGui::Begin("DockSpace", nullptr, dock_window_flags);
+    //
+    //    ImGuiDockNodeFlags dock_flags = ImGuiDockNodeFlags_PassthruCentralNode;
+    //
+    //    if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable) {
+    //        ImGuiID dock_id = ImGui::GetID("DockSpace");
+    //        ImGui::DockSpace(dock_id, ImVec2(0.0f, 0.0f), dock_flags);
+    //
+    //        static auto first_time = true;
+    //        if (first_time)
+    //        {
+    //            fr
+    //        }
+    //    }
 
     //Main Loop
     m_running = true;
@@ -104,6 +149,7 @@ ExitStatus Application::run() {
         ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
+
         if (!m_minimize) {
             if (ImGui::BeginMainMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
@@ -120,25 +166,9 @@ ExitStatus Application::run() {
                 ImGui::EndMainMenuBar();
             }
 
-
-            if (m_show_main_panel) {
-                ImVec2 screen_size = ImGui::GetIO().DisplaySize;
-                float menu_bar_height = ImGui::GetFrameHeight();
-                ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
-                ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height),
-                                         ImGuiCond_FirstUseEver);
-
-                ImGui::Begin("Engine Panel", &m_show_main_panel);
-//                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-//                             ImGuiWindowFlags_NoCollapse
-                m_scene->m_hw_x = screen_size.x / 2;
-                m_scene->m_hw_y = (screen_size.y - menu_bar_height) / 2;
-                m_scene->drawImGuiObjects(m_world->getBodies());
-                ImGui::End();
-            }
+            updateEnginePanel();
 
             if (m_show_tools_panel) {
-
                 ImGui::Begin("Tools Panel", &m_show_tools_panel);
                 ImGui::End();
             }
