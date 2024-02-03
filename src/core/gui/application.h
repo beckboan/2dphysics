@@ -43,6 +43,8 @@ public:
 
     void on_close();
 
+    void addTestParams() const;
+
     std::unique_ptr<World> m_world{nullptr};
     std::unique_ptr<ImGuiScene> m_scene{nullptr};
 private:

@@ -13,9 +13,6 @@
 #include "edge.h"
 #include "mathfuncs.h"
 
-ImGuiScene::ImGuiScene(float hw_x, float hw_y) : m_hw_x(hw_x), m_hw_y(hw_y) {
-}
-
 void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) {
     switch (body->shape->getType()) {
         case Shape::ShapeType::Circle: {
@@ -79,5 +76,10 @@ void ImGuiScene::drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> 
     for (const auto &body: bodies) {
         drawImGuiBody(body);
     }
+}
+
+void ImGuiScene::setHalfWidths(float hw_x, float hw_y) {
+    m_hw_x = hw_x;
+    m_hw_y = hw_y;
 }
 

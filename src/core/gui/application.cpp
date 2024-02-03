@@ -25,7 +25,7 @@ Application::Application(const std::string &title) {
 
     m_window = std::make_unique<Window>(Window::WindowSettings{title});
     m_world = std::make_unique<World>(9.8);
-    m_scene = std::make_unique<ImGuiScene>(640, 360);
+    m_scene = std::make_unique<ImGuiScene>();
 }
 
 Application::~Application() {
@@ -33,6 +33,32 @@ Application::~Application() {
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     SDL_Quit();
+}
+
+
+void Application::addTestParams() const {
+    vec2d position = vec2d(0.0, 0.0);
+    float density = 1000.0;
+
+    std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(50, 0), vec2d(50, 50), vec2d(0, 50), vec2d(75, 100)};
+
+    std::vector<vec2d> box_verts = {vec2d(0, 0), vec2d(100, 0), vec2d(0, 100), vec2d(100, 100)};
+
+    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20),
+                                      vec2d(-10, 5)};
+    std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
+
+    m_world->addCircle(10, vec2d(0, 50), 500, false);
+//    m_world->addCircle(10, vec2d(5, 30), 1000, false);
+//    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
+//    m_world->addCircle(10, vec2d(0, 90), 1000, false);
+//    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
+//    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
+//    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
+//    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
+    m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
+    m_world->addEdge(vec2d(-200, -50), vec2d(-200, 500));
+    m_world->addEdge(vec2d(500, -50), vec2d(500, 500));
 }
 
 ExitStatus Application::run() {
@@ -45,34 +71,13 @@ ExitStatus Application::run() {
     ImGuiIO &io{ImGui::GetIO()};
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     //Set up backends
     ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
     ImGui_ImplSDLRenderer2_Init(m_window->get_renderer());
 
-    vec2d position = vec2d(0.0, 0.0);
-    float density = 1000.0;
-    vec2d movetopos = vec2d(-300, 0);
-
-    std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(50, 0), vec2d(50, 50), vec2d(0, 50), vec2d(75, 100)};
-
-    std::vector<vec2d> box_verts = {vec2d(0, 0), vec2d(100, 0), vec2d(0, 100), vec2d(100, 100)};
-
-    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20),
-                                      vec2d(-10, 5)};
-    std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
-
-    m_world->addCircle(10, vec2d(0, 5), 1000, false);
-    m_world->addCircle(10, vec2d(5, 30), 1000, false);
-    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
-    m_world->addCircle(10, vec2d(0, 90), 1000, false);
-    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
-    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
-    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
-    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
-    m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
-    m_world->addEdge(vec2d(-200, -50), vec2d(-200, 500));
-    m_world->addEdge(vec2d(500, -50), vec2d(500, 500));
+    addTestParams();
 
     //Main Loop
     m_running = true;
@@ -120,13 +125,15 @@ ExitStatus Application::run() {
                 ImVec2 screen_size = ImGui::GetIO().DisplaySize;
                 float menu_bar_height = ImGui::GetFrameHeight();
                 ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
-                ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
+                ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height),
+                                         ImGuiCond_FirstUseEver);
 
-                ImGui::Begin("Engine Panel", &m_show_main_panel,
-                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-                             ImGuiWindowFlags_NoCollapse);
+                ImGui::Begin("Engine Panel", &m_show_main_panel);
+//                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+//                             ImGuiWindowFlags_NoCollapse
+                m_scene->m_hw_x = screen_size.x / 2;
+                m_scene->m_hw_y = (screen_size.y - menu_bar_height) / 2;
                 m_scene->drawImGuiObjects(m_world->getBodies());
-//                ImGui::GetWindowDrawList()->AddCircle(ImVec2(0, 0), 100, IM_COL32(255, 0, 0, 255), 0, 1.0f);
                 ImGui::End();
             }
 

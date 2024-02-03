@@ -11,7 +11,6 @@
 
 class ImGuiScene {
 public:
-    ImGuiScene(float hw_x, float hw_y);
 
     void drawImGuiBody(const std::shared_ptr<RigidBody> &body);
 
@@ -24,6 +23,8 @@ public:
     [[nodiscard]] int renderXTransfer(float x) const;
 
     void drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies);
+
+    void setHalfWidths(float hw_x, float hw_y);
 
     float m_hw_x;
     float m_hw_y;
