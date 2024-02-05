@@ -59,7 +59,7 @@ private:
     bool m_running{true};
     bool m_minimize{true};
     bool m_show_main_panel{true};
-    bool m_show_tools_panel{false};
+    bool m_show_tools_panel{true};
 };
 
 

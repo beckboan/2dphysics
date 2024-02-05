@@ -13,6 +13,7 @@
 #include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer2.h>
 #include <imgui.h>
+#include <imgui_internal.h>
 #include <iostream>
 #include <memory>
 
@@ -66,8 +67,8 @@ void Application::updateEnginePanel() {
     if (m_show_main_panel) {
         ImVec2 screen_size = ImGui::GetIO().DisplaySize;
         float menu_bar_height = ImGui::GetFrameHeight();
-        ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
-        ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
+//        ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
+//        ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
 
         ImGui::Begin("Engine Panel", &m_show_main_panel, ImGuiWindowFlags_NoCollapse);
         //                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
@@ -90,7 +91,7 @@ ExitStatus Application::run() {
     ImGuiIO &io{ImGui::GetIO()};
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-    //    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     //Set up backends
     ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
@@ -98,31 +99,7 @@ ExitStatus Application::run() {
 
     addTestParams();
 
-    //    ImGuiWindowFlags dock_window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
-    //    ImGuiViewport *viewport = ImGui::GetMainViewport();
-    //    ImGui::SetNextWindowPos(viewport->Pos);
-    //    ImGui::SetNextWindowSize(viewport->Size);
-    //    ImGui::SetNextWindowViewport(viewport->ID);
-    //    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
-    //    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
-    //    dock_window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |
-    //                         ImGuiWindowFlags_NoMove;
-    //    dock_window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
-    //
-    //    ImGui::Begin("DockSpace", nullptr, dock_window_flags);
-    //
-    //    ImGuiDockNodeFlags dock_flags = ImGuiDockNodeFlags_PassthruCentralNode;
-    //
-    //    if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable) {
-    //        ImGuiID dock_id = ImGui::GetID("DockSpace");
-    //        ImGui::DockSpace(dock_id, ImVec2(0.0f, 0.0f), dock_flags);
-    //
-    //        static auto first_time = true;
-    //        if (first_time)
-    //        {
-    //            fr
-    //        }
-    //    }
+    bool first_loop = true;
 
     //Main Loop
     m_running = true;
@@ -144,13 +121,54 @@ ExitStatus Application::run() {
             m_runtimedata.updateInternalTimers();
         }
 
-        //Start ImGui Frame
-        ImGui_ImplSDLRenderer2_NewFrame();
-        ImGui_ImplSDL2_NewFrame();
-        ImGui::NewFrame();
-
-
         if (!m_minimize) {
+
+            //Start ImGui Frame
+            ImGui_ImplSDLRenderer2_NewFrame();
+            ImGui_ImplSDL2_NewFrame();
+            ImGui::NewFrame();
+
+            static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+
+            ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+            window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |
+                            ImGuiWindowFlags_NoMove;
+            window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+            const ImGuiViewport *viewport = ImGui::GetMainViewport();
+            ImGui::SetNextWindowPos(viewport->WorkPos);
+            ImGui::SetNextWindowSize(viewport->WorkSize);
+            ImGui::SetNextWindowViewport(viewport->ID);
+
+            ImGui::Begin("Root", nullptr, window_flags);
+
+//            ImGuiDockNode *main_node = nullptr;
+
+            if (first_loop) {
+                ImGuiID main_node_ID = ImGui::GetID("MainDock");
+                ImGui::DockBuilderRemoveNode(main_node_ID);
+                ImGui::DockBuilderAddNode(main_node_ID, ImGuiDockNodeFlags_None);
+
+                ImGui::DockBuilderSetNodeSize(main_node_ID, ImGui::GetMainViewport()->WorkSize);
+                ImGui::DockBuilderSetNodePos(main_node_ID, ImGui::GetMainViewport()->WorkPos);
+
+                ImGuiID dock_main_id = main_node_ID;
+                ImGuiID dock_left_id = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Left, 0.2f, nullptr,
+                                                                   &dock_main_id);
+                ImGui::DockBuilderDockWindow("Engine Panel", dock_main_id);
+                ImGui::DockBuilderDockWindow("Tools Panel", dock_left_id);
+
+                ImGui::DockBuilderFinish(dock_main_id);
+                first_loop = false;
+            }
+
+            if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable) {
+                ImGuiID dockspace_id = ImGui::GetID("MainDock");
+                ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+            }
+
+            ImGui::End();
+
             if (ImGui::BeginMainMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
                     if (ImGui::MenuItem("Exit", "Ctrl + Q")) {
@@ -179,6 +197,7 @@ ExitStatus Application::run() {
             ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
             SDL_RenderPresent(m_window->get_renderer());
         }
+
     }
 
     return m_exit_status;
