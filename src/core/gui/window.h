@@ -28,9 +28,9 @@ public:
 
     Window &operator=(Window &&other) = delete;
 
-    SDL_Window *get_window() const;
+    [[nodiscard]] SDL_Window *get_window() const;
 
-    SDL_Renderer *get_renderer() const;
+    [[nodiscard]] SDL_Renderer *get_renderer() const;
 
 private:
     SDL_Window *m_window{nullptr};

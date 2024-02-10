@@ -12,8 +12,9 @@
 #include <SDL.h>
 #include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer2.h>
+#include <iostream>
 
-void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) {
+void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) const {
     switch (body->shape->getType()) {
         case Shape::ShapeType::Circle: {
             auto *c = dynamic_cast<Circle *>(body->shape.get());
@@ -64,15 +65,15 @@ void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) {
 }
 
 
-int ImGuiScene::renderYTransfer(int y) const { return m_hw_y + -1 * y; }
+int ImGuiScene::renderYTransfer(int y) const { return int(m_hw_y) + -1 * y; }
 
-int ImGuiScene::renderXTransfer(int x) const { return m_hw_x + x; }
+int ImGuiScene::renderXTransfer(int x) const { return int(m_hw_x) + x; }
 
-int ImGuiScene::renderYTransfer(float y) const { return m_hw_y + -1 * int(y); }
+int ImGuiScene::renderYTransfer(float y) const { return int(m_hw_y) + -1 * int(y); }
 
-int ImGuiScene::renderXTransfer(float x) const { return m_hw_x + int(x); }
+int ImGuiScene::renderXTransfer(float x) const { return int(m_hw_x) + int(x); }
 
-void ImGuiScene::drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies) {
+void ImGuiScene::drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies) const {
     for (const auto &body: bodies) {
         drawImGuiBody(body);
     }

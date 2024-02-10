@@ -65,16 +65,16 @@ void Application::addTestParams() const {
 
 void Application::updateEnginePanel() {
     if (m_show_main_panel) {
-        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
+//        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
         float menu_bar_height = ImGui::GetFrameHeight();
-//        ImGui::SetNextWindowPos(ImVec2(0, menu_bar_height));
-//        ImGui::SetNextWindowSize(ImVec2(screen_size.x, screen_size.y - menu_bar_height));
 
         ImGui::Begin("Engine Panel", &m_show_main_panel, ImGuiWindowFlags_NoCollapse);
         //                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
         //                             ImGuiWindowFlags_NoCollapse
-        m_scene->m_hw_x = screen_size.x / 2;
-        m_scene->m_hw_y = (screen_size.y - menu_bar_height) / 2;
+
+        ImVec2 windowPos = ImGui::GetWindowPos();
+        ImVec2 windowSize = ImGui::GetWindowSize();
+        m_scene->setHalfWidths(windowPos.x + windowSize.x / 2, windowPos.y + (windowSize.y - menu_bar_height) / 2);
         m_scene->drawImGuiObjects(m_world->getBodies());
         ImGui::End();
     }
@@ -179,6 +179,7 @@ ExitStatus Application::run() {
                 if (ImGui::BeginMenu("View")) {
                     ImGui::MenuItem("Engine Panel", nullptr, &m_show_main_panel);
                     ImGui::MenuItem("Tools Panel", nullptr, &m_show_tools_panel);
+                    ImGui::MenuItem("Log", nullptr, &m_show_log_panel);
                     ImGui::EndMenu();
                 }
                 ImGui::EndMainMenuBar();
@@ -188,6 +189,11 @@ ExitStatus Application::run() {
 
             if (m_show_tools_panel) {
                 ImGui::Begin("Tools Panel", &m_show_tools_panel);
+                ImGui::End();
+            }
+
+            if (m_show_log_panel) {
+                ImGui::Begin("Log Panel", &m_show_log_panel);
                 ImGui::End();
             }
 
