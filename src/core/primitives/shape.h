@@ -14,7 +14,7 @@ struct Shape {
         Circle, Poly, Edge
     };
 
-    Shape() {};
+    Shape() = default;
 
     virtual ~Shape() = 0;
 
