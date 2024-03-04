@@ -18,9 +18,9 @@ Majority of credit for this project can go to Randy Gaul's Impulse Engine (https
 
 ## To Do
 
-- **Fix ImGui Windowing**
-- **Add Menu for Placing Shapes**
 - **Add Start/Stop and Gravity Adjustment**
+- **Add AABB Visualization**
+- **Add Menu for Placing Shapes**
 - **Add Edge Drawing on Main Screen**
 - **Add Shape Drawing on Main Screen**
 - **Move Shapes on Screen**
@@ -52,7 +52,7 @@ cmake --build build
 
 4. Run the output file
 ```
-build/2dphysics
+./build/src/app/app
 ```
 
 

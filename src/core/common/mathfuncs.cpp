@@ -6,15 +6,11 @@
 
 vec2d::vec2d() : x(0), y(0) {}
 vec2d::vec2d(float x, float y) : x(x), y(y) {}
-vec2d::vec2d(const vec2d &vector) : x(vector.x), y(vector.y) {}
+vec2d::vec2d(const vec2d &vector) = default;
 
 // Assignment Operators
 // Vector Input
-vec2d &vec2d::operator=(const vec2d &vec) {
-    x = vec.x;
-    y = vec.y;
-    return *this;
-}
+vec2d &vec2d::operator=(const vec2d &vec) = default;
 
 vec2d &vec2d::operator+=(const vec2d &vec) {
     x += vec.x;
@@ -65,8 +61,6 @@ float vec2d::length() const { return std::sqrt((x * x) + (y * y)); }
 
 vec2d vec2d::normalize() const {
     float len = length();
-    // std::cout << len << std::endl;
-    // std::cout << x << std::endl;
     return {x / len, y / len};
 }
 
@@ -99,6 +93,5 @@ void mat2d::setMatrixRotation(float radians) {
 }
 
 mat2d mat2d::transpose() { return {row_1[0], row_2[0], row_1[1], row_2[1]}; }
-
 vec2d mat2d::mul(vec2d &vec) { return {row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y}; }
 vec2d mat2d::operator*(const vec2d &vec) { return {row_1[0] * vec.x + row_1[1] * vec.y, row_2[0] * vec.x + row_2[1] * vec.y}; }
