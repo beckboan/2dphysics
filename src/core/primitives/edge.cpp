@@ -2,8 +2,10 @@
 #include <string>
 #include <utility>
 
-Edge::Edge(vec2d s, vec2d e) : start_vertex(std::move(s)), end_vertex(std::move(e)) { centroid = (start_vertex +
-                                                                                                  end_vertex) / 2;
+Edge::Edge(vec2d s, vec2d e) : start_vertex(std::move(s)), end_vertex(std::move(e)) {
+    centroid = (start_vertex +
+                end_vertex) /
+               2;
 }
 
 void Edge::createAABB() {

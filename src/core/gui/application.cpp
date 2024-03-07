@@ -26,7 +26,7 @@ Application::Application(const std::string &title) {
 
     m_window = std::make_unique<Window>(Window::WindowSettings{title});
     m_world = std::make_unique<World>(9.8);
-    m_scene = std::make_unique<ImGuiScene>();
+    m_scene = std::make_unique<Scene>();
 }
 
 Application::~Application() {
@@ -75,7 +75,7 @@ void Application::updateEnginePanel() {
         ImVec2 windowPos = ImGui::GetWindowPos();
         ImVec2 windowSize = ImGui::GetWindowSize();
         m_scene->setHalfWidths(windowPos.x + windowSize.x / 2, windowPos.y + (windowSize.y - menu_bar_height) / 2);
-        m_scene->drawImGuiObjects(m_world->getBodies());
+        m_scene->drawBodies(m_world->getBodies());
         ImGui::End();
     }
 }

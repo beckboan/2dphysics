@@ -29,7 +29,7 @@ struct Poly : public Shape {
     const float poly_radius = polygonRadius;
 
 private:
-    unsigned int vertex_count = 0;
+    unsigned int vertex_count;
     std::vector<vec2d> vertex_list;
     std::vector<vec2d> normals;
     vec2d centroid;

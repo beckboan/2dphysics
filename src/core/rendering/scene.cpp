@@ -2,7 +2,7 @@
 // Created by beckm on 1/29/2024.
 //
 
-#include "imgui_scene.h"
+#include "scene.h"
 #include "circle.h"
 #include "edge.h"
 #include "imgui.h"
@@ -14,7 +14,7 @@
 #include <backends/imgui_impl_sdlrenderer2.h>
 #include <iostream>
 
-void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) const {
+void Scene::drawBody(const std::shared_ptr<RigidBody> &body) const {
     switch (body->shape->getType()) {
         case Shape::ShapeType::Circle: {
             auto *c = dynamic_cast<Circle *>(body->shape.get());
@@ -65,21 +65,21 @@ void ImGuiScene::drawImGuiBody(const std::shared_ptr<RigidBody> &body) const {
 }
 
 
-int ImGuiScene::renderYTransfer(int y) const { return int(m_hw_y) + -1 * y; }
+int Scene::renderYTransfer(int y) const { return int(m_hw_y) + -1 * y; }
 
-int ImGuiScene::renderXTransfer(int x) const { return int(m_hw_x) + x; }
+int Scene::renderXTransfer(int x) const { return int(m_hw_x) + x; }
 
-int ImGuiScene::renderYTransfer(float y) const { return int(m_hw_y) + -1 * int(y); }
+int Scene::renderYTransfer(float y) const { return int(m_hw_y) + -1 * int(y); }
 
-int ImGuiScene::renderXTransfer(float x) const { return int(m_hw_x) + int(x); }
+int Scene::renderXTransfer(float x) const { return int(m_hw_x) + int(x); }
 
-void ImGuiScene::drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies) const {
+void Scene::drawBodies(const std::vector<std::shared_ptr<RigidBody>> &bodies) const {
     for (const auto &body: bodies) {
-        drawImGuiBody(body);
+        drawBody(body);
     }
 }
 
-void ImGuiScene::setHalfWidths(float hw_x, float hw_y) {
+void Scene::setHalfWidths(float hw_x, float hw_y) {
     m_hw_x = hw_x;
     m_hw_y = hw_y;
 }

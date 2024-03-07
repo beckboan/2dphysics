@@ -5,13 +5,14 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "imgui_scene.h"
+#include "scene.h"
 #include "runtimedata.h"
 #include "window.h"
 #include "world.h"
 #include <SDL.h>
 #include <memory>
 #include <string>
+#include "engine.h"
 
 enum class ExitStatus : int {
     SUCCESS = 0,
@@ -49,7 +50,7 @@ public:
     void updateEnginePanel();
 
     std::unique_ptr<World> m_world{nullptr};
-    std::unique_ptr<ImGuiScene> m_scene{nullptr};
+    std::unique_ptr<Scene> m_scene{nullptr};
 
 private:
     ExitStatus m_exit_status{ExitStatus::SUCCESS};

@@ -9,10 +9,10 @@
 #include <memory>
 #include <vector>
 
-class ImGuiScene {
+class Scene {
 public:
 
-    void drawImGuiBody(const std::shared_ptr<RigidBody> &body) const;
+    void drawBody(const std::shared_ptr<RigidBody> &body) const;
 
     [[nodiscard]] int renderYTransfer(int y) const;
 
@@ -22,7 +22,7 @@ public:
 
     [[nodiscard]] int renderXTransfer(float x) const;
 
-    void drawImGuiObjects(const std::vector<std::shared_ptr<RigidBody>> &bodies) const;
+    void drawBodies(const std::vector<std::shared_ptr<RigidBody>> &bodies) const;
 
     void setHalfWidths(float hw_x, float hw_y);
 
