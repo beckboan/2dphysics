@@ -13,9 +13,9 @@ public:
 
     void addTestParams() const;
 
-    std::unique_ptr<World> m_world{nullptr};
+    std::unique_ptr<World> world{nullptr};
 private:
-    RunTimeData m_runtimedata;
+    RunTimeData runtimedata;
 };
 
 #endif // ENGINE_H

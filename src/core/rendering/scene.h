@@ -26,9 +26,9 @@ public:
 
     void setHalfWidths(float hw_x, float hw_y);
 
-    float m_hw_x;
-    float m_hw_y;
-    vec2d m_zoom{1.0, 1.0};
+    float hw_x;
+    float hw_y;
+    vec2d zoom{1.0, 1.0};
 
 };
 

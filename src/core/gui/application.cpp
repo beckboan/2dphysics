@@ -21,12 +21,12 @@ Application::Application(const std::string &title) {
     const unsigned int app_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
     if (SDL_Init(app_flags) != 0) {
         std::cout << SDL_GetError() << std::endl;
-        m_exit_status = ExitStatus::FAILURE;
+        status = ExitStatus::FAILURE;
     }
 
-    m_window = std::make_unique<Window>(Window::WindowSettings{title});
-    m_engine = std::make_unique<Engine>();
-    m_scene = std::make_unique<Scene>();
+    window = std::make_unique<Window>(Window::WindowSettings{title});
+    engine = std::make_unique<Engine>();
+    scene = std::make_unique<Scene>();
 }
 
 Application::~Application() {
@@ -37,26 +37,26 @@ Application::~Application() {
 }
 
 void Application::updateEnginePanel() {
-    if (m_show_main_panel) {
+    if (show_main_panel) {
 //        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
         float menu_bar_height = ImGui::GetFrameHeight();
 
-        ImGui::Begin("Engine Panel", &m_show_main_panel, ImGuiWindowFlags_NoCollapse);
+        ImGui::Begin("Engine Panel", &show_main_panel, ImGuiWindowFlags_NoCollapse);
         //                             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
         //                             ImGuiWindowFlags_NoCollapse
 
         ImVec2 windowPos = ImGui::GetWindowPos();
         ImVec2 windowSize = ImGui::GetWindowSize();
-        m_scene->setHalfWidths(windowPos.x + windowSize.x / 2, windowPos.y + (windowSize.y - menu_bar_height) / 2);
-        m_scene->drawBodies(m_engine->m_world->getBodies());
+        scene->setHalfWidths(windowPos.x + windowSize.x / 2, windowPos.y + (windowSize.y - menu_bar_height) / 2);
+        scene->drawBodies(engine->world->getBodies());
         ImGui::End();
     }
 }
 
 
 ExitStatus Application::run() {
-    if (m_exit_status == ExitStatus::FAILURE) {
-        return m_exit_status;
+    if (status == ExitStatus::FAILURE) {
+        return status;
     }
 
     IMGUI_CHECKVERSION();
@@ -67,27 +67,29 @@ ExitStatus Application::run() {
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     //Set up backends
-    ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
-    ImGui_ImplSDLRenderer2_Init(m_window->get_renderer());
+    ImGui_ImplSDL2_InitForSDLRenderer(window->get_window(), window->get_renderer());
+    ImGui_ImplSDLRenderer2_Init(window->get_renderer());
 
     bool first_loop = true;
 
     //Main Loop
-    m_running = true;
-    while (m_running) {
-        m_engine->run();
+    running = true;
+    while (running) {
+        if (engine_active) {
+            engine->run();
+        }
         //Check for SDL Event
         SDL_Event event{};
         while (SDL_PollEvent(&event) == 1) {
             ImGui_ImplSDL2_ProcessEvent(&event);
 
             if (event.type == SDL_QUIT) stop();
-            if (event.type == SDL_WINDOWEVENT && event.window.windowID == SDL_GetWindowID(m_window->get_window())) {
+            if (event.type == SDL_WINDOWEVENT && event.window.windowID == SDL_GetWindowID(window->get_window())) {
                 on_event(event.window);
             }
         }
 
-        if (!m_minimize) {
+        if (!minimize) {
 
             //Start ImGui Frame
             ImGui_ImplSDLRenderer2_NewFrame();
@@ -143,9 +145,9 @@ ExitStatus Application::run() {
                     ImGui::EndMenu();
                 }
                 if (ImGui::BeginMenu("View")) {
-                    ImGui::MenuItem("Engine Panel", nullptr, &m_show_main_panel);
-                    ImGui::MenuItem("Tools Panel", nullptr, &m_show_tools_panel);
-                    ImGui::MenuItem("Log", nullptr, &m_show_log_panel);
+                    ImGui::MenuItem("Engine Panel", nullptr, &show_main_panel);
+                    ImGui::MenuItem("Tools Panel", nullptr, &show_tools_panel);
+                    ImGui::MenuItem("Log", nullptr, &show_log_panel);
                     ImGui::EndMenu();
                 }
                 ImGui::EndMainMenuBar();
@@ -153,26 +155,26 @@ ExitStatus Application::run() {
 
             updateEnginePanel();
 
-            if (m_show_tools_panel) {
-                ImGui::Begin("Tools Panel", &m_show_tools_panel);
+            if (show_tools_panel) {
+                ImGui::Begin("Tools Panel", &show_tools_panel);
                 ImGui::End();
             }
 
-            if (m_show_log_panel) {
-                ImGui::Begin("Log Panel", &m_show_log_panel);
+            if (show_log_panel) {
+                ImGui::Begin("Log Panel", &show_log_panel);
                 ImGui::End();
             }
 
             ImGui::Render();
-            SDL_SetRenderDrawColor(m_window->get_renderer(), 100, 100, 100, 255);
-            SDL_RenderClear(m_window->get_renderer());
+            SDL_SetRenderDrawColor(window->get_renderer(), 100, 100, 100, 255);
+            SDL_RenderClear(window->get_renderer());
             ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
-            SDL_RenderPresent(m_window->get_renderer());
+            SDL_RenderPresent(window->get_renderer());
         }
 
     }
 
-    return m_exit_status;
+    return status;
 }
 
 void Application::on_event(const SDL_WindowEvent &event) {
@@ -188,10 +190,10 @@ void Application::on_event(const SDL_WindowEvent &event) {
     }
 }
 
-void Application::stop() { m_running = false; }
+void Application::stop() { running = false; }
 
-void Application::on_minimize() { m_minimize = true; }
+void Application::on_minimize() { minimize = true; }
 
-void Application::on_show() { m_minimize = false; }
+void Application::on_show() { minimize = false; }
 
 void Application::on_close() { stop(); }

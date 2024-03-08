@@ -23,7 +23,6 @@ templates/tutorials on engine setup/ primitive shape creation/ collision detecti
 
 ## To Do
 
-- **Move Engine Outside of App**
 - **Add Start/Stop and Gravity Adjustment**
 - **Add AABB Visualization**
 - **Add Menu for Placing Shapes**

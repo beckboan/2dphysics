@@ -65,13 +65,13 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> &body) const {
 }
 
 
-int Scene::renderYTransfer(int y) const { return int(m_hw_y) + -1 * y; }
+int Scene::renderYTransfer(int y) const { return int(hw_y) + -1 * y; }
 
-int Scene::renderXTransfer(int x) const { return int(m_hw_x) + x; }
+int Scene::renderXTransfer(int x) const { return int(hw_x) + x; }
 
-int Scene::renderYTransfer(float y) const { return int(m_hw_y) + -1 * int(y); }
+int Scene::renderYTransfer(float y) const { return int(hw_y) + -1 * int(y); }
 
-int Scene::renderXTransfer(float x) const { return int(m_hw_x) + int(x); }
+int Scene::renderXTransfer(float x) const { return int(hw_x) + int(x); }
 
 void Scene::drawBodies(const std::vector<std::shared_ptr<RigidBody>> &bodies) const {
     for (const auto &body: bodies) {
@@ -80,6 +80,6 @@ void Scene::drawBodies(const std::vector<std::shared_ptr<RigidBody>> &bodies) co
 }
 
 void Scene::setHalfWidths(float hw_x, float hw_y) {
-    m_hw_x = hw_x;
-    m_hw_y = hw_y;
+    hw_x = hw_x;
+    hw_y = hw_y;
 }

@@ -33,8 +33,8 @@ public:
     [[nodiscard]] SDL_Renderer *get_renderer() const;
 
 private:
-    SDL_Window *m_window{nullptr};
-    SDL_Renderer *m_renderer{nullptr};
+    SDL_Window *sdl_window{nullptr};
+    SDL_Renderer *sdl_renderer{nullptr};
 };
 
 

@@ -47,18 +47,19 @@ public:
 
     void updateEnginePanel();
 
-    std::unique_ptr<Scene> m_scene{nullptr};
-    std::unique_ptr<Engine> m_engine{nullptr};
+    std::unique_ptr<Scene> scene{nullptr};
+    std::unique_ptr<Engine> engine{nullptr};
 
 private:
-    ExitStatus m_exit_status{ExitStatus::SUCCESS};
-    std::unique_ptr<Window> m_window{nullptr};
+    ExitStatus status{ExitStatus::SUCCESS};
+    std::unique_ptr<Window> window{nullptr};
 
-    bool m_running{true};
-    bool m_minimize{true};
-    bool m_show_main_panel{true};
-    bool m_show_tools_panel{true};
-    bool m_show_log_panel{false};
+    bool engine_active{true};
+    bool running{true};
+    bool minimize{true};
+    bool show_main_panel{true};
+    bool show_tools_panel{true};
+    bool show_log_panel{false};
 };
 
 
