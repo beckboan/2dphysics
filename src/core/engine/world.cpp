@@ -162,3 +162,7 @@ void World::updateAABB() {
 }
 
 void World::clearBodies() { world_objects.clear(); }
+
+float * World::getGravity() {
+    return &gravity.y;
+}

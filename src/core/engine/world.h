@@ -23,7 +23,9 @@ struct World {
 
     [[nodiscard]] const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
 
-    [[maybe_unused]] [[maybe_unused]] void setGravity(float g);
+    void setGravity(float g);
+
+    float * getGravity();
 
     void removePhysicsObject(const std::shared_ptr<RigidBody> &);
 

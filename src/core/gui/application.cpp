@@ -110,8 +110,8 @@ ExitStatus Application::run() {
 
             ImGui::Begin("Root", nullptr, window_flags);
 
-//            ImGuiDockNode *main_node = nullptr;
 
+            //Set up docking space for first loop
             if (first_loop) {
                 ImGuiID main_node_ID = ImGui::GetID("MainDock");
                 ImGui::DockBuilderRemoveNode(main_node_ID);
@@ -134,7 +134,6 @@ ExitStatus Application::run() {
                 ImGuiID dockspace_id = ImGui::GetID("MainDock");
                 ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
             }
-
             ImGui::End();
 
             if (ImGui::BeginMainMenuBar()) {
@@ -157,7 +156,7 @@ ExitStatus Application::run() {
 
             if (show_tools_panel) {
                 ImGui::Begin("Tools Panel", &show_tools_panel);
-                //Add button for starting and stopping physics
+
                 if (ImGui::Button("Start/Stop Physics")) {
                     engine_active = !engine_active;
                 }
@@ -165,6 +164,11 @@ ExitStatus Application::run() {
                     engine->clear();
                     engine->addTestParams();
                 }
+
+                // Gravity Slider
+
+                ImGui::SliderFloat("Gravity", engine->world->getGravity(), -20, 20);
+
                 ImGui::End();
             }
 
