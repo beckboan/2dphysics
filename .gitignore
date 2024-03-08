@@ -1,5 +1,6 @@
 build/
 cmake-build-debug-wsl/
+cmake-build-debug
 [Bb]uild
 .cache/
 .idea/
