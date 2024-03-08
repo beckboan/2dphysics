@@ -23,8 +23,8 @@ templates/tutorials on engine setup/ primitive shape creation/ collision detecti
 
 ## To Do
 
-- **Add Start/Stop and Gravity Adjustment**
 - **Add AABB Visualization**
+- **Add Json World Loading**
 - **Add Menu for Placing Shapes**
 - **Add Edge Drawing on Main Screen**
 - **Add Shape Drawing on Main Screen**
