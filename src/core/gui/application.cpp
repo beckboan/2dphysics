@@ -25,7 +25,7 @@ Application::Application(const std::string &title) {
     }
 
     m_window = std::make_unique<Window>(Window::WindowSettings{title});
-    m_world = std::make_unique<World>(9.8);
+    m_engine = std::make_unique<Engine>();
     m_scene = std::make_unique<Scene>();
 }
 
@@ -35,33 +35,6 @@ Application::~Application() {
     ImGui::DestroyContext();
     SDL_Quit();
 }
-
-
-void Application::addTestParams() const {
-    vec2d position = vec2d(0.0, 0.0);
-    float density = 1000.0;
-
-    std::vector<vec2d> verticies = {vec2d(0, 0), vec2d(50, 0), vec2d(50, 50), vec2d(0, 50), vec2d(75, 100)};
-
-    std::vector<vec2d> box_verts = {vec2d(0, 0), vec2d(100, 0), vec2d(0, 100), vec2d(100, 100)};
-
-    std::vector<vec2d> verticies_2 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20),
-                                      vec2d(-10, 5)};
-    std::vector<vec2d> verticies_3 = {vec2d(0, 0), vec2d(10, 0), vec2d(10, 10), vec2d(0, 10), vec2d(15, 20)};
-
-    m_world->addCircle(10, vec2d(0, 50), 500, false);
-    //    m_world->addCircle(10, vec2d(5, 30), 1000, false);
-    //    m_world->addCircle(10, vec2d(-5, 55), 1000, false);
-    //    m_world->addCircle(10, vec2d(0, 90), 1000, false);
-    //    m_world->addPoly(verticies_2, vec2d(0, -35), density, false);
-    //    m_world->addPoly(verticies_2, vec2d(0, 60), density, false);
-    //    m_world->addPoly(verticies_2, vec2d(0, 90), density, false);
-    //    m_world->addPoly(verticies_2, vec2d(0, 120), density, false);
-    m_world->addEdge(vec2d(-200, -50), vec2d(500, -50));
-    m_world->addEdge(vec2d(-200, -50), vec2d(-200, 500));
-    m_world->addEdge(vec2d(500, -50), vec2d(500, 500));
-}
-
 
 void Application::updateEnginePanel() {
     if (m_show_main_panel) {
@@ -75,7 +48,7 @@ void Application::updateEnginePanel() {
         ImVec2 windowPos = ImGui::GetWindowPos();
         ImVec2 windowSize = ImGui::GetWindowSize();
         m_scene->setHalfWidths(windowPos.x + windowSize.x / 2, windowPos.y + (windowSize.y - menu_bar_height) / 2);
-        m_scene->drawBodies(m_world->getBodies());
+        m_scene->drawBodies(m_engine->m_world->getBodies());
         ImGui::End();
     }
 }
@@ -97,14 +70,12 @@ ExitStatus Application::run() {
     ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_window(), m_window->get_renderer());
     ImGui_ImplSDLRenderer2_Init(m_window->get_renderer());
 
-    addTestParams();
-
     bool first_loop = true;
 
     //Main Loop
     m_running = true;
     while (m_running) {
-        m_runtimedata.updateClock();
+        m_engine->run();
         //Check for SDL Event
         SDL_Event event{};
         while (SDL_PollEvent(&event) == 1) {
@@ -114,11 +85,6 @@ ExitStatus Application::run() {
             if (event.type == SDL_WINDOWEVENT && event.window.windowID == SDL_GetWindowID(m_window->get_window())) {
                 on_event(event.window);
             }
-        }
-
-        while (m_runtimedata.goPhysics()) {
-            m_world->worldStep(m_runtimedata.getDTFloat());
-            m_runtimedata.updateInternalTimers();
         }
 
         if (!m_minimize) {

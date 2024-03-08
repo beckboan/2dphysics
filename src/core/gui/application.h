@@ -45,17 +45,14 @@ public:
 
     void on_close();
 
-    void addTestParams() const;
-
     void updateEnginePanel();
 
-    std::unique_ptr<World> m_world{nullptr};
     std::unique_ptr<Scene> m_scene{nullptr};
+    std::unique_ptr<Engine> m_engine{nullptr};
 
 private:
     ExitStatus m_exit_status{ExitStatus::SUCCESS};
     std::unique_ptr<Window> m_window{nullptr};
-    RunTimeData m_runtimedata;
 
     bool m_running{true};
     bool m_minimize{true};
