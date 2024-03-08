@@ -54,11 +54,15 @@ private:
     ExitStatus status{ExitStatus::SUCCESS};
     std::unique_ptr<Window> window{nullptr};
 
-    bool engine_active{true};
+
     bool running{true};
     bool minimize{true};
+
     bool show_main_panel{true};
+
     bool show_tools_panel{true};
+    bool engine_active{true};
+
     bool show_log_panel{false};
 };
 

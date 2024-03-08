@@ -160,3 +160,5 @@ void World::updateAABB() {
         bod->shape->createAABB();
     }
 }
+
+void World::clearBodies() { world_objects.clear(); }

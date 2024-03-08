@@ -157,6 +157,14 @@ ExitStatus Application::run() {
 
             if (show_tools_panel) {
                 ImGui::Begin("Tools Panel", &show_tools_panel);
+                //Add button for starting and stopping physics
+                if (ImGui::Button("Start/Stop Physics")) {
+                    engine_active = !engine_active;
+                }
+                if (ImGui::Button("Restart")) {
+                    engine->clear();
+                    engine->addTestParams();
+                }
                 ImGui::End();
             }
 

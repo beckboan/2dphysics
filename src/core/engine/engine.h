@@ -11,6 +11,8 @@ public:
 
     void run();
 
+    void clear() const;
+
     void addTestParams() const;
 
     std::unique_ptr<World> world{nullptr};

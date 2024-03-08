@@ -27,6 +27,8 @@ struct World {
 
     void removePhysicsObject(const std::shared_ptr<RigidBody> &);
 
+    void clearBodies();
+
     void printPhysicsObjects();
 
     void worldStep(float dt);

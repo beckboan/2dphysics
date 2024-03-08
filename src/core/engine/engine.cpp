@@ -5,6 +5,10 @@ Engine::Engine() {
     addTestParams();
 }
 
+void Engine::clear() const {
+    world->contact_list.clear();
+    world->clearBodies();
+}
 
 void Engine::addTestParams() const {
 
