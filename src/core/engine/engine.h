@@ -15,6 +15,8 @@ public:
 
     void addTestParams() const;
 
+    void addLevelParams() const;
+
     std::unique_ptr<World> world{nullptr};
 private:
     RunTimeData runtimedata;

@@ -10,6 +10,14 @@ void Engine::clear() const {
     world->clearBodies();
 }
 
+void Engine::run() {
+    runtimedata.updateClock();
+    while (runtimedata.goPhysics()) {
+        world->worldStep(runtimedata.getDTFloat());
+        runtimedata.updateInternalTimers();
+    }
+}
+
 void Engine::addTestParams() const {
 
     vec2d position = vec2d(0.0, 0.0);
@@ -36,10 +44,6 @@ void Engine::addTestParams() const {
     world->addEdge(vec2d(500, -50), vec2d(500, 500));
 }
 
-void Engine::run() {
-    runtimedata.updateClock();
-    while (runtimedata.goPhysics()) {
-        world->worldStep(runtimedata.getDTFloat());
-        runtimedata.updateInternalTimers();
-    }
+void Engine::addLevelParams() const {
+
 }
