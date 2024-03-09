@@ -36,8 +36,7 @@ templates/tutorials on engine setup/ primitive shape creation/ collision detecti
 
 - C++ compiler (C++11 or higher)
 - CMake (for building the project)
-- SDL2
-- OpenGL
+- SDL ad OpenGL will be installed by CMake
 
 ### Building
 

@@ -3,7 +3,6 @@
 //
 
 #include "application.h"
-#include "mathfuncs.h"
 #include <SDL.h>
 #include <SDL_error.h>
 #include <SDL_events.h>
@@ -38,7 +37,7 @@ Application::~Application() {
 
 void Application::updateEnginePanel() {
     if (show_main_panel) {
-//        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
+        //        ImVec2 screen_size = ImGui::GetIO().DisplaySize;
         float menu_bar_height = ImGui::GetFrameHeight();
 
         ImGui::Begin("Engine Panel", &show_main_panel, ImGuiWindowFlags_NoCollapse);
@@ -183,7 +182,6 @@ ExitStatus Application::run() {
             ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
             SDL_RenderPresent(window->get_renderer());
         }
-
     }
 
     return status;
