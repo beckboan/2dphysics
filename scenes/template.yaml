@@ -5,9 +5,8 @@ scene_info:
 bodies:
   - name: "Polygon Shape"
     shape: "polygon"
-    points: [[1, 1], [1, -1], [-1, -1], [-1, 1]]
-    verticies: [1, 1, 1]
-    position: [0, 0]
+    points: [[0, 0], [0, 10], [10, 10], [0, 10], [15,20], [-10,15]]
+    position: [0, 50]
     rotation: [0, 0]
     density: 500
     static: false
@@ -19,22 +18,22 @@ bodies:
     rotation: [0, 0]
     density: 500
     static: false
-
-  - name: "Circle Shape"
-    shape: "circle"
-    radius: 20
-    position: [0, 50]
-    rotation: [0, 0]
-    density: 500
-    static: false
-
-  - name: "Circle Shape"
-    shape: "circle"
-    radius: 30
-    position: [0, 10]
-    rotation: [0, 0]
-    density: 500
-    static: false
+#
+#  - name: "Circle Shape"
+#    shape: "circle"
+#    radius: 20
+#    position: [0, 50]
+#    rotation: [0, 0]
+#    density: 500
+#    static: false
+#
+#  - name: "Circle Shape"
+#    shape: "circle"
+#    radius: 30
+#    position: [0, 10]
+#    rotation: [0, 0]
+#    density: 500
+#    static: false
 
 boundaries:
   - name: "Boundary1"

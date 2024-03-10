@@ -97,7 +97,19 @@ void Engine::addLevelParams(const std::string& filename){
                 world->addCircle(temp_radius, temp_position, temp_density, temp_static);
             }
             else if (shape_type == "polygon") {
-                std::cout << "Polygon" << std::endl;
+                auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
+                auto temp_density = body["density"].as<float>();
+                bool temp_static;
+                if (body["static"].as<std::string>() == "false") {
+                    temp_static = false;
+                } else {
+                    temp_static = true;
+                }
+                std::vector<vec2d> temp_verts;
+                for (const auto& vertex : body["points"]) {
+                    temp_verts.emplace_back(vertex[0].as<float>(), vertex[1].as<float>());
+                }
+                world->addPoly(temp_verts, temp_position, temp_density, temp_static);
             }
 
         }
