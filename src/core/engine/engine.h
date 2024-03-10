@@ -17,6 +17,8 @@ public:
 
     void addLevelParams(const std::string& filename);
 
+    void refreshLevelParams();
+
     std::unique_ptr<World> world{nullptr};
 private:
     RunTimeData runtimedata;

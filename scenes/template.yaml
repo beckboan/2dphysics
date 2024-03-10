@@ -2,21 +2,47 @@
 scene_info:
   name: "Test Scene"
 
-shapes:
+bodies:
   - name: "Polygon Shape"
-    type: "polygon"
+    shape: "polygon"
     points: [[1, 1], [1, -1], [-1, -1], [-1, 1]]
     verticies: [1, 1, 1]
     position: [0, 0]
     rotation: [0, 0]
+    density: 500
+    static: false
 
   - name: "Circle Shape"
-    type: "circle"
-    radius: 1
-    position: [0, 0]
+    shape: "circle"
+    radius: 10
+    position: [0, 90]
     rotation: [0, 0]
+    density: 500
+    static: false
+
+  - name: "Circle Shape"
+    shape: "circle"
+    radius: 20
+    position: [0, 50]
+    rotation: [0, 0]
+    density: 500
+    static: false
+
+  - name: "Circle Shape"
+    shape: "circle"
+    radius: 30
+    position: [0, 10]
+    rotation: [0, 0]
+    density: 500
+    static: false
 
 boundaries:
   - name: "Boundary1"
-    type: "line"
-    points: [[-2, -2], [2, -2]]
+    start: [-200, -50]
+    end: [500, -50]
+  - name: "Boundary1"
+    start: [-200, -50]
+    end: [-200, 500]
+  - name: "Boundary1"
+    start: [500, -50]
+    end: [500, 500]

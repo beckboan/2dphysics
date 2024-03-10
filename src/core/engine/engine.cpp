@@ -3,8 +3,7 @@
 
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
-    addTestParams();
-    // call addLevelParams with the filename of the level found in the root/scenes directory
+//    addTestParams();
     addLevelParams("../../../scenes/template.yaml");
 }
 
@@ -47,6 +46,11 @@ void Engine::addTestParams() const {
     world->addEdge(vec2d(500, -50), vec2d(500, 500));
 }
 
+void Engine::refreshLevelParams() {
+    clear();
+    addLevelParams("../../../scenes/template.yaml");
+}
+
 void Engine::addLevelParams(const std::string& filename){
     ///Check if the file is a .yaml file before loading
     if (filename.substr(filename.find_last_of('.') + 1) != "yaml") {
@@ -65,9 +69,47 @@ void Engine::addLevelParams(const std::string& filename){
 
         level_name = config["scene_info"]["name"].as<std::string>();
         std::cout << "Level name: " << level_name << std::endl;
+
+        // Check if the file has a "bodies" key and if it is empty or not
+        if (config["bodies"].IsNull()) {
+            std::cerr << "Error: No bodies or boundaries found in the file" << std::endl;
+            if (config["boundaries"].IsNull()) {
+                std::cerr << "Error: No boundaries found in the file" << std::endl;
+                return;
+            }
+        }
+
+        for (const auto& body : config["bodies"]) {
+            auto shape_type = body["shape"].as<std::string>();
+            std::cout << "Body type: " << shape_type << std::endl;
+
+            if (shape_type == "circle") {
+                auto temp_radius = body["radius"].as<float>();
+                auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
+                auto temp_density = body["density"].as<float>();
+                std::cout << temp_density << std::endl;
+                bool temp_static;
+                if (body["static"].as<std::string>() == "false") {
+                    temp_static = false;
+                } else {
+                    temp_static = true;
+                }
+                world->addCircle(temp_radius, temp_position, temp_density, temp_static);
+            }
+            else if (shape_type == "polygon") {
+                std::cout << "Polygon" << std::endl;
+            }
+
+        }
+
+        for (const auto& boundary : config["boundaries"]) {
+            auto temp_start = vec2d(boundary["start"][0].as<float>(), boundary["start"][1].as<float>());
+            auto temp_end = vec2d(boundary["end"][0].as<float>(), boundary["end"][1].as<float>());
+            world->addEdge(temp_start, temp_end);
+        }
+
+
     } catch (const YAML::Exception& e) {
         std::cerr << "Error: Exception while loading the YAML file - " << e.what() << std::endl;
     }
-
-
 }

@@ -161,7 +161,7 @@ ExitStatus Application::run() {
                 }
                 if (ImGui::Button("Restart")) {
                     engine->clear();
-                    engine->addTestParams();
+                    engine->refreshLevelParams();
                 }
 
                 // Gravity Slider
