@@ -1,7 +1,6 @@
 set(NAME "rendering")
 
 add_library(${NAME} STATIC
-        #        scene.cpp scene.h
         scene.cpp
         scene.h
 )
