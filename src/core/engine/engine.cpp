@@ -4,6 +4,8 @@
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
     addTestParams();
+    // call addLevelParams with the filename of the level found in the root/scenes directory
+    addLevelParams("../../../scenes/template.yaml");
 }
 
 void Engine::clear() const {
@@ -45,5 +47,27 @@ void Engine::addTestParams() const {
     world->addEdge(vec2d(500, -50), vec2d(500, 500));
 }
 
-void Engine::addLevelParams() const {
+void Engine::addLevelParams(const std::string& filename){
+    ///Check if the file is a .yaml file before loading
+    if (filename.substr(filename.find_last_of('.') + 1) != "yaml") {
+        std::cerr << "File is not a .yaml file" << std::endl;
+        return;
+    }
+
+    try {
+        YAML::Node config = YAML::LoadFile(filename);
+
+        // Check if the file is empty
+        if (config.IsNull()) {
+            std::cerr << "Error: File is empty" << std::endl;
+            return;
+        }
+
+        level_name = config["scene_info"]["name"].as<std::string>();
+        std::cout << "Level name: " << level_name << std::endl;
+    } catch (const YAML::Exception& e) {
+        std::cerr << "Error: Exception while loading the YAML file - " << e.what() << std::endl;
+    }
+
+
 }

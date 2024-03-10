@@ -1,1 +1,22 @@
+#file: noinspection YAMLSchemaValidation
+scene_info:
+  name: "Test Scene"
 
+shapes:
+  - name: "Polygon Shape"
+    type: "polygon"
+    points: [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+    verticies: [1, 1, 1]
+    position: [0, 0]
+    rotation: [0, 0]
+
+  - name: "Circle Shape"
+    type: "circle"
+    radius: 1
+    position: [0, 0]
+    rotation: [0, 0]
+
+boundaries:
+  - name: "Boundary1"
+    type: "line"
+    points: [[-2, -2], [2, -2]]
