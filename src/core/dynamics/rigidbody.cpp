@@ -13,9 +13,9 @@ RigidBody::RigidBody(std::unique_ptr<Shape> &shape_, vec2d &position_, float den
     static_friction = 0.5f;
     dynamic_friction = 0.3f;
     restitution = 0.2f;
-    r = 120;
-    g = 120;
-    b = 120;
+    r = 255;
+    g = 255;
+    b = 255;
 }
 
 // Property Functions
@@ -33,7 +33,15 @@ void RigidBody::setBodyStatic() {
     inv_m = 0.0f;
 }
 
+void RigidBody::setRGB(int red, int green, int blue) {
+    r = red;
+    g = green;
+    b = blue;
+}
+
 // Getters
+
+std::array<int, 3> RigidBody::getRGB() const { return {r, g, b}; }
 
 // Physics Functions
 [[maybe_unused]] void RigidBody::move(const vec2d &amount) { position += amount; }

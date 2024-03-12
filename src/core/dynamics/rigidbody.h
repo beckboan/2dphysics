@@ -49,8 +49,12 @@ struct RigidBody {
 
     void setBodyStatic();
 
+    void setRGB(int red, int green, int blue);
+
     // Getters
-    [[maybe_unused]] [[nodiscard]] const vec2d &getPosition() const { return position; };
+    [[nodiscard]] const vec2d &getPosition() const { return position; };
+
+    std::array<int, 3> getRGB() const;
 
     // Physics Functions
     [[maybe_unused]] void move(const vec2d &amount);

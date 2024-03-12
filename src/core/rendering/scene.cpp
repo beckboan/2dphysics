@@ -15,16 +15,18 @@
 #include <iostream>
 
 void Scene::drawBody(const std::shared_ptr<RigidBody> &body) const {
+    auto colors = body->getRGB();
+    auto body_color = IM_COL32(colors[0], colors[1], colors[2], 255);
     switch (body->shape->getType()) {
         case Shape::ShapeType::Circle: {
             auto *c = dynamic_cast<Circle *>(body->shape.get());
-            auto radius_int = int(c->radius);
+            auto radius_int = c->radius;
 
             // Convert the position to screen space
             ImVec2 pos = ImVec2(renderXTransfer(body->position.x), renderYTransfer(body->position.y));
 
             // Render a circle using ImGui
-            ImGui::GetWindowDrawList()->AddCircle(pos, radius_int, IM_COL32(255, 0, 0, 255), 0, 1.0f);
+            ImGui::GetWindowDrawList()->AddCircle(pos, radius_int, body_color, 0, 1.0f);
             break;
         }
         case Shape::ShapeType::Poly: {
@@ -44,7 +46,7 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> &body) const {
                 ImVec2 p1 = ImVec2(renderXTransfer(v_list_temp[i].x), renderYTransfer(v_list_temp[i].y));
                 ImVec2 p2 = ImVec2(renderXTransfer(v_list_temp[(i + 1) % v_c].x),
                                    renderYTransfer(v_list_temp[(i + 1) % v_c].y));
-                ImGui::GetWindowDrawList()->AddLine(p1, p2, IM_COL32(255, 0, 0, 255), 1.0f);
+                ImGui::GetWindowDrawList()->AddLine(p1, p2, body_color, 1.0f);
             }
             break;
         }
@@ -56,7 +58,7 @@ void Scene::drawBody(const std::shared_ptr<RigidBody> &body) const {
             ImVec2 end = ImVec2(renderXTransfer(e->end_vertex.x), renderYTransfer(e->end_vertex.y));
 
             // Render an edge using ImGui
-            ImGui::GetWindowDrawList()->AddLine(start, end, IM_COL32(255, 0, 0, 255), 1.0f);
+            ImGui::GetWindowDrawList()->AddLine(start, end, body_color, 1.0f);
             break;
         }
         default:
