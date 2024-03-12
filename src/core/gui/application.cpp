@@ -164,8 +164,6 @@ ExitStatus Application::run() {
                     engine->refreshLevelParams();
                 }
 
-                // Gravity Slider
-
                 ImGui::SliderFloat("Gravity", engine->world->getGravity(), -20, 20);
 
                 ImGui::End();

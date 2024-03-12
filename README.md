@@ -19,12 +19,14 @@ templates/tutorials on engine setup/ primitive shape creation/ collision detecti
 
 - **Rigid Body Dynamics**
 - **Collision Detection**
-- **Broad Phase and Narrow Phase**
+- **Collision Resolution**
+- **Level Loading**
+- **Shape Rendering**
 
 ## To Do
 
+- **Add Level Selection**
 - **Add AABB Visualization**
-- **Add Json World Loading**
 - **Add Menu for Placing Shapes**
 - **Add Edge Drawing on Main Screen**
 - **Add Shape Drawing on Main Screen**
