@@ -20,3 +20,9 @@ FetchContent_Declare(
         GIT_REPOSITORY "https://github.com/jbeder/yaml-cpp.git"
         GIT_TAG yaml-cpp-0.7.0)
 add_subdirectory(yaml-cpp)
+
+FetchContent_Declare(
+        imguifiledialog
+        GIT_REPOSITORY "https://github.com/aiekick/ImGuiFileDialog.git"
+        GIT_TAG v0.6.7)
+add_subdirectory(imguifiledialog)

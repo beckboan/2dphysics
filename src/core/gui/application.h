@@ -13,6 +13,7 @@
 #include <memory>
 #include <string>
 #include "engine.h"
+//#include "imguifiledialog.h"
 
 enum class ExitStatus : int {
     SUCCESS = 0,
@@ -46,6 +47,8 @@ public:
     void on_close();
 
     void updateEnginePanel();
+
+    void handleLevelLoader() const;
 
     std::unique_ptr<Scene> scene{nullptr};
     std::unique_ptr<Engine> engine{nullptr};

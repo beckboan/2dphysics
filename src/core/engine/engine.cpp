@@ -1,5 +1,6 @@
 #include "engine.h"
 #include <yaml-cpp/yaml.h>
+#include <filesystem>
 
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
@@ -52,14 +53,29 @@ void Engine::refreshLevelParams() {
 }
 
 void Engine::addLevelParams(const std::string& filename){
+
+    clear();
+
     ///Check if the file is a .yaml file before loading
-    if (filename.substr(filename.find_last_of('.') + 1) != "yaml") {
+    std::string absolute_path = std::filesystem::absolute(filename);
+
+    if (!std::filesystem::exists(absolute_path)) {
+        std::cerr << "File does not exist" << std::endl;
+        return;
+    }
+
+    if (!std::filesystem::is_regular_file(absolute_path)) {
+        std::cerr << "File is not a regular file" << std::endl;
+        return;
+    }
+
+    if (absolute_path.substr(absolute_path.find_last_of('.') + 1) != "yaml") {
         std::cerr << "File is not a .yaml file" << std::endl;
         return;
     }
 
     try {
-        YAML::Node config = YAML::LoadFile(filename);
+        YAML::Node config = YAML::LoadFile(absolute_path);
 
         // Check if the file is empty
         if (config.IsNull()) {

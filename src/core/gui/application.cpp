@@ -6,7 +6,6 @@
 #include <SDL.h>
 #include <SDL_error.h>
 #include <SDL_events.h>
-#include <SDL_filesystem.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
 #include <backends/imgui_impl_sdl2.h>
@@ -15,6 +14,7 @@
 #include <imgui_internal.h>
 #include <iostream>
 #include <memory>
+#include <ImGuiFileDialog.h>
 
 Application::Application(const std::string &title) {
     const unsigned int app_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
@@ -166,6 +166,8 @@ ExitStatus Application::run() {
 
                 ImGui::SliderFloat("Gravity", engine->world->getGravity(), -20, 20);
 
+                handleLevelLoader();
+
                 ImGui::End();
             }
 
@@ -197,6 +199,27 @@ void Application::on_event(const SDL_WindowEvent &event) {
             return;
     }
 }
+
+void Application::handleLevelLoader() const {
+    if (ImGui::Button("Select/Load Level")) {
+        IGFD::FileDialogConfig config;
+        config.path = ".";
+        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".yaml", config);
+
+    }
+
+    if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) {
+        if (ImGuiFileDialog::Instance()->IsOk()) {
+            std::map<std::string, std::string> filePathData = ImGuiFileDialog::Instance()->GetSelection();
+            std::cout << "Chosen file path: " << filePathData.begin()->second << std::endl;
+            std::cout << "Chosen file name: " << filePathData.begin()->first << std::endl;
+            engine->addLevelParams(filePathData.begin()->second);
+        }
+        ImGuiFileDialog::Instance()->Close();
+    }
+
+}
+
 
 void Application::stop() { running = false; }
 
