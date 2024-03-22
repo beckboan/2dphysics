@@ -108,7 +108,11 @@ void Engine::addLevelParams(const std::string& filename){
                 } else {
                     temp_static = true;
                 }
-                world->addCircle(temp_radius, temp_position, temp_density, temp_static);
+                try {
+                    world->addCircle(temp_radius, temp_position, temp_density, temp_static);
+                } catch (const std::invalid_argument& e) {
+                    std::cerr << "Error adding polygon: " << e.what() << std::endl;
+                }
             }
             else if (shape_type == "polygon") {
                 auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
@@ -123,7 +127,11 @@ void Engine::addLevelParams(const std::string& filename){
                 for (const auto& vertex : body["points"]) {
                     temp_verts.emplace_back(vertex[0].as<float>(), vertex[1].as<float>());
                 }
-                world->addPoly(temp_verts, temp_position, temp_density, temp_static);
+                try {
+                    world->addPoly(temp_verts, temp_position, temp_density, temp_static);
+                } catch (const std::invalid_argument& e) {
+                    std::cerr << "Error adding polygon: " << e.what() << std::endl;
+                }
             }
 
             if ((body["color"].IsDefined())) {
@@ -137,7 +145,11 @@ void Engine::addLevelParams(const std::string& filename){
         for (const auto& boundary : config["boundaries"]) {
             auto temp_start = vec2d(boundary["start"][0].as<float>(), boundary["start"][1].as<float>());
             auto temp_end = vec2d(boundary["end"][0].as<float>(), boundary["end"][1].as<float>());
-            world->addEdge(temp_start, temp_end);
+            try {
+                world->addEdge(temp_start, temp_end);
+            } catch (const std::invalid_argument& e) {
+                std::cerr << "Error adding polygon: " << e.what() << std::endl;
+            }
         }
 
 

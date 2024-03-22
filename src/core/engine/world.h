@@ -13,13 +13,13 @@ struct World {
 
     explicit World(float g);
 
-    bool addCircle(float radius, vec2d position, float density, bool is_static);
+    void addCircle(float radius, vec2d position, float density, bool is_static);
 
-    bool addRect(float width, float height, vec2d position, float density, bool is_static);
+    void addRect(float width, float height, vec2d position, float density, bool is_static);
 
-    bool addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
+    void addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static);
 
-    bool addEdge(const vec2d &s, const vec2d &e);
+    void addEdge(const vec2d &s, const vec2d &e);
 
     [[nodiscard]] const std::vector<std::shared_ptr<RigidBody>> &getBodies() const { return world_objects; }
 
