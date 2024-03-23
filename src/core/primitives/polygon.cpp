@@ -159,7 +159,6 @@ void Poly::createAABB() {
 
 void Poly::calculatePolyNormals() {
     normals.clear();
-    assert(vertex_count > 2 && vertex_count < max_poly_count && "Vertex count out of bounds");
     for (unsigned int i = 0; i < vertex_count; i++) {
         vec2d face = vertex_list[(i + 1) % vertex_count] - vertex_list[i];
         normals.push_back(vec2d(face.y, -face.x).normalize());
