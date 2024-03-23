@@ -4,7 +4,6 @@
 
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
-//    addTestParams();
     addLevelParams("../../../scenes/template.yaml");
 }
 

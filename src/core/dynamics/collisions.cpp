@@ -4,11 +4,11 @@
 #include "edge.h"
 #include "mathfuncs.h"
 #include "shape.h"
-#include <cassert>
 #include <cfloat>
 #include <cmath>
 #include <iostream>
 #include <utility>
+#include <stdexcept>
 
 Manifold::Manifold(std::shared_ptr<RigidBody> A_, std::shared_ptr<RigidBody> B_) : A(std::move(A_)), B(std::move(B_)) {
     // std::cout << "Manifold Created" << std::endl;
@@ -306,140 +306,145 @@ findMTVPolyEdge(uint32_t &index, const vec2d &start_line, const vec2d &end_line,
 }
 
 void Manifold::PolyvsEdge() {
-    Poly *P;
-    Edge *E;
-    vec2d poly_pos;
+    try {
+        Poly *P;
+        Edge *E;
+        vec2d poly_pos;
 
-    if (reverse) {
-        P = dynamic_cast<Poly *>(B->shape.get());
-        poly_pos = B->position;
-        E = dynamic_cast<Edge *>(A->shape.get());
-    } else {
-        P = dynamic_cast<Poly *>(A->shape.get());
-        poly_pos = A->position;
-        E = dynamic_cast<Edge *>(B->shape.get());
-    }
-    contact_count = 0;
+        if (reverse) {
+            P = dynamic_cast<Poly *>(B->shape.get());
+            poly_pos = B->position;
+            E = dynamic_cast<Edge *>(A->shape.get());
+        } else {
+            P = dynamic_cast<Poly *>(A->shape.get());
+            poly_pos = A->position;
+            E = dynamic_cast<Edge *>(B->shape.get());
+        }
+        contact_count = 0;
 
-    vec2d s = E->start_vertex;
-    vec2d end = E->end_vertex;
+        vec2d s = E->start_vertex;
+        vec2d end = E->end_vertex;
 
-    float total_radius = P->poly_radius + E->edge_radius;
+        float total_radius = P->poly_radius + E->edge_radius;
 
-    uint32_t poly_norm_index;
-    float pen_A = findMTVPolyEdge(poly_norm_index, s, end, P, poly_pos);
-    if (pen_A > total_radius) {
-        return;
-    }
-
-    uint32_t edge_norm_index;
-    float pen_B = findMTVEdgePoly(edge_norm_index, s, end, P, poly_pos);
-    if (pen_B > total_radius) {
-        return;
-    }
-
-    AxisData PrimaryAxis;
-
-    const float k_tol = 0.1 * linearSlop;
-    if (pen_A > pen_B + k_tol) {
-        PrimaryAxis.type = AxisData::primary_poly;
-        PrimaryAxis.normal = P->getNormals()[poly_norm_index];
-        PrimaryAxis.separation = pen_B;
-        PrimaryAxis.primary_normal_index = poly_norm_index;
-    } else {
-        PrimaryAxis.type = AxisData::primary_edge;
-        vec2d line_dir = end - s;
-        vec2d line_normal = (vec2d(line_dir.y, -line_dir.x)).normalize();
-        PrimaryAxis.normal = (edge_norm_index) == 0 ? line_normal : -line_normal;
-        PrimaryAxis.separation = pen_A;
-        PrimaryAxis.primary_normal_index = edge_norm_index;
-    }
-
-    std::array<vec2d, 2> incident_edge;
-    vec2d r_v1;
-    vec2d r_v2;
-    bool flip;
-
-    if (PrimaryAxis.type == AxisData::primary_edge) {
-        uint32_t best_index = 0;
-        float best_value = FLT_MAX;
-        for (uint32_t i = 0; i < P->getVertexCount(); i++) {
-            vec2d poly_norm = P->getNormals()[i];
-            poly_norm = P->rotation->mul(poly_norm);
-            float value = dp(PrimaryAxis.normal, poly_norm);
-            if (value < best_value) {
-                best_value = value;
-                best_index = i;
-            }
+        uint32_t poly_norm_index;
+        float pen_A = findMTVPolyEdge(poly_norm_index, s, end, P, poly_pos);
+        if (pen_A > total_radius) {
+            return;
         }
 
-        incident_edge[0] = P->getVertexList()[best_index];
-        incident_edge[0] = P->rotation->mul(incident_edge[0]) + poly_pos;
-        uint32_t best_index2 = best_index + 1 >= P->getVertexCount() ? 0 : best_index + 1;
-        incident_edge[1] = P->getVertexList()[best_index2];
-        incident_edge[1] = P->rotation->mul(incident_edge[1]) + poly_pos;
+        uint32_t edge_norm_index;
+        float pen_B = findMTVEdgePoly(edge_norm_index, s, end, P, poly_pos);
+        if (pen_B > total_radius) {
+            return;
+        }
 
-        r_v1 = (edge_norm_index == 1) ? end : s;//(edge_norm_index == 1);
-        r_v2 = (edge_norm_index == 1) ? s : end;//(edge_norm_index == 1);
-        normal = PrimaryAxis.normal;
+        AxisData PrimaryAxis;
 
-        flip = true;
-    } else {
-        incident_edge[0] = end;
-        incident_edge[1] = s;
+        const float k_tol = 0.1 * linearSlop;
+        if (pen_A > pen_B + k_tol) {
+            PrimaryAxis.type = AxisData::primary_poly;
+            PrimaryAxis.normal = P->getNormals()[poly_norm_index];
+            PrimaryAxis.separation = pen_B;
+            PrimaryAxis.primary_normal_index = poly_norm_index;
+        } else {
+            PrimaryAxis.type = AxisData::primary_edge;
+            vec2d line_dir = end - s;
+            vec2d line_normal = (vec2d(line_dir.y, -line_dir.x)).normalize();
+            PrimaryAxis.normal = (edge_norm_index) == 0 ? line_normal : -line_normal;
+            PrimaryAxis.separation = pen_A;
+            PrimaryAxis.primary_normal_index = edge_norm_index;
+        }
 
-        r_v1 = P->getVertexList()[PrimaryAxis.primary_normal_index];
-        uint32_t primary_normal_index2 =
-                PrimaryAxis.primary_normal_index + 1 >= P->getVertexCount() ? 0 : PrimaryAxis.primary_normal_index + 1;
-        r_v2 = P->getVertexList()[primary_normal_index2];
+        std::array<vec2d, 2> incident_edge;
+        vec2d r_v1;
+        vec2d r_v2;
+        bool flip;
 
-        r_v1 = P->rotation->mul(r_v1) + poly_pos;
-        r_v2 = P->rotation->mul(r_v2) + poly_pos;
+        if (PrimaryAxis.type == AxisData::primary_edge) {
+            uint32_t best_index = 0;
+            float best_value = FLT_MAX;
+            for (uint32_t i = 0; i < P->getVertexCount(); i++) {
+                vec2d poly_norm = P->getNormals()[i];
+                poly_norm = P->rotation->mul(poly_norm);
+                float value = dp(PrimaryAxis.normal, poly_norm);
+                if (value < best_value) {
+                    best_value = value;
+                    best_index = i;
+                }
+            }
 
-        normal = P->getNormals()[PrimaryAxis.primary_normal_index];
-        flip = false;
+            incident_edge[0] = P->getVertexList()[best_index];
+            incident_edge[0] = P->rotation->mul(incident_edge[0]) + poly_pos;
+            uint32_t best_index2 = best_index + 1 >= P->getVertexCount() ? 0 : best_index + 1;
+            incident_edge[1] = P->getVertexList()[best_index2];
+            incident_edge[1] = P->rotation->mul(incident_edge[1]) + poly_pos;
+
+            r_v1 = (edge_norm_index == 1) ? end : s;//(edge_norm_index == 1);
+            r_v2 = (edge_norm_index == 1) ? s : end;//(edge_norm_index == 1);
+            normal = PrimaryAxis.normal;
+
+            flip = true;
+        } else {
+            incident_edge[0] = end;
+            incident_edge[1] = s;
+
+            r_v1 = P->getVertexList()[PrimaryAxis.primary_normal_index];
+            uint32_t primary_normal_index2 =
+                    PrimaryAxis.primary_normal_index + 1 >= P->getVertexCount() ? 0 : PrimaryAxis.primary_normal_index + 1;
+            r_v2 = P->getVertexList()[primary_normal_index2];
+
+            r_v1 = P->rotation->mul(r_v1) + poly_pos;
+            r_v2 = P->rotation->mul(r_v2) + poly_pos;
+
+            normal = P->getNormals()[PrimaryAxis.primary_normal_index];
+            flip = false;
+        }
+
+        vec2d side_tangent = (r_v2 - r_v1).normalize();
+
+        // Find orthogonal
+        vec2d side_normal(side_tangent.y, -side_tangent.x);
+
+        // Finding front offsets and sides
+        float front_offset = dp(side_normal, r_v1);
+        float neg_side = -dp(side_tangent, r_v1) + total_radius;
+        float pos_side = dp(side_tangent, r_v2) + total_radius;
+
+        if (clipEdges(-side_tangent, neg_side, incident_edge) < 2) {
+            return;
+        }
+
+        if (clipEdges(side_tangent, pos_side, incident_edge) < 2) {
+            return;
+        }
+        // Checking for penetration by clipping points
+        uint32_t clipped_points = 0;
+        float sep = dp(side_normal, incident_edge[0]) - front_offset;
+        if (sep <= 0.0) {
+            contacts[clipped_points] = incident_edge[0];
+
+            penetration = -sep;
+            ++clipped_points;
+        } else {
+            penetration = 0;
+        }
+
+        sep = dp(side_normal, incident_edge[1]) - front_offset;
+        if (sep <= 0.0) {
+            contacts[clipped_points] = incident_edge[1];
+
+            penetration += -sep;
+            ++clipped_points;
+
+            penetration /= clipped_points * 1.0;
+        }
+        contact_count = clipped_points;
+        normal = flip ? -side_normal : side_normal;
     }
-
-    vec2d side_tangent = (r_v2 - r_v1).normalize();
-
-    // Find orthogonal
-    vec2d side_normal(side_tangent.y, -side_tangent.x);
-
-    // Finding front offsets and sides
-    float front_offset = dp(side_normal, r_v1);
-    float neg_side = -dp(side_tangent, r_v1) + total_radius;
-    float pos_side = dp(side_tangent, r_v2) + total_radius;
-
-    if (clipEdges(-side_tangent, neg_side, incident_edge) < 2) {
-        return;
+    catch (const std::logic_error &e) {
+        std::cerr << "Error in PolyvsEdge: " << e.what() << std::endl;
     }
-
-    if (clipEdges(side_tangent, pos_side, incident_edge) < 2) {
-        return;
-    }
-    // Checking for penetration by clipping points
-    uint32_t clipped_points = 0;
-    float sep = dp(side_normal, incident_edge[0]) - front_offset;
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[0];
-
-        penetration = -sep;
-        ++clipped_points;
-    } else {
-        penetration = 0;
-    }
-
-    sep = dp(side_normal, incident_edge[1]) - front_offset;
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[1];
-
-        penetration += -sep;
-        ++clipped_points;
-
-        penetration /= clipped_points * 1.0;
-    }
-    contact_count = clipped_points;
-    normal = flip ? -side_normal : side_normal;
 }
 
 void Manifold::CirclevsEdge() {
@@ -524,104 +529,108 @@ void Manifold::CirclevsEdge() {
 }
 
 void Manifold::PolyvsPoly() {
-    //    std::cout << "Poly Collision" << std::endl;
-    Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
-    Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
+    try {
+        //    std::cout << "Poly Collision" << std::endl;
+        Poly *P1 = dynamic_cast<Poly *>(A->shape.get());
+        Poly *P2 = dynamic_cast<Poly *>(B->shape.get());
 
-    contact_count = 0;
-    float total_radius = P1->poly_radius + P2->poly_radius;
+        contact_count = 0;
+        float total_radius = P1->poly_radius + P2->poly_radius;
 
-    uint32_t face_A = 0;
-    float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
-    if (pen_A > total_radius) {
-        return;
+        uint32_t face_A = 0;
+        float pen_A = findAOLP(face_A, P1, P2, A->position, B->position);
+        if (pen_A > total_radius) {
+            return;
+        }
+        uint32_t face_B = 0;
+        float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
+        if (pen_B > total_radius) {
+            return;
+        }
+
+        Poly *ref;
+        Poly *inc;
+
+        uint32_t ref_index;
+        bool flip;
+        vec2d ref_pos;
+        vec2d inc_pos;
+
+        // Bias selection of ref/inc poly taken from box2d
+        const float k_tol = 0.1 * linearSlop;
+
+        if (pen_B > pen_A + k_tol) {
+            ref = P2;
+            ref_pos = B->position;
+            inc = P1;
+            inc_pos = A->position;
+            ref_index = face_B;
+            flip = true;
+        } else {
+            ref = P1;
+            ref_pos = A->position;
+            inc = P2;
+            inc_pos = B->position;
+            ref_index = face_A;
+            flip = false;
+        }
+
+        std::array<vec2d, 2> incident_edge;
+        findIncidentFace(incident_edge, ref, inc, inc_pos, ref_index);
+
+        vec2d r_v1 = ref->getVertexList()[ref_index];
+        ref_index = ref_index + 1 >= ref->getVertexCount() ? 0 : ref_index + 1;
+        vec2d r_v2 = ref->getVertexList()[ref_index];
+
+        // Transform vectors to world space
+        r_v1 = ref->rotation->mul(r_v1) + ref_pos;
+        r_v2 = ref->rotation->mul(r_v2) + ref_pos;
+
+        // Find side tangent and normalize
+        vec2d side_tangent = (r_v2 - r_v1).normalize();
+
+        // Find orthogonal
+        vec2d side_normal(side_tangent.y, -side_tangent.x);
+
+        // Finding front offsets and sides
+        float front_offset = dp(side_normal, r_v1);
+        float neg_side = -dp(side_tangent, r_v1) + total_radius;
+        float pos_side = dp(side_tangent, r_v2) + total_radius;
+
+        if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
+            return;
+
+        if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
+            return;
+
+        // Checking for penetration by clipping points
+        uint32_t clipped_points = 0;
+        float sep = dp(side_normal, incident_edge[0]) - front_offset;
+        if (sep <= 0.0) {
+            contacts[clipped_points] = incident_edge[0];
+
+            penetration = -sep;
+            ++clipped_points;
+        } else {
+            penetration = 0;
+        }
+
+        sep = dp(side_normal, incident_edge[1]) - front_offset;
+
+        if (sep <= 0.0) {
+            contacts[clipped_points] = incident_edge[1];
+
+            penetration += -sep;
+            ++clipped_points;
+
+            penetration /= float(clipped_points);
+        }
+
+        contact_count = clipped_points;
+        normal = flip ? -side_normal : side_normal;
+    } catch (const std::logic_error &e) {
+        std::cerr << "Error in PolyvsPoly: " << e.what() << std::endl;
     }
-    uint32_t face_B = 0;
-    float pen_B = findAOLP(face_B, P2, P1, B->position, A->position);
-    if (pen_B > total_radius) {
-        return;
-    }
-
-    Poly *ref;
-    Poly *inc;
-
-    uint32_t ref_index;
-    bool flip;
-    vec2d ref_pos;
-    vec2d inc_pos;
-
-    // Bias selection of ref/inc poly taken from box2d
-    const float k_tol = 0.1 * linearSlop;
-
-    if (pen_B > pen_A + k_tol) {
-        ref = P2;
-        ref_pos = B->position;
-        inc = P1;
-        inc_pos = A->position;
-        ref_index = face_B;
-        flip = true;
-    } else {
-        ref = P1;
-        ref_pos = A->position;
-        inc = P2;
-        inc_pos = B->position;
-        ref_index = face_A;
-        flip = false;
-    }
-
-    std::array<vec2d, 2> incident_edge;
-    findIncidentFace(incident_edge, ref, inc, inc_pos, ref_index);
-
-    vec2d r_v1 = ref->getVertexList()[ref_index];
-    ref_index = ref_index + 1 >= ref->getVertexCount() ? 0 : ref_index + 1;
-    vec2d r_v2 = ref->getVertexList()[ref_index];
-
-    // Transform vectors to world space
-    r_v1 = ref->rotation->mul(r_v1) + ref_pos;
-    r_v2 = ref->rotation->mul(r_v2) + ref_pos;
-
-    // Find side tangent and normalize
-    vec2d side_tangent = (r_v2 - r_v1).normalize();
-
-    // Find orthogonal
-    vec2d side_normal(side_tangent.y, -side_tangent.x);
-
-    // Finding front offsets and sides
-    float front_offset = dp(side_normal, r_v1);
-    float neg_side = -dp(side_tangent, r_v1) + total_radius;
-    float pos_side = dp(side_tangent, r_v2) + total_radius;
-
-    if (clipEdges(-side_tangent, neg_side, incident_edge) < 2)
-        return;
-
-    if (clipEdges(side_tangent, pos_side, incident_edge) < 2)
-        return;
-
-    // Checking for penetration by clipping points
-    uint32_t clipped_points = 0;
-    float sep = dp(side_normal, incident_edge[0]) - front_offset;
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[0];
-
-        penetration = -sep;
-        ++clipped_points;
-    } else {
-        penetration = 0;
-    }
-
-    sep = dp(side_normal, incident_edge[1]) - front_offset;
-
-    if (sep <= 0.0) {
-        contacts[clipped_points] = incident_edge[1];
-
-        penetration += -sep;
-        ++clipped_points;
-
-        penetration /= float(clipped_points);
-    }
-
-    contact_count = clipped_points;
-    normal = flip ? -side_normal : side_normal;
 }
 
 // AOLP adapted from Randy Gaul's Impulse Engine and box2d
@@ -714,7 +723,9 @@ uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v) {
     v[0] = out[0];
     v[1] = out[1];
 
-    assert(sp != 3);
+    if (sp == 3) {
+        throw logic_error("Error in clipEdges: sp == 3");
+    }
 
     return sp;
 }

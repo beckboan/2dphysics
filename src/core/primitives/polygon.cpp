@@ -1,6 +1,5 @@
 #include "polygon.h"
 #include <algorithm>
-#include <cassert>
 #include <string>
 #include <stdexcept>
 #include <iostream>
