@@ -144,6 +144,8 @@ void Manifold::CirclevsPoly() {
     Circle *C;
     Poly *P;
 
+    // Set up pointers to correct shapes
+
     if (reverse) {
         C = dynamic_cast<Circle *>(B->shape.get());
         circ_bod = B.get();
@@ -162,15 +164,18 @@ void Manifold::CirclevsPoly() {
 
     vec2d center = circ_bod->position;
 
+    // Transform circle center to polygon model space
     center = P->rotation->transpose() * (center - poly_bod->position);
 
     uint32_t normal_index;
 
+    //Find separation between center of circle and polygon
     float sep = findCirclePolyMinPenetration(normal_index, C, P, center);
     if (sep > total_radius)
         return;
 
     penetration = total_radius - sep;
+
 
     vec2d s = P->getVertexList()[normal_index];
     // Need to save normal index, so don't increment
@@ -180,13 +185,17 @@ void Manifold::CirclevsPoly() {
     vec2d v1 = end - s;
     vec2d v2 = s - end;
 
+    //Check intersection between circle and polygon
+
     float dp1 = dp(v1, center - s);
     float dp2 = dp(v2, center - end);
 
     if (dp1 <= 0.0) {
+        // Check if actually within distance of polygon vertex
         if (distSquared(center, s) > total_radius * total_radius)
             return;
 
+        // If circle is within distance of vertex, set contact
         contact_count = 1;
         vec2d norm = s - center;
         norm = (P->rotation->mul(norm)).normalize();
@@ -194,6 +203,7 @@ void Manifold::CirclevsPoly() {
         normal = reverse ? -norm : norm;
         contacts[0] = P->rotation->mul(s) + poly_bod->position;
     } else if (dp2 <= 0.0) {
+        // Check if actually within distance of polygon vertex
         if (distSquared(center, end) > total_radius * total_radius)
             return;
 
@@ -203,6 +213,7 @@ void Manifold::CirclevsPoly() {
         normal = reverse ? -norm : norm;
         contacts[0] = P->rotation->mul(end) + poly_bod->position;
     } else {
+
         vec2d norm = P->getNormals()[normal_index];
 
         // Check if actually within distance of poylgon face
@@ -229,6 +240,7 @@ struct AxisData {
 
 float
 findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line, Poly *P, const vec2d &pos_polygon) {
+    // Find the best separation between the line and the polygon
     float best_dist = -FLT_MAX;
     uint32_t best_index;
 
@@ -237,6 +249,7 @@ findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line,
     vec2d line_normal1 = (vec2d(line_dir.y, -line_dir.x)).normalize();
     vec2d line_normal2 = -line_normal1;// Invert the normal for the second side
 
+    // Transpose the polygon rotation matrix
     mat2d polygon_rotation_T = P->rotation->transpose();
 
     for (uint32_t j = 0; j < 2; ++j) {
@@ -247,15 +260,19 @@ findMTVEdgePoly(uint32_t &index, const vec2d &start_line, const vec2d &end_line,
         vec2d best_vert;
         for (uint32_t i = 0; i < P->getVertexCount(); i++) {
             vec2d b_vert = P->getVertexList()[i];
+            // Project the vertex onto the normal
             float proj = dp(b_vert, -line_normal);
 
+            // Find the best projection
             if (proj > best_proj) {
                 best_vert = b_vert;
                 best_proj = proj;
             }
         }
 
+
         vec2d a_vert = (j == 0) ? start_line : end_line;
+        // Rotate the vertex to the polygon's model space
         a_vert = polygon_rotation_T * (a_vert - pos_polygon);
 
         float dist = dp(line_normal, best_vert - a_vert);
