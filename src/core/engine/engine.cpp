@@ -96,49 +96,52 @@ void Engine::addLevelParams(const std::string& filename){
         }
 
         for (const auto& body : config["bodies"]) {
-            auto shape_type = body["shape"].as<std::string>();
+            try {
+                auto shape_type = body["shape"].as<std::string>();
 
-            if (shape_type == "circle") {
-                auto temp_radius = body["radius"].as<float>();
-                auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
-                auto temp_density = body["density"].as<float>();
-                bool temp_static;
-                if (body["static"].as<std::string>() == "false") {
-                    temp_static = false;
-                } else {
-                    temp_static = true;
-                }
-                try {
+                if (shape_type == "circle") {
+                    auto temp_radius = body["radius"].as<float>();
+                    auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
+                    auto temp_density = body["density"].as<float>();
+                    bool temp_static;
+                    if (body["static"].as<std::string>() == "false") {
+                        temp_static = false;
+                    } else {
+                        temp_static = true;
+                    }
                     world->addCircle(temp_radius, temp_position, temp_density, temp_static);
-                } catch (const std::invalid_argument& e) {
-                    std::cerr << "Error adding polygon: " << e.what() << std::endl;
                 }
-            }
-            else if (shape_type == "polygon") {
-                auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
-                auto temp_density = body["density"].as<float>();
-                bool temp_static;
-                if (body["static"].as<std::string>() == "false") {
-                    temp_static = false;
-                } else {
-                    temp_static = true;
-                }
-                std::vector<vec2d> temp_verts;
-                for (const auto& vertex : body["points"]) {
-                    temp_verts.emplace_back(vertex[0].as<float>(), vertex[1].as<float>());
-                }
-                try {
+                else if (shape_type == "polygon") {
+                    auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
+                    auto temp_density = body["density"].as<float>();
+                    bool temp_static;
+                    if (body["static"].as<std::string>() == "false") {
+                        temp_static = false;
+                    } else {
+                        temp_static = true;
+                    }
+                    std::vector<vec2d> temp_verts;
+                    for (const auto& vertex : body["points"]) {
+                        temp_verts.emplace_back(vertex[0].as<float>(), vertex[1].as<float>());
+                    }
                     world->addPoly(temp_verts, temp_position, temp_density, temp_static);
-                } catch (const std::invalid_argument& e) {
-                    std::cerr << "Error adding polygon: " << e.what() << std::endl;
+                }
+
+                if ((body["color"].IsDefined())) {
+                    auto temp_r = body["color"][0].as<int>();
+                    auto temp_g = body["color"][1].as<int>();
+                    auto temp_b = body["color"][2].as<int>();
+                    world->getBodies().back()->setRGB(temp_r, temp_g, temp_b);
                 }
             }
-
-            if ((body["color"].IsDefined())) {
-                auto temp_r = body["color"][0].as<int>();
-                auto temp_g = body["color"][1].as<int>();
-                auto temp_b = body["color"][2].as<int>();
-                world->getBodies().back()->setRGB(temp_r, temp_g, temp_b);
+            catch (const std::invalid_argument& e) {
+                std::cerr << "Error adding body: " << e.what() << std::endl;
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error adding body: " << e.what() << std::endl;
+            }
+            catch (...) {
+                std::cerr << "Error adding body: Unknown error" << std::endl;
             }
         }
 
@@ -148,7 +151,7 @@ void Engine::addLevelParams(const std::string& filename){
             try {
                 world->addEdge(temp_start, temp_end);
             } catch (const std::invalid_argument& e) {
-                std::cerr << "Error adding polygon: " << e.what() << std::endl;
+                std::cerr << "Error adding edge: " << e.what() << std::endl;
             }
         }
 

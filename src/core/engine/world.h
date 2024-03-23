@@ -65,7 +65,6 @@ public:
 
 inline bool isValidArea(float area) {
     if (area < World::min_body_area || area > World::max_body_area) {
-        std::cout << "Area outside of world parameters" << std::endl;
         return false;
     }
     return true;
@@ -73,7 +72,6 @@ inline bool isValidArea(float area) {
 
 inline bool isValidDensity(float density) {
     if (density < World::min_body_density || density > World::max_body_density) {
-        std::cout << "Density outside of world parameters" << std::endl;
         return false;
     }
     return true;

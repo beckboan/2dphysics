@@ -23,7 +23,6 @@ World::World(float g) { gravity.assign(0, -g); }
 [[maybe_unused]] void World::setGravity(float g) { gravity.assign(0, -g); }
 
 void World::addCircle(float radius, vec2d position, float density, bool is_static) {
-
     float area = radius * radius * float(M_PI);
     if (!isValidArea(area))
         throw std::invalid_argument("Invalid Radius");
@@ -62,20 +61,25 @@ void World::addRect(float width, float height, vec2d position, float density, bo
 }
 
 void World::addPoly(std::vector<vec2d> verticies, vec2d position, float density, bool is_static) {
-    if (!isValidDensity(density))
-        throw std::invalid_argument("Invalid Density");
+    try {
+        if (!isValidDensity(density))
+            throw std::invalid_argument("Invalid Density");
 
-    std::unique_ptr<Shape> shp = std::make_unique<Poly>(verticies);
-    std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp, position, density);
-    bod->shape->setBody(bod);
+        std::unique_ptr<Shape> shp = std::make_unique<Poly>(verticies);
+        std::shared_ptr<RigidBody> bod = std::make_shared<RigidBody>(shp, position, density);
+        bod->shape->setBody(bod);
 
-    if (!isValidArea(bod->area))
-        throw std::invalid_argument("Invalid Area");
+        if (!isValidArea(bod->area))
+            throw std::invalid_argument("Invalid Area");
 
-    world_objects.push_back(bod);
-    std::cout << "Poly Added" << std::endl;
-    if (is_static) {
-        bod->setBodyStatic();
+        world_objects.push_back(bod);
+        std::cout << "Poly Added" << std::endl;
+        if (is_static) {
+            bod->setBodyStatic();
+        }
+    }
+    catch (const std::invalid_argument &e) {
+        throw;
     }
 }
 

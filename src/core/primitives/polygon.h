@@ -8,7 +8,7 @@
 
 struct Poly : public Shape {
     explicit Poly(std::vector<vec2d> &verticies);// Normal Poly
-    Poly(float width, float height);             // Rectangle Poly
+    explicit Poly(float width, float height);             // Rectangle Poly
     // Poly(float radius, int side_number); //Regular Polygon (think stop sign)
 
     [[nodiscard]] ShapeType getType() const override;

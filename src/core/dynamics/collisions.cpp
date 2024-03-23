@@ -411,12 +411,10 @@ void Manifold::PolyvsEdge() {
     float pos_side = dp(side_tangent, r_v2) + total_radius;
 
     if (clipEdges(-side_tangent, neg_side, incident_edge) < 2) {
-        DBG("Clipp Error");
         return;
     }
 
     if (clipEdges(side_tangent, pos_side, incident_edge) < 2) {
-        DBG("Clipp Error");
         return;
     }
     // Checking for penetration by clipping points

@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <cassert>
 #include <string>
+#include <stdexcept>
+#include <iostream>
 
 // Polygon
 
@@ -15,41 +17,51 @@ struct GrahamCCWSorter {
 };
 
 Poly::Poly(std::vector<vec2d> &v) {
-    // Hull Creation
-    std::vector<vec2d> hull;
-
-    // Establish min_x and move to front of verticies
-    vec2d min_x = *std::min_element(v.begin(), v.end(), isLeftOf);
-
-    std::swap(v[0], min_x);
-
-    // Sort point ccw around min_x
-    std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
-
-    hull.push_back(v[0]);
-    hull.push_back(v[1]);
-    hull.push_back(v[2]);
-
-    for (unsigned int i = 3; i < v.size(); i++) {
-        vec2d top = hull.back();
-        hull.pop_back();
-        while (findOrientation(hull.back(), top, v[i]) >= 0) {
-            top = hull.back();
-            hull.pop_back();
+    try {
+        if (v.size() < 3 || v.size() > max_poly_count) {
+            throw std::invalid_argument("Invalid Polygon Vertex Count");
         }
-        hull.push_back(top);
-        hull.push_back(v[i]);
+        // Hull Creation
+        std::vector<vec2d> hull;
+
+        // Establish min_x and move to front of verticies
+        vec2d min_x = *std::min_element(v.begin(), v.end(), isLeftOf);
+
+        std::swap(v[0], min_x);
+
+        // Sort point ccw around min_x
+        std::sort(v.begin() + 1, v.end(), GrahamCCWSorter(v[0]));
+
+        hull.push_back(v[0]);
+        hull.push_back(v[1]);
+        hull.push_back(v[2]);
+
+        for (unsigned int i = 3; i < v.size(); i++) {
+            vec2d top = hull.back();
+            hull.pop_back();
+            while (findOrientation(hull.back(), top, v[i]) >= 0) {
+                top = hull.back();
+                hull.pop_back();
+            }
+            hull.push_back(top);
+            hull.push_back(v[i]);
+        }
+
+        vertex_count = hull.size();
+        std::cout <<vertex_count << std::endl;
+
+        if(vertex_count < 3 || vertex_count > max_poly_count) {
+            throw std::invalid_argument("Invalid Polygon Vertex Count");
+        }
+
+        for (unsigned int i = 0; i < vertex_count; i++) {
+            vertex_list.push_back(hull[i]);
+        }
+        calculatePolyNormals();
     }
-
-    vertex_count = hull.size();
-
-    assert(vertex_count > 2 && vertex_count <= max_poly_count && "Vertex list size out of bounds");
-
-    for (unsigned int i = 0; i < vertex_count; i++) {
-        vertex_list.push_back(hull[i]);
+    catch (const std::invalid_argument &e) {
+        throw;
     }
-
-    calculatePolyNormals();
 }
 
 Poly::Poly(float width, float height) : vertex_count(4) {

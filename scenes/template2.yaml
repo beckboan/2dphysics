@@ -1,0 +1,45 @@
+#file: noinspection YAMLSchemaValidation
+scene_info:
+  name: "Test Scene"
+
+bodies:
+
+  - name: "Circle Shape"
+    shape: "circle"
+    color: [120, 60, 150]
+    radius: 10
+    position: [0, 90]
+    rotation: 10
+    density: 500
+    static: false
+
+  - name: "Circle Shape"
+    shape: "circle"
+    radius: 20
+    position: [0, 50]
+    rotation: [0, 0]
+    density: 500
+    static: false
+
+  - name: "Circle Shape"
+    shape: "circle"
+    radius: 30
+    position: [0, 10]
+    rotation: [0, 0]
+    density: 500
+    static: false
+
+boundaries:
+  - name: "Boundary1"
+    start: [-200, -50]
+    end: [500, -50]
+  - name: "Boundary1"
+    start: [-200, -50]
+    end: [-200, 500]
+  - name: "Boundary1"
+    start: [500, -50]
+    end: [500, 500]
+  - name: "Boundary1"
+    start: [0, 0]
+    end: [0,0]
+
