@@ -741,7 +741,7 @@ uint32_t clipEdges(vec2d norm, float dist, std::array<vec2d, 2> &v) {
     v[1] = out[1];
 
     if (sp == 3) {
-        throw logic_error("Error in clipEdges: sp == 3");
+        throw std::logic_error("Error in clipEdges: sp == 3");
     }
 
     return sp;
