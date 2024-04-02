@@ -6,7 +6,6 @@ bodies:
   - name: "Polygon Shape"
     shape: "polygon"
     color: [0, 0, 255]
-#    points: [[0, 0], [0, 10]]
     points: [[0, 0], [0, 10], [10, 10], [0, 10], [15,20], [-10,15]]
     position: [0, 50]
     rotation: 15

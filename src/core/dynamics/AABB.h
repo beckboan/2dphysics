@@ -4,7 +4,7 @@
 #include "mathfuncs.h"
 
 struct AABB {
-    AABB() {}
+    AABB() = default;
 
     [[nodiscard]] vec2d getMin() const { return min; }
 
@@ -23,8 +23,8 @@ struct AABB {
     [[maybe_unused]] void move(const vec2d &vec);
 
 private:
-    vec2d min; // Bottom Left
-    vec2d max; // Top Right
+    vec2d min;// Bottom Left
+    vec2d max;// Top Right
 };
 
 inline bool checkAABBOverlap(const AABB &box1, const AABB &box2) {
