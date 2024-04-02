@@ -1,6 +1,7 @@
 #include "engine.h"
-#include <yaml-cpp/yaml.h>
 #include <filesystem>
+#include <yaml-cpp/yaml.h>
+
 
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
@@ -48,10 +49,10 @@ void Engine::addTestParams() const {
 
 void Engine::refreshLevelParams() {
     clear();
-    addLevelParams("../../../scenes/template.yaml");
+    addLevelParams(curr_level_path);
 }
 
-void Engine::addLevelParams(const std::string& filename){
+void Engine::addLevelParams(const std::string &filename) {
 
     clear();
 
@@ -72,6 +73,8 @@ void Engine::addLevelParams(const std::string& filename){
         std::cerr << "File is not a .yaml file" << std::endl;
         return;
     }
+
+    curr_level_path = absolute_path;
 
     try {
         YAML::Node config = YAML::LoadFile(absolute_path);
@@ -94,7 +97,7 @@ void Engine::addLevelParams(const std::string& filename){
             }
         }
 
-        for (const auto& body : config["bodies"]) {
+        for (const auto &body: config["bodies"]) {
             try {
                 auto shape_type = body["shape"].as<std::string>();
 
@@ -109,8 +112,7 @@ void Engine::addLevelParams(const std::string& filename){
                         temp_static = true;
                     }
                     world->addCircle(temp_radius, temp_position, temp_density, temp_static);
-                }
-                else if (shape_type == "polygon") {
+                } else if (shape_type == "polygon") {
                     auto temp_position = vec2d(body["position"][0].as<float>(), body["position"][1].as<float>());
                     auto temp_density = body["density"].as<float>();
                     bool temp_static;
@@ -120,7 +122,7 @@ void Engine::addLevelParams(const std::string& filename){
                         temp_static = true;
                     }
                     std::vector<vec2d> temp_verts;
-                    for (const auto& vertex : body["points"]) {
+                    for (const auto &vertex: body["points"]) {
                         temp_verts.emplace_back(vertex[0].as<float>(), vertex[1].as<float>());
                     }
                     world->addPoly(temp_verts, temp_position, temp_density, temp_static);
@@ -132,30 +134,27 @@ void Engine::addLevelParams(const std::string& filename){
                     auto temp_b = body["color"][2].as<int>();
                     world->getBodies().back()->setRGB(temp_r, temp_g, temp_b);
                 }
-            }
-            catch (const std::invalid_argument& e) {
+            } catch (const std::invalid_argument &e) {
                 std::cerr << "Error adding body: " << e.what() << std::endl;
-            }
-            catch (const std::exception& e) {
+            } catch (const std::exception &e) {
                 std::cerr << "Error adding body: " << e.what() << std::endl;
-            }
-            catch (...) {
+            } catch (...) {
                 std::cerr << "Error adding body: Unknown error" << std::endl;
             }
         }
 
-        for (const auto& boundary : config["boundaries"]) {
+        for (const auto &boundary: config["boundaries"]) {
             auto temp_start = vec2d(boundary["start"][0].as<float>(), boundary["start"][1].as<float>());
             auto temp_end = vec2d(boundary["end"][0].as<float>(), boundary["end"][1].as<float>());
             try {
                 world->addEdge(temp_start, temp_end);
-            } catch (const std::invalid_argument& e) {
+            } catch (const std::invalid_argument &e) {
                 std::cerr << "Error adding edge: " << e.what() << std::endl;
             }
         }
 
 
-    } catch (const YAML::Exception& e) {
+    } catch (const YAML::Exception &e) {
         std::cerr << "Error: Exception while loading the YAML file - " << e.what() << std::endl;
     }
 }

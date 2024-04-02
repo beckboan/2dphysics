@@ -15,14 +15,16 @@ public:
 
     void addTestParams() const;
 
-    void addLevelParams(const std::string& filename);
+    void addLevelParams(const std::string &filename);
 
     void refreshLevelParams();
 
     std::unique_ptr<World> world{nullptr};
+
 private:
+    std::string curr_level_path = "";
     RunTimeData runtimedata;
     std::string level_name = "NA";
 };
 
-#endif // ENGINE_H
+#endif// ENGINE_H
