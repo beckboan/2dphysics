@@ -5,7 +5,8 @@
 
 Engine::Engine() {
     world = std::make_unique<World>(9.8);
-    addLevelParams("../../../scenes/template.yaml");
+    curr_level_path = "scenes/template.yaml";
+    addLevelParams(curr_level_path);
 }
 
 void Engine::clear() const {
