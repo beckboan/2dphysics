@@ -1,8 +1,10 @@
+#define _USE_MATH_DEFINES
+
 #include "circle.h"
 #include "AABB.h"
 #include <cmath>
 #include <iostream>
-#include <memory>
+
 
 // Circle
 Circle::Circle(float radius) : radius(radius) {

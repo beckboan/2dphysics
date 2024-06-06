@@ -9,3 +9,5 @@ cmake-build-debug
 .clang-tidy
 imgui.ini
 .vscode/
+.out/
+.vs/

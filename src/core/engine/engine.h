@@ -1,9 +1,16 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#ifdef _WIN32
+#include <io.h>
+#define access _access
+
+#else
+#include <unistd.h>
+#endif
+
 #include "runtimedata.h"
 #include "world.h"
-#include <unistd.h>
 
 class Engine {
 public:

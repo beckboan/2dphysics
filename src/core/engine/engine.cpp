@@ -1,6 +1,7 @@
 #include "engine.h"
 #include <filesystem>
 #include <yaml-cpp/yaml.h>
+#include <string>
 
 
 Engine::Engine() {
@@ -58,7 +59,7 @@ void Engine::addLevelParams(const std::string &filename) {
     clear();
 
     ///Check if the file is a .yaml file before loading
-    std::string absolute_path = std::filesystem::absolute(filename);
+    std::string absolute_path = std::filesystem::absolute(std::filesystem::u8path(filename)).u8string();
 
     if (!std::filesystem::exists(absolute_path)) {
         std::cerr << "File does not exist" << std::endl;
