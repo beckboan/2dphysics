@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+
 #include "world.h"
 #include "circle.h"
 #include "collisions.h"

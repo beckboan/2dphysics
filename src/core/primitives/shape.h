@@ -5,6 +5,7 @@
 #include "mathfuncs.h"
 #include "rigidbody.h"
 #include <memory>
+#include <iostream>
 
 #define max_poly_count 32
 
