@@ -1,4 +1,5 @@
 # Generated from CLion C/C++ Code Style settings
+Standard: LS_Cpp20
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
