@@ -63,7 +63,7 @@ void Engine::addLevelParams(const std::string &filename) {
 
   /// Check if the file is a .yaml file before loading
   std::string absolute_path =
-      std::filesystem::absolute(std::filesystem::u8path(filename)).u8string();
+      std::filesystem::absolute(std::filesystem::path(filename)).string();
 
   if (!std::filesystem::exists(absolute_path)) {
 
